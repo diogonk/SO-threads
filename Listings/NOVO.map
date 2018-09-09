@@ -61,6 +61,7 @@ LOAD ./objects/cpu.o
 LOAD ./objects/queue.o
 LOAD ./objects/testafila.o
 LOAD ./objects/thread.o
+LOAD ./objects/pingpong-tasks1.o
 LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libm.a
 LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libm.a
 LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a
@@ -76,7 +77,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/g
 LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a
 END GROUP
 
-.text           0x00000000     0x3fa4
+.text           0x00000000     0x3ffc
                 0x00000000                _text = .
  *(.isr_vector)
  .isr_vector    0x00000000      0x200 ./objects/startup_gcc.o
@@ -405,113 +406,116 @@ END GROUP
                 0x00003030                initSysTick
                 0x00003054                startSwitcher
                 0x0000306a                SysTick_Handler
- .text          0x000030fc        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .text.exit     0x000030fc       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
-                0x000030fc                exit
- .text          0x00003124        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
- .text          0x00003124        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .text.malloc   0x00003124       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
-                0x00003124                malloc
- .text.free     0x00003134       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
-                0x00003134                free
- .text          0x00003144        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .text._free_r  0x00003144       0x9c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
-                0x00003144                _free_r
- .text          0x000031e0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .text          0x000030fc       0x58 ./objects/pingpong-tasks1.o
+ .text          0x00003154        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00003154       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+                0x00003154                exit
+ .text          0x0000317c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+ .text          0x0000317c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .text.malloc   0x0000317c       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+                0x0000317c                malloc
+ .text.free     0x0000318c       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+                0x0000318c                free
+ .text          0x0000319c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .text._free_r  0x0000319c       0x9c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+                0x0000319c                _free_r
+ .text          0x00003238        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
  .text._malloc_r
-                0x000031e0       0xb4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x000031e0                _malloc_r
- .text          0x00003294        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .text.srandom  0x00003294       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
-                0x00003294                srandom
- .text.random   0x000032dc       0x68 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
-                0x000032dc                random
- .text          0x00003344        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .text._sbrk_r  0x00003344       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
-                0x00003344                _sbrk_r
- .text          0x00003364        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x00003238       0xb4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00003238                _malloc_r
+ .text          0x000032ec        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .text.srandom  0x000032ec       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+                0x000032ec                srandom
+ .text.random   0x00003334       0x68 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+                0x00003334                random
+ .text          0x0000339c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x0000339c       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+                0x0000339c                _sbrk_r
+ .text          0x000033bc        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
  .text.__malloc_lock
-                0x00003364        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
-                0x00003364                __malloc_lock
+                0x000033bc        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x000033bc                __malloc_lock
  .text.__malloc_unlock
-                0x00003366        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
-                0x00003366                __malloc_unlock
- .text          0x00003368        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x000033be        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x000033be                __malloc_unlock
+ .text          0x000033c0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
  .text.cleanup_glue
-                0x00003368       0x1a c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x00003368                cleanup_glue
- *fill*         0x00003382        0x2 
+                0x000033c0       0x1a c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x000033c0                cleanup_glue
+ *fill*         0x000033da        0x2 
  .text._reclaim_reent
-                0x00003384       0xb8 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x00003384                _reclaim_reent
- .text          0x0000343c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .text._sbrk    0x0000343c       0x1c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
-                0x0000343c                _sbrk
- .text          0x00003458        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
- .text._exit    0x00003458        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
-                0x00003458                _exit
+                0x000033dc       0xb8 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x000033dc                _reclaim_reent
+ .text          0x00003494        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .text._sbrk    0x00003494       0x1c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+                0x00003494                _sbrk
+ .text          0x000034b0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+ .text._exit    0x000034b0        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+                0x000034b0                _exit
  *(.rodata*)
  .rodata.str1.4
-                0x0000345c       0x8a ./objects/hello.o
- *fill*         0x000034e6        0x2 
+                0x000034b4       0x8a ./objects/hello.o
+ *fill*         0x0000353e        0x2 
  .rodata.g_pppui32XTALtoVCO
-                0x000034e8      0x120 ./lib/libdriver.a(sysctl.o)
+                0x00003540      0x120 ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32VCOFrequencies
-                0x00003608        0x8 ./lib/libdriver.a(sysctl.o)
+                0x00003660        0x8 ./lib/libdriver.a(sysctl.o)
  .rodata.g_sXTALtoMEMTIM
-                0x00003610       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00003668       0x30 ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32Xtals
-                0x00003640       0x6c ./lib/libdriver.a(sysctl.o)
+                0x00003698       0x6c ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32Priority
-                0x000036ac       0x20 ./lib/libdriver.a(interrupt.o)
+                0x00003704       0x20 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32Dii16Regs
-                0x000036cc       0x14 ./lib/libdriver.a(interrupt.o)
+                0x00003724       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32PendRegs
-                0x000036e0       0x14 ./lib/libdriver.a(interrupt.o)
+                0x00003738       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32Regs
-                0x000036f4       0x9c ./lib/libdriver.a(interrupt.o)
+                0x0000374c       0x9c ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32EnRegs
-                0x00003790       0x14 ./lib/libdriver.a(interrupt.o)
+                0x000037e8       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32UnpendRegs
-                0x000037a4       0x14 ./lib/libdriver.a(interrupt.o)
- .rodata        0x000037b8       0x18 ./objects/uartstdio.o
+                0x000037fc       0x14 ./lib/libdriver.a(interrupt.o)
+ .rodata        0x00003810       0x18 ./objects/uartstdio.o
  .rodata.str1.4
-                0x000037d0       0x32 ./objects/uartstdio.o
- *fill*         0x00003802        0x2 
- .rodata        0x00003804      0x210 ./objects/gpio.o
+                0x00003828       0x32 ./objects/uartstdio.o
+ *fill*         0x0000385a        0x2 
+ .rodata        0x0000385c      0x210 ./objects/gpio.o
  .rodata.str1.4
-                0x00003a14        0x7 ./objects/gpio.o
+                0x00003a6c        0x7 ./objects/gpio.o
  .rodata.str1.4
-                0x00003a1b        0x7 ./objects/queue.o
+                0x00003a73        0x7 ./objects/queue.o
                                   0x2 (size before relaxing)
- *fill*         0x00003a1b        0x1 
+ *fill*         0x00003a73        0x1 
  .rodata.str1.4
-                0x00003a1c      0x584 ./objects/testafila.o
+                0x00003a74      0x584 ./objects/testafila.o
                                 0x582 (size before relaxing)
+ .rodata.str1.4
+                0x00003ff8        0xe ./objects/pingpong-tasks1.o
  .rodata._global_impure_ptr
-                0x00003fa0        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
-                0x00003fa0                _global_impure_ptr
-                0x00003fa4                _etext = .
+                0x00003ff8        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+                0x00003ff8                _global_impure_ptr
+                0x00004006                _etext = .
 
-.glue_7         0x00003fa4        0x0
- .glue_7        0x00003fa4        0x0 linker stubs
+.glue_7         0x00003ffc        0x0
+ .glue_7        0x00003ffc        0x0 linker stubs
 
-.glue_7t        0x00003fa4        0x0
- .glue_7t       0x00003fa4        0x0 linker stubs
+.glue_7t        0x00003ffc        0x0
+ .glue_7t       0x00003ffc        0x0 linker stubs
 
-.vfp11_veneer   0x00003fa4        0x0
- .vfp11_veneer  0x00003fa4        0x0 linker stubs
+.vfp11_veneer   0x00003ffc        0x0
+ .vfp11_veneer  0x00003ffc        0x0 linker stubs
 
-.v4_bx          0x00003fa4        0x0
- .v4_bx         0x00003fa4        0x0 linker stubs
+.v4_bx          0x00003ffc        0x0
+ .v4_bx         0x00003ffc        0x0 linker stubs
 
-.iplt           0x00003fa4        0x0
- .iplt          0x00003fa4        0x0 ./objects/startup_gcc.o
+.iplt           0x00003ffc        0x0
+ .iplt          0x00003ffc        0x0 ./objects/startup_gcc.o
 
-.rel.dyn        0x00003fa4        0x0
- .rel.iplt      0x00003fa4        0x0 ./objects/startup_gcc.o
+.rel.dyn        0x00003ffc        0x0
+ .rel.iplt      0x00003ffc        0x0 ./objects/startup_gcc.o
 
-.data           0x20000000      0x468 load address 0x00003fa4
+.data           0x20000000      0x468 load address 0x00003ffc
                 0x20000000                _data = .
  *(vtable)
  vtable         0x20000000      0x400 ./lib/libdriver.a(interrupt.o)
@@ -529,6 +533,7 @@ END GROUP
  .data          0x20000400        0x0 ./objects/testafila.o
  .data          0x20000400        0x4 ./objects/thread.o
                 0x20000400                TCB_Size
+ .data          0x20000404        0x0 ./objects/pingpong-tasks1.o
  .data          0x20000404        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
  .data          0x20000404        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
@@ -547,10 +552,10 @@ END GROUP
  .data          0x20000468        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
                 0x20000468                _edata = .
 
-.igot.plt       0x20000468        0x0 load address 0x0000440c
+.igot.plt       0x20000468        0x0 load address 0x00004464
  .igot.plt      0x20000468        0x0 ./objects/startup_gcc.o
 
-.bss            0x20000468      0x960 load address 0x0000440c
+.bss            0x20000468      0x964 load address 0x00004464
                 0x20000468                _bss = .
  *(.bss*)
  .bss           0x20000468      0x200 ./objects/startup_gcc.o
@@ -570,46 +575,48 @@ END GROUP
  .bss           0x20000674        0x8 ./objects/thread.o
                 0x20000674                ThreadCount
                 0x20000678                ThreadIndex
- .bss           0x2000067c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .bss           0x2000067c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
- .bss           0x2000067c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .bss           0x2000067c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .bss           0x2000067c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .bss           0x2000067c        0x1 ./objects/pingpong-tasks1.o
+ .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ *fill*         0x2000067d        0x3 
  .bss.__malloc_free_list
-                0x2000067c        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x2000067c                __malloc_free_list
- .bss.__malloc_sbrk_start
                 0x20000680        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x20000680                __malloc_sbrk_start
- .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
- .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
- .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+                0x20000680                __malloc_free_list
+ .bss.__malloc_sbrk_start
+                0x20000684        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x20000684                __malloc_sbrk_start
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
  .bss.heap_end.4102
-                0x20000684        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+                0x20000688        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .bss           0x2000068c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
  *(COMMON)
- COMMON         0x20000688      0x204 ./objects/hello.o
-                0x20000688                Thread2Stack
-                0x20000788                g_ui32SysClock
-                0x2000078c                Thread1Stack
- COMMON         0x2000088c      0x4c0 ./objects/testafila.o
-                0x2000088c                final
-                0x20000890                fila0
-                0x20000894                aux
-                0x20000898                item
-                0x20000d48                fila1
- COMMON         0x20000d4c       0x78 ./objects/thread.o
-                0x20000d4c                Threads
- COMMON         0x20000dc4        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x20000dc4                errno
-                0x20000dc8                _ebss = .
-                0x20000dc8                _end = .
-                0x20000dc8                PROVIDE (end = .)
+ COMMON         0x2000068c      0x204 ./objects/hello.o
+                0x2000068c                Thread2Stack
+                0x2000078c                g_ui32SysClock
+                0x20000790                Thread1Stack
+ COMMON         0x20000890      0x4c0 ./objects/testafila.o
+                0x20000890                final
+                0x20000894                fila0
+                0x20000898                aux
+                0x2000089c                item
+                0x20000d4c                fila1
+ COMMON         0x20000d50       0x78 ./objects/thread.o
+                0x20000d50                Threads
+ COMMON         0x20000dc8        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x20000dc8                errno
+                0x20000dcc                _ebss = .
+                0x20000dcc                _end = .
+                0x20000dcc                PROVIDE (end = .)
 OUTPUT(./Objects/NOVO.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x5562
+.debug_info     0x00000000     0x5fd8
  .debug_info    0x00000000      0x1a8 ./objects/startup_gcc.o
  .debug_info    0x000001a8      0xe50 ./objects/hello.o
  .debug_info    0x00000ff8      0x5ae ./objects/uartstdio.o
@@ -619,8 +626,9 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .debug_info    0x00003b7c      0x24d ./objects/queue.o
  .debug_info    0x00003dc9     0x15bb ./objects/testafila.o
  .debug_info    0x00005384      0x1de ./objects/thread.o
+ .debug_info    0x00005562      0xa76 ./objects/pingpong-tasks1.o
 
-.debug_abbrev   0x00000000      0xc45
+.debug_abbrev   0x00000000      0xe4e
  .debug_abbrev  0x00000000       0xfa ./objects/startup_gcc.o
  .debug_abbrev  0x000000fa      0x266 ./objects/hello.o
  .debug_abbrev  0x00000360      0x1a8 ./objects/uartstdio.o
@@ -630,8 +638,9 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .debug_abbrev  0x00000777      0x15a ./objects/queue.o
  .debug_abbrev  0x000008d1      0x260 ./objects/testafila.o
  .debug_abbrev  0x00000b31      0x114 ./objects/thread.o
+ .debug_abbrev  0x00000c45      0x209 ./objects/pingpong-tasks1.o
 
-.debug_loc      0x00000000     0x2920
+.debug_loc      0x00000000     0x29ac
  .debug_loc     0x00000000       0x4b ./objects/startup_gcc.o
  .debug_loc     0x0000004b      0x164 ./objects/hello.o
  .debug_loc     0x000001af      0x88a ./objects/uartstdio.o
@@ -640,8 +649,9 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .debug_loc     0x00002205      0x2cb ./objects/queue.o
  .debug_loc     0x000024d0      0x304 ./objects/testafila.o
  .debug_loc     0x000027d4      0x14c ./objects/thread.o
+ .debug_loc     0x00002920       0x8c ./objects/pingpong-tasks1.o
 
-.debug_aranges  0x00000000      0x118
+.debug_aranges  0x00000000      0x138
  .debug_aranges
                 0x00000000       0x20 ./objects/startup_gcc.o
  .debug_aranges
@@ -660,19 +670,22 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
                 0x000000d8       0x20 ./objects/testafila.o
  .debug_aranges
                 0x000000f8       0x20 ./objects/thread.o
+ .debug_aranges
+                0x00000118       0x20 ./objects/pingpong-tasks1.o
 
-.debug_line     0x00000000     0x14cc
+.debug_line     0x00000000     0x16fd
  .debug_line    0x00000000      0x12c ./objects/startup_gcc.o
- .debug_line    0x0000012c      0x2ba ./objects/hello.o
- .debug_line    0x000003e6      0x34e ./objects/uartstdio.o
- .debug_line    0x00000734      0x180 ./objects/pinout.o
- .debug_line    0x000008b4      0x55f ./objects/gpio.o
- .debug_line    0x00000e13       0x1d ./objects/cpu.o
- .debug_line    0x00000e30       0xcb ./objects/queue.o
- .debug_line    0x00000efb      0x459 ./objects/testafila.o
- .debug_line    0x00001354      0x178 ./objects/thread.o
+ .debug_line    0x0000012c      0x2c0 ./objects/hello.o
+ .debug_line    0x000003ec      0x34e ./objects/uartstdio.o
+ .debug_line    0x0000073a      0x180 ./objects/pinout.o
+ .debug_line    0x000008ba      0x55f ./objects/gpio.o
+ .debug_line    0x00000e19       0x1d ./objects/cpu.o
+ .debug_line    0x00000e36       0xcb ./objects/queue.o
+ .debug_line    0x00000f01      0x459 ./objects/testafila.o
+ .debug_line    0x0000135a      0x178 ./objects/thread.o
+ .debug_line    0x000014d2      0x22b ./objects/pingpong-tasks1.o
 
-.debug_str      0x00000000      0xe06
+.debug_str      0x00000000      0xe20
  .debug_str     0x00000000      0x199 ./objects/startup_gcc.o
                                 0x1d6 (size before relaxing)
  .debug_str     0x00000199      0x4ba ./objects/hello.o
@@ -691,6 +704,8 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
                                 0x601 (size before relaxing)
  .debug_str     0x00000d73       0x93 ./objects/thread.o
                                 0x20f (size before relaxing)
+ .debug_str     0x00000e06       0x1a ./objects/pingpong-tasks1.o
+                                0x596 (size before relaxing)
 
 .comment        0x00000000       0xaa
  .comment       0x00000000       0x7f ./objects/startup_gcc.o
@@ -707,6 +722,7 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .comment       0x000000aa       0x80 ./objects/queue.o
  .comment       0x000000aa       0x80 ./objects/testafila.o
  .comment       0x000000aa       0x80 ./objects/thread.o
+ .comment       0x000000aa       0x80 ./objects/pingpong-tasks1.o
 
 .ARM.attributes
                 0x00000000       0x39
@@ -735,29 +751,31 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .ARM.attributes
                 0x0000023d       0x33 ./objects/thread.o
  .ARM.attributes
-                0x00000270       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+                0x00000270       0x33 ./objects/pingpong-tasks1.o
  .ARM.attributes
-                0x0000029e       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+                0x000002a3       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x000002cc       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+                0x000002d1       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x000002fa       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+                0x000002ff       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000328       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x0000032d       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x00000356       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+                0x0000035b       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000384       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00000389       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
  .ARM.attributes
-                0x000003b2       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x000003b7       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x000003e0       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x000003e5       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
  .ARM.attributes
-                0x0000040e       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+                0x00000413       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
  .ARM.attributes
-                0x0000043c       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+                0x00000441       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .ARM.attributes
+                0x0000046f       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
 
-.debug_frame    0x00000000      0xc44
+.debug_frame    0x00000000      0xc90
  .debug_frame   0x00000000       0x5c ./objects/startup_gcc.o
  .debug_frame   0x0000005c       0xc0 ./objects/hello.o
  .debug_frame   0x0000011c      0x120 ./objects/uartstdio.o
@@ -766,16 +784,18 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .debug_frame   0x000008e0       0x80 ./objects/queue.o
  .debug_frame   0x00000960       0x74 ./objects/testafila.o
  .debug_frame   0x000009d4       0x74 ./objects/thread.o
- .debug_frame   0x00000a48       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00000a70       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .debug_frame   0x00000aa0       0x38 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00000ad8       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00000b04       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .debug_frame   0x00000b4c       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000b78       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00000ba8       0x5c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
- .debug_frame   0x00000c04       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .debug_frame   0x00000c24       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+ .debug_frame   0x00000a48       0x4c ./objects/pingpong-tasks1.o
+ .debug_frame   0x00000a94       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00000abc       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00000aec       0x38 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00000b24       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00000b50       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .debug_frame   0x00000b98       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000bc4       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000bf4       0x5c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+ .debug_frame   0x00000c50       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .debug_frame   0x00000c70       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
 
-.debug_ranges   0x00000000       0x18
+.debug_ranges   0x00000000       0x48
  .debug_ranges  0x00000000       0x18 ./objects/queue.o
+ .debug_ranges  0x00000018       0x30 ./objects/pingpong-tasks1.o

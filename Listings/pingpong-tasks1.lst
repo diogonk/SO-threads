@@ -1,0 +1,2872 @@
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"pingpong-tasks1.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.align	1
+  16              		.global	BodyPing
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  20              		.fpu softvfp
+  21              		.type	BodyPing, %function
+  22              	BodyPing:
+  23              	.LFB3:
+  24              		.file 1 "Threads/pingpong-tasks1.c"
+   1:Threads/pingpong-tasks1.c **** // PingPongOS - PingPong Operating System
+   2:Threads/pingpong-tasks1.c **** // Prof. Carlos A. Maziero, DINF UFPR
+   3:Threads/pingpong-tasks1.c **** // Versão 1.1 -- Julho de 2016
+   4:Threads/pingpong-tasks1.c **** 
+   5:Threads/pingpong-tasks1.c **** // Teste da gestão básica de tarefas
+   6:Threads/pingpong-tasks1.c **** 
+   7:Threads/pingpong-tasks1.c **** #include <stdio.h>
+   8:Threads/pingpong-tasks1.c **** #include <stdlib.h>
+   9:Threads/pingpong-tasks1.c **** 
+  10:Threads/pingpong-tasks1.c **** volatile int8_t pingpong = 0;
+  11:Threads/pingpong-tasks1.c **** // corpo da thread Ping
+  12:Threads/pingpong-tasks1.c **** void BodyPing(void)
+  13:Threads/pingpong-tasks1.c **** {
+  25              		.loc 1 13 0
+  26              		.cfi_startproc
+  27              		@ args = 0, pretend = 0, frame = 0
+  28              		@ frame_needed = 0, uses_anonymous_args = 0
+  29 0000 70B5     		push	{r4, r5, r6, lr}
+  30              	.LCFI0:
+  31              		.cfi_def_cfa_offset 16
+  32              		.cfi_offset 4, -16
+  33              		.cfi_offset 5, -12
+  34              		.cfi_offset 6, -8
+  35              		.cfi_offset 14, -4
+  36              	.LVL0:
+  14:Threads/pingpong-tasks1.c ****   uint32_t i = 0;
+  15:Threads/pingpong-tasks1.c ****   while (1)
+  16:Threads/pingpong-tasks1.c ****   {
+  17:Threads/pingpong-tasks1.c ****     if (pingpong == 0){i++;}
+  37              		.loc 1 17 0
+  38 0002 094C     		ldr	r4, .L7
+  18:Threads/pingpong-tasks1.c **** 
+  19:Threads/pingpong-tasks1.c ****     if (i > (0xFFFFFF - 20))
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 2
+
+
+  39              		.loc 1 19 0
+  40 0004 094D     		ldr	r5, .L7+4
+  41              	.LBB2:
+  20:Threads/pingpong-tasks1.c ****     {
+  21:Threads/pingpong-tasks1.c ****       UARTprintf("PING\n");
+  42              		.loc 1 21 0
+  43 0006 0A4E     		ldr	r6, .L7+8
+  44 0008 0CE0     		b	.L4
+  45              	.LVL1:
+  46              	.L2:
+  47              	.LBE2:
+  19:Threads/pingpong-tasks1.c ****     {
+  48              		.loc 1 19 0
+  49 000a AA42     		cmp	r2, r5
+  50 000c 05D8     		bhi	.L6
+  51              	.LVL2:
+  52              	.L3:
+  17:Threads/pingpong-tasks1.c **** 
+  53              		.loc 1 17 0
+  54 000e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+  55 0010 5BB2     		sxtb	r3, r3
+  56 0012 002B     		cmp	r3, #0
+  57 0014 F9D1     		bne	.L2
+  17:Threads/pingpong-tasks1.c **** 
+  58              		.loc 1 17 0 is_stmt 0 discriminator 1
+  59 0016 0132     		adds	r2, r2, #1
+  60              	.LVL3:
+  61 0018 F7E7     		b	.L2
+  62              	.L6:
+  63              	.LBB3:
+  64              		.loc 1 21 0 is_stmt 1
+  65 001a 3046     		mov	r0, r6
+  66 001c FFF7FEFF 		bl	UARTprintf
+  67              	.LVL4:
+  22:Threads/pingpong-tasks1.c ****       i = 0;
+  23:Threads/pingpong-tasks1.c ****       pingpong = 1;
+  68              		.loc 1 23 0
+  69 0020 0123     		movs	r3, #1
+  70 0022 2370     		strb	r3, [r4]
+  71              	.L4:
+  72              	.LBE3:
+  13:Threads/pingpong-tasks1.c ****   uint32_t i = 0;
+  73              		.loc 1 13 0
+  74 0024 0022     		movs	r2, #0
+  75 0026 F2E7     		b	.L3
+  76              	.L8:
+  77              		.align	2
+  78              	.L7:
+  79 0028 00000000 		.word	.LANCHOR0
+  80 002c EBFFFF00 		.word	16777195
+  81 0030 00000000 		.word	.LC0
+  82              		.cfi_endproc
+  83              	.LFE3:
+  84              		.size	BodyPing, .-BodyPing
+  85              		.align	1
+  86              		.global	BodyPong
+  87              		.syntax unified
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 3
+
+
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu softvfp
+  91              		.type	BodyPong, %function
+  92              	BodyPong:
+  93              	.LFB4:
+  24:Threads/pingpong-tasks1.c ****     }
+  25:Threads/pingpong-tasks1.c ****   }
+  26:Threads/pingpong-tasks1.c **** }
+  27:Threads/pingpong-tasks1.c **** 
+  28:Threads/pingpong-tasks1.c **** // corpo da thread Pong
+  29:Threads/pingpong-tasks1.c **** void BodyPong(void *arg)
+  30:Threads/pingpong-tasks1.c **** {
+  94              		.loc 1 30 0
+  95              		.cfi_startproc
+  96              		@ Volatile: function does not return.
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              	.LVL5:
+ 100 0034 08B5     		push	{r3, lr}
+ 101              	.LCFI1:
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 3, -8
+ 104              		.cfi_offset 14, -4
+  31:Threads/pingpong-tasks1.c ****   while (1)
+  32:Threads/pingpong-tasks1.c ****   {
+  33:Threads/pingpong-tasks1.c ****     if (pingpong == 1)
+ 105              		.loc 1 33 0
+ 106 0036 064C     		ldr	r4, .L13
+ 107              	.LBB4:
+  34:Threads/pingpong-tasks1.c ****     {
+  35:Threads/pingpong-tasks1.c ****       pingpong = 0;
+ 108              		.loc 1 35 0
+ 109 0038 0026     		movs	r6, #0
+  36:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
+ 110              		.loc 1 36 0
+ 111 003a 064D     		ldr	r5, .L13+4
+ 112              	.LVL6:
+ 113              	.L10:
+ 114              	.LBE4:
+  33:Threads/pingpong-tasks1.c ****     {
+ 115              		.loc 1 33 0
+ 116 003c 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 117 003e 5BB2     		sxtb	r3, r3
+ 118 0040 012B     		cmp	r3, #1
+ 119 0042 FBD1     		bne	.L10
+ 120              	.LBB5:
+  35:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
+ 121              		.loc 1 35 0
+ 122 0044 2670     		strb	r6, [r4]
+ 123              		.loc 1 36 0
+ 124 0046 2846     		mov	r0, r5
+ 125 0048 FFF7FEFF 		bl	UARTprintf
+ 126              	.LVL7:
+ 127 004c F6E7     		b	.L10
+ 128              	.L14:
+ 129 004e 00BF     		.align	2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 4
+
+
+ 130              	.L13:
+ 131 0050 00000000 		.word	.LANCHOR0
+ 132 0054 08000000 		.word	.LC1
+ 133              	.LBE5:
+ 134              		.cfi_endproc
+ 135              	.LFE4:
+ 136              		.size	BodyPong, .-BodyPong
+ 137              		.global	pingpong
+ 138              		.bss
+ 139              		.set	.LANCHOR0,. + 0
+ 140              		.type	pingpong, %object
+ 141              		.size	pingpong, 1
+ 142              	pingpong:
+ 143 0000 00       		.space	1
+ 144              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 145              		.align	2
+ 146              	.LC0:
+ 147 0000 50494E47 		.ascii	"PING\012\000"
+ 147      0A00
+ 148 0006 0000     		.space	2
+ 149              	.LC1:
+ 150 0008 504F4E47 		.ascii	"PONG\012\000"
+ 150      0A00
+ 151              		.text
+ 152              	.Letext0:
+ 153              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 154              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 155              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 156              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-eab
+ 157              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 158              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 159              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 160              		.section	.debug_info,"",%progbits
+ 161              	.Ldebug_info0:
+ 162 0000 720A0000 		.4byte	0xa72
+ 163 0004 0200     		.2byte	0x2
+ 164 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 165 000a 04       		.byte	0x4
+ 166 000b 01       		.uleb128 0x1
+ 167 000c 87020000 		.4byte	.LASF130
+ 168 0010 0C       		.byte	0xc
+ 169 0011 97000000 		.4byte	.LASF131
+ 170 0015 E0040000 		.4byte	.LASF132
+ 171 0019 00000000 		.4byte	.Ltext0
+ 172 001d 58000000 		.4byte	.Letext0
+ 173 0021 00000000 		.4byte	.Ldebug_line0
+ 174 0025 02       		.uleb128 0x2
+ 175 0026 76000000 		.4byte	.LASF5
+ 176 002a 02       		.byte	0x2
+ 177 002b 29       		.byte	0x29
+ 178 002c 30000000 		.4byte	0x30
+ 179 0030 03       		.uleb128 0x3
+ 180 0031 01       		.byte	0x1
+ 181 0032 06       		.byte	0x6
+ 182 0033 C8000000 		.4byte	.LASF0
+ 183 0037 03       		.uleb128 0x3
+ 184 0038 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 5
+
+
+ 185 0039 08       		.byte	0x8
+ 186 003a 6C030000 		.4byte	.LASF1
+ 187 003e 03       		.uleb128 0x3
+ 188 003f 02       		.byte	0x2
+ 189 0040 05       		.byte	0x5
+ 190 0041 88030000 		.4byte	.LASF2
+ 191 0045 03       		.uleb128 0x3
+ 192 0046 02       		.byte	0x2
+ 193 0047 07       		.byte	0x7
+ 194 0048 16020000 		.4byte	.LASF3
+ 195 004c 03       		.uleb128 0x3
+ 196 004d 04       		.byte	0x4
+ 197 004e 05       		.byte	0x5
+ 198 004f 0D010000 		.4byte	.LASF4
+ 199 0053 02       		.uleb128 0x2
+ 200 0054 85010000 		.4byte	.LASF6
+ 201 0058 02       		.byte	0x2
+ 202 0059 4F       		.byte	0x4f
+ 203 005a 5E000000 		.4byte	0x5e
+ 204 005e 03       		.uleb128 0x3
+ 205 005f 04       		.byte	0x4
+ 206 0060 07       		.byte	0x7
+ 207 0061 F7010000 		.4byte	.LASF7
+ 208 0065 03       		.uleb128 0x3
+ 209 0066 08       		.byte	0x8
+ 210 0067 05       		.byte	0x5
+ 211 0068 BA000000 		.4byte	.LASF8
+ 212 006c 03       		.uleb128 0x3
+ 213 006d 08       		.byte	0x8
+ 214 006e 07       		.byte	0x7
+ 215 006f 4B000000 		.4byte	.LASF9
+ 216 0073 04       		.uleb128 0x4
+ 217 0074 04       		.byte	0x4
+ 218 0075 05       		.byte	0x5
+ 219 0076 696E7400 		.ascii	"int\000"
+ 220 007a 03       		.uleb128 0x3
+ 221 007b 04       		.byte	0x4
+ 222 007c 07       		.byte	0x7
+ 223 007d D3010000 		.4byte	.LASF10
+ 224 0081 03       		.uleb128 0x3
+ 225 0082 08       		.byte	0x8
+ 226 0083 04       		.byte	0x4
+ 227 0084 14030000 		.4byte	.LASF11
+ 228 0088 05       		.uleb128 0x5
+ 229 0089 04       		.byte	0x4
+ 230 008a 02       		.uleb128 0x2
+ 231 008b 59020000 		.4byte	.LASF12
+ 232 008f 03       		.byte	0x3
+ 233 0090 22       		.byte	0x22
+ 234 0091 95000000 		.4byte	0x95
+ 235 0095 06       		.uleb128 0x6
+ 236 0096 04       		.byte	0x4
+ 237 0097 9B000000 		.4byte	0x9b
+ 238 009b 07       		.uleb128 0x7
+ 239 009c 36040000 		.4byte	.LASF119
+ 240 00a0 01       		.byte	0x1
+ 241 00a1 02       		.uleb128 0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 6
+
+
+ 242 00a2 4D030000 		.4byte	.LASF13
+ 243 00a6 04       		.byte	0x4
+ 244 00a7 2C       		.byte	0x2c
+ 245 00a8 4C000000 		.4byte	0x4c
+ 246 00ac 02       		.uleb128 0x2
+ 247 00ad 57040000 		.4byte	.LASF14
+ 248 00b1 04       		.byte	0x4
+ 249 00b2 72       		.byte	0x72
+ 250 00b3 4C000000 		.4byte	0x4c
+ 251 00b7 08       		.uleb128 0x8
+ 252 00b8 61020000 		.4byte	.LASF15
+ 253 00bc 05       		.byte	0x5
+ 254 00bd 6501     		.2byte	0x165
+ 255 00bf 7A000000 		.4byte	0x7a
+ 256 00c3 09       		.uleb128 0x9
+ 257 00c4 04       		.byte	0x4
+ 258 00c5 04       		.byte	0x4
+ 259 00c6 A6       		.byte	0xa6
+ 260 00c7 E2000000 		.4byte	0xe2
+ 261 00cb 0A       		.uleb128 0xa
+ 262 00cc 53020000 		.4byte	.LASF16
+ 263 00d0 04       		.byte	0x4
+ 264 00d1 A8       		.byte	0xa8
+ 265 00d2 B7000000 		.4byte	0xb7
+ 266 00d6 0A       		.uleb128 0xa
+ 267 00d7 E0010000 		.4byte	.LASF17
+ 268 00db 04       		.byte	0x4
+ 269 00dc A9       		.byte	0xa9
+ 270 00dd E2000000 		.4byte	0xe2
+ 271 00e1 00       		.byte	0
+ 272 00e2 0B       		.uleb128 0xb
+ 273 00e3 37000000 		.4byte	0x37
+ 274 00e7 F2000000 		.4byte	0xf2
+ 275 00eb 0C       		.uleb128 0xc
+ 276 00ec 7A000000 		.4byte	0x7a
+ 277 00f0 03       		.byte	0x3
+ 278 00f1 00       		.byte	0
+ 279 00f2 0D       		.uleb128 0xd
+ 280 00f3 08       		.byte	0x8
+ 281 00f4 04       		.byte	0x4
+ 282 00f5 A3       		.byte	0xa3
+ 283 00f6 17010000 		.4byte	0x117
+ 284 00fa 0E       		.uleb128 0xe
+ 285 00fb 2E040000 		.4byte	.LASF18
+ 286 00ff 04       		.byte	0x4
+ 287 0100 A5       		.byte	0xa5
+ 288 0101 73000000 		.4byte	0x73
+ 289 0105 02       		.byte	0x2
+ 290 0106 23       		.byte	0x23
+ 291 0107 00       		.uleb128 0
+ 292 0108 0E       		.uleb128 0xe
+ 293 0109 3D040000 		.4byte	.LASF19
+ 294 010d 04       		.byte	0x4
+ 295 010e AA       		.byte	0xaa
+ 296 010f C3000000 		.4byte	0xc3
+ 297 0113 02       		.byte	0x2
+ 298 0114 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 7
+
+
+ 299 0115 04       		.uleb128 0x4
+ 300 0116 00       		.byte	0
+ 301 0117 02       		.uleb128 0x2
+ 302 0118 B0030000 		.4byte	.LASF20
+ 303 011c 04       		.byte	0x4
+ 304 011d AB       		.byte	0xab
+ 305 011e F2000000 		.4byte	0xf2
+ 306 0122 02       		.uleb128 0x2
+ 307 0123 96010000 		.4byte	.LASF21
+ 308 0127 04       		.byte	0x4
+ 309 0128 AF       		.byte	0xaf
+ 310 0129 8A000000 		.4byte	0x8a
+ 311 012d 02       		.uleb128 0x2
+ 312 012e 9B040000 		.4byte	.LASF22
+ 313 0132 06       		.byte	0x6
+ 314 0133 16       		.byte	0x16
+ 315 0134 5E000000 		.4byte	0x5e
+ 316 0138 0F       		.uleb128 0xf
+ 317 0139 A7010000 		.4byte	.LASF27
+ 318 013d 18       		.byte	0x18
+ 319 013e 06       		.byte	0x6
+ 320 013f 2F       		.byte	0x2f
+ 321 0140 97010000 		.4byte	0x197
+ 322 0144 0E       		.uleb128 0xe
+ 323 0145 7A040000 		.4byte	.LASF23
+ 324 0149 06       		.byte	0x6
+ 325 014a 31       		.byte	0x31
+ 326 014b 97010000 		.4byte	0x197
+ 327 014f 02       		.byte	0x2
+ 328 0150 23       		.byte	0x23
+ 329 0151 00       		.uleb128 0
+ 330 0152 10       		.uleb128 0x10
+ 331 0153 5F6B00   		.ascii	"_k\000"
+ 332 0156 06       		.byte	0x6
+ 333 0157 32       		.byte	0x32
+ 334 0158 73000000 		.4byte	0x73
+ 335 015c 02       		.byte	0x2
+ 336 015d 23       		.byte	0x23
+ 337 015e 04       		.uleb128 0x4
+ 338 015f 0E       		.uleb128 0xe
+ 339 0160 19040000 		.4byte	.LASF24
+ 340 0164 06       		.byte	0x6
+ 341 0165 32       		.byte	0x32
+ 342 0166 73000000 		.4byte	0x73
+ 343 016a 02       		.byte	0x2
+ 344 016b 23       		.byte	0x23
+ 345 016c 08       		.uleb128 0x8
+ 346 016d 0E       		.uleb128 0xe
+ 347 016e 90010000 		.4byte	.LASF25
+ 348 0172 06       		.byte	0x6
+ 349 0173 32       		.byte	0x32
+ 350 0174 73000000 		.4byte	0x73
+ 351 0178 02       		.byte	0x2
+ 352 0179 23       		.byte	0x23
+ 353 017a 0C       		.uleb128 0xc
+ 354 017b 0E       		.uleb128 0xe
+ 355 017c 0A050000 		.4byte	.LASF26
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 8
+
+
+ 356 0180 06       		.byte	0x6
+ 357 0181 32       		.byte	0x32
+ 358 0182 73000000 		.4byte	0x73
+ 359 0186 02       		.byte	0x2
+ 360 0187 23       		.byte	0x23
+ 361 0188 10       		.uleb128 0x10
+ 362 0189 10       		.uleb128 0x10
+ 363 018a 5F7800   		.ascii	"_x\000"
+ 364 018d 06       		.byte	0x6
+ 365 018e 33       		.byte	0x33
+ 366 018f 9D010000 		.4byte	0x19d
+ 367 0193 02       		.byte	0x2
+ 368 0194 23       		.byte	0x23
+ 369 0195 14       		.uleb128 0x14
+ 370 0196 00       		.byte	0
+ 371 0197 06       		.uleb128 0x6
+ 372 0198 04       		.byte	0x4
+ 373 0199 38010000 		.4byte	0x138
+ 374 019d 0B       		.uleb128 0xb
+ 375 019e 2D010000 		.4byte	0x12d
+ 376 01a2 AD010000 		.4byte	0x1ad
+ 377 01a6 0C       		.uleb128 0xc
+ 378 01a7 7A000000 		.4byte	0x7a
+ 379 01ab 00       		.byte	0
+ 380 01ac 00       		.byte	0
+ 381 01ad 0F       		.uleb128 0xf
+ 382 01ae CE010000 		.4byte	.LASF28
+ 383 01b2 24       		.byte	0x24
+ 384 01b3 06       		.byte	0x6
+ 385 01b4 37       		.byte	0x37
+ 386 01b5 38020000 		.4byte	0x238
+ 387 01b9 0E       		.uleb128 0xe
+ 388 01ba B1000000 		.4byte	.LASF29
+ 389 01be 06       		.byte	0x6
+ 390 01bf 39       		.byte	0x39
+ 391 01c0 73000000 		.4byte	0x73
+ 392 01c4 02       		.byte	0x2
+ 393 01c5 23       		.byte	0x23
+ 394 01c6 00       		.uleb128 0
+ 395 01c7 0E       		.uleb128 0xe
+ 396 01c8 6B040000 		.4byte	.LASF30
+ 397 01cc 06       		.byte	0x6
+ 398 01cd 3A       		.byte	0x3a
+ 399 01ce 73000000 		.4byte	0x73
+ 400 01d2 02       		.byte	0x2
+ 401 01d3 23       		.byte	0x23
+ 402 01d4 04       		.uleb128 0x4
+ 403 01d5 0E       		.uleb128 0xe
+ 404 01d6 E0000000 		.4byte	.LASF31
+ 405 01da 06       		.byte	0x6
+ 406 01db 3B       		.byte	0x3b
+ 407 01dc 73000000 		.4byte	0x73
+ 408 01e0 02       		.byte	0x2
+ 409 01e1 23       		.byte	0x23
+ 410 01e2 08       		.uleb128 0x8
+ 411 01e3 0E       		.uleb128 0xe
+ 412 01e4 8C050000 		.4byte	.LASF32
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 9
+
+
+ 413 01e8 06       		.byte	0x6
+ 414 01e9 3C       		.byte	0x3c
+ 415 01ea 73000000 		.4byte	0x73
+ 416 01ee 02       		.byte	0x2
+ 417 01ef 23       		.byte	0x23
+ 418 01f0 0C       		.uleb128 0xc
+ 419 01f1 0E       		.uleb128 0xe
+ 420 01f2 27030000 		.4byte	.LASF33
+ 421 01f6 06       		.byte	0x6
+ 422 01f7 3D       		.byte	0x3d
+ 423 01f8 73000000 		.4byte	0x73
+ 424 01fc 02       		.byte	0x2
+ 425 01fd 23       		.byte	0x23
+ 426 01fe 10       		.uleb128 0x10
+ 427 01ff 0E       		.uleb128 0xe
+ 428 0200 7D020000 		.4byte	.LASF34
+ 429 0204 06       		.byte	0x6
+ 430 0205 3E       		.byte	0x3e
+ 431 0206 73000000 		.4byte	0x73
+ 432 020a 02       		.byte	0x2
+ 433 020b 23       		.byte	0x23
+ 434 020c 14       		.uleb128 0x14
+ 435 020d 0E       		.uleb128 0xe
+ 436 020e 0F050000 		.4byte	.LASF35
+ 437 0212 06       		.byte	0x6
+ 438 0213 3F       		.byte	0x3f
+ 439 0214 73000000 		.4byte	0x73
+ 440 0218 02       		.byte	0x2
+ 441 0219 23       		.byte	0x23
+ 442 021a 18       		.uleb128 0x18
+ 443 021b 0E       		.uleb128 0xe
+ 444 021c 92030000 		.4byte	.LASF36
+ 445 0220 06       		.byte	0x6
+ 446 0221 40       		.byte	0x40
+ 447 0222 73000000 		.4byte	0x73
+ 448 0226 02       		.byte	0x2
+ 449 0227 23       		.byte	0x23
+ 450 0228 1C       		.uleb128 0x1c
+ 451 0229 0E       		.uleb128 0xe
+ 452 022a 4A050000 		.4byte	.LASF37
+ 453 022e 06       		.byte	0x6
+ 454 022f 41       		.byte	0x41
+ 455 0230 73000000 		.4byte	0x73
+ 456 0234 02       		.byte	0x2
+ 457 0235 23       		.byte	0x23
+ 458 0236 20       		.uleb128 0x20
+ 459 0237 00       		.byte	0
+ 460 0238 11       		.uleb128 0x11
+ 461 0239 EF000000 		.4byte	.LASF38
+ 462 023d 0801     		.2byte	0x108
+ 463 023f 06       		.byte	0x6
+ 464 0240 4A       		.byte	0x4a
+ 465 0241 81020000 		.4byte	0x281
+ 466 0245 0E       		.uleb128 0xe
+ 467 0246 64010000 		.4byte	.LASF39
+ 468 024a 06       		.byte	0x6
+ 469 024b 4B       		.byte	0x4b
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 10
+
+
+ 470 024c 81020000 		.4byte	0x281
+ 471 0250 02       		.byte	0x2
+ 472 0251 23       		.byte	0x23
+ 473 0252 00       		.uleb128 0
+ 474 0253 0E       		.uleb128 0xe
+ 475 0254 00000000 		.4byte	.LASF40
+ 476 0258 06       		.byte	0x6
+ 477 0259 4C       		.byte	0x4c
+ 478 025a 81020000 		.4byte	0x281
+ 479 025e 03       		.byte	0x3
+ 480 025f 23       		.byte	0x23
+ 481 0260 8001     		.uleb128 0x80
+ 482 0262 0E       		.uleb128 0xe
+ 483 0263 8D040000 		.4byte	.LASF41
+ 484 0267 06       		.byte	0x6
+ 485 0268 4E       		.byte	0x4e
+ 486 0269 2D010000 		.4byte	0x12d
+ 487 026d 03       		.byte	0x3
+ 488 026e 23       		.byte	0x23
+ 489 026f 8002     		.uleb128 0x100
+ 490 0271 0E       		.uleb128 0xe
+ 491 0272 1D010000 		.4byte	.LASF42
+ 492 0276 06       		.byte	0x6
+ 493 0277 51       		.byte	0x51
+ 494 0278 2D010000 		.4byte	0x12d
+ 495 027c 03       		.byte	0x3
+ 496 027d 23       		.byte	0x23
+ 497 027e 8402     		.uleb128 0x104
+ 498 0280 00       		.byte	0
+ 499 0281 0B       		.uleb128 0xb
+ 500 0282 88000000 		.4byte	0x88
+ 501 0286 91020000 		.4byte	0x291
+ 502 028a 0C       		.uleb128 0xc
+ 503 028b 7A000000 		.4byte	0x7a
+ 504 028f 1F       		.byte	0x1f
+ 505 0290 00       		.byte	0
+ 506 0291 11       		.uleb128 0x11
+ 507 0292 30030000 		.4byte	.LASF43
+ 508 0296 9001     		.2byte	0x190
+ 509 0298 06       		.byte	0x6
+ 510 0299 5D       		.byte	0x5d
+ 511 029a D8020000 		.4byte	0x2d8
+ 512 029e 0E       		.uleb128 0xe
+ 513 029f 7A040000 		.4byte	.LASF23
+ 514 02a3 06       		.byte	0x6
+ 515 02a4 5E       		.byte	0x5e
+ 516 02a5 D8020000 		.4byte	0x2d8
+ 517 02a9 02       		.byte	0x2
+ 518 02aa 23       		.byte	0x23
+ 519 02ab 00       		.uleb128 0
+ 520 02ac 0E       		.uleb128 0xe
+ 521 02ad E9030000 		.4byte	.LASF44
+ 522 02b1 06       		.byte	0x6
+ 523 02b2 5F       		.byte	0x5f
+ 524 02b3 73000000 		.4byte	0x73
+ 525 02b7 02       		.byte	0x2
+ 526 02b8 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 11
+
+
+ 527 02b9 04       		.uleb128 0x4
+ 528 02ba 0E       		.uleb128 0xe
+ 529 02bb 80010000 		.4byte	.LASF45
+ 530 02bf 06       		.byte	0x6
+ 531 02c0 61       		.byte	0x61
+ 532 02c1 DE020000 		.4byte	0x2de
+ 533 02c5 02       		.byte	0x2
+ 534 02c6 23       		.byte	0x23
+ 535 02c7 08       		.uleb128 0x8
+ 536 02c8 0E       		.uleb128 0xe
+ 537 02c9 EF000000 		.4byte	.LASF38
+ 538 02cd 06       		.byte	0x6
+ 539 02ce 62       		.byte	0x62
+ 540 02cf 38020000 		.4byte	0x238
+ 541 02d3 03       		.byte	0x3
+ 542 02d4 23       		.byte	0x23
+ 543 02d5 8801     		.uleb128 0x88
+ 544 02d7 00       		.byte	0
+ 545 02d8 06       		.uleb128 0x6
+ 546 02d9 04       		.byte	0x4
+ 547 02da 91020000 		.4byte	0x291
+ 548 02de 0B       		.uleb128 0xb
+ 549 02df EE020000 		.4byte	0x2ee
+ 550 02e3 EE020000 		.4byte	0x2ee
+ 551 02e7 0C       		.uleb128 0xc
+ 552 02e8 7A000000 		.4byte	0x7a
+ 553 02ec 1F       		.byte	0x1f
+ 554 02ed 00       		.byte	0
+ 555 02ee 06       		.uleb128 0x6
+ 556 02ef 04       		.byte	0x4
+ 557 02f0 F4020000 		.4byte	0x2f4
+ 558 02f4 12       		.uleb128 0x12
+ 559 02f5 01       		.byte	0x1
+ 560 02f6 0F       		.uleb128 0xf
+ 561 02f7 9C030000 		.4byte	.LASF46
+ 562 02fb 08       		.byte	0x8
+ 563 02fc 06       		.byte	0x6
+ 564 02fd 75       		.byte	0x75
+ 565 02fe 1F030000 		.4byte	0x31f
+ 566 0302 0E       		.uleb128 0xe
+ 567 0303 DA000000 		.4byte	.LASF47
+ 568 0307 06       		.byte	0x6
+ 569 0308 76       		.byte	0x76
+ 570 0309 1F030000 		.4byte	0x31f
+ 571 030d 02       		.byte	0x2
+ 572 030e 23       		.byte	0x23
+ 573 030f 00       		.uleb128 0
+ 574 0310 0E       		.uleb128 0xe
+ 575 0311 0C000000 		.4byte	.LASF48
+ 576 0315 06       		.byte	0x6
+ 577 0316 77       		.byte	0x77
+ 578 0317 73000000 		.4byte	0x73
+ 579 031b 02       		.byte	0x2
+ 580 031c 23       		.byte	0x23
+ 581 031d 04       		.uleb128 0x4
+ 582 031e 00       		.byte	0
+ 583 031f 06       		.uleb128 0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 12
+
+
+ 584 0320 04       		.byte	0x4
+ 585 0321 37000000 		.4byte	0x37
+ 586 0325 0F       		.uleb128 0xf
+ 587 0326 BB030000 		.4byte	.LASF49
+ 588 032a 68       		.byte	0x68
+ 589 032b 06       		.byte	0x6
+ 590 032c B5       		.byte	0xb5
+ 591 032d 7F040000 		.4byte	0x47f
+ 592 0331 10       		.uleb128 0x10
+ 593 0332 5F7000   		.ascii	"_p\000"
+ 594 0335 06       		.byte	0x6
+ 595 0336 B6       		.byte	0xb6
+ 596 0337 1F030000 		.4byte	0x31f
+ 597 033b 02       		.byte	0x2
+ 598 033c 23       		.byte	0x23
+ 599 033d 00       		.uleb128 0
+ 600 033e 10       		.uleb128 0x10
+ 601 033f 5F7200   		.ascii	"_r\000"
+ 602 0342 06       		.byte	0x6
+ 603 0343 B7       		.byte	0xb7
+ 604 0344 73000000 		.4byte	0x73
+ 605 0348 02       		.byte	0x2
+ 606 0349 23       		.byte	0x23
+ 607 034a 04       		.uleb128 0x4
+ 608 034b 10       		.uleb128 0x10
+ 609 034c 5F7700   		.ascii	"_w\000"
+ 610 034f 06       		.byte	0x6
+ 611 0350 B8       		.byte	0xb8
+ 612 0351 73000000 		.4byte	0x73
+ 613 0355 02       		.byte	0x2
+ 614 0356 23       		.byte	0x23
+ 615 0357 08       		.uleb128 0x8
+ 616 0358 0E       		.uleb128 0xe
+ 617 0359 16010000 		.4byte	.LASF50
+ 618 035d 06       		.byte	0x6
+ 619 035e B9       		.byte	0xb9
+ 620 035f 3E000000 		.4byte	0x3e
+ 621 0363 02       		.byte	0x2
+ 622 0364 23       		.byte	0x23
+ 623 0365 0C       		.uleb128 0xc
+ 624 0366 0E       		.uleb128 0xe
+ 625 0367 09020000 		.4byte	.LASF51
+ 626 036b 06       		.byte	0x6
+ 627 036c BA       		.byte	0xba
+ 628 036d 3E000000 		.4byte	0x3e
+ 629 0371 02       		.byte	0x2
+ 630 0372 23       		.byte	0x23
+ 631 0373 0E       		.uleb128 0xe
+ 632 0374 10       		.uleb128 0x10
+ 633 0375 5F626600 		.ascii	"_bf\000"
+ 634 0379 06       		.byte	0x6
+ 635 037a BB       		.byte	0xbb
+ 636 037b F6020000 		.4byte	0x2f6
+ 637 037f 02       		.byte	0x2
+ 638 0380 23       		.byte	0x23
+ 639 0381 10       		.uleb128 0x10
+ 640 0382 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 13
+
+
+ 641 0383 62000000 		.4byte	.LASF52
+ 642 0387 06       		.byte	0x6
+ 643 0388 BC       		.byte	0xbc
+ 644 0389 73000000 		.4byte	0x73
+ 645 038d 02       		.byte	0x2
+ 646 038e 23       		.byte	0x23
+ 647 038f 18       		.uleb128 0x18
+ 648 0390 0E       		.uleb128 0xe
+ 649 0391 FD000000 		.4byte	.LASF53
+ 650 0395 06       		.byte	0x6
+ 651 0396 C3       		.byte	0xc3
+ 652 0397 88000000 		.4byte	0x88
+ 653 039b 02       		.byte	0x2
+ 654 039c 23       		.byte	0x23
+ 655 039d 1C       		.uleb128 0x1c
+ 656 039e 0E       		.uleb128 0xe
+ 657 039f BE010000 		.4byte	.LASF54
+ 658 03a3 06       		.byte	0x6
+ 659 03a4 C5       		.byte	0xc5
+ 660 03a5 19060000 		.4byte	0x619
+ 661 03a9 02       		.byte	0x2
+ 662 03aa 23       		.byte	0x23
+ 663 03ab 20       		.uleb128 0x20
+ 664 03ac 0E       		.uleb128 0xe
+ 665 03ad 76020000 		.4byte	.LASF55
+ 666 03b1 06       		.byte	0x6
+ 667 03b2 C7       		.byte	0xc7
+ 668 03b3 44060000 		.4byte	0x644
+ 669 03b7 02       		.byte	0x2
+ 670 03b8 23       		.byte	0x23
+ 671 03b9 24       		.uleb128 0x24
+ 672 03ba 0E       		.uleb128 0xe
+ 673 03bb 45040000 		.4byte	.LASF56
+ 674 03bf 06       		.byte	0x6
+ 675 03c0 CA       		.byte	0xca
+ 676 03c1 69060000 		.4byte	0x669
+ 677 03c5 02       		.byte	0x2
+ 678 03c6 23       		.byte	0x23
+ 679 03c7 28       		.uleb128 0x28
+ 680 03c8 0E       		.uleb128 0xe
+ 681 03c9 64050000 		.4byte	.LASF57
+ 682 03cd 06       		.byte	0x6
+ 683 03ce CB       		.byte	0xcb
+ 684 03cf 84060000 		.4byte	0x684
+ 685 03d3 02       		.byte	0x2
+ 686 03d4 23       		.byte	0x23
+ 687 03d5 2C       		.uleb128 0x2c
+ 688 03d6 10       		.uleb128 0x10
+ 689 03d7 5F756200 		.ascii	"_ub\000"
+ 690 03db 06       		.byte	0x6
+ 691 03dc CE       		.byte	0xce
+ 692 03dd F6020000 		.4byte	0x2f6
+ 693 03e1 02       		.byte	0x2
+ 694 03e2 23       		.byte	0x23
+ 695 03e3 30       		.uleb128 0x30
+ 696 03e4 10       		.uleb128 0x10
+ 697 03e5 5F757000 		.ascii	"_up\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 14
+
+
+ 698 03e9 06       		.byte	0x6
+ 699 03ea CF       		.byte	0xcf
+ 700 03eb 1F030000 		.4byte	0x31f
+ 701 03ef 02       		.byte	0x2
+ 702 03f0 23       		.byte	0x23
+ 703 03f1 38       		.uleb128 0x38
+ 704 03f2 10       		.uleb128 0x10
+ 705 03f3 5F757200 		.ascii	"_ur\000"
+ 706 03f7 06       		.byte	0x6
+ 707 03f8 D0       		.byte	0xd0
+ 708 03f9 73000000 		.4byte	0x73
+ 709 03fd 02       		.byte	0x2
+ 710 03fe 23       		.byte	0x23
+ 711 03ff 3C       		.uleb128 0x3c
+ 712 0400 0E       		.uleb128 0xe
+ 713 0401 D4000000 		.4byte	.LASF58
+ 714 0405 06       		.byte	0x6
+ 715 0406 D3       		.byte	0xd3
+ 716 0407 8A060000 		.4byte	0x68a
+ 717 040b 02       		.byte	0x2
+ 718 040c 23       		.byte	0x23
+ 719 040d 40       		.uleb128 0x40
+ 720 040e 0E       		.uleb128 0xe
+ 721 040f 3C050000 		.4byte	.LASF59
+ 722 0413 06       		.byte	0x6
+ 723 0414 D4       		.byte	0xd4
+ 724 0415 9A060000 		.4byte	0x69a
+ 725 0419 02       		.byte	0x2
+ 726 041a 23       		.byte	0x23
+ 727 041b 43       		.uleb128 0x43
+ 728 041c 10       		.uleb128 0x10
+ 729 041d 5F6C6200 		.ascii	"_lb\000"
+ 730 0421 06       		.byte	0x6
+ 731 0422 D7       		.byte	0xd7
+ 732 0423 F6020000 		.4byte	0x2f6
+ 733 0427 02       		.byte	0x2
+ 734 0428 23       		.byte	0x23
+ 735 0429 44       		.uleb128 0x44
+ 736 042a 0E       		.uleb128 0xe
+ 737 042b 2C010000 		.4byte	.LASF60
+ 738 042f 06       		.byte	0x6
+ 739 0430 DA       		.byte	0xda
+ 740 0431 73000000 		.4byte	0x73
+ 741 0435 02       		.byte	0x2
+ 742 0436 23       		.byte	0x23
+ 743 0437 4C       		.uleb128 0x4c
+ 744 0438 0E       		.uleb128 0xe
+ 745 0439 3D010000 		.4byte	.LASF61
+ 746 043d 06       		.byte	0x6
+ 747 043e DB       		.byte	0xdb
+ 748 043f A1000000 		.4byte	0xa1
+ 749 0443 02       		.byte	0x2
+ 750 0444 23       		.byte	0x23
+ 751 0445 50       		.uleb128 0x50
+ 752 0446 0E       		.uleb128 0xe
+ 753 0447 25000000 		.4byte	.LASF62
+ 754 044b 06       		.byte	0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 15
+
+
+ 755 044c DE       		.byte	0xde
+ 756 044d 9E040000 		.4byte	0x49e
+ 757 0451 02       		.byte	0x2
+ 758 0452 23       		.byte	0x23
+ 759 0453 54       		.uleb128 0x54
+ 760 0454 0E       		.uleb128 0xe
+ 761 0455 68020000 		.4byte	.LASF63
+ 762 0459 06       		.byte	0x6
+ 763 045a E2       		.byte	0xe2
+ 764 045b 22010000 		.4byte	0x122
+ 765 045f 02       		.byte	0x2
+ 766 0460 23       		.byte	0x23
+ 767 0461 58       		.uleb128 0x58
+ 768 0462 0E       		.uleb128 0xe
+ 769 0463 C3030000 		.4byte	.LASF64
+ 770 0467 06       		.byte	0x6
+ 771 0468 E4       		.byte	0xe4
+ 772 0469 17010000 		.4byte	0x117
+ 773 046d 02       		.byte	0x2
+ 774 046e 23       		.byte	0x23
+ 775 046f 5C       		.uleb128 0x5c
+ 776 0470 0E       		.uleb128 0xe
+ 777 0471 6E020000 		.4byte	.LASF65
+ 778 0475 06       		.byte	0x6
+ 779 0476 E5       		.byte	0xe5
+ 780 0477 73000000 		.4byte	0x73
+ 781 047b 02       		.byte	0x2
+ 782 047c 23       		.byte	0x23
+ 783 047d 64       		.uleb128 0x64
+ 784 047e 00       		.byte	0
+ 785 047f 13       		.uleb128 0x13
+ 786 0480 01       		.byte	0x1
+ 787 0481 73000000 		.4byte	0x73
+ 788 0485 9E040000 		.4byte	0x49e
+ 789 0489 14       		.uleb128 0x14
+ 790 048a 9E040000 		.4byte	0x49e
+ 791 048e 14       		.uleb128 0x14
+ 792 048f 88000000 		.4byte	0x88
+ 793 0493 14       		.uleb128 0x14
+ 794 0494 07060000 		.4byte	0x607
+ 795 0498 14       		.uleb128 0x14
+ 796 0499 73000000 		.4byte	0x73
+ 797 049d 00       		.byte	0
+ 798 049e 06       		.uleb128 0x6
+ 799 049f 04       		.byte	0x4
+ 800 04a0 A9040000 		.4byte	0x4a9
+ 801 04a4 15       		.uleb128 0x15
+ 802 04a5 9E040000 		.4byte	0x49e
+ 803 04a9 16       		.uleb128 0x16
+ 804 04aa 21040000 		.4byte	.LASF66
+ 805 04ae 2804     		.2byte	0x428
+ 806 04b0 06       		.byte	0x6
+ 807 04b1 6002     		.2byte	0x260
+ 808 04b3 07060000 		.4byte	0x607
+ 809 04b7 17       		.uleb128 0x17
+ 810 04b8 5F040000 		.4byte	.LASF67
+ 811 04bc 06       		.byte	0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 16
+
+
+ 812 04bd 6202     		.2byte	0x262
+ 813 04bf 73000000 		.4byte	0x73
+ 814 04c3 02       		.byte	0x2
+ 815 04c4 23       		.byte	0x23
+ 816 04c5 00       		.uleb128 0
+ 817 04c6 17       		.uleb128 0x17
+ 818 04c7 25010000 		.4byte	.LASF68
+ 819 04cb 06       		.byte	0x6
+ 820 04cc 6702     		.2byte	0x267
+ 821 04ce F7060000 		.4byte	0x6f7
+ 822 04d2 02       		.byte	0x2
+ 823 04d3 23       		.byte	0x23
+ 824 04d4 04       		.uleb128 0x4
+ 825 04d5 17       		.uleb128 0x17
+ 826 04d6 E7010000 		.4byte	.LASF69
+ 827 04da 06       		.byte	0x6
+ 828 04db 6702     		.2byte	0x267
+ 829 04dd F7060000 		.4byte	0x6f7
+ 830 04e1 02       		.byte	0x2
+ 831 04e2 23       		.byte	0x23
+ 832 04e3 08       		.uleb128 0x8
+ 833 04e4 17       		.uleb128 0x17
+ 834 04e5 9F010000 		.4byte	.LASF70
+ 835 04e9 06       		.byte	0x6
+ 836 04ea 6702     		.2byte	0x267
+ 837 04ec F7060000 		.4byte	0x6f7
+ 838 04f0 02       		.byte	0x2
+ 839 04f1 23       		.byte	0x23
+ 840 04f2 0C       		.uleb128 0xc
+ 841 04f3 17       		.uleb128 0x17
+ 842 04f4 E4030000 		.4byte	.LASF71
+ 843 04f8 06       		.byte	0x6
+ 844 04f9 6902     		.2byte	0x269
+ 845 04fb 73000000 		.4byte	0x73
+ 846 04ff 02       		.byte	0x2
+ 847 0500 23       		.byte	0x23
+ 848 0501 10       		.uleb128 0x10
+ 849 0502 17       		.uleb128 0x17
+ 850 0503 1A000000 		.4byte	.LASF72
+ 851 0507 06       		.byte	0x6
+ 852 0508 6A02     		.2byte	0x26a
+ 853 050a 12090000 		.4byte	0x912
+ 854 050e 02       		.byte	0x2
+ 855 050f 23       		.byte	0x23
+ 856 0510 14       		.uleb128 0x14
+ 857 0511 17       		.uleb128 0x17
+ 858 0512 00040000 		.4byte	.LASF73
+ 859 0516 06       		.byte	0x6
+ 860 0517 6D02     		.2byte	0x26d
+ 861 0519 73000000 		.4byte	0x73
+ 862 051d 02       		.byte	0x2
+ 863 051e 23       		.byte	0x23
+ 864 051f 30       		.uleb128 0x30
+ 865 0520 17       		.uleb128 0x17
+ 866 0521 EE030000 		.4byte	.LASF74
+ 867 0525 06       		.byte	0x6
+ 868 0526 6E02     		.2byte	0x26e
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 17
+
+
+ 869 0528 28090000 		.4byte	0x928
+ 870 052c 02       		.byte	0x2
+ 871 052d 23       		.byte	0x23
+ 872 052e 34       		.uleb128 0x34
+ 873 052f 17       		.uleb128 0x17
+ 874 0530 42030000 		.4byte	.LASF75
+ 875 0534 06       		.byte	0x6
+ 876 0535 7002     		.2byte	0x270
+ 877 0537 73000000 		.4byte	0x73
+ 878 053b 02       		.byte	0x2
+ 879 053c 23       		.byte	0x23
+ 880 053d 38       		.uleb128 0x38
+ 881 053e 17       		.uleb128 0x17
+ 882 053f F6030000 		.4byte	.LASF76
+ 883 0543 06       		.byte	0x6
+ 884 0544 7202     		.2byte	0x272
+ 885 0546 3A090000 		.4byte	0x93a
+ 886 054a 02       		.byte	0x2
+ 887 054b 23       		.byte	0x23
+ 888 054c 3C       		.uleb128 0x3c
+ 889 054d 17       		.uleb128 0x17
+ 890 054e 4B020000 		.4byte	.LASF77
+ 891 0552 06       		.byte	0x6
+ 892 0553 7502     		.2byte	0x275
+ 893 0555 97010000 		.4byte	0x197
+ 894 0559 02       		.byte	0x2
+ 895 055a 23       		.byte	0x23
+ 896 055b 40       		.uleb128 0x40
+ 897 055c 17       		.uleb128 0x17
+ 898 055d C4010000 		.4byte	.LASF78
+ 899 0561 06       		.byte	0x6
+ 900 0562 7602     		.2byte	0x276
+ 901 0564 73000000 		.4byte	0x73
+ 902 0568 02       		.byte	0x2
+ 903 0569 23       		.byte	0x23
+ 904 056a 44       		.uleb128 0x44
+ 905 056b 17       		.uleb128 0x17
+ 906 056c 7E050000 		.4byte	.LASF79
+ 907 0570 06       		.byte	0x6
+ 908 0571 7702     		.2byte	0x277
+ 909 0573 97010000 		.4byte	0x197
+ 910 0577 02       		.byte	0x2
+ 911 0578 23       		.byte	0x23
+ 912 0579 48       		.uleb128 0x48
+ 913 057a 17       		.uleb128 0x17
+ 914 057b 54030000 		.4byte	.LASF80
+ 915 057f 06       		.byte	0x6
+ 916 0580 7802     		.2byte	0x278
+ 917 0582 40090000 		.4byte	0x940
+ 918 0586 02       		.byte	0x2
+ 919 0587 23       		.byte	0x23
+ 920 0588 4C       		.uleb128 0x4c
+ 921 0589 17       		.uleb128 0x17
+ 922 058a EF010000 		.4byte	.LASF81
+ 923 058e 06       		.byte	0x6
+ 924 058f 7B02     		.2byte	0x27b
+ 925 0591 73000000 		.4byte	0x73
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 18
+
+
+ 926 0595 02       		.byte	0x2
+ 927 0596 23       		.byte	0x23
+ 928 0597 50       		.uleb128 0x50
+ 929 0598 17       		.uleb128 0x17
+ 930 0599 35010000 		.4byte	.LASF82
+ 931 059d 06       		.byte	0x6
+ 932 059e 7C02     		.2byte	0x27c
+ 933 05a0 07060000 		.4byte	0x607
+ 934 05a4 02       		.byte	0x2
+ 935 05a5 23       		.byte	0x23
+ 936 05a6 54       		.uleb128 0x54
+ 937 05a7 17       		.uleb128 0x17
+ 938 05a8 7A030000 		.4byte	.LASF83
+ 939 05ac 06       		.byte	0x6
+ 940 05ad 9F02     		.2byte	0x29f
+ 941 05af F0080000 		.4byte	0x8f0
+ 942 05b3 02       		.byte	0x2
+ 943 05b4 23       		.byte	0x23
+ 944 05b5 58       		.uleb128 0x58
+ 945 05b6 17       		.uleb128 0x17
+ 946 05b7 30030000 		.4byte	.LASF43
+ 947 05bb 06       		.byte	0x6
+ 948 05bc A302     		.2byte	0x2a3
+ 949 05be D8020000 		.4byte	0x2d8
+ 950 05c2 03       		.byte	0x3
+ 951 05c3 23       		.byte	0x23
+ 952 05c4 C802     		.uleb128 0x148
+ 953 05c6 17       		.uleb128 0x17
+ 954 05c7 29020000 		.4byte	.LASF84
+ 955 05cb 06       		.byte	0x6
+ 956 05cc A402     		.2byte	0x2a4
+ 957 05ce 91020000 		.4byte	0x291
+ 958 05d2 03       		.byte	0x3
+ 959 05d3 23       		.byte	0x23
+ 960 05d4 CC02     		.uleb128 0x14c
+ 961 05d6 17       		.uleb128 0x17
+ 962 05d7 32050000 		.4byte	.LASF85
+ 963 05db 06       		.byte	0x6
+ 964 05dc A802     		.2byte	0x2a8
+ 965 05de 52090000 		.4byte	0x952
+ 966 05e2 03       		.byte	0x3
+ 967 05e3 23       		.byte	0x23
+ 968 05e4 DC05     		.uleb128 0x2dc
+ 969 05e6 17       		.uleb128 0x17
+ 970 05e7 05010000 		.4byte	.LASF86
+ 971 05eb 06       		.byte	0x6
+ 972 05ec AD02     		.2byte	0x2ad
+ 973 05ee B6060000 		.4byte	0x6b6
+ 974 05f2 03       		.byte	0x3
+ 975 05f3 23       		.byte	0x23
+ 976 05f4 E005     		.uleb128 0x2e0
+ 977 05f6 17       		.uleb128 0x17
+ 978 05f7 EA000000 		.4byte	.LASF87
+ 979 05fb 06       		.byte	0x6
+ 980 05fc AF02     		.2byte	0x2af
+ 981 05fe 5E090000 		.4byte	0x95e
+ 982 0602 03       		.byte	0x3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 19
+
+
+ 983 0603 23       		.byte	0x23
+ 984 0604 EC05     		.uleb128 0x2ec
+ 985 0606 00       		.byte	0
+ 986 0607 06       		.uleb128 0x6
+ 987 0608 04       		.byte	0x4
+ 988 0609 0D060000 		.4byte	0x60d
+ 989 060d 03       		.uleb128 0x3
+ 990 060e 01       		.byte	0x1
+ 991 060f 08       		.byte	0x8
+ 992 0610 66040000 		.4byte	.LASF88
+ 993 0614 15       		.uleb128 0x15
+ 994 0615 0D060000 		.4byte	0x60d
+ 995 0619 06       		.uleb128 0x6
+ 996 061a 04       		.byte	0x4
+ 997 061b 7F040000 		.4byte	0x47f
+ 998 061f 13       		.uleb128 0x13
+ 999 0620 01       		.byte	0x1
+ 1000 0621 73000000 		.4byte	0x73
+ 1001 0625 3E060000 		.4byte	0x63e
+ 1002 0629 14       		.uleb128 0x14
+ 1003 062a 9E040000 		.4byte	0x49e
+ 1004 062e 14       		.uleb128 0x14
+ 1005 062f 88000000 		.4byte	0x88
+ 1006 0633 14       		.uleb128 0x14
+ 1007 0634 3E060000 		.4byte	0x63e
+ 1008 0638 14       		.uleb128 0x14
+ 1009 0639 73000000 		.4byte	0x73
+ 1010 063d 00       		.byte	0
+ 1011 063e 06       		.uleb128 0x6
+ 1012 063f 04       		.byte	0x4
+ 1013 0640 14060000 		.4byte	0x614
+ 1014 0644 06       		.uleb128 0x6
+ 1015 0645 04       		.byte	0x4
+ 1016 0646 1F060000 		.4byte	0x61f
+ 1017 064a 13       		.uleb128 0x13
+ 1018 064b 01       		.byte	0x1
+ 1019 064c AC000000 		.4byte	0xac
+ 1020 0650 69060000 		.4byte	0x669
+ 1021 0654 14       		.uleb128 0x14
+ 1022 0655 9E040000 		.4byte	0x49e
+ 1023 0659 14       		.uleb128 0x14
+ 1024 065a 88000000 		.4byte	0x88
+ 1025 065e 14       		.uleb128 0x14
+ 1026 065f AC000000 		.4byte	0xac
+ 1027 0663 14       		.uleb128 0x14
+ 1028 0664 73000000 		.4byte	0x73
+ 1029 0668 00       		.byte	0
+ 1030 0669 06       		.uleb128 0x6
+ 1031 066a 04       		.byte	0x4
+ 1032 066b 4A060000 		.4byte	0x64a
+ 1033 066f 13       		.uleb128 0x13
+ 1034 0670 01       		.byte	0x1
+ 1035 0671 73000000 		.4byte	0x73
+ 1036 0675 84060000 		.4byte	0x684
+ 1037 0679 14       		.uleb128 0x14
+ 1038 067a 9E040000 		.4byte	0x49e
+ 1039 067e 14       		.uleb128 0x14
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 20
+
+
+ 1040 067f 88000000 		.4byte	0x88
+ 1041 0683 00       		.byte	0
+ 1042 0684 06       		.uleb128 0x6
+ 1043 0685 04       		.byte	0x4
+ 1044 0686 6F060000 		.4byte	0x66f
+ 1045 068a 0B       		.uleb128 0xb
+ 1046 068b 37000000 		.4byte	0x37
+ 1047 068f 9A060000 		.4byte	0x69a
+ 1048 0693 0C       		.uleb128 0xc
+ 1049 0694 7A000000 		.4byte	0x7a
+ 1050 0698 02       		.byte	0x2
+ 1051 0699 00       		.byte	0
+ 1052 069a 0B       		.uleb128 0xb
+ 1053 069b 37000000 		.4byte	0x37
+ 1054 069f AA060000 		.4byte	0x6aa
+ 1055 06a3 0C       		.uleb128 0xc
+ 1056 06a4 7A000000 		.4byte	0x7a
+ 1057 06a8 00       		.byte	0
+ 1058 06a9 00       		.byte	0
+ 1059 06aa 08       		.uleb128 0x8
+ 1060 06ab A9030000 		.4byte	.LASF89
+ 1061 06af 06       		.byte	0x6
+ 1062 06b0 1F01     		.2byte	0x11f
+ 1063 06b2 25030000 		.4byte	0x325
+ 1064 06b6 18       		.uleb128 0x18
+ 1065 06b7 19050000 		.4byte	.LASF90
+ 1066 06bb 0C       		.byte	0xc
+ 1067 06bc 06       		.byte	0x6
+ 1068 06bd 2301     		.2byte	0x123
+ 1069 06bf F1060000 		.4byte	0x6f1
+ 1070 06c3 17       		.uleb128 0x17
+ 1071 06c4 7A040000 		.4byte	.LASF23
+ 1072 06c8 06       		.byte	0x6
+ 1073 06c9 2501     		.2byte	0x125
+ 1074 06cb F1060000 		.4byte	0x6f1
+ 1075 06cf 02       		.byte	0x2
+ 1076 06d0 23       		.byte	0x23
+ 1077 06d1 00       		.uleb128 0
+ 1078 06d2 17       		.uleb128 0x17
+ 1079 06d3 0F020000 		.4byte	.LASF91
+ 1080 06d7 06       		.byte	0x6
+ 1081 06d8 2601     		.2byte	0x126
+ 1082 06da 73000000 		.4byte	0x73
+ 1083 06de 02       		.byte	0x2
+ 1084 06df 23       		.byte	0x23
+ 1085 06e0 04       		.uleb128 0x4
+ 1086 06e1 17       		.uleb128 0x17
+ 1087 06e2 A3030000 		.4byte	.LASF92
+ 1088 06e6 06       		.byte	0x6
+ 1089 06e7 2701     		.2byte	0x127
+ 1090 06e9 F7060000 		.4byte	0x6f7
+ 1091 06ed 02       		.byte	0x2
+ 1092 06ee 23       		.byte	0x23
+ 1093 06ef 08       		.uleb128 0x8
+ 1094 06f0 00       		.byte	0
+ 1095 06f1 06       		.uleb128 0x6
+ 1096 06f2 04       		.byte	0x4
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 21
+
+
+ 1097 06f3 B6060000 		.4byte	0x6b6
+ 1098 06f7 06       		.uleb128 0x6
+ 1099 06f8 04       		.byte	0x4
+ 1100 06f9 AA060000 		.4byte	0x6aa
+ 1101 06fd 18       		.uleb128 0x18
+ 1102 06fe 12000000 		.4byte	.LASF93
+ 1103 0702 0E       		.byte	0xe
+ 1104 0703 06       		.byte	0x6
+ 1105 0704 3F01     		.2byte	0x13f
+ 1106 0706 38070000 		.4byte	0x738
+ 1107 070a 17       		.uleb128 0x17
+ 1108 070b 28040000 		.4byte	.LASF94
+ 1109 070f 06       		.byte	0x6
+ 1110 0710 4001     		.2byte	0x140
+ 1111 0712 38070000 		.4byte	0x738
+ 1112 0716 02       		.byte	0x2
+ 1113 0717 23       		.byte	0x23
+ 1114 0718 00       		.uleb128 0
+ 1115 0719 17       		.uleb128 0x17
+ 1116 071a 74040000 		.4byte	.LASF95
+ 1117 071e 06       		.byte	0x6
+ 1118 071f 4101     		.2byte	0x141
+ 1119 0721 38070000 		.4byte	0x738
+ 1120 0725 02       		.byte	0x2
+ 1121 0726 23       		.byte	0x23
+ 1122 0727 06       		.uleb128 0x6
+ 1123 0728 17       		.uleb128 0x17
+ 1124 0729 96040000 		.4byte	.LASF96
+ 1125 072d 06       		.byte	0x6
+ 1126 072e 4201     		.2byte	0x142
+ 1127 0730 45000000 		.4byte	0x45
+ 1128 0734 02       		.byte	0x2
+ 1129 0735 23       		.byte	0x23
+ 1130 0736 0C       		.uleb128 0xc
+ 1131 0737 00       		.byte	0
+ 1132 0738 0B       		.uleb128 0xb
+ 1133 0739 45000000 		.4byte	0x45
+ 1134 073d 48070000 		.4byte	0x748
+ 1135 0741 0C       		.uleb128 0xc
+ 1136 0742 7A000000 		.4byte	0x7a
+ 1137 0746 02       		.byte	0x2
+ 1138 0747 00       		.byte	0
+ 1139 0748 19       		.uleb128 0x19
+ 1140 0749 D0       		.byte	0xd0
+ 1141 074a 06       		.byte	0x6
+ 1142 074b 8002     		.2byte	0x280
+ 1143 074d 78080000 		.4byte	0x878
+ 1144 0751 17       		.uleb128 0x17
+ 1145 0752 D3040000 		.4byte	.LASF97
+ 1146 0756 06       		.byte	0x6
+ 1147 0757 8202     		.2byte	0x282
+ 1148 0759 7A000000 		.4byte	0x7a
+ 1149 075d 02       		.byte	0x2
+ 1150 075e 23       		.byte	0x23
+ 1151 075f 00       		.uleb128 0
+ 1152 0760 17       		.uleb128 0x17
+ 1153 0761 80040000 		.4byte	.LASF98
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 22
+
+
+ 1154 0765 06       		.byte	0x6
+ 1155 0766 8302     		.2byte	0x283
+ 1156 0768 07060000 		.4byte	0x607
+ 1157 076c 02       		.byte	0x2
+ 1158 076d 23       		.byte	0x23
+ 1159 076e 04       		.uleb128 0x4
+ 1160 076f 17       		.uleb128 0x17
+ 1161 0770 3E020000 		.4byte	.LASF99
+ 1162 0774 06       		.byte	0x6
+ 1163 0775 8402     		.2byte	0x284
+ 1164 0777 78080000 		.4byte	0x878
+ 1165 077b 02       		.byte	0x2
+ 1166 077c 23       		.byte	0x23
+ 1167 077d 08       		.uleb128 0x8
+ 1168 077e 17       		.uleb128 0x17
+ 1169 077f 55050000 		.4byte	.LASF100
+ 1170 0783 06       		.byte	0x6
+ 1171 0784 8502     		.2byte	0x285
+ 1172 0786 AD010000 		.4byte	0x1ad
+ 1173 078a 02       		.byte	0x2
+ 1174 078b 23       		.byte	0x23
+ 1175 078c 24       		.uleb128 0x24
+ 1176 078d 17       		.uleb128 0x17
+ 1177 078e AF010000 		.4byte	.LASF101
+ 1178 0792 06       		.byte	0x6
+ 1179 0793 8602     		.2byte	0x286
+ 1180 0795 73000000 		.4byte	0x73
+ 1181 0799 02       		.byte	0x2
+ 1182 079a 23       		.byte	0x23
+ 1183 079b 48       		.uleb128 0x48
+ 1184 079c 17       		.uleb128 0x17
+ 1185 079d CC030000 		.4byte	.LASF102
+ 1186 07a1 06       		.byte	0x6
+ 1187 07a2 8702     		.2byte	0x287
+ 1188 07a4 6C000000 		.4byte	0x6c
+ 1189 07a8 02       		.byte	0x2
+ 1190 07a9 23       		.byte	0x23
+ 1191 07aa 50       		.uleb128 0x50
+ 1192 07ab 17       		.uleb128 0x17
+ 1193 07ac 6B050000 		.4byte	.LASF103
+ 1194 07b0 06       		.byte	0x6
+ 1195 07b1 8802     		.2byte	0x288
+ 1196 07b3 FD060000 		.4byte	0x6fd
+ 1197 07b7 02       		.byte	0x2
+ 1198 07b8 23       		.byte	0x23
+ 1199 07b9 58       		.uleb128 0x58
+ 1200 07ba 17       		.uleb128 0x17
+ 1201 07bb D7030000 		.4byte	.LASF104
+ 1202 07bf 06       		.byte	0x6
+ 1203 07c0 8902     		.2byte	0x289
+ 1204 07c2 17010000 		.4byte	0x117
+ 1205 07c6 02       		.byte	0x2
+ 1206 07c7 23       		.byte	0x23
+ 1207 07c8 68       		.uleb128 0x68
+ 1208 07c9 17       		.uleb128 0x17
+ 1209 07ca 70050000 		.4byte	.LASF105
+ 1210 07ce 06       		.byte	0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 23
+
+
+ 1211 07cf 8A02     		.2byte	0x28a
+ 1212 07d1 17010000 		.4byte	0x117
+ 1213 07d5 02       		.byte	0x2
+ 1214 07d6 23       		.byte	0x23
+ 1215 07d7 70       		.uleb128 0x70
+ 1216 07d8 17       		.uleb128 0x17
+ 1217 07d9 5E030000 		.4byte	.LASF106
+ 1218 07dd 06       		.byte	0x6
+ 1219 07de 8B02     		.2byte	0x28b
+ 1220 07e0 17010000 		.4byte	0x117
+ 1221 07e4 02       		.byte	0x2
+ 1222 07e5 23       		.byte	0x23
+ 1223 07e6 78       		.uleb128 0x78
+ 1224 07e7 17       		.uleb128 0x17
+ 1225 07e8 28050000 		.4byte	.LASF107
+ 1226 07ec 06       		.byte	0x6
+ 1227 07ed 8C02     		.2byte	0x28c
+ 1228 07ef 88080000 		.4byte	0x888
+ 1229 07f3 03       		.byte	0x3
+ 1230 07f4 23       		.byte	0x23
+ 1231 07f5 8001     		.uleb128 0x80
+ 1232 07f7 17       		.uleb128 0x17
+ 1233 07f8 32020000 		.4byte	.LASF108
+ 1234 07fc 06       		.byte	0x6
+ 1235 07fd 8D02     		.2byte	0x28d
+ 1236 07ff 98080000 		.4byte	0x898
+ 1237 0803 03       		.byte	0x3
+ 1238 0804 23       		.byte	0x23
+ 1239 0805 8801     		.uleb128 0x88
+ 1240 0807 17       		.uleb128 0x17
+ 1241 0808 AA040000 		.4byte	.LASF109
+ 1242 080c 06       		.byte	0x6
+ 1243 080d 8E02     		.2byte	0x28e
+ 1244 080f 73000000 		.4byte	0x73
+ 1245 0813 03       		.byte	0x3
+ 1246 0814 23       		.byte	0x23
+ 1247 0815 A001     		.uleb128 0xa0
+ 1248 0817 17       		.uleb128 0x17
+ 1249 0818 56010000 		.4byte	.LASF110
+ 1250 081c 06       		.byte	0x6
+ 1251 081d 8F02     		.2byte	0x28f
+ 1252 081f 17010000 		.4byte	0x117
+ 1253 0823 03       		.byte	0x3
+ 1254 0824 23       		.byte	0x23
+ 1255 0825 A401     		.uleb128 0xa4
+ 1256 0827 17       		.uleb128 0x17
+ 1257 0828 7F000000 		.4byte	.LASF111
+ 1258 082c 06       		.byte	0x6
+ 1259 082d 9002     		.2byte	0x290
+ 1260 082f 17010000 		.4byte	0x117
+ 1261 0833 03       		.byte	0x3
+ 1262 0834 23       		.byte	0x23
+ 1263 0835 AC01     		.uleb128 0xac
+ 1264 0837 17       		.uleb128 0x17
+ 1265 0838 45010000 		.4byte	.LASF112
+ 1266 083c 06       		.byte	0x6
+ 1267 083d 9102     		.2byte	0x291
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 24
+
+
+ 1268 083f 17010000 		.4byte	0x117
+ 1269 0843 03       		.byte	0x3
+ 1270 0844 23       		.byte	0x23
+ 1271 0845 B401     		.uleb128 0xb4
+ 1272 0847 17       		.uleb128 0x17
+ 1273 0848 2B000000 		.4byte	.LASF113
+ 1274 084c 06       		.byte	0x6
+ 1275 084d 9202     		.2byte	0x292
+ 1276 084f 17010000 		.4byte	0x117
+ 1277 0853 03       		.byte	0x3
+ 1278 0854 23       		.byte	0x23
+ 1279 0855 BC01     		.uleb128 0xbc
+ 1280 0857 17       		.uleb128 0x17
+ 1281 0858 3A000000 		.4byte	.LASF114
+ 1282 085c 06       		.byte	0x6
+ 1283 085d 9302     		.2byte	0x293
+ 1284 085f 17010000 		.4byte	0x117
+ 1285 0863 03       		.byte	0x3
+ 1286 0864 23       		.byte	0x23
+ 1287 0865 C401     		.uleb128 0xc4
+ 1288 0867 17       		.uleb128 0x17
+ 1289 0868 7F030000 		.4byte	.LASF115
+ 1290 086c 06       		.byte	0x6
+ 1291 086d 9402     		.2byte	0x294
+ 1292 086f 73000000 		.4byte	0x73
+ 1293 0873 03       		.byte	0x3
+ 1294 0874 23       		.byte	0x23
+ 1295 0875 CC01     		.uleb128 0xcc
+ 1296 0877 00       		.byte	0
+ 1297 0878 0B       		.uleb128 0xb
+ 1298 0879 0D060000 		.4byte	0x60d
+ 1299 087d 88080000 		.4byte	0x888
+ 1300 0881 0C       		.uleb128 0xc
+ 1301 0882 7A000000 		.4byte	0x7a
+ 1302 0886 19       		.byte	0x19
+ 1303 0887 00       		.byte	0
+ 1304 0888 0B       		.uleb128 0xb
+ 1305 0889 0D060000 		.4byte	0x60d
+ 1306 088d 98080000 		.4byte	0x898
+ 1307 0891 0C       		.uleb128 0xc
+ 1308 0892 7A000000 		.4byte	0x7a
+ 1309 0896 07       		.byte	0x7
+ 1310 0897 00       		.byte	0
+ 1311 0898 0B       		.uleb128 0xb
+ 1312 0899 0D060000 		.4byte	0x60d
+ 1313 089d A8080000 		.4byte	0x8a8
+ 1314 08a1 0C       		.uleb128 0xc
+ 1315 08a2 7A000000 		.4byte	0x7a
+ 1316 08a6 17       		.byte	0x17
+ 1317 08a7 00       		.byte	0
+ 1318 08a8 19       		.uleb128 0x19
+ 1319 08a9 F0       		.byte	0xf0
+ 1320 08aa 06       		.byte	0x6
+ 1321 08ab 9902     		.2byte	0x299
+ 1322 08ad D0080000 		.4byte	0x8d0
+ 1323 08b1 17       		.uleb128 0x17
+ 1324 08b2 20030000 		.4byte	.LASF116
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 25
+
+
+ 1325 08b6 06       		.byte	0x6
+ 1326 08b7 9C02     		.2byte	0x29c
+ 1327 08b9 D0080000 		.4byte	0x8d0
+ 1328 08bd 02       		.byte	0x2
+ 1329 08be 23       		.byte	0x23
+ 1330 08bf 00       		.uleb128 0
+ 1331 08c0 17       		.uleb128 0x17
+ 1332 08c1 1F050000 		.4byte	.LASF117
+ 1333 08c5 06       		.byte	0x6
+ 1334 08c6 9D02     		.2byte	0x29d
+ 1335 08c8 E0080000 		.4byte	0x8e0
+ 1336 08cc 02       		.byte	0x2
+ 1337 08cd 23       		.byte	0x23
+ 1338 08ce 78       		.uleb128 0x78
+ 1339 08cf 00       		.byte	0
+ 1340 08d0 0B       		.uleb128 0xb
+ 1341 08d1 1F030000 		.4byte	0x31f
+ 1342 08d5 E0080000 		.4byte	0x8e0
+ 1343 08d9 0C       		.uleb128 0xc
+ 1344 08da 7A000000 		.4byte	0x7a
+ 1345 08de 1D       		.byte	0x1d
+ 1346 08df 00       		.byte	0
+ 1347 08e0 0B       		.uleb128 0xb
+ 1348 08e1 7A000000 		.4byte	0x7a
+ 1349 08e5 F0080000 		.4byte	0x8f0
+ 1350 08e9 0C       		.uleb128 0xc
+ 1351 08ea 7A000000 		.4byte	0x7a
+ 1352 08ee 1D       		.byte	0x1d
+ 1353 08ef 00       		.byte	0
+ 1354 08f0 1A       		.uleb128 0x1a
+ 1355 08f1 F0       		.byte	0xf0
+ 1356 08f2 06       		.byte	0x6
+ 1357 08f3 7E02     		.2byte	0x27e
+ 1358 08f5 12090000 		.4byte	0x912
+ 1359 08f9 1B       		.uleb128 0x1b
+ 1360 08fa 21040000 		.4byte	.LASF66
+ 1361 08fe 06       		.byte	0x6
+ 1362 08ff 9502     		.2byte	0x295
+ 1363 0901 48070000 		.4byte	0x748
+ 1364 0905 1B       		.uleb128 0x1b
+ 1365 0906 42050000 		.4byte	.LASF118
+ 1366 090a 06       		.byte	0x6
+ 1367 090b 9E02     		.2byte	0x29e
+ 1368 090d A8080000 		.4byte	0x8a8
+ 1369 0911 00       		.byte	0
+ 1370 0912 0B       		.uleb128 0xb
+ 1371 0913 0D060000 		.4byte	0x60d
+ 1372 0917 22090000 		.4byte	0x922
+ 1373 091b 0C       		.uleb128 0xc
+ 1374 091c 7A000000 		.4byte	0x7a
+ 1375 0920 18       		.byte	0x18
+ 1376 0921 00       		.byte	0
+ 1377 0922 07       		.uleb128 0x7
+ 1378 0923 6B000000 		.4byte	.LASF120
+ 1379 0927 01       		.byte	0x1
+ 1380 0928 06       		.uleb128 0x6
+ 1381 0929 04       		.byte	0x4
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 26
+
+
+ 1382 092a 22090000 		.4byte	0x922
+ 1383 092e 1C       		.uleb128 0x1c
+ 1384 092f 01       		.byte	0x1
+ 1385 0930 3A090000 		.4byte	0x93a
+ 1386 0934 14       		.uleb128 0x14
+ 1387 0935 9E040000 		.4byte	0x49e
+ 1388 0939 00       		.byte	0
+ 1389 093a 06       		.uleb128 0x6
+ 1390 093b 04       		.byte	0x4
+ 1391 093c 2E090000 		.4byte	0x92e
+ 1392 0940 06       		.uleb128 0x6
+ 1393 0941 04       		.byte	0x4
+ 1394 0942 97010000 		.4byte	0x197
+ 1395 0946 1C       		.uleb128 0x1c
+ 1396 0947 01       		.byte	0x1
+ 1397 0948 52090000 		.4byte	0x952
+ 1398 094c 14       		.uleb128 0x14
+ 1399 094d 73000000 		.4byte	0x73
+ 1400 0951 00       		.byte	0
+ 1401 0952 06       		.uleb128 0x6
+ 1402 0953 04       		.byte	0x4
+ 1403 0954 58090000 		.4byte	0x958
+ 1404 0958 06       		.uleb128 0x6
+ 1405 0959 04       		.byte	0x4
+ 1406 095a 46090000 		.4byte	0x946
+ 1407 095e 0B       		.uleb128 0xb
+ 1408 095f AA060000 		.4byte	0x6aa
+ 1409 0963 6E090000 		.4byte	0x96e
+ 1410 0967 0C       		.uleb128 0xc
+ 1411 0968 7A000000 		.4byte	0x7a
+ 1412 096c 02       		.byte	0x2
+ 1413 096d 00       		.byte	0
+ 1414 096e 1D       		.uleb128 0x1d
+ 1415 096f 4B040000 		.4byte	.LASF121
+ 1416 0973 06       		.byte	0x6
+ 1417 0974 2E03     		.2byte	0x32e
+ 1418 0976 9E040000 		.4byte	0x49e
+ 1419 097a 01       		.byte	0x1
+ 1420 097b 01       		.byte	0x1
+ 1421 097c 1D       		.uleb128 0x1d
+ 1422 097d B7040000 		.4byte	.LASF122
+ 1423 0981 06       		.byte	0x6
+ 1424 0982 2F03     		.2byte	0x32f
+ 1425 0984 A4040000 		.4byte	0x4a4
+ 1426 0988 01       		.byte	0x1
+ 1427 0989 01       		.byte	0x1
+ 1428 098a 02       		.uleb128 0x2
+ 1429 098b A3040000 		.4byte	.LASF123
+ 1430 098f 07       		.byte	0x7
+ 1431 0990 14       		.byte	0x14
+ 1432 0991 25000000 		.4byte	0x25
+ 1433 0995 1E       		.uleb128 0x1e
+ 1434 0996 8A090000 		.4byte	0x98a
+ 1435 099a 02       		.uleb128 0x2
+ 1436 099b CA040000 		.4byte	.LASF124
+ 1437 099f 07       		.byte	0x7
+ 1438 09a0 30       		.byte	0x30
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 27
+
+
+ 1439 09a1 53000000 		.4byte	0x53
+ 1440 09a5 1F       		.uleb128 0x1f
+ 1441 09a6 38030000 		.4byte	.LASF125
+ 1442 09aa 08       		.byte	0x8
+ 1443 09ab 63       		.byte	0x63
+ 1444 09ac 07060000 		.4byte	0x607
+ 1445 09b0 01       		.byte	0x1
+ 1446 09b1 01       		.byte	0x1
+ 1447 09b2 20       		.uleb128 0x20
+ 1448 09b3 83050000 		.4byte	.LASF126
+ 1449 09b7 01       		.byte	0x1
+ 1450 09b8 0A       		.byte	0xa
+ 1451 09b9 95090000 		.4byte	0x995
+ 1452 09bd 01       		.byte	0x1
+ 1453 09be 05       		.byte	0x5
+ 1454 09bf 03       		.byte	0x3
+ 1455 09c0 00000000 		.4byte	pingpong
+ 1456 09c4 21       		.uleb128 0x21
+ 1457 09c5 01       		.byte	0x1
+ 1458 09c6 8E000000 		.4byte	.LASF127
+ 1459 09ca 01       		.byte	0x1
+ 1460 09cb 1D       		.byte	0x1d
+ 1461 09cc 01       		.byte	0x1
+ 1462 09cd 34000000 		.4byte	.LFB4
+ 1463 09d1 58000000 		.4byte	.LFE4
+ 1464 09d5 00000000 		.4byte	.LLST2
+ 1465 09d9 01       		.byte	0x1
+ 1466 09da 170A0000 		.4byte	0xa17
+ 1467 09de 22       		.uleb128 0x22
+ 1468 09df 61726700 		.ascii	"arg\000"
+ 1469 09e3 01       		.byte	0x1
+ 1470 09e4 1D       		.byte	0x1d
+ 1471 09e5 88000000 		.4byte	0x88
+ 1472 09e9 20000000 		.4byte	.LLST3
+ 1473 09ed 23       		.uleb128 0x23
+ 1474 09ee 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1475 09f2 24       		.uleb128 0x24
+ 1476 09f3 01       		.byte	0x1
+ 1477 09f4 6C010000 		.4byte	.LASF129
+ 1478 09f8 01       		.byte	0x1
+ 1479 09f9 15       		.byte	0x15
+ 1480 09fa 73000000 		.4byte	0x73
+ 1481 09fe 01       		.byte	0x1
+ 1482 09ff 050A0000 		.4byte	0xa05
+ 1483 0a03 25       		.uleb128 0x25
+ 1484 0a04 00       		.byte	0
+ 1485 0a05 26       		.uleb128 0x26
+ 1486 0a06 4C000000 		.4byte	.LVL7
+ 1487 0a0a 680A0000 		.4byte	0xa68
+ 1488 0a0e 27       		.uleb128 0x27
+ 1489 0a0f 01       		.byte	0x1
+ 1490 0a10 50       		.byte	0x50
+ 1491 0a11 02       		.byte	0x2
+ 1492 0a12 75       		.byte	0x75
+ 1493 0a13 00       		.sleb128 0
+ 1494 0a14 00       		.byte	0
+ 1495 0a15 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 28
+
+
+ 1496 0a16 00       		.byte	0
+ 1497 0a17 21       		.uleb128 0x21
+ 1498 0a18 01       		.byte	0x1
+ 1499 0a19 77010000 		.4byte	.LASF128
+ 1500 0a1d 01       		.byte	0x1
+ 1501 0a1e 0C       		.byte	0xc
+ 1502 0a1f 01       		.byte	0x1
+ 1503 0a20 00000000 		.4byte	.LFB3
+ 1504 0a24 34000000 		.4byte	.LFE3
+ 1505 0a28 41000000 		.4byte	.LLST0
+ 1506 0a2c 01       		.byte	0x1
+ 1507 0a2d 680A0000 		.4byte	0xa68
+ 1508 0a31 28       		.uleb128 0x28
+ 1509 0a32 6900     		.ascii	"i\000"
+ 1510 0a34 01       		.byte	0x1
+ 1511 0a35 0E       		.byte	0xe
+ 1512 0a36 9A090000 		.4byte	0x99a
+ 1513 0a3a 61000000 		.4byte	.LLST1
+ 1514 0a3e 23       		.uleb128 0x23
+ 1515 0a3f 00000000 		.4byte	.Ldebug_ranges0+0
+ 1516 0a43 24       		.uleb128 0x24
+ 1517 0a44 01       		.byte	0x1
+ 1518 0a45 6C010000 		.4byte	.LASF129
+ 1519 0a49 01       		.byte	0x1
+ 1520 0a4a 15       		.byte	0x15
+ 1521 0a4b 73000000 		.4byte	0x73
+ 1522 0a4f 01       		.byte	0x1
+ 1523 0a50 560A0000 		.4byte	0xa56
+ 1524 0a54 25       		.uleb128 0x25
+ 1525 0a55 00       		.byte	0
+ 1526 0a56 26       		.uleb128 0x26
+ 1527 0a57 20000000 		.4byte	.LVL4
+ 1528 0a5b 680A0000 		.4byte	0xa68
+ 1529 0a5f 27       		.uleb128 0x27
+ 1530 0a60 01       		.byte	0x1
+ 1531 0a61 50       		.byte	0x50
+ 1532 0a62 02       		.byte	0x2
+ 1533 0a63 76       		.byte	0x76
+ 1534 0a64 00       		.sleb128 0
+ 1535 0a65 00       		.byte	0
+ 1536 0a66 00       		.byte	0
+ 1537 0a67 00       		.byte	0
+ 1538 0a68 29       		.uleb128 0x29
+ 1539 0a69 01       		.byte	0x1
+ 1540 0a6a 01       		.byte	0x1
+ 1541 0a6b 6C010000 		.4byte	.LASF129
+ 1542 0a6f 6C010000 		.4byte	.LASF129
+ 1543 0a73 01       		.byte	0x1
+ 1544 0a74 15       		.byte	0x15
+ 1545 0a75 00       		.byte	0
+ 1546              		.section	.debug_abbrev,"",%progbits
+ 1547              	.Ldebug_abbrev0:
+ 1548 0000 01       		.uleb128 0x1
+ 1549 0001 11       		.uleb128 0x11
+ 1550 0002 01       		.byte	0x1
+ 1551 0003 25       		.uleb128 0x25
+ 1552 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 29
+
+
+ 1553 0005 13       		.uleb128 0x13
+ 1554 0006 0B       		.uleb128 0xb
+ 1555 0007 03       		.uleb128 0x3
+ 1556 0008 0E       		.uleb128 0xe
+ 1557 0009 1B       		.uleb128 0x1b
+ 1558 000a 0E       		.uleb128 0xe
+ 1559 000b 11       		.uleb128 0x11
+ 1560 000c 01       		.uleb128 0x1
+ 1561 000d 12       		.uleb128 0x12
+ 1562 000e 01       		.uleb128 0x1
+ 1563 000f 10       		.uleb128 0x10
+ 1564 0010 06       		.uleb128 0x6
+ 1565 0011 00       		.byte	0
+ 1566 0012 00       		.byte	0
+ 1567 0013 02       		.uleb128 0x2
+ 1568 0014 16       		.uleb128 0x16
+ 1569 0015 00       		.byte	0
+ 1570 0016 03       		.uleb128 0x3
+ 1571 0017 0E       		.uleb128 0xe
+ 1572 0018 3A       		.uleb128 0x3a
+ 1573 0019 0B       		.uleb128 0xb
+ 1574 001a 3B       		.uleb128 0x3b
+ 1575 001b 0B       		.uleb128 0xb
+ 1576 001c 49       		.uleb128 0x49
+ 1577 001d 13       		.uleb128 0x13
+ 1578 001e 00       		.byte	0
+ 1579 001f 00       		.byte	0
+ 1580 0020 03       		.uleb128 0x3
+ 1581 0021 24       		.uleb128 0x24
+ 1582 0022 00       		.byte	0
+ 1583 0023 0B       		.uleb128 0xb
+ 1584 0024 0B       		.uleb128 0xb
+ 1585 0025 3E       		.uleb128 0x3e
+ 1586 0026 0B       		.uleb128 0xb
+ 1587 0027 03       		.uleb128 0x3
+ 1588 0028 0E       		.uleb128 0xe
+ 1589 0029 00       		.byte	0
+ 1590 002a 00       		.byte	0
+ 1591 002b 04       		.uleb128 0x4
+ 1592 002c 24       		.uleb128 0x24
+ 1593 002d 00       		.byte	0
+ 1594 002e 0B       		.uleb128 0xb
+ 1595 002f 0B       		.uleb128 0xb
+ 1596 0030 3E       		.uleb128 0x3e
+ 1597 0031 0B       		.uleb128 0xb
+ 1598 0032 03       		.uleb128 0x3
+ 1599 0033 08       		.uleb128 0x8
+ 1600 0034 00       		.byte	0
+ 1601 0035 00       		.byte	0
+ 1602 0036 05       		.uleb128 0x5
+ 1603 0037 0F       		.uleb128 0xf
+ 1604 0038 00       		.byte	0
+ 1605 0039 0B       		.uleb128 0xb
+ 1606 003a 0B       		.uleb128 0xb
+ 1607 003b 00       		.byte	0
+ 1608 003c 00       		.byte	0
+ 1609 003d 06       		.uleb128 0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 30
+
+
+ 1610 003e 0F       		.uleb128 0xf
+ 1611 003f 00       		.byte	0
+ 1612 0040 0B       		.uleb128 0xb
+ 1613 0041 0B       		.uleb128 0xb
+ 1614 0042 49       		.uleb128 0x49
+ 1615 0043 13       		.uleb128 0x13
+ 1616 0044 00       		.byte	0
+ 1617 0045 00       		.byte	0
+ 1618 0046 07       		.uleb128 0x7
+ 1619 0047 13       		.uleb128 0x13
+ 1620 0048 00       		.byte	0
+ 1621 0049 03       		.uleb128 0x3
+ 1622 004a 0E       		.uleb128 0xe
+ 1623 004b 3C       		.uleb128 0x3c
+ 1624 004c 0C       		.uleb128 0xc
+ 1625 004d 00       		.byte	0
+ 1626 004e 00       		.byte	0
+ 1627 004f 08       		.uleb128 0x8
+ 1628 0050 16       		.uleb128 0x16
+ 1629 0051 00       		.byte	0
+ 1630 0052 03       		.uleb128 0x3
+ 1631 0053 0E       		.uleb128 0xe
+ 1632 0054 3A       		.uleb128 0x3a
+ 1633 0055 0B       		.uleb128 0xb
+ 1634 0056 3B       		.uleb128 0x3b
+ 1635 0057 05       		.uleb128 0x5
+ 1636 0058 49       		.uleb128 0x49
+ 1637 0059 13       		.uleb128 0x13
+ 1638 005a 00       		.byte	0
+ 1639 005b 00       		.byte	0
+ 1640 005c 09       		.uleb128 0x9
+ 1641 005d 17       		.uleb128 0x17
+ 1642 005e 01       		.byte	0x1
+ 1643 005f 0B       		.uleb128 0xb
+ 1644 0060 0B       		.uleb128 0xb
+ 1645 0061 3A       		.uleb128 0x3a
+ 1646 0062 0B       		.uleb128 0xb
+ 1647 0063 3B       		.uleb128 0x3b
+ 1648 0064 0B       		.uleb128 0xb
+ 1649 0065 01       		.uleb128 0x1
+ 1650 0066 13       		.uleb128 0x13
+ 1651 0067 00       		.byte	0
+ 1652 0068 00       		.byte	0
+ 1653 0069 0A       		.uleb128 0xa
+ 1654 006a 0D       		.uleb128 0xd
+ 1655 006b 00       		.byte	0
+ 1656 006c 03       		.uleb128 0x3
+ 1657 006d 0E       		.uleb128 0xe
+ 1658 006e 3A       		.uleb128 0x3a
+ 1659 006f 0B       		.uleb128 0xb
+ 1660 0070 3B       		.uleb128 0x3b
+ 1661 0071 0B       		.uleb128 0xb
+ 1662 0072 49       		.uleb128 0x49
+ 1663 0073 13       		.uleb128 0x13
+ 1664 0074 00       		.byte	0
+ 1665 0075 00       		.byte	0
+ 1666 0076 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 31
+
+
+ 1667 0077 01       		.uleb128 0x1
+ 1668 0078 01       		.byte	0x1
+ 1669 0079 49       		.uleb128 0x49
+ 1670 007a 13       		.uleb128 0x13
+ 1671 007b 01       		.uleb128 0x1
+ 1672 007c 13       		.uleb128 0x13
+ 1673 007d 00       		.byte	0
+ 1674 007e 00       		.byte	0
+ 1675 007f 0C       		.uleb128 0xc
+ 1676 0080 21       		.uleb128 0x21
+ 1677 0081 00       		.byte	0
+ 1678 0082 49       		.uleb128 0x49
+ 1679 0083 13       		.uleb128 0x13
+ 1680 0084 2F       		.uleb128 0x2f
+ 1681 0085 0B       		.uleb128 0xb
+ 1682 0086 00       		.byte	0
+ 1683 0087 00       		.byte	0
+ 1684 0088 0D       		.uleb128 0xd
+ 1685 0089 13       		.uleb128 0x13
+ 1686 008a 01       		.byte	0x1
+ 1687 008b 0B       		.uleb128 0xb
+ 1688 008c 0B       		.uleb128 0xb
+ 1689 008d 3A       		.uleb128 0x3a
+ 1690 008e 0B       		.uleb128 0xb
+ 1691 008f 3B       		.uleb128 0x3b
+ 1692 0090 0B       		.uleb128 0xb
+ 1693 0091 01       		.uleb128 0x1
+ 1694 0092 13       		.uleb128 0x13
+ 1695 0093 00       		.byte	0
+ 1696 0094 00       		.byte	0
+ 1697 0095 0E       		.uleb128 0xe
+ 1698 0096 0D       		.uleb128 0xd
+ 1699 0097 00       		.byte	0
+ 1700 0098 03       		.uleb128 0x3
+ 1701 0099 0E       		.uleb128 0xe
+ 1702 009a 3A       		.uleb128 0x3a
+ 1703 009b 0B       		.uleb128 0xb
+ 1704 009c 3B       		.uleb128 0x3b
+ 1705 009d 0B       		.uleb128 0xb
+ 1706 009e 49       		.uleb128 0x49
+ 1707 009f 13       		.uleb128 0x13
+ 1708 00a0 38       		.uleb128 0x38
+ 1709 00a1 0A       		.uleb128 0xa
+ 1710 00a2 00       		.byte	0
+ 1711 00a3 00       		.byte	0
+ 1712 00a4 0F       		.uleb128 0xf
+ 1713 00a5 13       		.uleb128 0x13
+ 1714 00a6 01       		.byte	0x1
+ 1715 00a7 03       		.uleb128 0x3
+ 1716 00a8 0E       		.uleb128 0xe
+ 1717 00a9 0B       		.uleb128 0xb
+ 1718 00aa 0B       		.uleb128 0xb
+ 1719 00ab 3A       		.uleb128 0x3a
+ 1720 00ac 0B       		.uleb128 0xb
+ 1721 00ad 3B       		.uleb128 0x3b
+ 1722 00ae 0B       		.uleb128 0xb
+ 1723 00af 01       		.uleb128 0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 32
+
+
+ 1724 00b0 13       		.uleb128 0x13
+ 1725 00b1 00       		.byte	0
+ 1726 00b2 00       		.byte	0
+ 1727 00b3 10       		.uleb128 0x10
+ 1728 00b4 0D       		.uleb128 0xd
+ 1729 00b5 00       		.byte	0
+ 1730 00b6 03       		.uleb128 0x3
+ 1731 00b7 08       		.uleb128 0x8
+ 1732 00b8 3A       		.uleb128 0x3a
+ 1733 00b9 0B       		.uleb128 0xb
+ 1734 00ba 3B       		.uleb128 0x3b
+ 1735 00bb 0B       		.uleb128 0xb
+ 1736 00bc 49       		.uleb128 0x49
+ 1737 00bd 13       		.uleb128 0x13
+ 1738 00be 38       		.uleb128 0x38
+ 1739 00bf 0A       		.uleb128 0xa
+ 1740 00c0 00       		.byte	0
+ 1741 00c1 00       		.byte	0
+ 1742 00c2 11       		.uleb128 0x11
+ 1743 00c3 13       		.uleb128 0x13
+ 1744 00c4 01       		.byte	0x1
+ 1745 00c5 03       		.uleb128 0x3
+ 1746 00c6 0E       		.uleb128 0xe
+ 1747 00c7 0B       		.uleb128 0xb
+ 1748 00c8 05       		.uleb128 0x5
+ 1749 00c9 3A       		.uleb128 0x3a
+ 1750 00ca 0B       		.uleb128 0xb
+ 1751 00cb 3B       		.uleb128 0x3b
+ 1752 00cc 0B       		.uleb128 0xb
+ 1753 00cd 01       		.uleb128 0x1
+ 1754 00ce 13       		.uleb128 0x13
+ 1755 00cf 00       		.byte	0
+ 1756 00d0 00       		.byte	0
+ 1757 00d1 12       		.uleb128 0x12
+ 1758 00d2 15       		.uleb128 0x15
+ 1759 00d3 00       		.byte	0
+ 1760 00d4 27       		.uleb128 0x27
+ 1761 00d5 0C       		.uleb128 0xc
+ 1762 00d6 00       		.byte	0
+ 1763 00d7 00       		.byte	0
+ 1764 00d8 13       		.uleb128 0x13
+ 1765 00d9 15       		.uleb128 0x15
+ 1766 00da 01       		.byte	0x1
+ 1767 00db 27       		.uleb128 0x27
+ 1768 00dc 0C       		.uleb128 0xc
+ 1769 00dd 49       		.uleb128 0x49
+ 1770 00de 13       		.uleb128 0x13
+ 1771 00df 01       		.uleb128 0x1
+ 1772 00e0 13       		.uleb128 0x13
+ 1773 00e1 00       		.byte	0
+ 1774 00e2 00       		.byte	0
+ 1775 00e3 14       		.uleb128 0x14
+ 1776 00e4 05       		.uleb128 0x5
+ 1777 00e5 00       		.byte	0
+ 1778 00e6 49       		.uleb128 0x49
+ 1779 00e7 13       		.uleb128 0x13
+ 1780 00e8 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 33
+
+
+ 1781 00e9 00       		.byte	0
+ 1782 00ea 15       		.uleb128 0x15
+ 1783 00eb 26       		.uleb128 0x26
+ 1784 00ec 00       		.byte	0
+ 1785 00ed 49       		.uleb128 0x49
+ 1786 00ee 13       		.uleb128 0x13
+ 1787 00ef 00       		.byte	0
+ 1788 00f0 00       		.byte	0
+ 1789 00f1 16       		.uleb128 0x16
+ 1790 00f2 13       		.uleb128 0x13
+ 1791 00f3 01       		.byte	0x1
+ 1792 00f4 03       		.uleb128 0x3
+ 1793 00f5 0E       		.uleb128 0xe
+ 1794 00f6 0B       		.uleb128 0xb
+ 1795 00f7 05       		.uleb128 0x5
+ 1796 00f8 3A       		.uleb128 0x3a
+ 1797 00f9 0B       		.uleb128 0xb
+ 1798 00fa 3B       		.uleb128 0x3b
+ 1799 00fb 05       		.uleb128 0x5
+ 1800 00fc 01       		.uleb128 0x1
+ 1801 00fd 13       		.uleb128 0x13
+ 1802 00fe 00       		.byte	0
+ 1803 00ff 00       		.byte	0
+ 1804 0100 17       		.uleb128 0x17
+ 1805 0101 0D       		.uleb128 0xd
+ 1806 0102 00       		.byte	0
+ 1807 0103 03       		.uleb128 0x3
+ 1808 0104 0E       		.uleb128 0xe
+ 1809 0105 3A       		.uleb128 0x3a
+ 1810 0106 0B       		.uleb128 0xb
+ 1811 0107 3B       		.uleb128 0x3b
+ 1812 0108 05       		.uleb128 0x5
+ 1813 0109 49       		.uleb128 0x49
+ 1814 010a 13       		.uleb128 0x13
+ 1815 010b 38       		.uleb128 0x38
+ 1816 010c 0A       		.uleb128 0xa
+ 1817 010d 00       		.byte	0
+ 1818 010e 00       		.byte	0
+ 1819 010f 18       		.uleb128 0x18
+ 1820 0110 13       		.uleb128 0x13
+ 1821 0111 01       		.byte	0x1
+ 1822 0112 03       		.uleb128 0x3
+ 1823 0113 0E       		.uleb128 0xe
+ 1824 0114 0B       		.uleb128 0xb
+ 1825 0115 0B       		.uleb128 0xb
+ 1826 0116 3A       		.uleb128 0x3a
+ 1827 0117 0B       		.uleb128 0xb
+ 1828 0118 3B       		.uleb128 0x3b
+ 1829 0119 05       		.uleb128 0x5
+ 1830 011a 01       		.uleb128 0x1
+ 1831 011b 13       		.uleb128 0x13
+ 1832 011c 00       		.byte	0
+ 1833 011d 00       		.byte	0
+ 1834 011e 19       		.uleb128 0x19
+ 1835 011f 13       		.uleb128 0x13
+ 1836 0120 01       		.byte	0x1
+ 1837 0121 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 34
+
+
+ 1838 0122 0B       		.uleb128 0xb
+ 1839 0123 3A       		.uleb128 0x3a
+ 1840 0124 0B       		.uleb128 0xb
+ 1841 0125 3B       		.uleb128 0x3b
+ 1842 0126 05       		.uleb128 0x5
+ 1843 0127 01       		.uleb128 0x1
+ 1844 0128 13       		.uleb128 0x13
+ 1845 0129 00       		.byte	0
+ 1846 012a 00       		.byte	0
+ 1847 012b 1A       		.uleb128 0x1a
+ 1848 012c 17       		.uleb128 0x17
+ 1849 012d 01       		.byte	0x1
+ 1850 012e 0B       		.uleb128 0xb
+ 1851 012f 0B       		.uleb128 0xb
+ 1852 0130 3A       		.uleb128 0x3a
+ 1853 0131 0B       		.uleb128 0xb
+ 1854 0132 3B       		.uleb128 0x3b
+ 1855 0133 05       		.uleb128 0x5
+ 1856 0134 01       		.uleb128 0x1
+ 1857 0135 13       		.uleb128 0x13
+ 1858 0136 00       		.byte	0
+ 1859 0137 00       		.byte	0
+ 1860 0138 1B       		.uleb128 0x1b
+ 1861 0139 0D       		.uleb128 0xd
+ 1862 013a 00       		.byte	0
+ 1863 013b 03       		.uleb128 0x3
+ 1864 013c 0E       		.uleb128 0xe
+ 1865 013d 3A       		.uleb128 0x3a
+ 1866 013e 0B       		.uleb128 0xb
+ 1867 013f 3B       		.uleb128 0x3b
+ 1868 0140 05       		.uleb128 0x5
+ 1869 0141 49       		.uleb128 0x49
+ 1870 0142 13       		.uleb128 0x13
+ 1871 0143 00       		.byte	0
+ 1872 0144 00       		.byte	0
+ 1873 0145 1C       		.uleb128 0x1c
+ 1874 0146 15       		.uleb128 0x15
+ 1875 0147 01       		.byte	0x1
+ 1876 0148 27       		.uleb128 0x27
+ 1877 0149 0C       		.uleb128 0xc
+ 1878 014a 01       		.uleb128 0x1
+ 1879 014b 13       		.uleb128 0x13
+ 1880 014c 00       		.byte	0
+ 1881 014d 00       		.byte	0
+ 1882 014e 1D       		.uleb128 0x1d
+ 1883 014f 34       		.uleb128 0x34
+ 1884 0150 00       		.byte	0
+ 1885 0151 03       		.uleb128 0x3
+ 1886 0152 0E       		.uleb128 0xe
+ 1887 0153 3A       		.uleb128 0x3a
+ 1888 0154 0B       		.uleb128 0xb
+ 1889 0155 3B       		.uleb128 0x3b
+ 1890 0156 05       		.uleb128 0x5
+ 1891 0157 49       		.uleb128 0x49
+ 1892 0158 13       		.uleb128 0x13
+ 1893 0159 3F       		.uleb128 0x3f
+ 1894 015a 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 35
+
+
+ 1895 015b 3C       		.uleb128 0x3c
+ 1896 015c 0C       		.uleb128 0xc
+ 1897 015d 00       		.byte	0
+ 1898 015e 00       		.byte	0
+ 1899 015f 1E       		.uleb128 0x1e
+ 1900 0160 35       		.uleb128 0x35
+ 1901 0161 00       		.byte	0
+ 1902 0162 49       		.uleb128 0x49
+ 1903 0163 13       		.uleb128 0x13
+ 1904 0164 00       		.byte	0
+ 1905 0165 00       		.byte	0
+ 1906 0166 1F       		.uleb128 0x1f
+ 1907 0167 34       		.uleb128 0x34
+ 1908 0168 00       		.byte	0
+ 1909 0169 03       		.uleb128 0x3
+ 1910 016a 0E       		.uleb128 0xe
+ 1911 016b 3A       		.uleb128 0x3a
+ 1912 016c 0B       		.uleb128 0xb
+ 1913 016d 3B       		.uleb128 0x3b
+ 1914 016e 0B       		.uleb128 0xb
+ 1915 016f 49       		.uleb128 0x49
+ 1916 0170 13       		.uleb128 0x13
+ 1917 0171 3F       		.uleb128 0x3f
+ 1918 0172 0C       		.uleb128 0xc
+ 1919 0173 3C       		.uleb128 0x3c
+ 1920 0174 0C       		.uleb128 0xc
+ 1921 0175 00       		.byte	0
+ 1922 0176 00       		.byte	0
+ 1923 0177 20       		.uleb128 0x20
+ 1924 0178 34       		.uleb128 0x34
+ 1925 0179 00       		.byte	0
+ 1926 017a 03       		.uleb128 0x3
+ 1927 017b 0E       		.uleb128 0xe
+ 1928 017c 3A       		.uleb128 0x3a
+ 1929 017d 0B       		.uleb128 0xb
+ 1930 017e 3B       		.uleb128 0x3b
+ 1931 017f 0B       		.uleb128 0xb
+ 1932 0180 49       		.uleb128 0x49
+ 1933 0181 13       		.uleb128 0x13
+ 1934 0182 3F       		.uleb128 0x3f
+ 1935 0183 0C       		.uleb128 0xc
+ 1936 0184 02       		.uleb128 0x2
+ 1937 0185 0A       		.uleb128 0xa
+ 1938 0186 00       		.byte	0
+ 1939 0187 00       		.byte	0
+ 1940 0188 21       		.uleb128 0x21
+ 1941 0189 2E       		.uleb128 0x2e
+ 1942 018a 01       		.byte	0x1
+ 1943 018b 3F       		.uleb128 0x3f
+ 1944 018c 0C       		.uleb128 0xc
+ 1945 018d 03       		.uleb128 0x3
+ 1946 018e 0E       		.uleb128 0xe
+ 1947 018f 3A       		.uleb128 0x3a
+ 1948 0190 0B       		.uleb128 0xb
+ 1949 0191 3B       		.uleb128 0x3b
+ 1950 0192 0B       		.uleb128 0xb
+ 1951 0193 27       		.uleb128 0x27
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 36
+
+
+ 1952 0194 0C       		.uleb128 0xc
+ 1953 0195 11       		.uleb128 0x11
+ 1954 0196 01       		.uleb128 0x1
+ 1955 0197 12       		.uleb128 0x12
+ 1956 0198 01       		.uleb128 0x1
+ 1957 0199 40       		.uleb128 0x40
+ 1958 019a 06       		.uleb128 0x6
+ 1959 019b 9742     		.uleb128 0x2117
+ 1960 019d 0C       		.uleb128 0xc
+ 1961 019e 01       		.uleb128 0x1
+ 1962 019f 13       		.uleb128 0x13
+ 1963 01a0 00       		.byte	0
+ 1964 01a1 00       		.byte	0
+ 1965 01a2 22       		.uleb128 0x22
+ 1966 01a3 05       		.uleb128 0x5
+ 1967 01a4 00       		.byte	0
+ 1968 01a5 03       		.uleb128 0x3
+ 1969 01a6 08       		.uleb128 0x8
+ 1970 01a7 3A       		.uleb128 0x3a
+ 1971 01a8 0B       		.uleb128 0xb
+ 1972 01a9 3B       		.uleb128 0x3b
+ 1973 01aa 0B       		.uleb128 0xb
+ 1974 01ab 49       		.uleb128 0x49
+ 1975 01ac 13       		.uleb128 0x13
+ 1976 01ad 02       		.uleb128 0x2
+ 1977 01ae 06       		.uleb128 0x6
+ 1978 01af 00       		.byte	0
+ 1979 01b0 00       		.byte	0
+ 1980 01b1 23       		.uleb128 0x23
+ 1981 01b2 0B       		.uleb128 0xb
+ 1982 01b3 01       		.byte	0x1
+ 1983 01b4 55       		.uleb128 0x55
+ 1984 01b5 06       		.uleb128 0x6
+ 1985 01b6 00       		.byte	0
+ 1986 01b7 00       		.byte	0
+ 1987 01b8 24       		.uleb128 0x24
+ 1988 01b9 2E       		.uleb128 0x2e
+ 1989 01ba 01       		.byte	0x1
+ 1990 01bb 3F       		.uleb128 0x3f
+ 1991 01bc 0C       		.uleb128 0xc
+ 1992 01bd 03       		.uleb128 0x3
+ 1993 01be 0E       		.uleb128 0xe
+ 1994 01bf 3A       		.uleb128 0x3a
+ 1995 01c0 0B       		.uleb128 0xb
+ 1996 01c1 3B       		.uleb128 0x3b
+ 1997 01c2 0B       		.uleb128 0xb
+ 1998 01c3 49       		.uleb128 0x49
+ 1999 01c4 13       		.uleb128 0x13
+ 2000 01c5 3C       		.uleb128 0x3c
+ 2001 01c6 0C       		.uleb128 0xc
+ 2002 01c7 01       		.uleb128 0x1
+ 2003 01c8 13       		.uleb128 0x13
+ 2004 01c9 00       		.byte	0
+ 2005 01ca 00       		.byte	0
+ 2006 01cb 25       		.uleb128 0x25
+ 2007 01cc 18       		.uleb128 0x18
+ 2008 01cd 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 37
+
+
+ 2009 01ce 00       		.byte	0
+ 2010 01cf 00       		.byte	0
+ 2011 01d0 26       		.uleb128 0x26
+ 2012 01d1 898201   		.uleb128 0x4109
+ 2013 01d4 01       		.byte	0x1
+ 2014 01d5 11       		.uleb128 0x11
+ 2015 01d6 01       		.uleb128 0x1
+ 2016 01d7 31       		.uleb128 0x31
+ 2017 01d8 13       		.uleb128 0x13
+ 2018 01d9 00       		.byte	0
+ 2019 01da 00       		.byte	0
+ 2020 01db 27       		.uleb128 0x27
+ 2021 01dc 8A8201   		.uleb128 0x410a
+ 2022 01df 00       		.byte	0
+ 2023 01e0 02       		.uleb128 0x2
+ 2024 01e1 0A       		.uleb128 0xa
+ 2025 01e2 9142     		.uleb128 0x2111
+ 2026 01e4 0A       		.uleb128 0xa
+ 2027 01e5 00       		.byte	0
+ 2028 01e6 00       		.byte	0
+ 2029 01e7 28       		.uleb128 0x28
+ 2030 01e8 34       		.uleb128 0x34
+ 2031 01e9 00       		.byte	0
+ 2032 01ea 03       		.uleb128 0x3
+ 2033 01eb 08       		.uleb128 0x8
+ 2034 01ec 3A       		.uleb128 0x3a
+ 2035 01ed 0B       		.uleb128 0xb
+ 2036 01ee 3B       		.uleb128 0x3b
+ 2037 01ef 0B       		.uleb128 0xb
+ 2038 01f0 49       		.uleb128 0x49
+ 2039 01f1 13       		.uleb128 0x13
+ 2040 01f2 02       		.uleb128 0x2
+ 2041 01f3 06       		.uleb128 0x6
+ 2042 01f4 00       		.byte	0
+ 2043 01f5 00       		.byte	0
+ 2044 01f6 29       		.uleb128 0x29
+ 2045 01f7 2E       		.uleb128 0x2e
+ 2046 01f8 00       		.byte	0
+ 2047 01f9 3F       		.uleb128 0x3f
+ 2048 01fa 0C       		.uleb128 0xc
+ 2049 01fb 3C       		.uleb128 0x3c
+ 2050 01fc 0C       		.uleb128 0xc
+ 2051 01fd 8740     		.uleb128 0x2007
+ 2052 01ff 0E       		.uleb128 0xe
+ 2053 0200 03       		.uleb128 0x3
+ 2054 0201 0E       		.uleb128 0xe
+ 2055 0202 3A       		.uleb128 0x3a
+ 2056 0203 0B       		.uleb128 0xb
+ 2057 0204 3B       		.uleb128 0x3b
+ 2058 0205 0B       		.uleb128 0xb
+ 2059 0206 00       		.byte	0
+ 2060 0207 00       		.byte	0
+ 2061 0208 00       		.byte	0
+ 2062              		.section	.debug_loc,"",%progbits
+ 2063              	.Ldebug_loc0:
+ 2064              	.LLST2:
+ 2065 0000 34000000 		.4byte	.LFB4-.Ltext0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 38
+
+
+ 2066 0004 36000000 		.4byte	.LCFI1-.Ltext0
+ 2067 0008 0200     		.2byte	0x2
+ 2068 000a 7D       		.byte	0x7d
+ 2069 000b 00       		.sleb128 0
+ 2070 000c 36000000 		.4byte	.LCFI1-.Ltext0
+ 2071 0010 58000000 		.4byte	.LFE4-.Ltext0
+ 2072 0014 0200     		.2byte	0x2
+ 2073 0016 7D       		.byte	0x7d
+ 2074 0017 08       		.sleb128 8
+ 2075 0018 00000000 		.4byte	0
+ 2076 001c 00000000 		.4byte	0
+ 2077              	.LLST3:
+ 2078 0020 34000000 		.4byte	.LVL5-.Ltext0
+ 2079 0024 3C000000 		.4byte	.LVL6-.Ltext0
+ 2080 0028 0100     		.2byte	0x1
+ 2081 002a 50       		.byte	0x50
+ 2082 002b 3C000000 		.4byte	.LVL6-.Ltext0
+ 2083 002f 58000000 		.4byte	.LFE4-.Ltext0
+ 2084 0033 0400     		.2byte	0x4
+ 2085 0035 F3       		.byte	0xf3
+ 2086 0036 01       		.uleb128 0x1
+ 2087 0037 50       		.byte	0x50
+ 2088 0038 9F       		.byte	0x9f
+ 2089 0039 00000000 		.4byte	0
+ 2090 003d 00000000 		.4byte	0
+ 2091              	.LLST0:
+ 2092 0041 00000000 		.4byte	.LFB3-.Ltext0
+ 2093 0045 02000000 		.4byte	.LCFI0-.Ltext0
+ 2094 0049 0200     		.2byte	0x2
+ 2095 004b 7D       		.byte	0x7d
+ 2096 004c 00       		.sleb128 0
+ 2097 004d 02000000 		.4byte	.LCFI0-.Ltext0
+ 2098 0051 34000000 		.4byte	.LFE3-.Ltext0
+ 2099 0055 0200     		.2byte	0x2
+ 2100 0057 7D       		.byte	0x7d
+ 2101 0058 10       		.sleb128 16
+ 2102 0059 00000000 		.4byte	0
+ 2103 005d 00000000 		.4byte	0
+ 2104              	.LLST1:
+ 2105 0061 02000000 		.4byte	.LVL0-.Ltext0
+ 2106 0065 0A000000 		.4byte	.LVL1-.Ltext0
+ 2107 0069 0200     		.2byte	0x2
+ 2108 006b 30       		.byte	0x30
+ 2109 006c 9F       		.byte	0x9f
+ 2110 006d 0A000000 		.4byte	.LVL1-.Ltext0
+ 2111 0071 1F000000 		.4byte	.LVL4-1-.Ltext0
+ 2112 0075 0100     		.2byte	0x1
+ 2113 0077 52       		.byte	0x52
+ 2114 0078 20000000 		.4byte	.LVL4-.Ltext0
+ 2115 007c 34000000 		.4byte	.LFE3-.Ltext0
+ 2116 0080 0200     		.2byte	0x2
+ 2117 0082 30       		.byte	0x30
+ 2118 0083 9F       		.byte	0x9f
+ 2119 0084 00000000 		.4byte	0
+ 2120 0088 00000000 		.4byte	0
+ 2121              		.section	.debug_aranges,"",%progbits
+ 2122 0000 1C000000 		.4byte	0x1c
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 39
+
+
+ 2123 0004 0200     		.2byte	0x2
+ 2124 0006 00000000 		.4byte	.Ldebug_info0
+ 2125 000a 04       		.byte	0x4
+ 2126 000b 00       		.byte	0
+ 2127 000c 0000     		.2byte	0
+ 2128 000e 0000     		.2byte	0
+ 2129 0010 00000000 		.4byte	.Ltext0
+ 2130 0014 58000000 		.4byte	.Letext0-.Ltext0
+ 2131 0018 00000000 		.4byte	0
+ 2132 001c 00000000 		.4byte	0
+ 2133              		.section	.debug_ranges,"",%progbits
+ 2134              	.Ldebug_ranges0:
+ 2135 0000 06000000 		.4byte	.LBB2-.Ltext0
+ 2136 0004 0A000000 		.4byte	.LBE2-.Ltext0
+ 2137 0008 1A000000 		.4byte	.LBB3-.Ltext0
+ 2138 000c 24000000 		.4byte	.LBE3-.Ltext0
+ 2139 0010 00000000 		.4byte	0
+ 2140 0014 00000000 		.4byte	0
+ 2141 0018 38000000 		.4byte	.LBB4-.Ltext0
+ 2142 001c 3C000000 		.4byte	.LBE4-.Ltext0
+ 2143 0020 44000000 		.4byte	.LBB5-.Ltext0
+ 2144 0024 58000000 		.4byte	.LBE5-.Ltext0
+ 2145 0028 00000000 		.4byte	0
+ 2146 002c 00000000 		.4byte	0
+ 2147              		.section	.debug_line,"",%progbits
+ 2148              	.Ldebug_line0:
+ 2149 0000 27020000 		.section	.debug_str,"MS",%progbits,1
+ 2149      0200F801 
+ 2149      00000201 
+ 2149      FB0E0D00 
+ 2149      01010101 
+ 2150              	.LASF40:
+ 2151 0000 5F64736F 		.ascii	"_dso_handle\000"
+ 2151      5F68616E 
+ 2151      646C6500 
+ 2152              	.LASF48:
+ 2153 000c 5F73697A 		.ascii	"_size\000"
+ 2153      6500
+ 2154              	.LASF93:
+ 2155 0012 5F72616E 		.ascii	"_rand48\000"
+ 2155      64343800 
+ 2156              	.LASF72:
+ 2157 001a 5F656D65 		.ascii	"_emergency\000"
+ 2157      7267656E 
+ 2157      637900
+ 2158              	.LASF62:
+ 2159 0025 5F646174 		.ascii	"_data\000"
+ 2159      6100
+ 2160              	.LASF113:
+ 2161 002b 5F776372 		.ascii	"_wcrtomb_state\000"
+ 2161      746F6D62 
+ 2161      5F737461 
+ 2161      746500
+ 2162              	.LASF114:
+ 2163 003a 5F776373 		.ascii	"_wcsrtombs_state\000"
+ 2163      72746F6D 
+ 2163      62735F73 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 40
+
+
+ 2163      74617465 
+ 2163      00
+ 2164              	.LASF9:
+ 2165 004b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2165      206C6F6E 
+ 2165      6720756E 
+ 2165      7369676E 
+ 2165      65642069 
+ 2166              	.LASF52:
+ 2167 0062 5F6C6266 		.ascii	"_lbfsize\000"
+ 2167      73697A65 
+ 2167      00
+ 2168              	.LASF120:
+ 2169 006b 5F5F6C6F 		.ascii	"__locale_t\000"
+ 2169      63616C65 
+ 2169      5F7400
+ 2170              	.LASF5:
+ 2171 0076 5F5F696E 		.ascii	"__int8_t\000"
+ 2171      74385F74 
+ 2171      00
+ 2172              	.LASF111:
+ 2173 007f 5F6D6272 		.ascii	"_mbrtowc_state\000"
+ 2173      746F7763 
+ 2173      5F737461 
+ 2173      746500
+ 2174              	.LASF127:
+ 2175 008e 426F6479 		.ascii	"BodyPong\000"
+ 2175      506F6E67 
+ 2175      00
+ 2176              	.LASF131:
+ 2177 0097 54687265 		.ascii	"Threads/pingpong-tasks1.c\000"
+ 2177      6164732F 
+ 2177      70696E67 
+ 2177      706F6E67 
+ 2177      2D746173 
+ 2178              	.LASF29:
+ 2179 00b1 5F5F746D 		.ascii	"__tm_sec\000"
+ 2179      5F736563 
+ 2179      00
+ 2180              	.LASF8:
+ 2181 00ba 6C6F6E67 		.ascii	"long long int\000"
+ 2181      206C6F6E 
+ 2181      6720696E 
+ 2181      7400
+ 2182              	.LASF0:
+ 2183 00c8 7369676E 		.ascii	"signed char\000"
+ 2183      65642063 
+ 2183      68617200 
+ 2184              	.LASF58:
+ 2185 00d4 5F756275 		.ascii	"_ubuf\000"
+ 2185      6600
+ 2186              	.LASF47:
+ 2187 00da 5F626173 		.ascii	"_base\000"
+ 2187      6500
+ 2188              	.LASF31:
+ 2189 00e0 5F5F746D 		.ascii	"__tm_hour\000"
+ 2189      5F686F75 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 41
+
+
+ 2189      7200
+ 2190              	.LASF87:
+ 2191 00ea 5F5F7366 		.ascii	"__sf\000"
+ 2191      00
+ 2192              	.LASF38:
+ 2193 00ef 5F6F6E5F 		.ascii	"_on_exit_args\000"
+ 2193      65786974 
+ 2193      5F617267 
+ 2193      7300
+ 2194              	.LASF53:
+ 2195 00fd 5F636F6F 		.ascii	"_cookie\000"
+ 2195      6B696500 
+ 2196              	.LASF86:
+ 2197 0105 5F5F7367 		.ascii	"__sglue\000"
+ 2197      6C756500 
+ 2198              	.LASF4:
+ 2199 010d 6C6F6E67 		.ascii	"long int\000"
+ 2199      20696E74 
+ 2199      00
+ 2200              	.LASF50:
+ 2201 0116 5F666C61 		.ascii	"_flags\000"
+ 2201      677300
+ 2202              	.LASF42:
+ 2203 011d 5F69735F 		.ascii	"_is_cxa\000"
+ 2203      63786100 
+ 2204              	.LASF68:
+ 2205 0125 5F737464 		.ascii	"_stdin\000"
+ 2205      696E00
+ 2206              	.LASF60:
+ 2207 012c 5F626C6B 		.ascii	"_blksize\000"
+ 2207      73697A65 
+ 2207      00
+ 2208              	.LASF82:
+ 2209 0135 5F637674 		.ascii	"_cvtbuf\000"
+ 2209      62756600 
+ 2210              	.LASF61:
+ 2211 013d 5F6F6666 		.ascii	"_offset\000"
+ 2211      73657400 
+ 2212              	.LASF112:
+ 2213 0145 5F6D6273 		.ascii	"_mbsrtowcs_state\000"
+ 2213      72746F77 
+ 2213      63735F73 
+ 2213      74617465 
+ 2213      00
+ 2214              	.LASF110:
+ 2215 0156 5F6D6272 		.ascii	"_mbrlen_state\000"
+ 2215      6C656E5F 
+ 2215      73746174 
+ 2215      6500
+ 2216              	.LASF39:
+ 2217 0164 5F666E61 		.ascii	"_fnargs\000"
+ 2217      72677300 
+ 2218              	.LASF129:
+ 2219 016c 55415254 		.ascii	"UARTprintf\000"
+ 2219      7072696E 
+ 2219      746600
+ 2220              	.LASF128:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 42
+
+
+ 2221 0177 426F6479 		.ascii	"BodyPing\000"
+ 2221      50696E67 
+ 2221      00
+ 2222              	.LASF45:
+ 2223 0180 5F666E73 		.ascii	"_fns\000"
+ 2223      00
+ 2224              	.LASF6:
+ 2225 0185 5F5F7569 		.ascii	"__uint32_t\000"
+ 2225      6E743332 
+ 2225      5F7400
+ 2226              	.LASF25:
+ 2227 0190 5F736967 		.ascii	"_sign\000"
+ 2227      6E00
+ 2228              	.LASF21:
+ 2229 0196 5F666C6F 		.ascii	"_flock_t\000"
+ 2229      636B5F74 
+ 2229      00
+ 2230              	.LASF70:
+ 2231 019f 5F737464 		.ascii	"_stderr\000"
+ 2231      65727200 
+ 2232              	.LASF27:
+ 2233 01a7 5F426967 		.ascii	"_Bigint\000"
+ 2233      696E7400 
+ 2234              	.LASF101:
+ 2235 01af 5F67616D 		.ascii	"_gamma_signgam\000"
+ 2235      6D615F73 
+ 2235      69676E67 
+ 2235      616D00
+ 2236              	.LASF54:
+ 2237 01be 5F726561 		.ascii	"_read\000"
+ 2237      6400
+ 2238              	.LASF78:
+ 2239 01c4 5F726573 		.ascii	"_result_k\000"
+ 2239      756C745F 
+ 2239      6B00
+ 2240              	.LASF28:
+ 2241 01ce 5F5F746D 		.ascii	"__tm\000"
+ 2241      00
+ 2242              	.LASF10:
+ 2243 01d3 756E7369 		.ascii	"unsigned int\000"
+ 2243      676E6564 
+ 2243      20696E74 
+ 2243      00
+ 2244              	.LASF17:
+ 2245 01e0 5F5F7763 		.ascii	"__wchb\000"
+ 2245      686200
+ 2246              	.LASF69:
+ 2247 01e7 5F737464 		.ascii	"_stdout\000"
+ 2247      6F757400 
+ 2248              	.LASF81:
+ 2249 01ef 5F637674 		.ascii	"_cvtlen\000"
+ 2249      6C656E00 
+ 2250              	.LASF7:
+ 2251 01f7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2251      20756E73 
+ 2251      69676E65 
+ 2251      6420696E 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 43
+
+
+ 2251      7400
+ 2252              	.LASF51:
+ 2253 0209 5F66696C 		.ascii	"_file\000"
+ 2253      6500
+ 2254              	.LASF91:
+ 2255 020f 5F6E696F 		.ascii	"_niobs\000"
+ 2255      627300
+ 2256              	.LASF3:
+ 2257 0216 73686F72 		.ascii	"short unsigned int\000"
+ 2257      7420756E 
+ 2257      7369676E 
+ 2257      65642069 
+ 2257      6E7400
+ 2258              	.LASF84:
+ 2259 0229 5F617465 		.ascii	"_atexit0\000"
+ 2259      78697430 
+ 2259      00
+ 2260              	.LASF108:
+ 2261 0232 5F736967 		.ascii	"_signal_buf\000"
+ 2261      6E616C5F 
+ 2261      62756600 
+ 2262              	.LASF99:
+ 2263 023e 5F617363 		.ascii	"_asctime_buf\000"
+ 2263      74696D65 
+ 2263      5F627566 
+ 2263      00
+ 2264              	.LASF77:
+ 2265 024b 5F726573 		.ascii	"_result\000"
+ 2265      756C7400 
+ 2266              	.LASF16:
+ 2267 0253 5F5F7763 		.ascii	"__wch\000"
+ 2267      6800
+ 2268              	.LASF12:
+ 2269 0259 5F4C4F43 		.ascii	"_LOCK_T\000"
+ 2269      4B5F5400 
+ 2270              	.LASF15:
+ 2271 0261 77696E74 		.ascii	"wint_t\000"
+ 2271      5F7400
+ 2272              	.LASF63:
+ 2273 0268 5F6C6F63 		.ascii	"_lock\000"
+ 2273      6B00
+ 2274              	.LASF65:
+ 2275 026e 5F666C61 		.ascii	"_flags2\000"
+ 2275      67733200 
+ 2276              	.LASF55:
+ 2277 0276 5F777269 		.ascii	"_write\000"
+ 2277      746500
+ 2278              	.LASF34:
+ 2279 027d 5F5F746D 		.ascii	"__tm_year\000"
+ 2279      5F796561 
+ 2279      7200
+ 2280              	.LASF130:
+ 2281 0287 474E5520 		.ascii	"GNU C11 7.3.1 20180622 (release) [ARM/embedded-7-br"
+ 2281      43313120 
+ 2281      372E332E 
+ 2281      31203230 
+ 2281      31383036 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 44
+
+
+ 2282 02ba 616E6368 		.ascii	"anch revision 261907] -mcpu=cortex-m4 -mthumb -mapc"
+ 2282      20726576 
+ 2282      6973696F 
+ 2282      6E203236 
+ 2282      31393037 
+ 2283 02ed 732D6672 		.ascii	"s-frame -mthumb-interwork -gdwarf-2 -O\000"
+ 2283      616D6520 
+ 2283      2D6D7468 
+ 2283      756D622D 
+ 2283      696E7465 
+ 2284              	.LASF11:
+ 2285 0314 6C6F6E67 		.ascii	"long double\000"
+ 2285      20646F75 
+ 2285      626C6500 
+ 2286              	.LASF116:
+ 2287 0320 5F6E6578 		.ascii	"_nextf\000"
+ 2287      746600
+ 2288              	.LASF33:
+ 2289 0327 5F5F746D 		.ascii	"__tm_mon\000"
+ 2289      5F6D6F6E 
+ 2289      00
+ 2290              	.LASF43:
+ 2291 0330 5F617465 		.ascii	"_atexit\000"
+ 2291      78697400 
+ 2292              	.LASF125:
+ 2293 0338 7375626F 		.ascii	"suboptarg\000"
+ 2293      70746172 
+ 2293      6700
+ 2294              	.LASF75:
+ 2295 0342 5F5F7364 		.ascii	"__sdidinit\000"
+ 2295      6964696E 
+ 2295      697400
+ 2296              	.LASF13:
+ 2297 034d 5F6F6666 		.ascii	"_off_t\000"
+ 2297      5F7400
+ 2298              	.LASF80:
+ 2299 0354 5F667265 		.ascii	"_freelist\000"
+ 2299      656C6973 
+ 2299      7400
+ 2300              	.LASF106:
+ 2301 035e 5F776374 		.ascii	"_wctomb_state\000"
+ 2301      6F6D625F 
+ 2301      73746174 
+ 2301      6500
+ 2302              	.LASF1:
+ 2303 036c 756E7369 		.ascii	"unsigned char\000"
+ 2303      676E6564 
+ 2303      20636861 
+ 2303      7200
+ 2304              	.LASF83:
+ 2305 037a 5F6E6577 		.ascii	"_new\000"
+ 2305      00
+ 2306              	.LASF115:
+ 2307 037f 5F685F65 		.ascii	"_h_errno\000"
+ 2307      72726E6F 
+ 2307      00
+ 2308              	.LASF2:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 45
+
+
+ 2309 0388 73686F72 		.ascii	"short int\000"
+ 2309      7420696E 
+ 2309      7400
+ 2310              	.LASF36:
+ 2311 0392 5F5F746D 		.ascii	"__tm_yday\000"
+ 2311      5F796461 
+ 2311      7900
+ 2312              	.LASF46:
+ 2313 039c 5F5F7362 		.ascii	"__sbuf\000"
+ 2313      756600
+ 2314              	.LASF92:
+ 2315 03a3 5F696F62 		.ascii	"_iobs\000"
+ 2315      7300
+ 2316              	.LASF89:
+ 2317 03a9 5F5F4649 		.ascii	"__FILE\000"
+ 2317      4C4500
+ 2318              	.LASF20:
+ 2319 03b0 5F6D6273 		.ascii	"_mbstate_t\000"
+ 2319      74617465 
+ 2319      5F7400
+ 2320              	.LASF49:
+ 2321 03bb 5F5F7346 		.ascii	"__sFILE\000"
+ 2321      494C4500 
+ 2322              	.LASF64:
+ 2323 03c3 5F6D6273 		.ascii	"_mbstate\000"
+ 2323      74617465 
+ 2323      00
+ 2324              	.LASF102:
+ 2325 03cc 5F72616E 		.ascii	"_rand_next\000"
+ 2325      645F6E65 
+ 2325      787400
+ 2326              	.LASF104:
+ 2327 03d7 5F6D626C 		.ascii	"_mblen_state\000"
+ 2327      656E5F73 
+ 2327      74617465 
+ 2327      00
+ 2328              	.LASF71:
+ 2329 03e4 5F696E63 		.ascii	"_inc\000"
+ 2329      00
+ 2330              	.LASF44:
+ 2331 03e9 5F696E64 		.ascii	"_ind\000"
+ 2331      00
+ 2332              	.LASF74:
+ 2333 03ee 5F6C6F63 		.ascii	"_locale\000"
+ 2333      616C6500 
+ 2334              	.LASF76:
+ 2335 03f6 5F5F636C 		.ascii	"__cleanup\000"
+ 2335      65616E75 
+ 2335      7000
+ 2336              	.LASF73:
+ 2337 0400 5F756E73 		.ascii	"_unspecified_locale_info\000"
+ 2337      70656369 
+ 2337      66696564 
+ 2337      5F6C6F63 
+ 2337      616C655F 
+ 2338              	.LASF24:
+ 2339 0419 5F6D6178 		.ascii	"_maxwds\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 46
+
+
+ 2339      77647300 
+ 2340              	.LASF66:
+ 2341 0421 5F726565 		.ascii	"_reent\000"
+ 2341      6E7400
+ 2342              	.LASF94:
+ 2343 0428 5F736565 		.ascii	"_seed\000"
+ 2343      6400
+ 2344              	.LASF18:
+ 2345 042e 5F5F636F 		.ascii	"__count\000"
+ 2345      756E7400 
+ 2346              	.LASF119:
+ 2347 0436 5F5F6C6F 		.ascii	"__lock\000"
+ 2347      636B00
+ 2348              	.LASF19:
+ 2349 043d 5F5F7661 		.ascii	"__value\000"
+ 2349      6C756500 
+ 2350              	.LASF56:
+ 2351 0445 5F736565 		.ascii	"_seek\000"
+ 2351      6B00
+ 2352              	.LASF121:
+ 2353 044b 5F696D70 		.ascii	"_impure_ptr\000"
+ 2353      7572655F 
+ 2353      70747200 
+ 2354              	.LASF14:
+ 2355 0457 5F66706F 		.ascii	"_fpos_t\000"
+ 2355      735F7400 
+ 2356              	.LASF67:
+ 2357 045f 5F657272 		.ascii	"_errno\000"
+ 2357      6E6F00
+ 2358              	.LASF88:
+ 2359 0466 63686172 		.ascii	"char\000"
+ 2359      00
+ 2360              	.LASF30:
+ 2361 046b 5F5F746D 		.ascii	"__tm_min\000"
+ 2361      5F6D696E 
+ 2361      00
+ 2362              	.LASF95:
+ 2363 0474 5F6D756C 		.ascii	"_mult\000"
+ 2363      7400
+ 2364              	.LASF23:
+ 2365 047a 5F6E6578 		.ascii	"_next\000"
+ 2365      7400
+ 2366              	.LASF98:
+ 2367 0480 5F737472 		.ascii	"_strtok_last\000"
+ 2367      746F6B5F 
+ 2367      6C617374 
+ 2367      00
+ 2368              	.LASF41:
+ 2369 048d 5F666E74 		.ascii	"_fntypes\000"
+ 2369      79706573 
+ 2369      00
+ 2370              	.LASF96:
+ 2371 0496 5F616464 		.ascii	"_add\000"
+ 2371      00
+ 2372              	.LASF22:
+ 2373 049b 5F5F554C 		.ascii	"__ULong\000"
+ 2373      6F6E6700 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 47
+
+
+ 2374              	.LASF123:
+ 2375 04a3 696E7438 		.ascii	"int8_t\000"
+ 2375      5F7400
+ 2376              	.LASF109:
+ 2377 04aa 5F676574 		.ascii	"_getdate_err\000"
+ 2377      64617465 
+ 2377      5F657272 
+ 2377      00
+ 2378              	.LASF122:
+ 2379 04b7 5F676C6F 		.ascii	"_global_impure_ptr\000"
+ 2379      62616C5F 
+ 2379      696D7075 
+ 2379      72655F70 
+ 2379      747200
+ 2380              	.LASF124:
+ 2381 04ca 75696E74 		.ascii	"uint32_t\000"
+ 2381      33325F74 
+ 2381      00
+ 2382              	.LASF97:
+ 2383 04d3 5F756E75 		.ascii	"_unused_rand\000"
+ 2383      7365645F 
+ 2383      72616E64 
+ 2383      00
+ 2384              	.LASF132:
+ 2385 04e0 443A5C55 		.ascii	"D:\\UTFPR\\SISTEMAS OPERACIONAIS\\SO-threads\000"
+ 2385      54465052 
+ 2385      5C534953 
+ 2385      54454D41 
+ 2385      53204F50 
+ 2386              	.LASF26:
+ 2387 050a 5F776473 		.ascii	"_wds\000"
+ 2387      00
+ 2388              	.LASF35:
+ 2389 050f 5F5F746D 		.ascii	"__tm_wday\000"
+ 2389      5F776461 
+ 2389      7900
+ 2390              	.LASF90:
+ 2391 0519 5F676C75 		.ascii	"_glue\000"
+ 2391      6500
+ 2392              	.LASF117:
+ 2393 051f 5F6E6D61 		.ascii	"_nmalloc\000"
+ 2393      6C6C6F63 
+ 2393      00
+ 2394              	.LASF107:
+ 2395 0528 5F6C3634 		.ascii	"_l64a_buf\000"
+ 2395      615F6275 
+ 2395      6600
+ 2396              	.LASF85:
+ 2397 0532 5F736967 		.ascii	"_sig_func\000"
+ 2397      5F66756E 
+ 2397      6300
+ 2398              	.LASF59:
+ 2399 053c 5F6E6275 		.ascii	"_nbuf\000"
+ 2399      6600
+ 2400              	.LASF118:
+ 2401 0542 5F756E75 		.ascii	"_unused\000"
+ 2401      73656400 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 48
+
+
+ 2402              	.LASF37:
+ 2403 054a 5F5F746D 		.ascii	"__tm_isdst\000"
+ 2403      5F697364 
+ 2403      737400
+ 2404              	.LASF100:
+ 2405 0555 5F6C6F63 		.ascii	"_localtime_buf\000"
+ 2405      616C7469 
+ 2405      6D655F62 
+ 2405      756600
+ 2406              	.LASF57:
+ 2407 0564 5F636C6F 		.ascii	"_close\000"
+ 2407      736500
+ 2408              	.LASF103:
+ 2409 056b 5F723438 		.ascii	"_r48\000"
+ 2409      00
+ 2410              	.LASF105:
+ 2411 0570 5F6D6274 		.ascii	"_mbtowc_state\000"
+ 2411      6F77635F 
+ 2411      73746174 
+ 2411      6500
+ 2412              	.LASF79:
+ 2413 057e 5F703573 		.ascii	"_p5s\000"
+ 2413      00
+ 2414              	.LASF126:
+ 2415 0583 70696E67 		.ascii	"pingpong\000"
+ 2415      706F6E67 
+ 2415      00
+ 2416              	.LASF32:
+ 2417 058c 5F5F746D 		.ascii	"__tm_mday\000"
+ 2417      5F6D6461 
+ 2417      7900
+ 2418              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s 			page 49
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pingpong-tasks1.c
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:15     .text:00000000 $t
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:22     .text:00000000 BodyPing
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:79     .text:00000028 $d
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:85     .text:00000034 $t
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:92     .text:00000034 BodyPong
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:131    .text:00000050 $d
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:142    .bss:00000000 pingpong
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:143    .bss:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccFWxcu9.s:145    .rodata.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+UARTprintf

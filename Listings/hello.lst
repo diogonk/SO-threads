@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -53,49 +53,48 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
   14:Threads/pingpong-tasks1.c ****   uint32_t i = 0;
   15:Threads/pingpong-tasks1.c ****   while (1)
   16:Threads/pingpong-tasks1.c ****   {
-  17:Threads/pingpong-tasks1.c ****     if (!pingpong)
+  17:Threads/pingpong-tasks1.c ****     if (pingpong == 0){i++;}
   37              		.loc 1 17 0
   38 0002 094C     		ldr	r4, .L7
-  18:Threads/pingpong-tasks1.c ****       i++;
-  19:Threads/pingpong-tasks1.c **** 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 2
+  18:Threads/pingpong-tasks1.c **** 
+  19:Threads/pingpong-tasks1.c ****     if (i > (0xFFFFFF - 20))
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 2
 
 
-  20:Threads/pingpong-tasks1.c ****     if (i > (0xFFFFFF - 20))
-  39              		.loc 1 20 0
+  39              		.loc 1 19 0
   40 0004 094D     		ldr	r5, .L7+4
-  21:Threads/pingpong-tasks1.c ****     {
-  22:Threads/pingpong-tasks1.c ****       UARTprintf("PING\n");
-  41              		.loc 1 22 0
+  20:Threads/pingpong-tasks1.c ****     {
+  21:Threads/pingpong-tasks1.c ****       UARTprintf("PING\n");
+  41              		.loc 1 21 0
   42 0006 0A4E     		ldr	r6, .L7+8
   43 0008 0CE0     		b	.L4
   44              	.LVL1:
   45              	.L2:
-  20:Threads/pingpong-tasks1.c ****     {
-  46              		.loc 1 20 0
+  19:Threads/pingpong-tasks1.c ****     {
+  46              		.loc 1 19 0
   47 000a AA42     		cmp	r2, r5
   48 000c 05D8     		bhi	.L6
   49              	.LVL2:
   50              	.L3:
-  17:Threads/pingpong-tasks1.c ****       i++;
+  17:Threads/pingpong-tasks1.c **** 
   51              		.loc 1 17 0
   52 000e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
   53 0010 5BB2     		sxtb	r3, r3
   54 0012 002B     		cmp	r3, #0
   55 0014 F9D1     		bne	.L2
-  18:Threads/pingpong-tasks1.c **** 
-  56              		.loc 1 18 0
+  17:Threads/pingpong-tasks1.c **** 
+  56              		.loc 1 17 0 is_stmt 0 discriminator 1
   57 0016 0132     		adds	r2, r2, #1
   58              	.LVL3:
   59 0018 F7E7     		b	.L2
   60              	.L6:
-  61              		.loc 1 22 0
+  61              		.loc 1 21 0 is_stmt 1
   62 001a 3046     		mov	r0, r6
   63 001c FFF7FEFF 		bl	UARTprintf
   64              	.LVL4:
-  23:Threads/pingpong-tasks1.c ****       i = 0;
-  24:Threads/pingpong-tasks1.c ****       pingpong = 1;
-  65              		.loc 1 24 0
+  22:Threads/pingpong-tasks1.c ****       i = 0;
+  23:Threads/pingpong-tasks1.c ****       pingpong = 1;
+  65              		.loc 1 23 0
   66 0020 0123     		movs	r3, #1
   67 0022 2370     		strb	r3, [r4]
   68              	.L4:
@@ -118,20 +117,20 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
   84              		.thumb
   85              		.thumb_func
   86              		.fpu softvfp
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 3
-
-
   87              		.type	BodyPong, %function
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 3
+
+
   88              	BodyPong:
   89              	.LFB4:
-  25:Threads/pingpong-tasks1.c ****     }
-  26:Threads/pingpong-tasks1.c ****   }
-  27:Threads/pingpong-tasks1.c **** }
-  28:Threads/pingpong-tasks1.c **** 
-  29:Threads/pingpong-tasks1.c **** // corpo da thread Pong
-  30:Threads/pingpong-tasks1.c **** void BodyPong(void *arg)
-  31:Threads/pingpong-tasks1.c **** {
-  90              		.loc 1 31 0
+  24:Threads/pingpong-tasks1.c ****     }
+  25:Threads/pingpong-tasks1.c ****   }
+  26:Threads/pingpong-tasks1.c **** }
+  27:Threads/pingpong-tasks1.c **** 
+  28:Threads/pingpong-tasks1.c **** // corpo da thread Pong
+  29:Threads/pingpong-tasks1.c **** void BodyPong(void *arg)
+  30:Threads/pingpong-tasks1.c **** {
+  90              		.loc 1 30 0
   91              		.cfi_startproc
   92              		@ Volatile: function does not return.
   93              		@ args = 0, pretend = 0, frame = 0
@@ -142,30 +141,30 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
   98              		.cfi_def_cfa_offset 8
   99              		.cfi_offset 3, -8
  100              		.cfi_offset 14, -4
-  32:Threads/pingpong-tasks1.c ****   while (1)
-  33:Threads/pingpong-tasks1.c ****   {
-  34:Threads/pingpong-tasks1.c ****     if (pingpong == 1)
- 101              		.loc 1 34 0
+  31:Threads/pingpong-tasks1.c ****   while (1)
+  32:Threads/pingpong-tasks1.c ****   {
+  33:Threads/pingpong-tasks1.c ****     if (pingpong == 1)
+ 101              		.loc 1 33 0
  102 0036 064C     		ldr	r4, .L13
-  35:Threads/pingpong-tasks1.c ****     {
-  36:Threads/pingpong-tasks1.c ****       pingpong = 0;
- 103              		.loc 1 36 0
+  34:Threads/pingpong-tasks1.c ****     {
+  35:Threads/pingpong-tasks1.c ****       pingpong = 0;
+ 103              		.loc 1 35 0
  104 0038 0026     		movs	r6, #0
-  37:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
- 105              		.loc 1 37 0
+  36:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
+ 105              		.loc 1 36 0
  106 003a 064D     		ldr	r5, .L13+4
  107              	.LVL6:
  108              	.L10:
-  34:Threads/pingpong-tasks1.c ****     {
- 109              		.loc 1 34 0
+  33:Threads/pingpong-tasks1.c ****     {
+ 109              		.loc 1 33 0
  110 003c 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
  111 003e 5BB2     		sxtb	r3, r3
  112 0040 012B     		cmp	r3, #1
  113 0042 FBD1     		bne	.L10
-  36:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
- 114              		.loc 1 36 0
+  35:Threads/pingpong-tasks1.c ****       UARTprintf("PONG\n");
+ 114              		.loc 1 35 0
  115 0044 2670     		strb	r6, [r4]
- 116              		.loc 1 37 0
+ 116              		.loc 1 36 0
  117 0046 2846     		mov	r0, r5
  118 0048 FFF7FEFF 		bl	UARTprintf
  119              	.LVL7:
@@ -178,10 +177,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  126              		.cfi_endproc
  127              	.LFE4:
  128              		.size	BodyPong, .-BodyPong
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 4
-
-
  129              		.align	1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 4
+
+
  130              		.global	__error__
  131              		.syntax unified
  132              		.thumb
@@ -238,10 +237,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
   45:hello.c       **** 
   46:hello.c       **** uint32_t * createThreadStack(void);
   47:hello.c       **** 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 5
-
-
   48:hello.c       **** uint32_t Thread1Stack[STACK_SIZE];
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 5
+
+
   49:hello.c       **** uint32_t Thread2Stack[STACK_SIZE];
   50:hello.c       **** //uint32_t Thread3Stack[STACK_SIZE];
   51:hello.c       **** 
@@ -298,10 +297,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  157              		.loc 2 83 0
  158 0064 08BD     		pop	{r3, pc}
  159              	.L17:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 6
-
-
  160 0066 00BF     		.align	2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 6
+
+
  161              	.L16:
  162 0068 10000000 		.word	.LC2
  163              		.cfi_endproc
@@ -358,10 +357,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  195 007e 9847     		blx	r3
  196              	.LVL13:
  103:hello.c       **** 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 7
-
-
  104:hello.c       ****     //
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 7
+
+
  105:hello.c       ****     // Configure GPIO Pins for UART mode.
  106:hello.c       ****     //
  107:hello.c       ****     ROM_GPIOPinConfigure(GPIO_PA0_U0RX);
@@ -418,10 +417,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  238 00c4 001800F0 		.word	-268429312
  239 00c8 00000000 		.word	g_ui32SysClock
  240              		.cfi_endproc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 8
-
-
  241              	.LFE6:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 8
+
+
  242              		.size	ConfigureUART, .-ConfigureUART
  243              		.align	1
  244              		.global	createThreadStack
@@ -478,10 +477,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  160:hello.c       **** }
  161:hello.c       **** */
  162:hello.c       **** uint32_t* createThreadStack(void)
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 9
-
-
  163:hello.c       **** {
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 9
+
+
  252              		.loc 2 163 0
  253              		.cfi_startproc
  254              		@ args = 0, pretend = 0, frame = 0
@@ -538,10 +537,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  179:hello.c       **** 		uint32_t cont;
  180:hello.c       ****     // Run from the PLL at 120 MHz.
  181:hello.c       ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 10
-
-
  182:hello.c       ****     g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 10
+
+
  290              		.loc 2 182 0
  291 00da 2F4B     		ldr	r3, .L23
  292 00dc 1B68     		ldr	r3, [r3]
@@ -598,10 +597,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  202:hello.c       ****     //
  203:hello.c       ****     // Hello!
  204:hello.c       ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 11
-
-
  205:hello.c       **** 		    UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 11
+
+
  324              		.loc 2 205 0
  325 0110 274D     		ldr	r5, .L23+24
  326 0112 2846     		mov	r0, r5
@@ -658,10 +657,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  228:hello.c       **** 		//
  229:hello.c       **** 		SysCtlDelay(g_ui32SysClock / 10 / 3);
  355              		.loc 2 229 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 12
-
-
  356 0140 2068     		ldr	r0, [r4]
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 12
+
+
  357 0142 1E4D     		ldr	r5, .L23+36
  358 0144 A5FB0030 		umull	r3, r0, r5, r0
  359 0148 0009     		lsrs	r0, r0, #4
@@ -718,10 +717,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  396              		.loc 2 243 0
  397 0186 4022     		movs	r2, #64
  398 0188 1249     		ldr	r1, .L23+60
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 13
-
-
  399 018a 1348     		ldr	r0, .L23+64
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 13
+
+
  400 018c FFF7FEFF 		bl	createThread
  401              	.LVL40:
  244:hello.c       ****         startSwitcher(); // start the thread switching (this does not return)
@@ -778,10 +777,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  449              	.LC2:
  450 0010 25732025 		.ascii	"%s %d\012\000"
  450      640A00
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 14
-
-
  451 0017 00       		.space	1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 14
+
+
  452              	.LC3:
  453 0018 0A0A0A0A 		.ascii	"\012\012\012\012\012\012\012\012\012\012\012\000"
  453      0A0A0A0A 
@@ -838,10 +837,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  484 0004 0200     		.2byte	0x2
  485 0006 00000000 		.4byte	.Ldebug_abbrev0
  486 000a 04       		.byte	0x4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 15
-
-
  487 000b 01       		.uleb128 0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 15
+
+
  488 000c DE020000 		.4byte	.LASF148
  489 0010 0C       		.byte	0xc
  490 0011 0E020000 		.4byte	.LASF149
@@ -898,10 +897,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  541 007a 03       		.uleb128 0x3
  542 007b 04       		.byte	0x4
  543 007c 07       		.byte	0x7
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 16
-
-
  544 007d 1B020000 		.4byte	.LASF10
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 16
+
+
  545 0081 02       		.uleb128 0x2
  546 0082 22050000 		.4byte	.LASF11
  547 0086 04       		.byte	0x4
@@ -958,10 +957,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  598 00ed D2000000 		.4byte	0xd2
  599 00f1 0B       		.uleb128 0xb
  600 00f2 28020000 		.4byte	.LASF19
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 17
-
-
  601 00f6 06       		.byte	0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 17
+
+
  602 00f7 A9       		.byte	0xa9
  603 00f8 FD000000 		.4byte	0xfd
  604 00fc 00       		.byte	0
@@ -1018,10 +1017,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  655 015f 0F       		.uleb128 0xf
  656 0160 F1040000 		.4byte	.LASF25
  657 0164 08       		.byte	0x8
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 18
-
-
  658 0165 31       		.byte	0x31
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 18
+
+
  659 0166 B2010000 		.4byte	0x1b2
  660 016a 02       		.byte	0x2
  661 016b 23       		.byte	0x23
@@ -1078,10 +1077,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  712 01c6 00       		.byte	0
  713 01c7 00       		.byte	0
  714 01c8 10       		.uleb128 0x10
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 19
-
-
  715 01c9 16020000 		.4byte	.LASF30
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 19
+
+
  716 01cd 24       		.byte	0x24
  717 01ce 08       		.byte	0x8
  718 01cf 37       		.byte	0x37
@@ -1138,10 +1137,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  769 0229 92050000 		.4byte	.LASF37
  770 022d 08       		.byte	0x8
  771 022e 3F       		.byte	0x3f
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 20
-
-
  772 022f 73000000 		.4byte	0x73
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 20
+
+
  773 0233 02       		.byte	0x2
  774 0234 23       		.byte	0x23
  775 0235 18       		.uleb128 0x18
@@ -1198,10 +1197,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  826 0292 51       		.byte	0x51
  827 0293 48010000 		.4byte	0x148
  828 0297 03       		.byte	0x3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 21
-
-
  829 0298 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 21
+
+
  830 0299 8402     		.uleb128 0x104
  831 029b 00       		.byte	0
  832 029c 0C       		.uleb128 0xc
@@ -1258,10 +1257,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  883 02fe 09030000 		.4byte	0x309
  884 0302 0D       		.uleb128 0xd
  885 0303 7A000000 		.4byte	0x7a
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 22
-
-
  886 0307 1F       		.byte	0x1f
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 22
+
+
  887 0308 00       		.byte	0
  888 0309 07       		.uleb128 0x7
  889 030a 04       		.byte	0x4
@@ -1318,10 +1317,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  940 0365 04       		.uleb128 0x4
  941 0366 11       		.uleb128 0x11
  942 0367 5F7700   		.ascii	"_w\000"
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 23
-
-
  943 036a 08       		.byte	0x8
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 23
+
+
  944 036b B8       		.byte	0xb8
  945 036c 73000000 		.4byte	0x73
  946 0370 02       		.byte	0x2
@@ -1378,10 +1377,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  997 03c7 0F       		.uleb128 0xf
  998 03c8 CD020000 		.4byte	.LASF57
  999 03cc 08       		.byte	0x8
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 24
-
-
  1000 03cd C7       		.byte	0xc7
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 24
+
+
  1001 03ce 5F060000 		.4byte	0x65f
  1002 03d2 02       		.byte	0x2
  1003 03d3 23       		.byte	0x23
@@ -1438,10 +1437,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1054 042a ED050000 		.4byte	.LASF61
  1055 042e 08       		.byte	0x8
  1056 042f D4       		.byte	0xd4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 25
-
-
  1057 0430 B5060000 		.4byte	0x6b5
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 25
+
+
  1058 0434 02       		.byte	0x2
  1059 0435 23       		.byte	0x23
  1060 0436 43       		.uleb128 0x43
@@ -1498,10 +1497,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1111 0490 08       		.byte	0x8
  1112 0491 E5       		.byte	0xe5
  1113 0492 73000000 		.4byte	0x73
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 26
-
-
  1114 0496 02       		.byte	0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 26
+
+
  1115 0497 23       		.byte	0x23
  1116 0498 64       		.uleb128 0x64
  1117 0499 00       		.byte	0
@@ -1558,10 +1557,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1168 0504 08       		.byte	0x8
  1169 0505 6702     		.2byte	0x267
  1170 0507 12070000 		.4byte	0x712
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 27
-
-
  1171 050b 02       		.byte	0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 27
+
+
  1172 050c 23       		.byte	0x23
  1173 050d 0C       		.uleb128 0xc
  1174 050e 18       		.uleb128 0x18
@@ -1618,10 +1617,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1225 056e 7502     		.2byte	0x275
  1226 0570 B2010000 		.4byte	0x1b2
  1227 0574 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 28
-
-
  1228 0575 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 28
+
+
  1229 0576 40       		.uleb128 0x40
  1230 0577 18       		.uleb128 0x18
  1231 0578 04020000 		.4byte	.LASF80
@@ -1678,10 +1677,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1282 05d9 F3020000 		.4byte	0x2f3
  1283 05dd 03       		.byte	0x3
  1284 05de 23       		.byte	0x23
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 29
-
-
  1285 05df C802     		.uleb128 0x148
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 29
+
+
  1286 05e1 18       		.uleb128 0x18
  1287 05e2 80020000 		.4byte	.LASF86
  1288 05e6 08       		.byte	0x8
@@ -1738,10 +1737,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1339 064e 15       		.uleb128 0x15
  1340 064f 59060000 		.4byte	0x659
  1341 0653 15       		.uleb128 0x15
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 30
-
-
  1342 0654 73000000 		.4byte	0x73
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 30
+
+
  1343 0658 00       		.byte	0
  1344 0659 07       		.uleb128 0x7
  1345 065a 04       		.byte	0x4
@@ -1798,10 +1797,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1396 06cd 40030000 		.4byte	0x340
  1397 06d1 19       		.uleb128 0x19
  1398 06d2 9C050000 		.4byte	.LASF92
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 31
-
-
  1399 06d6 0C       		.byte	0xc
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 31
+
+
  1400 06d7 08       		.byte	0x8
  1401 06d8 2301     		.2byte	0x123
  1402 06da 0C070000 		.4byte	0x70c
@@ -1858,10 +1857,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1453 0740 02       		.byte	0x2
  1454 0741 23       		.byte	0x23
  1455 0742 06       		.uleb128 0x6
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 32
-
-
  1456 0743 18       		.uleb128 0x18
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 32
+
+
  1457 0744 15050000 		.4byte	.LASF98
  1458 0748 08       		.byte	0x8
  1459 0749 4201     		.2byte	0x142
@@ -1918,10 +1917,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1510 07a9 EF010000 		.4byte	.LASF103
  1511 07ad 08       		.byte	0x8
  1512 07ae 8602     		.2byte	0x286
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 33
-
-
  1513 07b0 73000000 		.4byte	0x73
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 33
+
+
  1514 07b4 02       		.byte	0x2
  1515 07b5 23       		.byte	0x23
  1516 07b6 48       		.uleb128 0x48
@@ -1978,10 +1977,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1567 0817 08       		.byte	0x8
  1568 0818 8D02     		.2byte	0x28d
  1569 081a B3080000 		.4byte	0x8b3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 34
-
-
  1570 081e 03       		.byte	0x3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 34
+
+
  1571 081f 23       		.byte	0x23
  1572 0820 8801     		.uleb128 0x88
  1573 0822 18       		.uleb128 0x18
@@ -2038,10 +2037,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1624 0888 9402     		.2byte	0x294
  1625 088a 73000000 		.4byte	0x73
  1626 088e 03       		.byte	0x3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 35
-
-
  1627 088f 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 35
+
+
  1628 0890 CC01     		.uleb128 0xcc
  1629 0892 00       		.byte	0
  1630 0893 0C       		.uleb128 0xc
@@ -2098,10 +2097,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1681 08fc 7A000000 		.4byte	0x7a
  1682 0900 0B090000 		.4byte	0x90b
  1683 0904 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 36
-
-
  1684 0905 7A000000 		.4byte	0x7a
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 36
+
+
  1685 0909 1D       		.byte	0x1d
  1686 090a 00       		.byte	0
  1687 090b 1B       		.uleb128 0x1b
@@ -2158,10 +2157,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1738 0974 04       		.byte	0x4
  1739 0975 61090000 		.4byte	0x961
  1740 0979 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 37
-
-
  1741 097a C5060000 		.4byte	0x6c5
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 37
+
+
  1742 097e 89090000 		.4byte	0x989
  1743 0982 0D       		.uleb128 0xd
  1744 0983 7A000000 		.4byte	0x7a
@@ -2218,10 +2217,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1795 09eb 02       		.byte	0x2
  1796 09ec 31       		.byte	0x31
  1797 09ed C4090000 		.4byte	0x9c4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 38
-
-
  1798 09f1 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 38
+
+
  1799 09f2 05       		.byte	0x5
  1800 09f3 03       		.byte	0x3
  1801 09f4 00000000 		.4byte	Thread2Stack
@@ -2278,10 +2277,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1851 0a60 E60D0000 		.4byte	0xde6
  1852 0a64 730A0000 		.4byte	0xa73
  1853 0a68 24       		.uleb128 0x24
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 39
-
-
  1854 0a69 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 39
+
+
  1855 0a6a 50       		.byte	0x50
  1856 0a6b 01       		.byte	0x1
  1857 0a6c 30       		.byte	0x30
@@ -2338,10 +2337,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1908 0aba 25       		.uleb128 0x25
  1909 0abb 1E010000 		.4byte	.LVL26
  1910 0abf F30D0000 		.4byte	0xdf3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 40
-
-
  1911 0ac3 CE0A0000 		.4byte	0xace
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 40
+
+
  1912 0ac7 24       		.uleb128 0x24
  1913 0ac8 01       		.byte	0x1
  1914 0ac9 50       		.byte	0x50
@@ -2398,10 +2397,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  1965 0b26 31       		.byte	0x31
  1966 0b27 00       		.byte	0
  1967 0b28 25       		.uleb128 0x25
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 41
-
-
  1968 0b29 40010000 		.4byte	.LVL31
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 41
+
+
  1969 0b2d 000E0000 		.4byte	0xe00
  1970 0b31 400B0000 		.4byte	0xb40
  1971 0b35 24       		.uleb128 0x24
@@ -2458,10 +2457,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2022 0b8c 51       		.byte	0x51
  2023 0b8d 01       		.byte	0x1
  2024 0b8e 31       		.byte	0x31
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 42
-
-
  2025 0b8f 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 42
+
+
  2026 0b90 26       		.uleb128 0x26
  2027 0b91 70010000 		.4byte	.LVL36
  2028 0b95 0D0E0000 		.4byte	0xe0d
@@ -2518,10 +2517,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2079 0bfb 01       		.byte	0x1
  2080 0bfc 50       		.byte	0x50
  2081 0bfd 05       		.byte	0x5
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 43
-
-
  2082 0bfe 03       		.byte	0x3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 43
+
+
  2083 0bff 00000000 		.4byte	BodyPong
  2084 0c03 24       		.uleb128 0x24
  2085 0c04 01       		.byte	0x1
@@ -2578,10 +2577,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2136 0c68 00       		.byte	0
  2137 0c69 00       		.byte	0
  2138 0c6a 07       		.uleb128 0x7
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 44
-
-
  2139 0c6b 04       		.byte	0x4
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 44
+
+
  2140 0c6c 91000000 		.4byte	0x91
  2141 0c70 29       		.uleb128 0x29
  2142 0c71 01       		.byte	0x1
@@ -2638,10 +2637,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2191 0cd2 23       		.uleb128 0x23
  2192 0cd3 A0000000 		.4byte	.LVL16
  2193 0cd7 EA0C0000 		.4byte	0xcea
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 45
-
-
  2194 0cdb 24       		.uleb128 0x24
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 45
+
+
  2195 0cdc 01       		.byte	0x1
  2196 0cdd 50       		.byte	0x50
  2197 0cde 05       		.byte	0x5
@@ -2698,10 +2697,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2248 0d2f 01       		.byte	0x1
  2249 0d30 740D0000 		.4byte	0xd74
  2250 0d34 2A       		.uleb128 0x2a
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 46
-
-
  2251 0d35 B2050000 		.4byte	.LASF136
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 46
+
+
  2252 0d39 02       		.byte	0x2
  2253 0d3a 50       		.byte	0x50
  2254 0d3b 22060000 		.4byte	0x622
@@ -2741,7 +2740,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2288 0d75 01       		.byte	0x1
  2289 0d76 9F000000 		.4byte	.LASF138
  2290 0d7a 01       		.byte	0x1
- 2291 0d7b 1E       		.byte	0x1e
+ 2291 0d7b 1D       		.byte	0x1d
  2292 0d7c 01       		.byte	0x1
  2293 0d7d 34000000 		.4byte	.LFB4
  2294 0d81 58000000 		.4byte	.LFE4
@@ -2751,17 +2750,17 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2298 0d8e 2B       		.uleb128 0x2b
  2299 0d8f 61726700 		.ascii	"arg\000"
  2300 0d93 01       		.byte	0x1
- 2301 0d94 1E       		.byte	0x1e
+ 2301 0d94 1D       		.byte	0x1d
  2302 0d95 9C000000 		.4byte	0x9c
  2303 0d99 F8000000 		.4byte	.LLST3
  2304 0d9d 28       		.uleb128 0x28
  2305 0d9e 4C000000 		.4byte	.LVL7
  2306 0da2 F30D0000 		.4byte	0xdf3
  2307 0da6 24       		.uleb128 0x24
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 47
-
-
  2308 0da7 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 47
+
+
  2309 0da8 50       		.byte	0x50
  2310 0da9 02       		.byte	0x2
  2311 0daa 75       		.byte	0x75
@@ -2818,10 +2817,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2362 0e0b 0A       		.byte	0xa
  2363 0e0c 44       		.byte	0x44
  2364 0e0d 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 48
-
-
  2365 0e0e 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 48
+
+
  2366 0e0f 01       		.byte	0x1
  2367 0e10 BB000000 		.4byte	.LASF143
  2368 0e14 BB000000 		.4byte	.LASF143
@@ -2878,10 +2877,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2419 0011 00       		.byte	0
  2420 0012 00       		.byte	0
  2421 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 49
-
-
  2422 0014 16       		.uleb128 0x16
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 49
+
+
  2423 0015 00       		.byte	0
  2424 0016 03       		.uleb128 0x3
  2425 0017 0E       		.uleb128 0xe
@@ -2938,10 +2937,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2476 004a 13       		.uleb128 0x13
  2477 004b 00       		.byte	0
  2478 004c 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 50
-
-
  2479 004d 08       		.uleb128 0x8
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 50
+
+
  2480 004e 13       		.uleb128 0x13
  2481 004f 00       		.byte	0
  2482 0050 03       		.uleb128 0x3
@@ -2998,10 +2997,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2533 0083 13       		.uleb128 0x13
  2534 0084 00       		.byte	0
  2535 0085 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 51
-
-
  2536 0086 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 51
+
+
  2537 0087 21       		.uleb128 0x21
  2538 0088 00       		.byte	0
  2539 0089 49       		.uleb128 0x49
@@ -3058,10 +3057,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2590 00bc 00       		.byte	0
  2591 00bd 03       		.uleb128 0x3
  2592 00be 08       		.uleb128 0x8
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 52
-
-
  2593 00bf 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 52
+
+
  2594 00c0 0B       		.uleb128 0xb
  2595 00c1 3B       		.uleb128 0x3b
  2596 00c2 0B       		.uleb128 0xb
@@ -3118,10 +3117,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2647 00f5 13       		.uleb128 0x13
  2648 00f6 00       		.byte	0
  2649 00f7 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 53
-
-
  2650 00f8 17       		.uleb128 0x17
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 53
+
+
  2651 00f9 13       		.uleb128 0x13
  2652 00fa 01       		.byte	0x1
  2653 00fb 03       		.uleb128 0x3
@@ -3178,10 +3177,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2704 012e 01       		.uleb128 0x1
  2705 012f 13       		.uleb128 0x13
  2706 0130 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 54
-
-
  2707 0131 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 54
+
+
  2708 0132 1B       		.uleb128 0x1b
  2709 0133 17       		.uleb128 0x17
  2710 0134 01       		.byte	0x1
@@ -3238,10 +3237,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2761 0167 34       		.uleb128 0x34
  2762 0168 00       		.byte	0
  2763 0169 03       		.uleb128 0x3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 55
-
-
  2764 016a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 55
+
+
  2765 016b 3A       		.uleb128 0x3a
  2766 016c 0B       		.uleb128 0xb
  2767 016d 3B       		.uleb128 0x3b
@@ -3298,10 +3297,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2818 01a1 13       		.uleb128 0x13
  2819 01a2 00       		.byte	0
  2820 01a3 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 56
-
-
  2821 01a4 22       		.uleb128 0x22
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 56
+
+
  2822 01a5 34       		.uleb128 0x34
  2823 01a6 00       		.byte	0
  2824 01a7 03       		.uleb128 0x3
@@ -3358,10 +3357,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2875 01e3 03       		.uleb128 0x3
  2876 01e4 08       		.uleb128 0x8
  2877 01e5 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 57
-
-
  2878 01e6 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 57
+
+
  2879 01e7 3B       		.uleb128 0x3b
  2880 01e8 0B       		.uleb128 0xb
  2881 01e9 49       		.uleb128 0x49
@@ -3418,10 +3417,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2932 021f 02       		.uleb128 0x2
  2933 0220 06       		.uleb128 0x6
  2934 0221 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 58
-
-
  2935 0222 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 58
+
+
  2936 0223 2B       		.uleb128 0x2b
  2937 0224 05       		.uleb128 0x5
  2938 0225 00       		.byte	0
@@ -3478,10 +3477,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  2989 0259 0C       		.uleb128 0xc
  2990 025a 8740     		.uleb128 0x2007
  2991 025c 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 59
-
-
  2992 025d 03       		.uleb128 0x3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 59
+
+
  2993 025e 0E       		.uleb128 0xe
  2994 025f 3A       		.uleb128 0x3a
  2995 0260 0B       		.uleb128 0xb
@@ -3538,10 +3537,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3046 006a 7D       		.byte	0x7d
  3047 006b 00       		.sleb128 0
  3048 006c 5A000000 		.4byte	.LCFI2-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 60
-
-
  3049 0070 6C000000 		.4byte	.LFE5-.Ltext0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 60
+
+
  3050 0074 0200     		.2byte	0x2
  3051 0076 7D       		.byte	0x7d
  3052 0077 08       		.sleb128 8
@@ -3598,10 +3597,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3103 00f4 00000000 		.4byte	0
  3104              	.LLST3:
  3105 00f8 34000000 		.4byte	.LVL5-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 61
-
-
  3106 00fc 3C000000 		.4byte	.LVL6-.Ltext0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 61
+
+
  3107 0100 0100     		.2byte	0x1
  3108 0102 50       		.byte	0x50
  3109 0103 3C000000 		.4byte	.LVL6-.Ltext0
@@ -3657,11 +3656,11 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3159 001c 00000000 		.4byte	0
  3160              		.section	.debug_line,"",%progbits
  3161              	.Ldebug_line0:
- 3162 0000 B6020000 		.section	.debug_str,"MS",%progbits,1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 62
-
-
+ 3162 0000 BC020000 		.section	.debug_str,"MS",%progbits,1
  3162      02005A02 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 62
+
+
  3162      00000201 
  3162      FB0E0D00 
  3162      01010101 
@@ -3718,10 +3717,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3188 0087 5F5F696E 		.ascii	"__int8_t\000"
  3188      74385F74 
  3188      00
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 63
-
-
  3189              	.LASF113:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 63
+
+
  3190 0090 5F6D6272 		.ascii	"_mbrtowc_state\000"
  3190      746F7763 
  3190      5F737461 
@@ -3778,10 +3777,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3217              	.LASF4:
  3218 011a 6C6F6E67 		.ascii	"long int\000"
  3218      20696E74 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 64
-
-
  3218      00
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 64
+
+
  3219              	.LASF133:
  3220 0123 63726561 		.ascii	"createThreadStack\000"
  3220      74655468 
@@ -3838,10 +3837,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3246 01ac 55415254 		.ascii	"UARTprintf\000"
  3246      7072696E 
  3246      746600
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 65
-
-
  3247              	.LASF139:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 65
+
+
  3248 01b7 426F6479 		.ascii	"BodyPing\000"
  3248      50696E67 
  3248      00
@@ -3898,10 +3897,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3278 0237 5F637674 		.ascii	"_cvtlen\000"
  3278      6C656E00 
  3279              	.LASF7:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 66
-
-
  3280 023f 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 66
+
+
  3280      20756E73 
  3280      69676E65 
  3280      6420696E 
@@ -3958,10 +3957,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3308 02cd 5F777269 		.ascii	"_write\000"
  3308      746500
  3309              	.LASF36:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 67
-
-
  3310 02d4 5F5F746D 		.ascii	"__tm_year\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 67
+
+
  3310      5F796561 
  3310      7200
  3311              	.LASF148:
@@ -4018,10 +4017,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3334 03c1 5F667265 		.ascii	"_freelist\000"
  3334      656C6973 
  3334      7400
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 68
-
-
  3335              	.LASF108:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 68
+
+
  3336 03cb 5F776374 		.ascii	"_wctomb_state\000"
  3336      6F6D625F 
  3336      73746174 
@@ -4078,10 +4077,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3363              	.LASF73:
  3364 0451 5F696E63 		.ascii	"_inc\000"
  3364      00
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 69
-
-
  3365              	.LASF46:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 69
+
+
  3366 0456 5F696E64 		.ascii	"_ind\000"
  3366      00
  3367              	.LASF76:
@@ -4138,10 +4137,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3396      00
  3397              	.LASF142:
  3398 04e2 4C454457 		.ascii	"LEDWrite\000"
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 70
-
-
  3398      72697465 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 70
+
+
  3398      00
  3399              	.LASF97:
  3400 04eb 5F6D756C 		.ascii	"_mult\000"
@@ -4198,10 +4197,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3424      54454D41 
  3424      53204F50 
  3425              	.LASF28:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 71
-
-
  3426 058d 5F776473 		.ascii	"_wds\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 71
+
+
  3426      00
  3427              	.LASF37:
  3428 0592 5F5F746D 		.ascii	"__tm_wday\000"
@@ -4258,10 +4257,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3454 0615 5F636C6F 		.ascii	"_close\000"
  3454      736500
  3455              	.LASF105:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 72
-
-
  3456 061c 5F723438 		.ascii	"_r48\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 72
+
+
  3456      00
  3457              	.LASF107:
  3458 0621 5F6D6274 		.ascii	"_mbtowc_state\000"
@@ -4283,33 +4282,33 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 1
  3466      5F6D6461 
  3466      7900
  3467              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s 			page 73
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s 			page 73
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 hello.c
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:15     .text:00000000 $t
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:22     .text:00000000 BodyPing
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:75     .text:00000028 $d
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:81     .text:00000034 $t
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:88     .text:00000034 BodyPong
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:124    .text:00000050 $d
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:129    .text:00000058 $t
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:136    .text:00000058 __error__
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:162    .text:00000068 $d
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:166    .text:0000006c $t
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:173    .text:0000006c ConfigureUART
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:236    .text:000000bc $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:15     .text:00000000 $t
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:22     .text:00000000 BodyPing
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:75     .text:00000028 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:81     .text:00000034 $t
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:88     .text:00000034 BodyPong
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:124    .text:00000050 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:129    .text:00000058 $t
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:136    .text:00000058 __error__
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:162    .text:00000068 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:166    .text:0000006c $t
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:173    .text:0000006c ConfigureUART
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:236    .text:000000bc $d
                             *COM*:00000004 g_ui32SysClock
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:243    .text:000000cc $t
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:250    .text:000000cc createThreadStack
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:277    .text:000000d8 main
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:411    .text:00000198 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:243    .text:000000cc $t
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:250    .text:000000cc createThreadStack
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:277    .text:000000d8 main
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:411    .text:00000198 $d
                             *COM*:00000100 Thread1Stack
                             *COM*:00000100 Thread2Stack
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:439    .bss:00000000 pingpong
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:440    .bss:00000000 $d
-C:\Users\Diogo\AppData\Local\Temp\cc6viSsa.s:442    .rodata.str1.4:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:439    .bss:00000000 pingpong
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:440    .bss:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccRXdVYs.s:442    .rodata.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 UARTprintf

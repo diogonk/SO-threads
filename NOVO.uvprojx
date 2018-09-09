@@ -354,6 +354,11 @@
               <FileType>5</FileType>
               <FilePath>.\Threads\thread.h</FilePath>
             </File>
+            <File>
+              <FileName>pingpong-tasks1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Threads\pingpong-tasks1.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -14,8 +14,7 @@ void BodyPing(void)
   uint32_t i = 0;
   while (1)
   {
-    if (!pingpong)
-      i++;
+    if (pingpong == 0){i++;}
 
     if (i > (0xFFFFFF - 20))
     {
