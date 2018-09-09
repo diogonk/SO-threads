@@ -4,20 +4,20 @@
 //
 // Copyright (c) 2013-2014 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
-// 
+//
 // Texas Instruments (TI) is supplying this software for use solely and
 // exclusively on TI's microcontroller products. The software is owned by
 // TI and/or its suppliers, and is protected under applicable copyright
 // laws. You may not combine this software with "viral" open-source
 // software in order to form a larger program.
-// 
+//
 // THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
 // NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 // NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
 // A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
-// 
+//
 // This is part of revision 2.1.0.12573 of the EK-TM4C1294XL Firmware Package.
 //
 //*****************************************************************************
@@ -35,15 +35,21 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 #include "Threads/thread.h"
+#include "Threads/pingpong-tasks1.c"
 #include "debug.h"
 
 #include <stdlib.h>
 
 int testafila(void);
 #define STACK_SIZE 64
+
+uint32_t * createThreadStack(void);
+
 uint32_t Thread1Stack[STACK_SIZE];
 uint32_t Thread2Stack[STACK_SIZE];
-uint32_t Thread3Stack[STACK_SIZE];
+//uint32_t Thread3Stack[STACK_SIZE];
+
+
 
 //*****************************************************************************
 //
@@ -73,7 +79,7 @@ uint32_t g_ui32SysClock;
 void
 __error__(char *pcFilename, uint32_t ui32Line)
 {
-		 UARTprintf("%s %d\n" ,pcFilename, ui32Line);   
+		 UARTprintf("%s %d\n" ,pcFilename, ui32Line);
 }
 #endif
 
@@ -109,7 +115,7 @@ ConfigureUART(void)
     UARTStdioConfig(0, 115200, g_ui32SysClock);
 }
 
-
+/*
 void Thread1(void)
 {
     uint16_t counter;
@@ -152,6 +158,14 @@ void Thread3(void)
         if (counter>5000){counter =0;}
     }
 }
+*/
+uint32_t* createThreadStack(void)
+{
+	uint32_t *aux;
+	aux = malloc(STACK_SIZE*sizeof(uint32_t));
+	return aux;
+}
+
 
 //*****************************************************************************
 //
@@ -198,7 +212,7 @@ main(void)
 		//ASSERT(teste[0] == '0');
 
 		//testafila();
-// UARTprintf("%s %d\n" ,__FILE__, __LINE__);   
+// UARTprintf("%s %d\n" ,__FILE__, __LINE__);
 	 // We are finished.  Hang around flashing D1.
     //
 		//exit(0);
@@ -224,10 +238,8 @@ main(void)
 		//
 		SysCtlDelay(g_ui32SysClock / 10 / 3);
 		UARTprintf("Criando Tarefa 1\n");
-    createThread(Thread1,Thread1Stack,STACK_SIZE);
+        createThread(BodyPing,Thread1Stack,STACK_SIZE);
 		UARTprintf("Criando Tarefa 2\n");
-    createThread(Thread2,Thread2Stack,STACK_SIZE);
-		UARTprintf("Criando Tarefa 3\n");
-    createThread(Thread3,Thread3Stack,STACK_SIZE);     
-    startSwitcher(); // start the thread switching (this does not return)	
+        createThread(BodyPong,Thread2Stack,STACK_SIZE);
+        startSwitcher(); // start the thread switching (this does not return)
 }

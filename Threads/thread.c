@@ -2,8 +2,6 @@
 #include "hw_nvic.h"
 #define MAX_THREADS 10
 
-
-
 uint32_t ThreadIndex = 0;
 uint32_t ThreadCount = 0;
 typedef struct {

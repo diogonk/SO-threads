@@ -73,7 +73,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>0</tvExp>
+        <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -153,14 +153,14 @@
           <Type>0</Type>
           <LineNumber>89</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10568</Address>
+          <Address>10432</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\multithread\Queue\testafila.c</Filename>
+          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\89</Expression>
         </Bp>
@@ -169,14 +169,14 @@
           <Type>0</Type>
           <LineNumber>80</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10558</Address>
+          <Address>10422</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\multithread\Queue\testafila.c</Filename>
+          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\80</Expression>
         </Bp>
@@ -185,14 +185,14 @@
           <Type>0</Type>
           <LineNumber>41</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10426</Address>
+          <Address>10290</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\multithread\Queue\testafila.c</Filename>
+          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\41</Expression>
         </Bp>
@@ -201,14 +201,14 @@
           <Type>0</Type>
           <LineNumber>46</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10450</Address>
+          <Address>10314</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\multithread\Queue\testafila.c</Filename>
+          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\46</Expression>
         </Bp>
@@ -292,7 +292,7 @@
 
   <Group>
     <GroupName>Source Startup</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -348,7 +348,7 @@
 
   <Group>
     <GroupName>UART</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -404,7 +404,7 @@
 
   <Group>
     <GroupName>Queue</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -448,7 +448,7 @@
 
   <Group>
     <GroupName>Threads</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
