@@ -1,0 +1,1575 @@
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"thread.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.align	1
+  16              		.global	createThread
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  20              		.fpu softvfp
+  21              		.type	createThread, %function
+  22              	createThread:
+  23              	.LFB0:
+  24              		.file 1 "Threads/thread.c"
+   1:Threads/thread.c **** #include <stdint.h>
+   2:Threads/thread.c **** #include "hw_nvic.h"
+   3:Threads/thread.c **** #define MAX_THREADS 10
+   4:Threads/thread.c **** 
+   5:Threads/thread.c **** 
+   6:Threads/thread.c **** 
+   7:Threads/thread.c **** uint32_t ThreadIndex = 0;
+   8:Threads/thread.c **** uint32_t ThreadCount = 0;
+   9:Threads/thread.c **** typedef struct {
+  10:Threads/thread.c ****     uint32_t *ThreadStack;
+  11:Threads/thread.c ****     void (*ThreadFn )();
+  12:Threads/thread.c ****      uint32_t Attributes;   
+  13:Threads/thread.c **** } ThreadControlBlock;
+  14:Threads/thread.c **** 
+  15:Threads/thread.c **** 
+  16:Threads/thread.c **** 
+  17:Threads/thread.c **** ThreadControlBlock Threads[MAX_THREADS];
+  18:Threads/thread.c **** uint32_t TCB_Size = sizeof(ThreadControlBlock);
+  19:Threads/thread.c **** 
+  20:Threads/thread.c **** 
+  21:Threads/thread.c **** 
+  22:Threads/thread.c **** void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize)
+  23:Threads/thread.c **** {
+  25              		.loc 1 23 0
+  26              		.cfi_startproc
+  27              		@ args = 0, pretend = 0, frame = 0
+  28              		@ frame_needed = 0, uses_anonymous_args = 0
+  29              		@ link register save eliminated.
+  30              	.LVL0:
+  31 0000 70B4     		push	{r4, r5, r6}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 2
+
+
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 6, -4
+  24:Threads/thread.c ****     uint32_t Index;
+  25:Threads/thread.c ****     if (ThreadCount < MAX_THREADS)
+  37              		.loc 1 25 0
+  38 0002 2D4B     		ldr	r3, .L6
+  39 0004 1B68     		ldr	r3, [r3]
+  40 0006 092B     		cmp	r3, #9
+  41 0008 54D8     		bhi	.L1
+  26:Threads/thread.c ****     {
+  27:Threads/thread.c ****         asm(" cpsid i "); // disable interrupts during thread creation
+  42              		.loc 1 27 0
+  43              		.syntax unified
+  44              	@ 27 "Threads/thread.c" 1
+  45 000a 72B6     		 cpsid i 
+  46              	@ 0 "" 2
+  28:Threads/thread.c ****         Threads[ThreadCount].ThreadFn = ThreadFn;
+  47              		.loc 1 28 0
+  48              		.thumb
+  49              		.syntax unified
+  50 000c 2A4B     		ldr	r3, .L6
+  51 000e 1B68     		ldr	r3, [r3]
+  52 0010 03EB4303 		add	r3, r3, r3, lsl #1
+  53 0014 294C     		ldr	r4, .L6+4
+  54 0016 04EB8303 		add	r3, r4, r3, lsl #2
+  55 001a 5860     		str	r0, [r3, #4]
+  56              	.LVL1:
+  29:Threads/thread.c ****         
+  30:Threads/thread.c ****         // The thread stack needs to be set up so that it can be context switched back to later
+  31:Threads/thread.c ****         // First zero the stack (assuming 32 bit accesses.  Stacksize expressed in 32 bit words
+  32:Threads/thread.c ****         for (Index=0;Index < StackSize; Index++)
+  57              		.loc 1 32 0
+  58 001c 3AB1     		cbz	r2, .L3
+  59 001e 0B1F     		subs	r3, r1, #4
+  60 0020 03EB8205 		add	r5, r3, r2, lsl #2
+  33:Threads/thread.c ****             ThreadStack[Index]=0;
+  61              		.loc 1 33 0
+  62 0024 0024     		movs	r4, #0
+  63              	.LVL2:
+  64              	.L4:
+  65              		.loc 1 33 0 is_stmt 0 discriminator 3
+  66 0026 43F8044F 		str	r4, [r3, #4]!
+  32:Threads/thread.c ****             ThreadStack[Index]=0;
+  67              		.loc 1 32 0 is_stmt 1 discriminator 3
+  68 002a AB42     		cmp	r3, r5
+  69 002c FBD1     		bne	.L4
+  70              	.L3:
+  34:Threads/thread.c ****         ThreadStack[StackSize-1] = (1 << 24); // Set the arithmetic flags to zero and ensure Thumb 
+  71              		.loc 1 34 0
+  72 002e 02F18042 		add	r2, r2, #1073741824
+  73              	.LVL3:
+  74 0032 013A     		subs	r2, r2, #1
+  75              	.LVL4:
+  76 0034 9400     		lsls	r4, r2, #2
+  77 0036 4FF08073 		mov	r3, #16777216
+  78 003a 41F82230 		str	r3, [r1, r2, lsl #2]
+  35:Threads/thread.c ****         ThreadStack[StackSize-2] = (uint32_t) ThreadFn; // The "Stacked" PC goes here.
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 3
+
+
+  79              		.loc 1 35 0
+  80 003e 0B19     		adds	r3, r1, r4
+  81 0040 43F8040C 		str	r0, [r3, #-4]
+  36:Threads/thread.c ****         // Fill in some test values to help debugging
+  37:Threads/thread.c ****         ThreadStack[StackSize-3] = 1; // LR
+  82              		.loc 1 37 0
+  83 0044 0120     		movs	r0, #1
+  84              	.LVL5:
+  85 0046 43F8080C 		str	r0, [r3, #-8]
+  38:Threads/thread.c ****         ThreadStack[StackSize-4] = 2; // R12
+  86              		.loc 1 38 0
+  87 004a 0222     		movs	r2, #2
+  88              	.LVL6:
+  89 004c 43F80C2C 		str	r2, [r3, #-12]
+  39:Threads/thread.c ****         ThreadStack[StackSize-5] = 3; // R3
+  90              		.loc 1 39 0
+  91 0050 0322     		movs	r2, #3
+  92 0052 43F8102C 		str	r2, [r3, #-16]
+  40:Threads/thread.c ****         ThreadStack[StackSize-6] = 4; // R2
+  93              		.loc 1 40 0
+  94 0056 0422     		movs	r2, #4
+  95 0058 43F8142C 		str	r2, [r3, #-20]
+  41:Threads/thread.c ****         ThreadStack[StackSize-7] = 5; // R1
+  96              		.loc 1 41 0
+  97 005c 0522     		movs	r2, #5
+  98 005e 43F8182C 		str	r2, [r3, #-24]
+  42:Threads/thread.c ****         ThreadStack[StackSize-8] = 6; // R0
+  99              		.loc 1 42 0
+ 100 0062 0622     		movs	r2, #6
+ 101 0064 43F81C2C 		str	r2, [r3, #-28]
+  43:Threads/thread.c ****         ThreadStack[StackSize-9] = 7; // R11
+ 102              		.loc 1 43 0
+ 103 0068 0722     		movs	r2, #7
+ 104 006a 43F8202C 		str	r2, [r3, #-32]
+  44:Threads/thread.c ****         ThreadStack[StackSize-10] = 8;// R10
+ 105              		.loc 1 44 0
+ 106 006e 0822     		movs	r2, #8
+ 107 0070 43F8242C 		str	r2, [r3, #-36]
+  45:Threads/thread.c ****         ThreadStack[StackSize-11] = 9;// R9
+ 108              		.loc 1 45 0
+ 109 0074 0922     		movs	r2, #9
+ 110 0076 43F8282C 		str	r2, [r3, #-40]
+  46:Threads/thread.c ****         ThreadStack[StackSize-12] = 10;// R8
+ 111              		.loc 1 46 0
+ 112 007a 0A22     		movs	r2, #10
+ 113 007c 43F82C2C 		str	r2, [r3, #-44]
+  47:Threads/thread.c ****         ThreadStack[StackSize-13] = 11;// R7
+ 114              		.loc 1 47 0
+ 115 0080 0B22     		movs	r2, #11
+ 116 0082 43F8302C 		str	r2, [r3, #-48]
+  48:Threads/thread.c ****         ThreadStack[StackSize-14] = 12;// R6
+ 117              		.loc 1 48 0
+ 118 0086 0C22     		movs	r2, #12
+ 119 0088 43F8342C 		str	r2, [r3, #-52]
+  49:Threads/thread.c ****         ThreadStack[StackSize-15] = 13;// R5
+ 120              		.loc 1 49 0
+ 121 008c 0D22     		movs	r2, #13
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 4
+
+
+ 122 008e 43F8382C 		str	r2, [r3, #-56]
+  50:Threads/thread.c ****         ThreadStack[StackSize-16] = 14;// R4        
+ 123              		.loc 1 50 0
+ 124 0092 A4F13C03 		sub	r3, r4, #60
+ 125              	.LVL7:
+ 126 0096 CE18     		adds	r6, r1, r3
+ 127 0098 0E22     		movs	r2, #14
+ 128 009a CA50     		str	r2, [r1, r3]
+  51:Threads/thread.c ****         Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];               
+ 129              		.loc 1 51 0
+ 130 009c 0649     		ldr	r1, .L6
+ 131              	.LVL8:
+ 132 009e 0B68     		ldr	r3, [r1]
+ 133 00a0 064C     		ldr	r4, .L6+4
+ 134              	.LVL9:
+ 135 00a2 03EB4302 		add	r2, r3, r3, lsl #1
+ 136 00a6 9200     		lsls	r2, r2, #2
+ 137 00a8 A518     		adds	r5, r4, r2
+ 138 00aa A650     		str	r6, [r4, r2]
+  52:Threads/thread.c ****         Threads[ThreadCount].Attributes = 1; // lets say 1 means "schedulable"
+ 139              		.loc 1 52 0
+ 140 00ac A860     		str	r0, [r5, #8]
+  53:Threads/thread.c ****         ThreadCount++;
+ 141              		.loc 1 53 0
+ 142 00ae 0344     		add	r3, r3, r0
+ 143 00b0 0B60     		str	r3, [r1]
+  54:Threads/thread.c ****         asm(" cpsie i "); // enable interrupts
+ 144              		.loc 1 54 0
+ 145              		.syntax unified
+ 146              	@ 54 "Threads/thread.c" 1
+ 147 00b2 62B6     		 cpsie i 
+ 148              	@ 0 "" 2
+ 149              		.thumb
+ 150              		.syntax unified
+ 151              	.L1:
+  55:Threads/thread.c ****     }
+  56:Threads/thread.c **** }
+ 152              		.loc 1 56 0
+ 153 00b4 70BC     		pop	{r4, r5, r6}
+ 154              	.LCFI1:
+ 155              		.cfi_restore 6
+ 156              		.cfi_restore 5
+ 157              		.cfi_restore 4
+ 158              		.cfi_def_cfa_offset 0
+ 159 00b6 7047     		bx	lr
+ 160              	.L7:
+ 161              		.align	2
+ 162              	.L6:
+ 163 00b8 00000000 		.word	.LANCHOR0
+ 164 00bc 00000000 		.word	Threads
+ 165              		.cfi_endproc
+ 166              	.LFE0:
+ 167              		.size	createThread, .-createThread
+ 168              		.align	1
+ 169              		.global	initSysTick
+ 170              		.syntax unified
+ 171              		.thumb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 5
+
+
+ 172              		.thumb_func
+ 173              		.fpu softvfp
+ 174              		.type	initSysTick, %function
+ 175              	initSysTick:
+ 176              	.LFB1:
+  57:Threads/thread.c **** void initSysTick()
+  58:Threads/thread.c **** {
+ 177              		.loc 1 58 0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182              	.LVL10:
+  59:Threads/thread.c **** 	uint32_t *ADDR_MEMORY;
+  60:Threads/thread.c **** 	// Default power up clock status is as follows:
+  61:Threads/thread.c **** 	// PIOSC runs at 16MHz.  This supplies the system clock
+  62:Threads/thread.c **** 	// The systick timer is driven by PIOSC/4 (4MHz)
+  63:Threads/thread.c **** 	// enable systick and its interrupts
+  64:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t)NVIC_ST_CTRL;
+  65:Threads/thread.c ****     *ADDR_MEMORY |= 0x3;
+ 183              		.loc 1 65 0
+ 184 00c0 064A     		ldr	r2, .L9
+ 185 00c2 1368     		ldr	r3, [r2]
+ 186 00c4 43F00303 		orr	r3, r3, #3
+ 187 00c8 1360     		str	r3, [r2]
+ 188              	.LVL11:
+  66:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t)NVIC_ST_RELOAD;
+  67:Threads/thread.c ****     *ADDR_MEMORY = 4000;
+ 189              		.loc 1 67 0
+ 190 00ca 054B     		ldr	r3, .L9+4
+ 191 00cc 4FF47A62 		mov	r2, #4000
+ 192 00d0 1A60     		str	r2, [r3]
+ 193              	.LVL12:
+  68:Threads/thread.c ****     ADDR_MEMORY = (uint32_t)NVIC_ST_CURRENT;
+  69:Threads/thread.c ****     *ADDR_MEMORY = 1000;
+ 194              		.loc 1 69 0
+ 195 00d2 0433     		adds	r3, r3, #4
+ 196 00d4 4FF47A72 		mov	r2, #1000
+ 197 00d8 1A60     		str	r2, [r3]
+  70:Threads/thread.c ****     /*
+  71:Threads/thread.c ****     SET_BIT(SYS_STCTRL,BIT0+BIT1); 
+  72:Threads/thread.c **** 	SYS_STRELOAD=4000;  // generate 1 millisecond time base
+  73:Threads/thread.c **** 	SYS_STCURRENT=1000; // start the counter off at a low(ish) figure
+  74:Threads/thread.c **** 	*/
+  75:Threads/thread.c **** }
+ 198              		.loc 1 75 0
+ 199 00da 7047     		bx	lr
+ 200              	.L10:
+ 201              		.align	2
+ 202              	.L9:
+ 203 00dc 10E000E0 		.word	-536813552
+ 204 00e0 14E000E0 		.word	-536813548
+ 205              		.cfi_endproc
+ 206              	.LFE1:
+ 207              		.size	initSysTick, .-initSysTick
+ 208              		.align	1
+ 209              		.global	startSwitcher
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 6
+
+
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu softvfp
+ 214              		.type	startSwitcher, %function
+ 215              	startSwitcher:
+ 216              	.LFB2:
+  76:Threads/thread.c **** void startSwitcher()
+  77:Threads/thread.c **** {
+ 217              		.loc 1 77 0
+ 218              		.cfi_startproc
+ 219              		@ Volatile: function does not return.
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222 00e4 08B5     		push	{r3, lr}
+ 223              	.LCFI2:
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 3, -8
+ 226              		.cfi_offset 14, -4
+  78:Threads/thread.c **** 
+  79:Threads/thread.c ****     // At the end of this function, the routine enters a never-ending while loop.
+  80:Threads/thread.c ****     // At the next interrupt, the contents of xPSR, PC, LR, R12 and R0-R3 are dumped
+  81:Threads/thread.c ****     // on the thread stack.  This consumes 32 bytes of stack on this stack.
+  82:Threads/thread.c ****     // If we do not take this into account, the stack pointer for the first thread will
+  83:Threads/thread.c ****     // be off by this amount so we need to adjust it in advanace by
+  84:Threads/thread.c ****     initSysTick();
+ 227              		.loc 1 84 0
+ 228 00e6 FFF7FEFF 		bl	initSysTick
+ 229              	.LVL13:
+  85:Threads/thread.c ****     asm(" LDR R0,=Threads "); // point to start of TCB array    
+ 230              		.loc 1 85 0
+ 231              		.syntax unified
+ 232              	@ 85 "Threads/thread.c" 1
+ 233 00ea 2548     		 LDR R0,=Threads 
+ 234              	@ 0 "" 2
+  86:Threads/thread.c ****     asm(" LDR R0,[R0] ");   // read first Thread Stack pointer
+ 235              		.loc 1 86 0
+ 236              	@ 86 "Threads/thread.c" 1
+ 237 00ec 0068     		 LDR R0,[R0] 
+ 238              	@ 0 "" 2
+  87:Threads/thread.c ****     
+  88:Threads/thread.c ****     asm(" ADD R0,#32 ");    // Adjust first thread stack
+ 239              		.loc 1 88 0
+ 240              	@ 88 "Threads/thread.c" 1
+ 241 00ee 00F12000 		 ADD R0,#32 
+ 242              	@ 0 "" 2
+  89:Threads/thread.c ****     asm(" MSR PSP,R0 ");    // write first stack pointer to process stack pointer        
+ 243              		.loc 1 89 0
+ 244              	@ 89 "Threads/thread.c" 1
+ 245 00f2 80F30988 		 MSR PSP,R0 
+ 246              	@ 0 "" 2
+  90:Threads/thread.c ****     asm(" cpsie i ");                
+ 247              		.loc 1 90 0
+ 248              	@ 90 "Threads/thread.c" 1
+ 249 00f6 62B6     		 cpsie i 
+ 250              	@ 0 "" 2
+ 251              		.thumb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 7
+
+
+ 252              		.syntax unified
+ 253              	.L12:
+ 254 00f8 FEE7     		b	.L12
+ 255              		.cfi_endproc
+ 256              	.LFE2:
+ 257              		.size	startSwitcher, .-startSwitcher
+ 258              		.align	1
+ 259              		.global	SysTick_Handler
+ 260              		.syntax unified
+ 261              		.thumb
+ 262              		.thumb_func
+ 263              		.fpu softvfp
+ 264              		.type	SysTick_Handler, %function
+ 265              	SysTick_Handler:
+ 266              	.LFB3:
+  91:Threads/thread.c ****     while(1);    
+  92:Threads/thread.c **** }
+  93:Threads/thread.c **** 
+  94:Threads/thread.c **** 
+  95:Threads/thread.c **** 
+  96:Threads/thread.c **** // Want the systick handler to be "pure assembler without any stack shenanigans by the compiler (he
+  97:Threads/thread.c **** __attribute__((naked)) void SysTick_Handler(void) 
+  98:Threads/thread.c **** {
+ 267              		.loc 1 98 0
+ 268              		.cfi_startproc
+ 269              		@ Naked Function: prologue and epilogue provided by programmer.
+ 270              		@ args = 0, pretend = 0, frame = 0
+ 271              		@ frame_needed = 0, uses_anonymous_args = 0
+  99:Threads/thread.c ****   
+ 100:Threads/thread.c **** 
+ 101:Threads/thread.c **** // Thread switching will happen here
+ 102:Threads/thread.c **** // On entry, R0,R1,R2,R3 and R12 for Thread 'A' (whichever one that may be) are on the thread stack
+ 103:Threads/thread.c **** 
+ 104:Threads/thread.c **** // Preserve remaining registers on stack of thread that is being suspended (Thread A)     
+ 105:Threads/thread.c ****     asm(" cpsid i "); // disable interrupts during thread switch
+ 272              		.loc 1 105 0
+ 273              		.syntax unified
+ 274              	@ 105 "Threads/thread.c" 1
+ 275 00fa 72B6     		 cpsid i 
+ 276              	@ 0 "" 2
+ 106:Threads/thread.c ****     asm(" MRS R0,PSP ");  // get Thread A stack pointer
+ 277              		.loc 1 106 0
+ 278              	@ 106 "Threads/thread.c" 1
+ 279 00fc EFF30980 		 MRS R0,PSP 
+ 280              	@ 0 "" 2
+ 107:Threads/thread.c ****     asm(" SUB R0,#32");   // Make room for the other registers : R4-R11 = 8 x 4 = 32 bytes
+ 281              		.loc 1 107 0
+ 282              	@ 107 "Threads/thread.c" 1
+ 283 0100 A0F12000 		 SUB R0,#32
+ 284              	@ 0 "" 2
+ 108:Threads/thread.c ****     asm(" STMIA R0! , { R4-R7 } "); // Can only do a multiple store on registers up to R7
+ 285              		.loc 1 108 0
+ 286              	@ 108 "Threads/thread.c" 1
+ 287 0104 F0C0     		 STMIA R0! , { R4-R7 } 
+ 288              	@ 0 "" 2
+ 109:Threads/thread.c ****     asm(" MOV R4,R8 "); // Copy higher registers to lower ones
+ 289              		.loc 1 109 0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 8
+
+
+ 290              	@ 109 "Threads/thread.c" 1
+ 291 0106 4446     		 MOV R4,R8 
+ 292              	@ 0 "" 2
+ 110:Threads/thread.c ****     asm(" MOV R5,R9 ");
+ 293              		.loc 1 110 0
+ 294              	@ 110 "Threads/thread.c" 1
+ 295 0108 4D46     		 MOV R5,R9 
+ 296              	@ 0 "" 2
+ 111:Threads/thread.c ****     asm(" MOV R6,R10 ");
+ 297              		.loc 1 111 0
+ 298              	@ 111 "Threads/thread.c" 1
+ 299 010a 5646     		 MOV R6,R10 
+ 300              	@ 0 "" 2
+ 112:Threads/thread.c ****     asm(" MOV R7,R11 ");
+ 301              		.loc 1 112 0
+ 302              	@ 112 "Threads/thread.c" 1
+ 303 010c 5F46     		 MOV R7,R11 
+ 304              	@ 0 "" 2
+ 113:Threads/thread.c ****     asm(" STMIA R0! , { R4-R7 } "); // and repeat the multiple register store
+ 305              		.loc 1 113 0
+ 306              	@ 113 "Threads/thread.c" 1
+ 307 010e F0C0     		 STMIA R0! , { R4-R7 } 
+ 308              	@ 0 "" 2
+ 114:Threads/thread.c **** // Locate the Thread Control Block (TCB) for Thread A
+ 115:Threads/thread.c ****     asm(" LDR R0,=TCB_Size "); // get the size of each TCB
+ 309              		.loc 1 115 0
+ 310              	@ 115 "Threads/thread.c" 1
+ 311 0110 1C48     		 LDR R0,=TCB_Size 
+ 312              	@ 0 "" 2
+ 116:Threads/thread.c ****     asm(" LDR R0,[R0] ");
+ 313              		.loc 1 116 0
+ 314              	@ 116 "Threads/thread.c" 1
+ 315 0112 0068     		 LDR R0,[R0] 
+ 316              	@ 0 "" 2
+ 117:Threads/thread.c ****     asm(" LDR R1,=ThreadIndex "); // Which one is being used right now?
+ 317              		.loc 1 117 0
+ 318              	@ 117 "Threads/thread.c" 1
+ 319 0114 1C49     		 LDR R1,=ThreadIndex 
+ 320              	@ 0 "" 2
+ 118:Threads/thread.c ****     asm(" LDR R1,[R1] ");   
+ 321              		.loc 1 118 0
+ 322              	@ 118 "Threads/thread.c" 1
+ 323 0116 0968     		 LDR R1,[R1] 
+ 324              	@ 0 "" 2
+ 119:Threads/thread.c ****     asm(" MUL R1,R0,R1 "); // Calculate offset of Thread A TCB from start of TCB array
+ 325              		.loc 1 119 0
+ 326              	@ 119 "Threads/thread.c" 1
+ 327 0118 00FB01F1 		 MUL R1,R0,R1 
+ 328              	@ 0 "" 2
+ 120:Threads/thread.c ****     asm(" LDR R0,=Threads "); // point to start of TCB array
+ 329              		.loc 1 120 0
+ 330              	@ 120 "Threads/thread.c" 1
+ 331 011c 1848     		 LDR R0,=Threads 
+ 332              	@ 0 "" 2
+ 121:Threads/thread.c ****     asm(" ADD R1,R0,R1 ");  // add offset to get pointer to Thread A TCB
+ 333              		.loc 1 121 0
+ 334              	@ 121 "Threads/thread.c" 1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 9
+
+
+ 335 011e 0144     		 ADD R1,R0,R1 
+ 336              	@ 0 "" 2
+ 122:Threads/thread.c ****     asm(" MRS R0,PSP ");   // get Thread A stack pointer
+ 337              		.loc 1 122 0
+ 338              	@ 122 "Threads/thread.c" 1
+ 339 0120 EFF30980 		 MRS R0,PSP 
+ 340              	@ 0 "" 2
+ 123:Threads/thread.c **** // Save Thread A's stack pointer (adjusted for new registers being pushed
+ 124:Threads/thread.c ****     asm(" SUB R0,#32 ");   // Adjust for the other registers : R4-R11 = 8 x 4 = 32 bytes
+ 341              		.loc 1 124 0
+ 342              	@ 124 "Threads/thread.c" 1
+ 343 0124 A0F12000 		 SUB R0,#32 
+ 344              	@ 0 "" 2
+ 125:Threads/thread.c ****     asm(" STR R0,[R1] ");  // Save Thread A Stack pointer to the TCB (first entry = Saved stack poi
+ 345              		.loc 1 125 0
+ 346              	@ 125 "Threads/thread.c" 1
+ 347 0128 0860     		 STR R0,[R1] 
+ 348              	@ 0 "" 2
+ 126:Threads/thread.c ****     
+ 127:Threads/thread.c **** // Update the ThreadIndex
+ 128:Threads/thread.c ****     ThreadIndex++;
+ 349              		.loc 1 128 0
+ 350              		.thumb
+ 351              		.syntax unified
+ 352 012a 144A     		ldr	r2, .L15
+ 353 012c 5368     		ldr	r3, [r2, #4]
+ 354 012e 0133     		adds	r3, r3, #1
+ 355 0130 5360     		str	r3, [r2, #4]
+ 129:Threads/thread.c ****     if (ThreadIndex >= ThreadCount)
+ 356              		.loc 1 129 0
+ 357 0132 1268     		ldr	r2, [r2]
+ 358 0134 9342     		cmp	r3, r2
+ 359 0136 02D3     		bcc	.L14
+ 130:Threads/thread.c ****         ThreadIndex = 0;
+ 360              		.loc 1 130 0
+ 361 0138 104B     		ldr	r3, .L15
+ 362 013a 0022     		movs	r2, #0
+ 363 013c 5A60     		str	r2, [r3, #4]
+ 364              	.L14:
+ 131:Threads/thread.c **** 
+ 132:Threads/thread.c **** // Locate the Thread Control Block (TCB) for Thread B
+ 133:Threads/thread.c ****     asm(" LDR R0,=TCB_Size "); // get the size of each TCB
+ 365              		.loc 1 133 0
+ 366              		.syntax unified
+ 367              	@ 133 "Threads/thread.c" 1
+ 368 013e 1148     		 LDR R0,=TCB_Size 
+ 369              	@ 0 "" 2
+ 134:Threads/thread.c ****     asm(" LDR R0,[R0] ");
+ 370              		.loc 1 134 0
+ 371              	@ 134 "Threads/thread.c" 1
+ 372 0140 0068     		 LDR R0,[R0] 
+ 373              	@ 0 "" 2
+ 135:Threads/thread.c ****     asm(" LDR R1,=ThreadIndex "); // Which one is being used right now?
+ 374              		.loc 1 135 0
+ 375              	@ 135 "Threads/thread.c" 1
+ 376 0142 1149     		 LDR R1,=ThreadIndex 
+ 377              	@ 0 "" 2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 10
+
+
+ 136:Threads/thread.c ****     asm(" LDR R1,[R1] ");   
+ 378              		.loc 1 136 0
+ 379              	@ 136 "Threads/thread.c" 1
+ 380 0144 0968     		 LDR R1,[R1] 
+ 381              	@ 0 "" 2
+ 137:Threads/thread.c ****     asm(" MUL R1,R0,R1 ");  // Calculate offset of Thread A TCB from start of TCB array
+ 382              		.loc 1 137 0
+ 383              	@ 137 "Threads/thread.c" 1
+ 384 0146 00FB01F1 		 MUL R1,R0,R1 
+ 385              	@ 0 "" 2
+ 138:Threads/thread.c ****     asm(" LDR R0,=Threads "); // point to start of TCB array
+ 386              		.loc 1 138 0
+ 387              	@ 138 "Threads/thread.c" 1
+ 388 014a 0D48     		 LDR R0,=Threads 
+ 389              	@ 0 "" 2
+ 139:Threads/thread.c ****     asm(" ADD R1,R0,R1 ");  // add offset to get pointer to Thread B TCB
+ 390              		.loc 1 139 0
+ 391              	@ 139 "Threads/thread.c" 1
+ 392 014c 0144     		 ADD R1,R0,R1 
+ 393              	@ 0 "" 2
+ 140:Threads/thread.c ****     asm(" LDR R0,[R1] ");   // read saved Thread B Stack pointer
+ 394              		.loc 1 140 0
+ 395              	@ 140 "Threads/thread.c" 1
+ 396 014e 0868     		 LDR R0,[R1] 
+ 397              	@ 0 "" 2
+ 141:Threads/thread.c ****     asm(" ADD R0,#16 ");    // Skip past saved low registers for the moment
+ 398              		.loc 1 141 0
+ 399              	@ 141 "Threads/thread.c" 1
+ 400 0150 00F11000 		 ADD R0,#16 
+ 401              	@ 0 "" 2
+ 142:Threads/thread.c ****     asm(" LDMIA R0!,{R4-R7} "); // read saved registers
+ 402              		.loc 1 142 0
+ 403              	@ 142 "Threads/thread.c" 1
+ 404 0154 F0C8     		 LDMIA R0!,{R4-R7} 
+ 405              	@ 0 "" 2
+ 143:Threads/thread.c ****     asm(" MOV R8,R4 "); // Copy higher registers to lower ones
+ 406              		.loc 1 143 0
+ 407              	@ 143 "Threads/thread.c" 1
+ 408 0156 A046     		 MOV R8,R4 
+ 409              	@ 0 "" 2
+ 144:Threads/thread.c ****     asm(" MOV R9,R5 ");
+ 410              		.loc 1 144 0
+ 411              	@ 144 "Threads/thread.c" 1
+ 412 0158 A946     		 MOV R9,R5 
+ 413              	@ 0 "" 2
+ 145:Threads/thread.c ****     asm(" MOV R10,R6 ");
+ 414              		.loc 1 145 0
+ 415              	@ 145 "Threads/thread.c" 1
+ 416 015a B246     		 MOV R10,R6 
+ 417              	@ 0 "" 2
+ 146:Threads/thread.c ****     asm(" MOV R11,R7 ");
+ 418              		.loc 1 146 0
+ 419              	@ 146 "Threads/thread.c" 1
+ 420 015c BB46     		 MOV R11,R7 
+ 421              	@ 0 "" 2
+ 147:Threads/thread.c ****     asm(" LDR R0,[R1] ");   // read saved Thread B Stack pointer
+ 422              		.loc 1 147 0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 11
+
+
+ 423              	@ 147 "Threads/thread.c" 1
+ 424 015e 0868     		 LDR R0,[R1] 
+ 425              	@ 0 "" 2
+ 148:Threads/thread.c ****     asm(" LDMIA R0!,{R4-R7} "); // read saved LOW registers
+ 426              		.loc 1 148 0
+ 427              	@ 148 "Threads/thread.c" 1
+ 428 0160 F0C8     		 LDMIA R0!,{R4-R7} 
+ 429              	@ 0 "" 2
+ 149:Threads/thread.c ****     asm(" LDR R0,[R1] ");   // read saved Thread B Stack pointer
+ 430              		.loc 1 149 0
+ 431              	@ 149 "Threads/thread.c" 1
+ 432 0162 0868     		 LDR R0,[R1] 
+ 433              	@ 0 "" 2
+ 150:Threads/thread.c ****     asm(" ADD R0,#32 ");    // re-adjust saved stack pointer
+ 434              		.loc 1 150 0
+ 435              	@ 150 "Threads/thread.c" 1
+ 436 0164 00F12000 		 ADD R0,#32 
+ 437              	@ 0 "" 2
+ 151:Threads/thread.c ****     asm(" MSR PSP,R0 ");    // write Thread B stack pointer
+ 438              		.loc 1 151 0
+ 439              	@ 151 "Threads/thread.c" 1
+ 440 0168 80F30988 		 MSR PSP,R0 
+ 441              	@ 0 "" 2
+ 152:Threads/thread.c ****     
+ 153:Threads/thread.c ****     // The following is only really necessary for the first run of the scheduler.
+ 154:Threads/thread.c ****     asm(" MOV R0,#0 ");     // Force LR to 0xffffffd so that
+ 442              		.loc 1 154 0
+ 443              	@ 154 "Threads/thread.c" 1
+ 444 016c 4FF00000 		 MOV R0,#0 
+ 445              	@ 0 "" 2
+ 155:Threads/thread.c ****     asm(" SUB R0,#3 ");     // on return from interrupt the CPU
+ 446              		.loc 1 155 0
+ 447              	@ 155 "Threads/thread.c" 1
+ 448 0170 A0F10300 		 SUB R0,#3 
+ 449              	@ 0 "" 2
+ 156:Threads/thread.c ****     asm(" MOV LR,R0 ");     // will switch to thread stack
+ 450              		.loc 1 156 0
+ 451              	@ 156 "Threads/thread.c" 1
+ 452 0174 8646     		 MOV LR,R0 
+ 453              	@ 0 "" 2
+ 157:Threads/thread.c ****     
+ 158:Threads/thread.c **** 
+ 159:Threads/thread.c ****     asm(" cpsie i "); // enable interrupts
+ 454              		.loc 1 159 0
+ 455              	@ 159 "Threads/thread.c" 1
+ 456 0176 62B6     		 cpsie i 
+ 457              	@ 0 "" 2
+ 160:Threads/thread.c ****     asm(" BX LR ");  // return to Thread B
+ 458              		.loc 1 160 0
+ 459              	@ 160 "Threads/thread.c" 1
+ 460 0178 7047     		 BX LR 
+ 461              	@ 0 "" 2
+ 161:Threads/thread.c ****     
+ 162:Threads/thread.c ****     
+ 163:Threads/thread.c **** }
+ 462              		.loc 1 163 0
+ 463              		.thumb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 12
+
+
+ 464              		.syntax unified
+ 465              	.L16:
+ 466 017a 00BF     		.align	2
+ 467              	.L15:
+ 468 017c 00000000 		.word	.LANCHOR0
+ 469              		.cfi_endproc
+ 470              	.LFE3:
+ 471              		.size	SysTick_Handler, .-SysTick_Handler
+ 472              		.global	TCB_Size
+ 473              		.comm	Threads,120,4
+ 474              		.global	ThreadCount
+ 475              		.global	ThreadIndex
+ 476              		.data
+ 477              		.align	2
+ 478              		.type	TCB_Size, %object
+ 479              		.size	TCB_Size, 4
+ 480              	TCB_Size:
+ 481 0000 0C000000 		.word	12
+ 482              		.bss
+ 483              		.align	2
+ 484              		.set	.LANCHOR0,. + 0
+ 485              		.type	ThreadCount, %object
+ 486              		.size	ThreadCount, 4
+ 487              	ThreadCount:
+ 488 0000 00000000 		.space	4
+ 489              		.type	ThreadIndex, %object
+ 490              		.size	ThreadIndex, 4
+ 491              	ThreadIndex:
+ 492 0004 00000000 		.space	4
+ 493              		.text
+ 494              	.Letext0:
+ 495              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 496              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 497              		.section	.debug_info,"",%progbits
+ 498              	.Ldebug_info0:
+ 499 0000 DA010000 		.4byte	0x1da
+ 500 0004 0200     		.2byte	0x2
+ 501 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 502 000a 04       		.byte	0x4
+ 503 000b 01       		.uleb128 0x1
+ 504 000c 43010000 		.4byte	.LASF25
+ 505 0010 0C       		.byte	0xc
+ 506 0011 9C000000 		.4byte	.LASF26
+ 507 0015 E5010000 		.4byte	.LASF27
+ 508 0019 00000000 		.4byte	.Ltext0
+ 509 001d 80010000 		.4byte	.Letext0
+ 510 0021 00000000 		.4byte	.Ldebug_line0
+ 511 0025 02       		.uleb128 0x2
+ 512 0026 01       		.byte	0x1
+ 513 0027 06       		.byte	0x6
+ 514 0028 D9010000 		.4byte	.LASF0
+ 515 002c 02       		.uleb128 0x2
+ 516 002d 01       		.byte	0x1
+ 517 002e 08       		.byte	0x8
+ 518 002f 46000000 		.4byte	.LASF1
+ 519 0033 02       		.uleb128 0x2
+ 520 0034 02       		.byte	0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 13
+
+
+ 521 0035 05       		.byte	0x5
+ 522 0036 30010000 		.4byte	.LASF2
+ 523 003a 02       		.uleb128 0x2
+ 524 003b 02       		.byte	0x2
+ 525 003c 07       		.byte	0x7
+ 526 003d 66000000 		.4byte	.LASF3
+ 527 0041 02       		.uleb128 0x2
+ 528 0042 04       		.byte	0x4
+ 529 0043 05       		.byte	0x5
+ 530 0044 1E000000 		.4byte	.LASF4
+ 531 0048 03       		.uleb128 0x3
+ 532 0049 91000000 		.4byte	.LASF9
+ 533 004d 02       		.byte	0x2
+ 534 004e 4F       		.byte	0x4f
+ 535 004f 53000000 		.4byte	0x53
+ 536 0053 02       		.uleb128 0x2
+ 537 0054 04       		.byte	0x4
+ 538 0055 07       		.byte	0x7
+ 539 0056 54000000 		.4byte	.LASF5
+ 540 005a 02       		.uleb128 0x2
+ 541 005b 08       		.byte	0x8
+ 542 005c 05       		.byte	0x5
+ 543 005d 22010000 		.4byte	.LASF6
+ 544 0061 02       		.uleb128 0x2
+ 545 0062 08       		.byte	0x8
+ 546 0063 07       		.byte	0x7
+ 547 0064 D1000000 		.4byte	.LASF7
+ 548 0068 04       		.uleb128 0x4
+ 549 0069 04       		.byte	0x4
+ 550 006a 05       		.byte	0x5
+ 551 006b 696E7400 		.ascii	"int\000"
+ 552 006f 02       		.uleb128 0x2
+ 553 0070 04       		.byte	0x4
+ 554 0071 07       		.byte	0x7
+ 555 0072 C4000000 		.4byte	.LASF8
+ 556 0076 03       		.uleb128 0x3
+ 557 0077 3A010000 		.4byte	.LASF10
+ 558 007b 03       		.byte	0x3
+ 559 007c 30       		.byte	0x30
+ 560 007d 48000000 		.4byte	0x48
+ 561 0081 05       		.uleb128 0x5
+ 562 0082 27000000 		.4byte	.LASF11
+ 563 0086 01       		.byte	0x1
+ 564 0087 07       		.byte	0x7
+ 565 0088 76000000 		.4byte	0x76
+ 566 008c 01       		.byte	0x1
+ 567 008d 05       		.byte	0x5
+ 568 008e 03       		.byte	0x3
+ 569 008f 00000000 		.4byte	ThreadIndex
+ 570 0093 05       		.uleb128 0x5
+ 571 0094 B8000000 		.4byte	.LASF12
+ 572 0098 01       		.byte	0x1
+ 573 0099 08       		.byte	0x8
+ 574 009a 76000000 		.4byte	0x76
+ 575 009e 01       		.byte	0x1
+ 576 009f 05       		.byte	0x5
+ 577 00a0 03       		.byte	0x3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 14
+
+
+ 578 00a1 00000000 		.4byte	ThreadCount
+ 579 00a5 06       		.uleb128 0x6
+ 580 00a6 0C       		.byte	0xc
+ 581 00a7 01       		.byte	0x1
+ 582 00a8 09       		.byte	0x9
+ 583 00a9 D8000000 		.4byte	0xd8
+ 584 00ad 07       		.uleb128 0x7
+ 585 00ae 03010000 		.4byte	.LASF13
+ 586 00b2 01       		.byte	0x1
+ 587 00b3 0A       		.byte	0xa
+ 588 00b4 D8000000 		.4byte	0xd8
+ 589 00b8 02       		.byte	0x2
+ 590 00b9 23       		.byte	0x23
+ 591 00ba 00       		.uleb128 0
+ 592 00bb 07       		.uleb128 0x7
+ 593 00bc 3D000000 		.4byte	.LASF14
+ 594 00c0 01       		.byte	0x1
+ 595 00c1 0B       		.byte	0xb
+ 596 00c2 E5000000 		.4byte	0xe5
+ 597 00c6 02       		.byte	0x2
+ 598 00c7 23       		.byte	0x23
+ 599 00c8 04       		.uleb128 0x4
+ 600 00c9 07       		.uleb128 0x7
+ 601 00ca AD000000 		.4byte	.LASF15
+ 602 00ce 01       		.byte	0x1
+ 603 00cf 0C       		.byte	0xc
+ 604 00d0 76000000 		.4byte	0x76
+ 605 00d4 02       		.byte	0x2
+ 606 00d5 23       		.byte	0x23
+ 607 00d6 08       		.uleb128 0x8
+ 608 00d7 00       		.byte	0
+ 609 00d8 08       		.uleb128 0x8
+ 610 00d9 04       		.byte	0x4
+ 611 00da 76000000 		.4byte	0x76
+ 612 00de 09       		.uleb128 0x9
+ 613 00df E5000000 		.4byte	0xe5
+ 614 00e3 0A       		.uleb128 0xa
+ 615 00e4 00       		.byte	0
+ 616 00e5 08       		.uleb128 0x8
+ 617 00e6 04       		.byte	0x4
+ 618 00e7 DE000000 		.4byte	0xde
+ 619 00eb 03       		.uleb128 0x3
+ 620 00ec 0F010000 		.4byte	.LASF16
+ 621 00f0 01       		.byte	0x1
+ 622 00f1 0D       		.byte	0xd
+ 623 00f2 A5000000 		.4byte	0xa5
+ 624 00f6 0B       		.uleb128 0xb
+ 625 00f7 EB000000 		.4byte	0xeb
+ 626 00fb 06010000 		.4byte	0x106
+ 627 00ff 0C       		.uleb128 0xc
+ 628 0100 6F000000 		.4byte	0x6f
+ 629 0104 09       		.byte	0x9
+ 630 0105 00       		.byte	0
+ 631 0106 05       		.uleb128 0x5
+ 632 0107 00000000 		.4byte	.LASF17
+ 633 010b 01       		.byte	0x1
+ 634 010c 11       		.byte	0x11
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 15
+
+
+ 635 010d F6000000 		.4byte	0xf6
+ 636 0111 01       		.byte	0x1
+ 637 0112 05       		.byte	0x5
+ 638 0113 03       		.byte	0x3
+ 639 0114 00000000 		.4byte	Threads
+ 640 0118 05       		.uleb128 0x5
+ 641 0119 D0010000 		.4byte	.LASF18
+ 642 011d 01       		.byte	0x1
+ 643 011e 12       		.byte	0x12
+ 644 011f 76000000 		.4byte	0x76
+ 645 0123 01       		.byte	0x1
+ 646 0124 05       		.byte	0x5
+ 647 0125 03       		.byte	0x3
+ 648 0126 00000000 		.4byte	TCB_Size
+ 649 012a 0D       		.uleb128 0xd
+ 650 012b 01       		.byte	0x1
+ 651 012c 0E000000 		.4byte	.LASF28
+ 652 0130 01       		.byte	0x1
+ 653 0131 61       		.byte	0x61
+ 654 0132 01       		.byte	0x1
+ 655 0133 FA000000 		.4byte	.LFB3
+ 656 0137 80010000 		.4byte	.LFE3
+ 657 013b 02       		.byte	0x2
+ 658 013c 7D       		.byte	0x7d
+ 659 013d 00       		.sleb128 0
+ 660 013e 01       		.byte	0x1
+ 661 013f 0E       		.uleb128 0xe
+ 662 0140 01       		.byte	0x1
+ 663 0141 E8000000 		.4byte	.LASF19
+ 664 0145 01       		.byte	0x1
+ 665 0146 4C       		.byte	0x4c
+ 666 0147 E4000000 		.4byte	.LFB2
+ 667 014b FA000000 		.4byte	.LFE2
+ 668 014f 00000000 		.4byte	.LLST6
+ 669 0153 01       		.byte	0x1
+ 670 0154 62010000 		.4byte	0x162
+ 671 0158 0F       		.uleb128 0xf
+ 672 0159 EA000000 		.4byte	.LVL13
+ 673 015d 62010000 		.4byte	0x162
+ 674 0161 00       		.byte	0
+ 675 0162 10       		.uleb128 0x10
+ 676 0163 01       		.byte	0x1
+ 677 0164 79000000 		.4byte	.LASF20
+ 678 0168 01       		.byte	0x1
+ 679 0169 39       		.byte	0x39
+ 680 016a C0000000 		.4byte	.LFB1
+ 681 016e E4000000 		.4byte	.LFE1
+ 682 0172 02       		.byte	0x2
+ 683 0173 7D       		.byte	0x7d
+ 684 0174 00       		.sleb128 0
+ 685 0175 01       		.byte	0x1
+ 686 0176 8A010000 		.4byte	0x18a
+ 687 017a 11       		.uleb128 0x11
+ 688 017b 85000000 		.4byte	.LASF23
+ 689 017f 01       		.byte	0x1
+ 690 0180 3B       		.byte	0x3b
+ 691 0181 D8000000 		.4byte	0xd8
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 16
+
+
+ 692 0185 20000000 		.4byte	.LLST5
+ 693 0189 00       		.byte	0
+ 694 018a 12       		.uleb128 0x12
+ 695 018b 01       		.byte	0x1
+ 696 018c F6000000 		.4byte	.LASF21
+ 697 0190 01       		.byte	0x1
+ 698 0191 16       		.byte	0x16
+ 699 0192 01       		.byte	0x1
+ 700 0193 00000000 		.4byte	.LFB0
+ 701 0197 C0000000 		.4byte	.LFE0
+ 702 019b 58000000 		.4byte	.LLST0
+ 703 019f 01       		.byte	0x1
+ 704 01a0 13       		.uleb128 0x13
+ 705 01a1 3D000000 		.4byte	.LASF14
+ 706 01a5 01       		.byte	0x1
+ 707 01a6 16       		.byte	0x16
+ 708 01a7 E5000000 		.4byte	0xe5
+ 709 01ab 84000000 		.4byte	.LLST1
+ 710 01af 13       		.uleb128 0x13
+ 711 01b0 03010000 		.4byte	.LASF13
+ 712 01b4 01       		.byte	0x1
+ 713 01b5 16       		.byte	0x16
+ 714 01b6 D8000000 		.4byte	0xd8
+ 715 01ba D4000000 		.4byte	.LLST2
+ 716 01be 13       		.uleb128 0x13
+ 717 01bf 33000000 		.4byte	.LASF22
+ 718 01c3 01       		.byte	0x1
+ 719 01c4 16       		.byte	0x16
+ 720 01c5 76000000 		.4byte	0x76
+ 721 01c9 F5000000 		.4byte	.LLST3
+ 722 01cd 11       		.uleb128 0x11
+ 723 01ce 08000000 		.4byte	.LASF24
+ 724 01d2 01       		.byte	0x1
+ 725 01d3 18       		.byte	0x18
+ 726 01d4 76000000 		.4byte	0x76
+ 727 01d8 38010000 		.4byte	.LLST4
+ 728 01dc 00       		.byte	0
+ 729 01dd 00       		.byte	0
+ 730              		.section	.debug_abbrev,"",%progbits
+ 731              	.Ldebug_abbrev0:
+ 732 0000 01       		.uleb128 0x1
+ 733 0001 11       		.uleb128 0x11
+ 734 0002 01       		.byte	0x1
+ 735 0003 25       		.uleb128 0x25
+ 736 0004 0E       		.uleb128 0xe
+ 737 0005 13       		.uleb128 0x13
+ 738 0006 0B       		.uleb128 0xb
+ 739 0007 03       		.uleb128 0x3
+ 740 0008 0E       		.uleb128 0xe
+ 741 0009 1B       		.uleb128 0x1b
+ 742 000a 0E       		.uleb128 0xe
+ 743 000b 11       		.uleb128 0x11
+ 744 000c 01       		.uleb128 0x1
+ 745 000d 12       		.uleb128 0x12
+ 746 000e 01       		.uleb128 0x1
+ 747 000f 10       		.uleb128 0x10
+ 748 0010 06       		.uleb128 0x6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 17
+
+
+ 749 0011 00       		.byte	0
+ 750 0012 00       		.byte	0
+ 751 0013 02       		.uleb128 0x2
+ 752 0014 24       		.uleb128 0x24
+ 753 0015 00       		.byte	0
+ 754 0016 0B       		.uleb128 0xb
+ 755 0017 0B       		.uleb128 0xb
+ 756 0018 3E       		.uleb128 0x3e
+ 757 0019 0B       		.uleb128 0xb
+ 758 001a 03       		.uleb128 0x3
+ 759 001b 0E       		.uleb128 0xe
+ 760 001c 00       		.byte	0
+ 761 001d 00       		.byte	0
+ 762 001e 03       		.uleb128 0x3
+ 763 001f 16       		.uleb128 0x16
+ 764 0020 00       		.byte	0
+ 765 0021 03       		.uleb128 0x3
+ 766 0022 0E       		.uleb128 0xe
+ 767 0023 3A       		.uleb128 0x3a
+ 768 0024 0B       		.uleb128 0xb
+ 769 0025 3B       		.uleb128 0x3b
+ 770 0026 0B       		.uleb128 0xb
+ 771 0027 49       		.uleb128 0x49
+ 772 0028 13       		.uleb128 0x13
+ 773 0029 00       		.byte	0
+ 774 002a 00       		.byte	0
+ 775 002b 04       		.uleb128 0x4
+ 776 002c 24       		.uleb128 0x24
+ 777 002d 00       		.byte	0
+ 778 002e 0B       		.uleb128 0xb
+ 779 002f 0B       		.uleb128 0xb
+ 780 0030 3E       		.uleb128 0x3e
+ 781 0031 0B       		.uleb128 0xb
+ 782 0032 03       		.uleb128 0x3
+ 783 0033 08       		.uleb128 0x8
+ 784 0034 00       		.byte	0
+ 785 0035 00       		.byte	0
+ 786 0036 05       		.uleb128 0x5
+ 787 0037 34       		.uleb128 0x34
+ 788 0038 00       		.byte	0
+ 789 0039 03       		.uleb128 0x3
+ 790 003a 0E       		.uleb128 0xe
+ 791 003b 3A       		.uleb128 0x3a
+ 792 003c 0B       		.uleb128 0xb
+ 793 003d 3B       		.uleb128 0x3b
+ 794 003e 0B       		.uleb128 0xb
+ 795 003f 49       		.uleb128 0x49
+ 796 0040 13       		.uleb128 0x13
+ 797 0041 3F       		.uleb128 0x3f
+ 798 0042 0C       		.uleb128 0xc
+ 799 0043 02       		.uleb128 0x2
+ 800 0044 0A       		.uleb128 0xa
+ 801 0045 00       		.byte	0
+ 802 0046 00       		.byte	0
+ 803 0047 06       		.uleb128 0x6
+ 804 0048 13       		.uleb128 0x13
+ 805 0049 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 18
+
+
+ 806 004a 0B       		.uleb128 0xb
+ 807 004b 0B       		.uleb128 0xb
+ 808 004c 3A       		.uleb128 0x3a
+ 809 004d 0B       		.uleb128 0xb
+ 810 004e 3B       		.uleb128 0x3b
+ 811 004f 0B       		.uleb128 0xb
+ 812 0050 01       		.uleb128 0x1
+ 813 0051 13       		.uleb128 0x13
+ 814 0052 00       		.byte	0
+ 815 0053 00       		.byte	0
+ 816 0054 07       		.uleb128 0x7
+ 817 0055 0D       		.uleb128 0xd
+ 818 0056 00       		.byte	0
+ 819 0057 03       		.uleb128 0x3
+ 820 0058 0E       		.uleb128 0xe
+ 821 0059 3A       		.uleb128 0x3a
+ 822 005a 0B       		.uleb128 0xb
+ 823 005b 3B       		.uleb128 0x3b
+ 824 005c 0B       		.uleb128 0xb
+ 825 005d 49       		.uleb128 0x49
+ 826 005e 13       		.uleb128 0x13
+ 827 005f 38       		.uleb128 0x38
+ 828 0060 0A       		.uleb128 0xa
+ 829 0061 00       		.byte	0
+ 830 0062 00       		.byte	0
+ 831 0063 08       		.uleb128 0x8
+ 832 0064 0F       		.uleb128 0xf
+ 833 0065 00       		.byte	0
+ 834 0066 0B       		.uleb128 0xb
+ 835 0067 0B       		.uleb128 0xb
+ 836 0068 49       		.uleb128 0x49
+ 837 0069 13       		.uleb128 0x13
+ 838 006a 00       		.byte	0
+ 839 006b 00       		.byte	0
+ 840 006c 09       		.uleb128 0x9
+ 841 006d 15       		.uleb128 0x15
+ 842 006e 01       		.byte	0x1
+ 843 006f 01       		.uleb128 0x1
+ 844 0070 13       		.uleb128 0x13
+ 845 0071 00       		.byte	0
+ 846 0072 00       		.byte	0
+ 847 0073 0A       		.uleb128 0xa
+ 848 0074 18       		.uleb128 0x18
+ 849 0075 00       		.byte	0
+ 850 0076 00       		.byte	0
+ 851 0077 00       		.byte	0
+ 852 0078 0B       		.uleb128 0xb
+ 853 0079 01       		.uleb128 0x1
+ 854 007a 01       		.byte	0x1
+ 855 007b 49       		.uleb128 0x49
+ 856 007c 13       		.uleb128 0x13
+ 857 007d 01       		.uleb128 0x1
+ 858 007e 13       		.uleb128 0x13
+ 859 007f 00       		.byte	0
+ 860 0080 00       		.byte	0
+ 861 0081 0C       		.uleb128 0xc
+ 862 0082 21       		.uleb128 0x21
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 19
+
+
+ 863 0083 00       		.byte	0
+ 864 0084 49       		.uleb128 0x49
+ 865 0085 13       		.uleb128 0x13
+ 866 0086 2F       		.uleb128 0x2f
+ 867 0087 0B       		.uleb128 0xb
+ 868 0088 00       		.byte	0
+ 869 0089 00       		.byte	0
+ 870 008a 0D       		.uleb128 0xd
+ 871 008b 2E       		.uleb128 0x2e
+ 872 008c 00       		.byte	0
+ 873 008d 3F       		.uleb128 0x3f
+ 874 008e 0C       		.uleb128 0xc
+ 875 008f 03       		.uleb128 0x3
+ 876 0090 0E       		.uleb128 0xe
+ 877 0091 3A       		.uleb128 0x3a
+ 878 0092 0B       		.uleb128 0xb
+ 879 0093 3B       		.uleb128 0x3b
+ 880 0094 0B       		.uleb128 0xb
+ 881 0095 27       		.uleb128 0x27
+ 882 0096 0C       		.uleb128 0xc
+ 883 0097 11       		.uleb128 0x11
+ 884 0098 01       		.uleb128 0x1
+ 885 0099 12       		.uleb128 0x12
+ 886 009a 01       		.uleb128 0x1
+ 887 009b 40       		.uleb128 0x40
+ 888 009c 0A       		.uleb128 0xa
+ 889 009d 9742     		.uleb128 0x2117
+ 890 009f 0C       		.uleb128 0xc
+ 891 00a0 00       		.byte	0
+ 892 00a1 00       		.byte	0
+ 893 00a2 0E       		.uleb128 0xe
+ 894 00a3 2E       		.uleb128 0x2e
+ 895 00a4 01       		.byte	0x1
+ 896 00a5 3F       		.uleb128 0x3f
+ 897 00a6 0C       		.uleb128 0xc
+ 898 00a7 03       		.uleb128 0x3
+ 899 00a8 0E       		.uleb128 0xe
+ 900 00a9 3A       		.uleb128 0x3a
+ 901 00aa 0B       		.uleb128 0xb
+ 902 00ab 3B       		.uleb128 0x3b
+ 903 00ac 0B       		.uleb128 0xb
+ 904 00ad 11       		.uleb128 0x11
+ 905 00ae 01       		.uleb128 0x1
+ 906 00af 12       		.uleb128 0x12
+ 907 00b0 01       		.uleb128 0x1
+ 908 00b1 40       		.uleb128 0x40
+ 909 00b2 06       		.uleb128 0x6
+ 910 00b3 9742     		.uleb128 0x2117
+ 911 00b5 0C       		.uleb128 0xc
+ 912 00b6 01       		.uleb128 0x1
+ 913 00b7 13       		.uleb128 0x13
+ 914 00b8 00       		.byte	0
+ 915 00b9 00       		.byte	0
+ 916 00ba 0F       		.uleb128 0xf
+ 917 00bb 898201   		.uleb128 0x4109
+ 918 00be 00       		.byte	0
+ 919 00bf 11       		.uleb128 0x11
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 20
+
+
+ 920 00c0 01       		.uleb128 0x1
+ 921 00c1 31       		.uleb128 0x31
+ 922 00c2 13       		.uleb128 0x13
+ 923 00c3 00       		.byte	0
+ 924 00c4 00       		.byte	0
+ 925 00c5 10       		.uleb128 0x10
+ 926 00c6 2E       		.uleb128 0x2e
+ 927 00c7 01       		.byte	0x1
+ 928 00c8 3F       		.uleb128 0x3f
+ 929 00c9 0C       		.uleb128 0xc
+ 930 00ca 03       		.uleb128 0x3
+ 931 00cb 0E       		.uleb128 0xe
+ 932 00cc 3A       		.uleb128 0x3a
+ 933 00cd 0B       		.uleb128 0xb
+ 934 00ce 3B       		.uleb128 0x3b
+ 935 00cf 0B       		.uleb128 0xb
+ 936 00d0 11       		.uleb128 0x11
+ 937 00d1 01       		.uleb128 0x1
+ 938 00d2 12       		.uleb128 0x12
+ 939 00d3 01       		.uleb128 0x1
+ 940 00d4 40       		.uleb128 0x40
+ 941 00d5 0A       		.uleb128 0xa
+ 942 00d6 9742     		.uleb128 0x2117
+ 943 00d8 0C       		.uleb128 0xc
+ 944 00d9 01       		.uleb128 0x1
+ 945 00da 13       		.uleb128 0x13
+ 946 00db 00       		.byte	0
+ 947 00dc 00       		.byte	0
+ 948 00dd 11       		.uleb128 0x11
+ 949 00de 34       		.uleb128 0x34
+ 950 00df 00       		.byte	0
+ 951 00e0 03       		.uleb128 0x3
+ 952 00e1 0E       		.uleb128 0xe
+ 953 00e2 3A       		.uleb128 0x3a
+ 954 00e3 0B       		.uleb128 0xb
+ 955 00e4 3B       		.uleb128 0x3b
+ 956 00e5 0B       		.uleb128 0xb
+ 957 00e6 49       		.uleb128 0x49
+ 958 00e7 13       		.uleb128 0x13
+ 959 00e8 02       		.uleb128 0x2
+ 960 00e9 06       		.uleb128 0x6
+ 961 00ea 00       		.byte	0
+ 962 00eb 00       		.byte	0
+ 963 00ec 12       		.uleb128 0x12
+ 964 00ed 2E       		.uleb128 0x2e
+ 965 00ee 01       		.byte	0x1
+ 966 00ef 3F       		.uleb128 0x3f
+ 967 00f0 0C       		.uleb128 0xc
+ 968 00f1 03       		.uleb128 0x3
+ 969 00f2 0E       		.uleb128 0xe
+ 970 00f3 3A       		.uleb128 0x3a
+ 971 00f4 0B       		.uleb128 0xb
+ 972 00f5 3B       		.uleb128 0x3b
+ 973 00f6 0B       		.uleb128 0xb
+ 974 00f7 27       		.uleb128 0x27
+ 975 00f8 0C       		.uleb128 0xc
+ 976 00f9 11       		.uleb128 0x11
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 21
+
+
+ 977 00fa 01       		.uleb128 0x1
+ 978 00fb 12       		.uleb128 0x12
+ 979 00fc 01       		.uleb128 0x1
+ 980 00fd 40       		.uleb128 0x40
+ 981 00fe 06       		.uleb128 0x6
+ 982 00ff 9742     		.uleb128 0x2117
+ 983 0101 0C       		.uleb128 0xc
+ 984 0102 00       		.byte	0
+ 985 0103 00       		.byte	0
+ 986 0104 13       		.uleb128 0x13
+ 987 0105 05       		.uleb128 0x5
+ 988 0106 00       		.byte	0
+ 989 0107 03       		.uleb128 0x3
+ 990 0108 0E       		.uleb128 0xe
+ 991 0109 3A       		.uleb128 0x3a
+ 992 010a 0B       		.uleb128 0xb
+ 993 010b 3B       		.uleb128 0x3b
+ 994 010c 0B       		.uleb128 0xb
+ 995 010d 49       		.uleb128 0x49
+ 996 010e 13       		.uleb128 0x13
+ 997 010f 02       		.uleb128 0x2
+ 998 0110 06       		.uleb128 0x6
+ 999 0111 00       		.byte	0
+ 1000 0112 00       		.byte	0
+ 1001 0113 00       		.byte	0
+ 1002              		.section	.debug_loc,"",%progbits
+ 1003              	.Ldebug_loc0:
+ 1004              	.LLST6:
+ 1005 0000 E4000000 		.4byte	.LFB2-.Ltext0
+ 1006 0004 E6000000 		.4byte	.LCFI2-.Ltext0
+ 1007 0008 0200     		.2byte	0x2
+ 1008 000a 7D       		.byte	0x7d
+ 1009 000b 00       		.sleb128 0
+ 1010 000c E6000000 		.4byte	.LCFI2-.Ltext0
+ 1011 0010 FA000000 		.4byte	.LFE2-.Ltext0
+ 1012 0014 0200     		.2byte	0x2
+ 1013 0016 7D       		.byte	0x7d
+ 1014 0017 08       		.sleb128 8
+ 1015 0018 00000000 		.4byte	0
+ 1016 001c 00000000 		.4byte	0
+ 1017              	.LLST5:
+ 1018 0020 C0000000 		.4byte	.LVL10-.Ltext0
+ 1019 0024 CA000000 		.4byte	.LVL11-.Ltext0
+ 1020 0028 0600     		.2byte	0x6
+ 1021 002a 9E       		.byte	0x9e
+ 1022 002b 04       		.uleb128 0x4
+ 1023 002c 10E000E0 		.4byte	0xe000e010
+ 1024 0030 CA000000 		.4byte	.LVL11-.Ltext0
+ 1025 0034 D2000000 		.4byte	.LVL12-.Ltext0
+ 1026 0038 0600     		.2byte	0x6
+ 1027 003a 9E       		.byte	0x9e
+ 1028 003b 04       		.uleb128 0x4
+ 1029 003c 14E000E0 		.4byte	0xe000e014
+ 1030 0040 D2000000 		.4byte	.LVL12-.Ltext0
+ 1031 0044 E4000000 		.4byte	.LFE1-.Ltext0
+ 1032 0048 0600     		.2byte	0x6
+ 1033 004a 9E       		.byte	0x9e
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 22
+
+
+ 1034 004b 04       		.uleb128 0x4
+ 1035 004c 18E000E0 		.4byte	0xe000e018
+ 1036 0050 00000000 		.4byte	0
+ 1037 0054 00000000 		.4byte	0
+ 1038              	.LLST0:
+ 1039 0058 00000000 		.4byte	.LFB0-.Ltext0
+ 1040 005c 02000000 		.4byte	.LCFI0-.Ltext0
+ 1041 0060 0200     		.2byte	0x2
+ 1042 0062 7D       		.byte	0x7d
+ 1043 0063 00       		.sleb128 0
+ 1044 0064 02000000 		.4byte	.LCFI0-.Ltext0
+ 1045 0068 B6000000 		.4byte	.LCFI1-.Ltext0
+ 1046 006c 0200     		.2byte	0x2
+ 1047 006e 7D       		.byte	0x7d
+ 1048 006f 0C       		.sleb128 12
+ 1049 0070 B6000000 		.4byte	.LCFI1-.Ltext0
+ 1050 0074 C0000000 		.4byte	.LFE0-.Ltext0
+ 1051 0078 0200     		.2byte	0x2
+ 1052 007a 7D       		.byte	0x7d
+ 1053 007b 00       		.sleb128 0
+ 1054 007c 00000000 		.4byte	0
+ 1055 0080 00000000 		.4byte	0
+ 1056              	.LLST1:
+ 1057 0084 00000000 		.4byte	.LVL0-.Ltext0
+ 1058 0088 46000000 		.4byte	.LVL5-.Ltext0
+ 1059 008c 0100     		.2byte	0x1
+ 1060 008e 50       		.byte	0x50
+ 1061 008f 46000000 		.4byte	.LVL5-.Ltext0
+ 1062 0093 96000000 		.4byte	.LVL7-.Ltext0
+ 1063 0097 0200     		.2byte	0x2
+ 1064 0099 73       		.byte	0x73
+ 1065 009a 7C       		.sleb128 -4
+ 1066 009b 96000000 		.4byte	.LVL7-.Ltext0
+ 1067 009f 9E000000 		.4byte	.LVL8-.Ltext0
+ 1068 00a3 0700     		.2byte	0x7
+ 1069 00a5 71       		.byte	0x71
+ 1070 00a6 00       		.sleb128 0
+ 1071 00a7 74       		.byte	0x74
+ 1072 00a8 00       		.sleb128 0
+ 1073 00a9 22       		.byte	0x22
+ 1074 00aa 34       		.byte	0x34
+ 1075 00ab 1C       		.byte	0x1c
+ 1076 00ac 9E000000 		.4byte	.LVL8-.Ltext0
+ 1077 00b0 A2000000 		.4byte	.LVL9-.Ltext0
+ 1078 00b4 0800     		.2byte	0x8
+ 1079 00b6 F3       		.byte	0xf3
+ 1080 00b7 01       		.uleb128 0x1
+ 1081 00b8 51       		.byte	0x51
+ 1082 00b9 74       		.byte	0x74
+ 1083 00ba 00       		.sleb128 0
+ 1084 00bb 22       		.byte	0x22
+ 1085 00bc 34       		.byte	0x34
+ 1086 00bd 1C       		.byte	0x1c
+ 1087 00be A2000000 		.4byte	.LVL9-.Ltext0
+ 1088 00c2 C0000000 		.4byte	.LFE0-.Ltext0
+ 1089 00c6 0400     		.2byte	0x4
+ 1090 00c8 F3       		.byte	0xf3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 23
+
+
+ 1091 00c9 01       		.uleb128 0x1
+ 1092 00ca 50       		.byte	0x50
+ 1093 00cb 9F       		.byte	0x9f
+ 1094 00cc 00000000 		.4byte	0
+ 1095 00d0 00000000 		.4byte	0
+ 1096              	.LLST2:
+ 1097 00d4 00000000 		.4byte	.LVL0-.Ltext0
+ 1098 00d8 9E000000 		.4byte	.LVL8-.Ltext0
+ 1099 00dc 0100     		.2byte	0x1
+ 1100 00de 51       		.byte	0x51
+ 1101 00df 9E000000 		.4byte	.LVL8-.Ltext0
+ 1102 00e3 C0000000 		.4byte	.LFE0-.Ltext0
+ 1103 00e7 0400     		.2byte	0x4
+ 1104 00e9 F3       		.byte	0xf3
+ 1105 00ea 01       		.uleb128 0x1
+ 1106 00eb 51       		.byte	0x51
+ 1107 00ec 9F       		.byte	0x9f
+ 1108 00ed 00000000 		.4byte	0
+ 1109 00f1 00000000 		.4byte	0
+ 1110              	.LLST3:
+ 1111 00f5 00000000 		.4byte	.LVL0-.Ltext0
+ 1112 00f9 32000000 		.4byte	.LVL3-.Ltext0
+ 1113 00fd 0100     		.2byte	0x1
+ 1114 00ff 52       		.byte	0x52
+ 1115 0100 32000000 		.4byte	.LVL3-.Ltext0
+ 1116 0104 34000000 		.4byte	.LVL4-.Ltext0
+ 1117 0108 0700     		.2byte	0x7
+ 1118 010a 72       		.byte	0x72
+ 1119 010b 80808080 		.sleb128 -1073741824
+ 1119      7C
+ 1120 0110 9F       		.byte	0x9f
+ 1121 0111 34000000 		.4byte	.LVL4-.Ltext0
+ 1122 0115 4C000000 		.4byte	.LVL6-.Ltext0
+ 1123 0119 0700     		.2byte	0x7
+ 1124 011b 72       		.byte	0x72
+ 1125 011c 81808080 		.sleb128 -1073741823
+ 1125      7C
+ 1126 0121 9F       		.byte	0x9f
+ 1127 0122 4C000000 		.4byte	.LVL6-.Ltext0
+ 1128 0126 C0000000 		.4byte	.LFE0-.Ltext0
+ 1129 012a 0400     		.2byte	0x4
+ 1130 012c F3       		.byte	0xf3
+ 1131 012d 01       		.uleb128 0x1
+ 1132 012e 52       		.byte	0x52
+ 1133 012f 9F       		.byte	0x9f
+ 1134 0130 00000000 		.4byte	0
+ 1135 0134 00000000 		.4byte	0
+ 1136              	.LLST4:
+ 1137 0138 1C000000 		.4byte	.LVL1-.Ltext0
+ 1138 013c 26000000 		.4byte	.LVL2-.Ltext0
+ 1139 0140 0200     		.2byte	0x2
+ 1140 0142 30       		.byte	0x30
+ 1141 0143 9F       		.byte	0x9f
+ 1142 0144 00000000 		.4byte	0
+ 1143 0148 00000000 		.4byte	0
+ 1144              		.section	.debug_aranges,"",%progbits
+ 1145 0000 1C000000 		.4byte	0x1c
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 24
+
+
+ 1146 0004 0200     		.2byte	0x2
+ 1147 0006 00000000 		.4byte	.Ldebug_info0
+ 1148 000a 04       		.byte	0x4
+ 1149 000b 00       		.byte	0
+ 1150 000c 0000     		.2byte	0
+ 1151 000e 0000     		.2byte	0
+ 1152 0010 00000000 		.4byte	.Ltext0
+ 1153 0014 80010000 		.4byte	.Letext0-.Ltext0
+ 1154 0018 00000000 		.4byte	0
+ 1155 001c 00000000 		.4byte	0
+ 1156              		.section	.debug_line,"",%progbits
+ 1157              	.Ldebug_line0:
+ 1158 0000 74010000 		.section	.debug_str,"MS",%progbits,1
+ 1158      0200FE00 
+ 1158      00000201 
+ 1158      FB0E0D00 
+ 1158      01010101 
+ 1159              	.LASF17:
+ 1160 0000 54687265 		.ascii	"Threads\000"
+ 1160      61647300 
+ 1161              	.LASF24:
+ 1162 0008 496E6465 		.ascii	"Index\000"
+ 1162      7800
+ 1163              	.LASF28:
+ 1164 000e 53797354 		.ascii	"SysTick_Handler\000"
+ 1164      69636B5F 
+ 1164      48616E64 
+ 1164      6C657200 
+ 1165              	.LASF4:
+ 1166 001e 6C6F6E67 		.ascii	"long int\000"
+ 1166      20696E74 
+ 1166      00
+ 1167              	.LASF11:
+ 1168 0027 54687265 		.ascii	"ThreadIndex\000"
+ 1168      6164496E 
+ 1168      64657800 
+ 1169              	.LASF22:
+ 1170 0033 53746163 		.ascii	"StackSize\000"
+ 1170      6B53697A 
+ 1170      6500
+ 1171              	.LASF14:
+ 1172 003d 54687265 		.ascii	"ThreadFn\000"
+ 1172      6164466E 
+ 1172      00
+ 1173              	.LASF1:
+ 1174 0046 756E7369 		.ascii	"unsigned char\000"
+ 1174      676E6564 
+ 1174      20636861 
+ 1174      7200
+ 1175              	.LASF5:
+ 1176 0054 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1176      20756E73 
+ 1176      69676E65 
+ 1176      6420696E 
+ 1176      7400
+ 1177              	.LASF3:
+ 1178 0066 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 25
+
+
+ 1178      7420756E 
+ 1178      7369676E 
+ 1178      65642069 
+ 1178      6E7400
+ 1179              	.LASF20:
+ 1180 0079 696E6974 		.ascii	"initSysTick\000"
+ 1180      53797354 
+ 1180      69636B00 
+ 1181              	.LASF23:
+ 1182 0085 41444452 		.ascii	"ADDR_MEMORY\000"
+ 1182      5F4D454D 
+ 1182      4F525900 
+ 1183              	.LASF9:
+ 1184 0091 5F5F7569 		.ascii	"__uint32_t\000"
+ 1184      6E743332 
+ 1184      5F7400
+ 1185              	.LASF26:
+ 1186 009c 54687265 		.ascii	"Threads/thread.c\000"
+ 1186      6164732F 
+ 1186      74687265 
+ 1186      61642E63 
+ 1186      00
+ 1187              	.LASF15:
+ 1188 00ad 41747472 		.ascii	"Attributes\000"
+ 1188      69627574 
+ 1188      657300
+ 1189              	.LASF12:
+ 1190 00b8 54687265 		.ascii	"ThreadCount\000"
+ 1190      6164436F 
+ 1190      756E7400 
+ 1191              	.LASF8:
+ 1192 00c4 756E7369 		.ascii	"unsigned int\000"
+ 1192      676E6564 
+ 1192      20696E74 
+ 1192      00
+ 1193              	.LASF7:
+ 1194 00d1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1194      206C6F6E 
+ 1194      6720756E 
+ 1194      7369676E 
+ 1194      65642069 
+ 1195              	.LASF19:
+ 1196 00e8 73746172 		.ascii	"startSwitcher\000"
+ 1196      74537769 
+ 1196      74636865 
+ 1196      7200
+ 1197              	.LASF21:
+ 1198 00f6 63726561 		.ascii	"createThread\000"
+ 1198      74655468 
+ 1198      72656164 
+ 1198      00
+ 1199              	.LASF13:
+ 1200 0103 54687265 		.ascii	"ThreadStack\000"
+ 1200      61645374 
+ 1200      61636B00 
+ 1201              	.LASF16:
+ 1202 010f 54687265 		.ascii	"ThreadControlBlock\000"
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 26
+
+
+ 1202      6164436F 
+ 1202      6E74726F 
+ 1202      6C426C6F 
+ 1202      636B00
+ 1203              	.LASF6:
+ 1204 0122 6C6F6E67 		.ascii	"long long int\000"
+ 1204      206C6F6E 
+ 1204      6720696E 
+ 1204      7400
+ 1205              	.LASF2:
+ 1206 0130 73686F72 		.ascii	"short int\000"
+ 1206      7420696E 
+ 1206      7400
+ 1207              	.LASF10:
+ 1208 013a 75696E74 		.ascii	"uint32_t\000"
+ 1208      33325F74 
+ 1208      00
+ 1209              	.LASF25:
+ 1210 0143 474E5520 		.ascii	"GNU C11 7.3.1 20180622 (release) [ARM/embedded-7-br"
+ 1210      43313120 
+ 1210      372E332E 
+ 1210      31203230 
+ 1210      31383036 
+ 1211 0176 616E6368 		.ascii	"anch revision 261907] -mcpu=cortex-m4 -mthumb -mapc"
+ 1211      20726576 
+ 1211      6973696F 
+ 1211      6E203236 
+ 1211      31393037 
+ 1212 01a9 732D6672 		.ascii	"s-frame -mthumb-interwork -gdwarf-2 -O\000"
+ 1212      616D6520 
+ 1212      2D6D7468 
+ 1212      756D622D 
+ 1212      696E7465 
+ 1213              	.LASF18:
+ 1214 01d0 5443425F 		.ascii	"TCB_Size\000"
+ 1214      53697A65 
+ 1214      00
+ 1215              	.LASF0:
+ 1216 01d9 7369676E 		.ascii	"signed char\000"
+ 1216      65642063 
+ 1216      68617200 
+ 1217              	.LASF27:
+ 1218 01e5 443A5C55 		.ascii	"D:\\UTFPR\\SISTEMAS OPERACIONAIS\\multithread\000"
+ 1218      54465052 
+ 1218      5C534953 
+ 1218      54454D41 
+ 1218      53204F50 
+ 1219              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 thread.c
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:15     .text:00000000 $t
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:22     .text:00000000 createThread
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:163    .text:000000b8 $d
+                            *COM*:00000078 Threads
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:168    .text:000000c0 $t
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:175    .text:000000c0 initSysTick
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:203    .text:000000dc $d
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:208    .text:000000e4 $t
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:215    .text:000000e4 startSwitcher
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:265    .text:000000fa SysTick_Handler
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:480    .data:00000000 TCB_Size
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:491    .bss:00000004 ThreadIndex
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:468    .text:0000017c $d
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:487    .bss:00000000 ThreadCount
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:477    .data:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:483    .bss:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccaQOm34.s:1219   .text:00000180 $d
+
+NO UNDEFINED SYMBOLS

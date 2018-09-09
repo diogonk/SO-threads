@@ -1,0 +1,1699 @@
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"queue.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.align	1
+  16              		.global	queue_append
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  20              		.fpu softvfp
+  21              		.type	queue_append, %function
+  22              	queue_append:
+  23              	.LFB0:
+  24              		.file 1 "Queue/queue.c"
+   1:Queue/queue.c **** 
+   2:Queue/queue.c **** #include "queue.h"
+   3:Queue/queue.c **** #include <stdint.h>
+   4:Queue/queue.c **** #include "utils\uartstdio.h"
+   5:Queue/queue.c **** 
+   6:Queue/queue.c **** //------------------------------------------------------------------------------
+   7:Queue/queue.c **** // Insere um elemento no final da fila.
+   8:Queue/queue.c **** // Condicoes a verificar, gerando msgs de erro:
+   9:Queue/queue.c **** // - a fila deve existir
+  10:Queue/queue.c **** // - o elemento deve existir
+  11:Queue/queue.c **** // - o elemento nao deve estar em outra fila
+  12:Queue/queue.c **** 
+  13:Queue/queue.c **** void queue_append(queue_t **queue, queue_t *elem)
+  14:Queue/queue.c **** {
+  25              		.loc 1 14 0
+  26              		.cfi_startproc
+  27              		@ args = 0, pretend = 0, frame = 0
+  28              		@ frame_needed = 0, uses_anonymous_args = 0
+  29              		@ link register save eliminated.
+  30              	.LVL0:
+  31 0000 10B4     		push	{r4}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 4, -4
+  15:Queue/queue.c **** 	// Se o elemento for nulo ou se ja fizer parte de outra fila retorna sem fazer nada
+  16:Queue/queue.c **** 	if (elem == NULL || elem->prev != NULL || elem->next != NULL)
+  35              		.loc 1 16 0
+  36 0002 0B46     		mov	r3, r1
+  37 0004 09B1     		cbz	r1, .L1
+  38              		.loc 1 16 0 is_stmt 0 discriminator 1
+  39 0006 0A68     		ldr	r2, [r1]
+  40 0008 0AB1     		cbz	r2, .L6
+  41              	.LVL1:
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 2
+
+
+  42              	.L1:
+  17:Queue/queue.c **** 		return;
+  18:Queue/queue.c **** 	
+  19:Queue/queue.c **** 
+  20:Queue/queue.c **** 	// Se for o primeiro elemento, faz o elemento auxiliar apontar para o novo elemento
+  21:Queue/queue.c **** 	// e faz este elemento apontar para si mesmo nas duas direções. Também faz o primeiro
+  22:Queue/queue.c **** 	// elemento ser o mesmo deste que foi colocado
+  23:Queue/queue.c **** 	if ((*queue) == NULL)
+  24:Queue/queue.c **** 	{
+  25:Queue/queue.c **** 		(*queue) = elem;
+  26:Queue/queue.c **** 		(*queue)->next = elem;
+  27:Queue/queue.c **** 		(*queue)->prev = elem;
+  28:Queue/queue.c **** 	}
+  29:Queue/queue.c **** 	// Para os próximos elementos,
+  30:Queue/queue.c **** 	else
+  31:Queue/queue.c **** 	{
+  32:Queue/queue.c **** 
+  33:Queue/queue.c **** 		//Itera até chegar no final da fila
+  34:Queue/queue.c **** 		queue_t *temp = *queue;
+  35:Queue/queue.c **** 		while (temp->next != *queue)
+  36:Queue/queue.c **** 		{
+  37:Queue/queue.c **** 			temp = temp->next;
+  38:Queue/queue.c **** 		}
+  39:Queue/queue.c **** 
+  40:Queue/queue.c **** 		// Faz o next do ultimo elemento apontar para o novo elemento
+  41:Queue/queue.c **** 		temp->next = elem;
+  42:Queue/queue.c **** 
+  43:Queue/queue.c **** 		//Pega o first a partir do next do ultimo e bota no novo elemento
+  44:Queue/queue.c **** 		elem->next = *queue;
+  45:Queue/queue.c **** 		// Faz o prev do novo apontar para o auxiliar (que até agora era o último)
+  46:Queue/queue.c **** 		elem->prev = temp;
+  47:Queue/queue.c **** 		// Faz o previous do first apontar para o novo elemento
+  48:Queue/queue.c **** 		(*queue)->prev = elem;
+  49:Queue/queue.c **** 	}
+  50:Queue/queue.c **** }
+  43              		.loc 1 50 0 is_stmt 1
+  44 000a 10BC     		pop	{r4}
+  45              	.LCFI1:
+  46              		.cfi_remember_state
+  47              		.cfi_restore 4
+  48              		.cfi_def_cfa_offset 0
+  49 000c 7047     		bx	lr
+  50              	.LVL2:
+  51              	.L6:
+  52              	.LCFI2:
+  53              		.cfi_restore_state
+  16:Queue/queue.c **** 		return;
+  54              		.loc 1 16 0 discriminator 2
+  55 000e 4A68     		ldr	r2, [r1, #4]
+  56 0010 002A     		cmp	r2, #0
+  57 0012 FAD1     		bne	.L1
+  23:Queue/queue.c **** 	{
+  58              		.loc 1 23 0
+  59 0014 0468     		ldr	r4, [r0]
+  60 0016 0CB1     		cbz	r4, .L7
+  61              	.LBB2:
+  34:Queue/queue.c **** 		while (temp->next != *queue)
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 3
+
+
+  62              		.loc 1 34 0
+  63 0018 2146     		mov	r1, r4
+  64              	.LVL3:
+  65 001a 05E0     		b	.L3
+  66              	.LVL4:
+  67              	.L7:
+  68              	.LBE2:
+  25:Queue/queue.c **** 		(*queue)->next = elem;
+  69              		.loc 1 25 0
+  70 001c 0160     		str	r1, [r0]
+  26:Queue/queue.c **** 		(*queue)->prev = elem;
+  71              		.loc 1 26 0
+  72 001e 5960     		str	r1, [r3, #4]
+  27:Queue/queue.c **** 	}
+  73              		.loc 1 27 0
+  74 0020 0268     		ldr	r2, [r0]
+  75 0022 1160     		str	r1, [r2]
+  76 0024 F1E7     		b	.L1
+  77              	.LVL5:
+  78              	.L5:
+  79              	.LBB3:
+  37:Queue/queue.c **** 		}
+  80              		.loc 1 37 0
+  81 0026 1146     		mov	r1, r2
+  82              	.LVL6:
+  83              	.L3:
+  35:Queue/queue.c **** 		{
+  84              		.loc 1 35 0
+  85 0028 4A68     		ldr	r2, [r1, #4]
+  86 002a 9442     		cmp	r4, r2
+  87 002c FBD1     		bne	.L5
+  41:Queue/queue.c **** 
+  88              		.loc 1 41 0
+  89 002e 4B60     		str	r3, [r1, #4]
+  44:Queue/queue.c **** 		// Faz o prev do novo apontar para o auxiliar (que até agora era o último)
+  90              		.loc 1 44 0
+  91 0030 0268     		ldr	r2, [r0]
+  92 0032 5A60     		str	r2, [r3, #4]
+  46:Queue/queue.c **** 		// Faz o previous do first apontar para o novo elemento
+  93              		.loc 1 46 0
+  94 0034 1960     		str	r1, [r3]
+  48:Queue/queue.c **** 	}
+  95              		.loc 1 48 0
+  96 0036 0268     		ldr	r2, [r0]
+  97 0038 1360     		str	r3, [r2]
+  98 003a E6E7     		b	.L1
+  99              	.LBE3:
+ 100              		.cfi_endproc
+ 101              	.LFE0:
+ 102              		.size	queue_append, .-queue_append
+ 103              		.align	1
+ 104              		.global	queue_remove
+ 105              		.syntax unified
+ 106              		.thumb
+ 107              		.thumb_func
+ 108              		.fpu softvfp
+ 109              		.type	queue_remove, %function
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 4
+
+
+ 110              	queue_remove:
+ 111              	.LFB1:
+  51:Queue/queue.c **** 
+  52:Queue/queue.c **** //------------------------------------------------------------------------------
+  53:Queue/queue.c **** // Remove o elemento indicado da fila, sem o destruir.
+  54:Queue/queue.c **** // Condicoes a verificar, gerando msgs de erro:
+  55:Queue/queue.c **** // - a fila deve existir
+  56:Queue/queue.c **** // - a fila nao deve estar vazia
+  57:Queue/queue.c **** // - o elemento deve existir
+  58:Queue/queue.c **** // - o elemento deve pertencer a fila indicada
+  59:Queue/queue.c **** // Retorno: apontador para o elemento removido, ou NULL se erro
+  60:Queue/queue.c **** 
+  61:Queue/queue.c **** queue_t *queue_remove(queue_t **queue, queue_t *elem)
+  62:Queue/queue.c **** {
+ 112              		.loc 1 62 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              		@ link register save eliminated.
+ 117              	.LVL7:
+ 118 003c 10B4     		push	{r4}
+ 119              	.LCFI3:
+ 120              		.cfi_def_cfa_offset 4
+ 121              		.cfi_offset 4, -4
+  63:Queue/queue.c **** 
+  64:Queue/queue.c **** 	if (*queue == NULL ||
+ 122              		.loc 1 64 0
+ 123 003e 0268     		ldr	r2, [r0]
+ 124 0040 EAB1     		cbz	r2, .L16
+  65:Queue/queue.c **** 			(*queue)->next == NULL ||
+ 125              		.loc 1 65 0 discriminator 1
+ 126 0042 5368     		ldr	r3, [r2, #4]
+  64:Queue/queue.c **** 			(*queue)->next == NULL ||
+ 127              		.loc 1 64 0 discriminator 1
+ 128 0044 EBB1     		cbz	r3, .L17
+ 129              		.loc 1 65 0
+ 130 0046 1468     		ldr	r4, [r2]
+ 131 0048 ECB1     		cbz	r4, .L18
+  66:Queue/queue.c **** 			(*queue)->prev == NULL ||
+ 132              		.loc 1 66 0
+ 133 004a F1B1     		cbz	r1, .L19
+ 134              	.LVL8:
+  67:Queue/queue.c **** 			elem == NULL)
+  68:Queue/queue.c **** 	{
+  69:Queue/queue.c **** 		return NULL;
+  70:Queue/queue.c **** 	}
+  71:Queue/queue.c **** 
+  72:Queue/queue.c **** 	struct queue_t *qpos = (*queue);
+  73:Queue/queue.c **** 
+  74:Queue/queue.c **** 	while (qpos != elem)
+ 135              		.loc 1 74 0
+ 136 004c 8A42     		cmp	r2, r1
+ 137 004e 20D0     		beq	.L10
+ 138              	.LVL9:
+  75:Queue/queue.c **** 	{
+  76:Queue/queue.c **** 		qpos = qpos->next;
+  77:Queue/queue.c **** 		if (qpos == *queue)
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 5
+
+
+ 139              		.loc 1 77 0
+ 140 0050 9A42     		cmp	r2, r3
+ 141 0052 1CD0     		beq	.L23
+ 142              	.L11:
+  74:Queue/queue.c **** 	{
+ 143              		.loc 1 74 0
+ 144 0054 9942     		cmp	r1, r3
+ 145 0056 07D0     		beq	.L13
+  76:Queue/queue.c **** 		if (qpos == *queue)
+ 146              		.loc 1 76 0
+ 147 0058 5B68     		ldr	r3, [r3, #4]
+ 148              	.LVL10:
+ 149              		.loc 1 77 0
+ 150 005a 9A42     		cmp	r2, r3
+ 151 005c FAD1     		bne	.L11
+  78:Queue/queue.c **** 			return NULL; //Não está na fila!!
+ 152              		.loc 1 78 0
+ 153 005e 0023     		movs	r3, #0
+ 154              	.LVL11:
+ 155              	.L8:
+  79:Queue/queue.c **** 		
+  80:Queue/queue.c **** 	};
+  81:Queue/queue.c **** 
+  82:Queue/queue.c **** 	if ((*queue)->next == (*queue))
+  83:Queue/queue.c **** 	{
+  84:Queue/queue.c **** 		*queue = NULL;
+  85:Queue/queue.c **** 		elem->next = NULL;
+  86:Queue/queue.c **** 		elem->prev = NULL;
+  87:Queue/queue.c **** 		return elem;
+  88:Queue/queue.c **** 	}
+  89:Queue/queue.c **** 	if (qpos == *queue)
+  90:Queue/queue.c **** 	{
+  91:Queue/queue.c **** 		*queue = (*queue)->next;
+  92:Queue/queue.c **** 	}
+  93:Queue/queue.c **** 	qpos->prev->next = elem->next;
+  94:Queue/queue.c **** 	qpos->next->prev = elem->prev;
+  95:Queue/queue.c **** 	elem->next = NULL;
+  96:Queue/queue.c **** 	elem->prev = NULL;
+  97:Queue/queue.c **** 
+  98:Queue/queue.c **** 	return elem;
+  99:Queue/queue.c **** }
+ 156              		.loc 1 99 0
+ 157 0060 1846     		mov	r0, r3
+ 158              	.LVL12:
+ 159 0062 10BC     		pop	{r4}
+ 160              	.LCFI4:
+ 161              		.cfi_remember_state
+ 162              		.cfi_restore 4
+ 163              		.cfi_def_cfa_offset 0
+ 164 0064 7047     		bx	lr
+ 165              	.LVL13:
+ 166              	.L24:
+ 167              	.LCFI5:
+ 168              		.cfi_restore_state
+  91:Queue/queue.c **** 	}
+ 169              		.loc 1 91 0
+ 170 0066 0360     		str	r3, [r0]
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 6
+
+
+ 171              	.LVL14:
+ 172              	.L13:
+  93:Queue/queue.c **** 	qpos->next->prev = elem->prev;
+ 173              		.loc 1 93 0
+ 174 0068 0B68     		ldr	r3, [r1]
+ 175 006a 4A68     		ldr	r2, [r1, #4]
+ 176 006c 5A60     		str	r2, [r3, #4]
+  94:Queue/queue.c **** 	elem->next = NULL;
+ 177              		.loc 1 94 0
+ 178 006e 4B68     		ldr	r3, [r1, #4]
+ 179 0070 0A68     		ldr	r2, [r1]
+ 180 0072 1A60     		str	r2, [r3]
+  95:Queue/queue.c **** 	elem->prev = NULL;
+ 181              		.loc 1 95 0
+ 182 0074 0023     		movs	r3, #0
+ 183 0076 4B60     		str	r3, [r1, #4]
+  96:Queue/queue.c **** 
+ 184              		.loc 1 96 0
+ 185 0078 0B60     		str	r3, [r1]
+  98:Queue/queue.c **** }
+ 186              		.loc 1 98 0
+ 187 007a 0B46     		mov	r3, r1
+ 188 007c F0E7     		b	.L8
+ 189              	.L16:
+  69:Queue/queue.c **** 	}
+ 190              		.loc 1 69 0
+ 191 007e 1346     		mov	r3, r2
+ 192 0080 EEE7     		b	.L8
+ 193              	.L17:
+ 194 0082 0023     		movs	r3, #0
+ 195 0084 ECE7     		b	.L8
+ 196              	.L18:
+ 197 0086 0023     		movs	r3, #0
+ 198 0088 EAE7     		b	.L8
+ 199              	.L19:
+ 200 008a 0B46     		mov	r3, r1
+ 201 008c E8E7     		b	.L8
+ 202              	.LVL15:
+ 203              	.L23:
+  78:Queue/queue.c **** 		
+ 204              		.loc 1 78 0
+ 205 008e 0023     		movs	r3, #0
+ 206              	.LVL16:
+ 207 0090 E6E7     		b	.L8
+ 208              	.LVL17:
+ 209              	.L10:
+  82:Queue/queue.c **** 	{
+ 210              		.loc 1 82 0
+ 211 0092 8B42     		cmp	r3, r1
+ 212 0094 E7D1     		bne	.L24
+  84:Queue/queue.c **** 		elem->next = NULL;
+ 213              		.loc 1 84 0
+ 214 0096 0022     		movs	r2, #0
+ 215              	.LVL18:
+ 216 0098 0260     		str	r2, [r0]
+ 217              	.LVL19:
+  85:Queue/queue.c **** 		elem->prev = NULL;
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 7
+
+
+ 218              		.loc 1 85 0
+ 219 009a 5A60     		str	r2, [r3, #4]
+  86:Queue/queue.c **** 		return elem;
+ 220              		.loc 1 86 0
+ 221 009c 1A60     		str	r2, [r3]
+  87:Queue/queue.c **** 	}
+ 222              		.loc 1 87 0
+ 223 009e DFE7     		b	.L8
+ 224              		.cfi_endproc
+ 225              	.LFE1:
+ 226              		.size	queue_remove, .-queue_remove
+ 227              		.align	1
+ 228              		.global	queue_size
+ 229              		.syntax unified
+ 230              		.thumb
+ 231              		.thumb_func
+ 232              		.fpu softvfp
+ 233              		.type	queue_size, %function
+ 234              	queue_size:
+ 235              	.LFB2:
+ 100:Queue/queue.c **** 
+ 101:Queue/queue.c **** //------------------------------------------------------------------------------
+ 102:Queue/queue.c **** // Conta o numero de elementos na fila
+ 103:Queue/queue.c **** // Retorno: numero de elementos na fila
+ 104:Queue/queue.c **** 
+ 105:Queue/queue.c **** //int queue_size (queue_t *queue){
+ 106:Queue/queue.c **** //	struct queue_t *qpos;
+ 107:Queue/queue.c **** //	int i = 0;
+ 108:Queue/queue.c **** //	if (queue == NULL) return i;
+ 109:Queue/queue.c **** //	qpos = queue;
+ 110:Queue/queue.c **** //	do{
+ 111:Queue/queue.c **** //		i++;
+ 112:Queue/queue.c **** //		qpos = qpos->next;
+ 113:Queue/queue.c **** //	}while(qpos->next != queue);
+ 114:Queue/queue.c **** //	return i;
+ 115:Queue/queue.c **** //}
+ 116:Queue/queue.c **** 
+ 117:Queue/queue.c **** int queue_size(queue_t *queue)
+ 118:Queue/queue.c **** {
+ 236              		.loc 1 118 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              		@ link register save eliminated.
+ 241              	.LVL20:
+ 119:Queue/queue.c **** 	queue_t *aux = queue;
+ 120:Queue/queue.c **** 	int ct = 0;
+ 121:Queue/queue.c **** 	if (aux != NULL)
+ 242              		.loc 1 121 0
+ 243 00a0 0246     		mov	r2, r0
+ 244 00a2 40B1     		cbz	r0, .L28
+ 245              	.LVL21:
+ 122:Queue/queue.c **** 	{
+ 123:Queue/queue.c **** 		ct = 1;
+ 124:Queue/queue.c **** 		while (aux->next != queue)
+ 246              		.loc 1 124 0
+ 247 00a4 4368     		ldr	r3, [r0, #4]
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 8
+
+
+ 248 00a6 9842     		cmp	r0, r3
+ 249 00a8 07D0     		beq	.L29
+ 123:Queue/queue.c **** 		while (aux->next != queue)
+ 250              		.loc 1 123 0
+ 251 00aa 0120     		movs	r0, #1
+ 252              	.LVL22:
+ 253              	.L27:
+ 125:Queue/queue.c **** 		{
+ 126:Queue/queue.c **** 			aux = aux->next;
+ 127:Queue/queue.c **** 			ct++;
+ 254              		.loc 1 127 0
+ 255 00ac 0130     		adds	r0, r0, #1
+ 256              	.LVL23:
+ 124:Queue/queue.c **** 		{
+ 257              		.loc 1 124 0
+ 258 00ae 5B68     		ldr	r3, [r3, #4]
+ 259              	.LVL24:
+ 260 00b0 9342     		cmp	r3, r2
+ 261 00b2 FBD1     		bne	.L27
+ 262 00b4 7047     		bx	lr
+ 263              	.LVL25:
+ 264              	.L28:
+ 120:Queue/queue.c **** 	if (aux != NULL)
+ 265              		.loc 1 120 0
+ 266 00b6 0020     		movs	r0, #0
+ 267              	.LVL26:
+ 268 00b8 7047     		bx	lr
+ 269              	.LVL27:
+ 270              	.L29:
+ 123:Queue/queue.c **** 		while (aux->next != queue)
+ 271              		.loc 1 123 0
+ 272 00ba 0120     		movs	r0, #1
+ 273              	.LVL28:
+ 128:Queue/queue.c **** 		}
+ 129:Queue/queue.c **** 	}
+ 130:Queue/queue.c **** 
+ 131:Queue/queue.c **** 	return ct;
+ 132:Queue/queue.c **** }
+ 274              		.loc 1 132 0
+ 275 00bc 7047     		bx	lr
+ 276              		.cfi_endproc
+ 277              	.LFE2:
+ 278              		.size	queue_size, .-queue_size
+ 279              		.align	1
+ 280              		.global	queue_print
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 284              		.fpu softvfp
+ 285              		.type	queue_print, %function
+ 286              	queue_print:
+ 287              	.LFB3:
+ 133:Queue/queue.c **** 
+ 134:Queue/queue.c **** //------------------------------------------------------------------------------
+ 135:Queue/queue.c **** // Percorre a fila e imprime na tela seu conteúdo. A impressão de cada
+ 136:Queue/queue.c **** // elemento é feita por uma função externa, definida pelo programa que
+ 137:Queue/queue.c **** // usa a biblioteca.
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 9
+
+
+ 138:Queue/queue.c **** //
+ 139:Queue/queue.c **** // Essa função deve ter o seguinte protótipo:
+ 140:Queue/queue.c **** //
+ 141:Queue/queue.c **** // void print_elem (void *ptr) ; // ptr aponta para o elemento a imprimir
+ 142:Queue/queue.c **** 
+ 143:Queue/queue.c **** void queue_print(char *name, queue_t *queue, void print_elem(void *))
+ 144:Queue/queue.c **** {
+ 288              		.loc 1 144 0
+ 289              		.cfi_startproc
+ 290              		@ args = 0, pretend = 0, frame = 0
+ 291              		@ frame_needed = 0, uses_anonymous_args = 0
+ 292              	.LVL29:
+ 293 00be 70B5     		push	{r4, r5, r6, lr}
+ 294              	.LCFI6:
+ 295              		.cfi_def_cfa_offset 16
+ 296              		.cfi_offset 4, -16
+ 297              		.cfi_offset 5, -12
+ 298              		.cfi_offset 6, -8
+ 299              		.cfi_offset 14, -4
+ 300 00c0 0D46     		mov	r5, r1
+ 301 00c2 1646     		mov	r6, r2
+ 145:Queue/queue.c **** 
+ 146:Queue/queue.c **** 	UARTprintf(name);
+ 302              		.loc 1 146 0
+ 303 00c4 FFF7FEFF 		bl	UARTprintf
+ 304              	.LVL30:
+ 147:Queue/queue.c **** 	if (queue == NULL)
+ 305              		.loc 1 147 0
+ 306 00c8 65B1     		cbz	r5, .L31
+ 307              	.LVL31:
+ 148:Queue/queue.c **** 		return;
+ 149:Queue/queue.c **** 	
+ 150:Queue/queue.c **** 	struct queue_t *qpos = queue;
+ 151:Queue/queue.c **** 	while (qpos->next != queue)
+ 308              		.loc 1 151 0
+ 309 00ca 6B68     		ldr	r3, [r5, #4]
+ 310 00cc 9D42     		cmp	r5, r3
+ 311 00ce 06D0     		beq	.L33
+ 150:Queue/queue.c **** 	while (qpos->next != queue)
+ 312              		.loc 1 150 0
+ 313 00d0 2C46     		mov	r4, r5
+ 314              	.LVL32:
+ 315              	.L34:
+ 152:Queue/queue.c **** 	{
+ 153:Queue/queue.c **** 		print_elem(qpos);
+ 316              		.loc 1 153 0
+ 317 00d2 2046     		mov	r0, r4
+ 318 00d4 B047     		blx	r6
+ 319              	.LVL33:
+ 154:Queue/queue.c **** 		qpos = qpos->next;
+ 320              		.loc 1 154 0
+ 321 00d6 6468     		ldr	r4, [r4, #4]
+ 322              	.LVL34:
+ 151:Queue/queue.c **** 	{
+ 323              		.loc 1 151 0
+ 324 00d8 6368     		ldr	r3, [r4, #4]
+ 325 00da AB42     		cmp	r3, r5
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 10
+
+
+ 326 00dc F9D1     		bne	.L34
+ 327              	.LVL35:
+ 328              	.L33:
+ 155:Queue/queue.c **** 	}
+ 156:Queue/queue.c **** 	UARTprintf("\n");
+ 329              		.loc 1 156 0
+ 330 00de 0248     		ldr	r0, .L36
+ 331 00e0 FFF7FEFF 		bl	UARTprintf
+ 332              	.LVL36:
+ 333              	.L31:
+ 157:Queue/queue.c **** 	 
+ 158:Queue/queue.c **** }...
+ 334              		.loc 1 158 0
+ 335 00e4 70BD     		pop	{r4, r5, r6, pc}
+ 336              	.LVL37:
+ 337              	.L37:
+ 338 00e6 00BF     		.align	2
+ 339              	.L36:
+ 340 00e8 00000000 		.word	.LC0
+ 341              		.cfi_endproc
+ 342              	.LFE3:
+ 343              		.size	queue_print, .-queue_print
+ 344              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 345              		.align	2
+ 346              	.LC0:
+ 347 0000 0A00     		.ascii	"\012\000"
+ 348              		.text
+ 349              	.Letext0:
+ 350              		.file 2 "Queue/queue.h"
+ 351              		.file 3 "./inc/utils\\uartstdio.h"
+ 352              		.section	.debug_info,"",%progbits
+ 353              	.Ldebug_info0:
+ 354 0000 49020000 		.4byte	0x249
+ 355 0004 0200     		.2byte	0x2
+ 356 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 357 000a 04       		.byte	0x4
+ 358 000b 01       		.uleb128 0x1
+ 359 000c F4000000 		.4byte	.LASF22
+ 360 0010 0C       		.byte	0xc
+ 361 0011 8C000000 		.4byte	.LASF23
+ 362 0015 92010000 		.4byte	.LASF24
+ 363 0019 00000000 		.4byte	.Ltext0
+ 364 001d EC000000 		.4byte	.Letext0
+ 365 0021 00000000 		.4byte	.Ldebug_line0
+ 366 0025 02       		.uleb128 0x2
+ 367 0026 A7000000 		.4byte	.LASF25
+ 368 002a 08       		.byte	0x8
+ 369 002b 02       		.byte	0x2
+ 370 002c 12       		.byte	0x12
+ 371 002d 4E000000 		.4byte	0x4e
+ 372 0031 03       		.uleb128 0x3
+ 373 0032 BD010000 		.4byte	.LASF0
+ 374 0036 02       		.byte	0x2
+ 375 0037 14       		.byte	0x14
+ 376 0038 4E000000 		.4byte	0x4e
+ 377 003c 02       		.byte	0x2
+ 378 003d 23       		.byte	0x23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 11
+
+
+ 379 003e 00       		.uleb128 0
+ 380 003f 03       		.uleb128 0x3
+ 381 0040 00000000 		.4byte	.LASF1
+ 382 0044 02       		.byte	0x2
+ 383 0045 15       		.byte	0x15
+ 384 0046 4E000000 		.4byte	0x4e
+ 385 004a 02       		.byte	0x2
+ 386 004b 23       		.byte	0x23
+ 387 004c 04       		.uleb128 0x4
+ 388 004d 00       		.byte	0
+ 389 004e 04       		.uleb128 0x4
+ 390 004f 04       		.byte	0x4
+ 391 0050 25000000 		.4byte	0x25
+ 392 0054 05       		.uleb128 0x5
+ 393 0055 A7000000 		.4byte	.LASF25
+ 394 0059 02       		.byte	0x2
+ 395 005a 16       		.byte	0x16
+ 396 005b 25000000 		.4byte	0x25
+ 397 005f 06       		.uleb128 0x6
+ 398 0060 01       		.byte	0x1
+ 399 0061 06       		.byte	0x6
+ 400 0062 86010000 		.4byte	.LASF2
+ 401 0066 06       		.uleb128 0x6
+ 402 0067 01       		.byte	0x1
+ 403 0068 08       		.byte	0x8
+ 404 0069 2C000000 		.4byte	.LASF3
+ 405 006d 06       		.uleb128 0x6
+ 406 006e 02       		.byte	0x2
+ 407 006f 05       		.byte	0x5
+ 408 0070 EA000000 		.4byte	.LASF4
+ 409 0074 06       		.uleb128 0x6
+ 410 0075 02       		.byte	0x2
+ 411 0076 07       		.byte	0x7
+ 412 0077 51000000 		.4byte	.LASF5
+ 413 007b 06       		.uleb128 0x6
+ 414 007c 04       		.byte	0x4
+ 415 007d 05       		.byte	0x5
+ 416 007e 11000000 		.4byte	.LASF6
+ 417 0082 06       		.uleb128 0x6
+ 418 0083 04       		.byte	0x4
+ 419 0084 07       		.byte	0x7
+ 420 0085 3A000000 		.4byte	.LASF7
+ 421 0089 06       		.uleb128 0x6
+ 422 008a 08       		.byte	0x8
+ 423 008b 05       		.byte	0x5
+ 424 008c CC000000 		.4byte	.LASF8
+ 425 0090 06       		.uleb128 0x6
+ 426 0091 08       		.byte	0x8
+ 427 0092 07       		.byte	0x7
+ 428 0093 AF000000 		.4byte	.LASF9
+ 429 0097 07       		.uleb128 0x7
+ 430 0098 04       		.byte	0x4
+ 431 0099 05       		.byte	0x5
+ 432 009a 696E7400 		.ascii	"int\000"
+ 433 009e 06       		.uleb128 0x6
+ 434 009f 04       		.byte	0x4
+ 435 00a0 07       		.byte	0x7
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 12
+
+
+ 436 00a1 9A000000 		.4byte	.LASF10
+ 437 00a5 08       		.uleb128 0x8
+ 438 00a6 04       		.byte	0x4
+ 439 00a7 09       		.uleb128 0x9
+ 440 00a8 01       		.byte	0x1
+ 441 00a9 05000000 		.4byte	.LASF19
+ 442 00ad 01       		.byte	0x1
+ 443 00ae 8F       		.byte	0x8f
+ 444 00af 01       		.byte	0x1
+ 445 00b0 BE000000 		.4byte	.LFB3
+ 446 00b4 EC000000 		.4byte	.LFE3
+ 447 00b8 00000000 		.4byte	.LLST8
+ 448 00bc 01       		.byte	0x1
+ 449 00bd 36010000 		.4byte	0x136
+ 450 00c1 0A       		.uleb128 0xa
+ 451 00c2 DA000000 		.4byte	.LASF11
+ 452 00c6 01       		.byte	0x1
+ 453 00c7 8F       		.byte	0x8f
+ 454 00c8 36010000 		.4byte	0x136
+ 455 00cc 20000000 		.4byte	.LLST9
+ 456 00d0 0A       		.uleb128 0xa
+ 457 00d1 C6000000 		.4byte	.LASF12
+ 458 00d5 01       		.byte	0x1
+ 459 00d6 8F       		.byte	0x8f
+ 460 00d7 43010000 		.4byte	0x143
+ 461 00db 41000000 		.4byte	.LLST10
+ 462 00df 0A       		.uleb128 0xa
+ 463 00e0 DF000000 		.4byte	.LASF13
+ 464 00e4 01       		.byte	0x1
+ 465 00e5 8F       		.byte	0x8f
+ 466 00e6 55010000 		.4byte	0x155
+ 467 00ea 6D000000 		.4byte	.LLST11
+ 468 00ee 0B       		.uleb128 0xb
+ 469 00ef 1A000000 		.4byte	.LASF15
+ 470 00f3 01       		.byte	0x1
+ 471 00f4 96       		.byte	0x96
+ 472 00f5 4E000000 		.4byte	0x4e
+ 473 00f9 99000000 		.4byte	.LLST12
+ 474 00fd 0C       		.uleb128 0xc
+ 475 00fe C8000000 		.4byte	.LVL30
+ 476 0102 3F020000 		.4byte	0x23f
+ 477 0106 12010000 		.4byte	0x112
+ 478 010a 0D       		.uleb128 0xd
+ 479 010b 01       		.byte	0x1
+ 480 010c 50       		.byte	0x50
+ 481 010d 03       		.byte	0x3
+ 482 010e F3       		.byte	0xf3
+ 483 010f 01       		.uleb128 0x1
+ 484 0110 50       		.byte	0x50
+ 485 0111 00       		.byte	0
+ 486 0112 0E       		.uleb128 0xe
+ 487 0113 D6000000 		.4byte	.LVL33
+ 488 0117 22010000 		.4byte	0x122
+ 489 011b 0D       		.uleb128 0xd
+ 490 011c 01       		.byte	0x1
+ 491 011d 50       		.byte	0x50
+ 492 011e 02       		.byte	0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 13
+
+
+ 493 011f 74       		.byte	0x74
+ 494 0120 00       		.sleb128 0
+ 495 0121 00       		.byte	0
+ 496 0122 0F       		.uleb128 0xf
+ 497 0123 E4000000 		.4byte	.LVL36
+ 498 0127 3F020000 		.4byte	0x23f
+ 499 012b 0D       		.uleb128 0xd
+ 500 012c 01       		.byte	0x1
+ 501 012d 50       		.byte	0x50
+ 502 012e 05       		.byte	0x5
+ 503 012f 03       		.byte	0x3
+ 504 0130 00000000 		.4byte	.LC0
+ 505 0134 00       		.byte	0
+ 506 0135 00       		.byte	0
+ 507 0136 04       		.uleb128 0x4
+ 508 0137 04       		.byte	0x4
+ 509 0138 3C010000 		.4byte	0x13c
+ 510 013c 06       		.uleb128 0x6
+ 511 013d 01       		.byte	0x1
+ 512 013e 08       		.byte	0x8
+ 513 013f 81010000 		.4byte	.LASF14
+ 514 0143 04       		.uleb128 0x4
+ 515 0144 04       		.byte	0x4
+ 516 0145 54000000 		.4byte	0x54
+ 517 0149 10       		.uleb128 0x10
+ 518 014a 01       		.byte	0x1
+ 519 014b 55010000 		.4byte	0x155
+ 520 014f 11       		.uleb128 0x11
+ 521 0150 A5000000 		.4byte	0xa5
+ 522 0154 00       		.byte	0
+ 523 0155 04       		.uleb128 0x4
+ 524 0156 04       		.byte	0x4
+ 525 0157 49010000 		.4byte	0x149
+ 526 015b 12       		.uleb128 0x12
+ 527 015c 01       		.byte	0x1
+ 528 015d 64000000 		.4byte	.LASF16
+ 529 0161 01       		.byte	0x1
+ 530 0162 75       		.byte	0x75
+ 531 0163 01       		.byte	0x1
+ 532 0164 97000000 		.4byte	0x97
+ 533 0168 A0000000 		.4byte	.LFB2
+ 534 016c BE000000 		.4byte	.LFE2
+ 535 0170 02       		.byte	0x2
+ 536 0171 7D       		.byte	0x7d
+ 537 0172 00       		.sleb128 0
+ 538 0173 01       		.byte	0x1
+ 539 0174 A5010000 		.4byte	0x1a5
+ 540 0178 0A       		.uleb128 0xa
+ 541 0179 C6000000 		.4byte	.LASF12
+ 542 017d 01       		.byte	0x1
+ 543 017e 75       		.byte	0x75
+ 544 017f 43010000 		.4byte	0x143
+ 545 0183 B7000000 		.4byte	.LLST5
+ 546 0187 13       		.uleb128 0x13
+ 547 0188 61757800 		.ascii	"aux\000"
+ 548 018c 01       		.byte	0x1
+ 549 018d 77       		.byte	0x77
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 14
+
+
+ 550 018e 43010000 		.4byte	0x143
+ 551 0192 01010000 		.4byte	.LLST6
+ 552 0196 13       		.uleb128 0x13
+ 553 0197 637400   		.ascii	"ct\000"
+ 554 019a 01       		.byte	0x1
+ 555 019b 78       		.byte	0x78
+ 556 019c 97000000 		.4byte	0x97
+ 557 01a0 4B010000 		.4byte	.LLST7
+ 558 01a4 00       		.byte	0
+ 559 01a5 14       		.uleb128 0x14
+ 560 01a6 01       		.byte	0x1
+ 561 01a7 1F000000 		.4byte	.LASF17
+ 562 01ab 01       		.byte	0x1
+ 563 01ac 3D       		.byte	0x3d
+ 564 01ad 01       		.byte	0x1
+ 565 01ae 43010000 		.4byte	0x143
+ 566 01b2 3C000000 		.4byte	.LFB1
+ 567 01b6 A0000000 		.4byte	.LFE1
+ 568 01ba 8E010000 		.4byte	.LLST2
+ 569 01be 01       		.byte	0x1
+ 570 01bf EF010000 		.4byte	0x1ef
+ 571 01c3 0A       		.uleb128 0xa
+ 572 01c4 C6000000 		.4byte	.LASF12
+ 573 01c8 01       		.byte	0x1
+ 574 01c9 3D       		.byte	0x3d
+ 575 01ca EF010000 		.4byte	0x1ef
+ 576 01ce C6010000 		.4byte	.LLST3
+ 577 01d2 15       		.uleb128 0x15
+ 578 01d3 87000000 		.4byte	.LASF18
+ 579 01d7 01       		.byte	0x1
+ 580 01d8 3D       		.byte	0x3d
+ 581 01d9 43010000 		.4byte	0x143
+ 582 01dd 01       		.byte	0x1
+ 583 01de 51       		.byte	0x51
+ 584 01df 0B       		.uleb128 0xb
+ 585 01e0 1A000000 		.4byte	.LASF15
+ 586 01e4 01       		.byte	0x1
+ 587 01e5 48       		.byte	0x48
+ 588 01e6 4E000000 		.4byte	0x4e
+ 589 01ea F2010000 		.4byte	.LLST4
+ 590 01ee 00       		.byte	0
+ 591 01ef 04       		.uleb128 0x4
+ 592 01f0 04       		.byte	0x4
+ 593 01f1 43010000 		.4byte	0x143
+ 594 01f5 09       		.uleb128 0x9
+ 595 01f6 01       		.byte	0x1
+ 596 01f7 6F000000 		.4byte	.LASF20
+ 597 01fb 01       		.byte	0x1
+ 598 01fc 0D       		.byte	0xd
+ 599 01fd 01       		.byte	0x1
+ 600 01fe 00000000 		.4byte	.LFB0
+ 601 0202 3C000000 		.4byte	.LFE0
+ 602 0206 49020000 		.4byte	.LLST0
+ 603 020a 01       		.byte	0x1
+ 604 020b 3F020000 		.4byte	0x23f
+ 605 020f 15       		.uleb128 0x15
+ 606 0210 C6000000 		.4byte	.LASF12
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 15
+
+
+ 607 0214 01       		.byte	0x1
+ 608 0215 0D       		.byte	0xd
+ 609 0216 EF010000 		.4byte	0x1ef
+ 610 021a 01       		.byte	0x1
+ 611 021b 50       		.byte	0x50
+ 612 021c 0A       		.uleb128 0xa
+ 613 021d 87000000 		.4byte	.LASF18
+ 614 0221 01       		.byte	0x1
+ 615 0222 0D       		.byte	0xd
+ 616 0223 43010000 		.4byte	0x143
+ 617 0227 81020000 		.4byte	.LLST1
+ 618 022b 16       		.uleb128 0x16
+ 619 022c 00000000 		.4byte	.Ldebug_ranges0+0
+ 620 0230 17       		.uleb128 0x17
+ 621 0231 4C000000 		.4byte	.LASF21
+ 622 0235 01       		.byte	0x1
+ 623 0236 22       		.byte	0x22
+ 624 0237 43010000 		.4byte	0x143
+ 625 023b 01       		.byte	0x1
+ 626 023c 51       		.byte	0x51
+ 627 023d 00       		.byte	0
+ 628 023e 00       		.byte	0
+ 629 023f 18       		.uleb128 0x18
+ 630 0240 01       		.byte	0x1
+ 631 0241 01       		.byte	0x1
+ 632 0242 7C000000 		.4byte	.LASF26
+ 633 0246 7C000000 		.4byte	.LASF26
+ 634 024a 03       		.byte	0x3
+ 635 024b 41       		.byte	0x41
+ 636 024c 00       		.byte	0
+ 637              		.section	.debug_abbrev,"",%progbits
+ 638              	.Ldebug_abbrev0:
+ 639 0000 01       		.uleb128 0x1
+ 640 0001 11       		.uleb128 0x11
+ 641 0002 01       		.byte	0x1
+ 642 0003 25       		.uleb128 0x25
+ 643 0004 0E       		.uleb128 0xe
+ 644 0005 13       		.uleb128 0x13
+ 645 0006 0B       		.uleb128 0xb
+ 646 0007 03       		.uleb128 0x3
+ 647 0008 0E       		.uleb128 0xe
+ 648 0009 1B       		.uleb128 0x1b
+ 649 000a 0E       		.uleb128 0xe
+ 650 000b 11       		.uleb128 0x11
+ 651 000c 01       		.uleb128 0x1
+ 652 000d 12       		.uleb128 0x12
+ 653 000e 01       		.uleb128 0x1
+ 654 000f 10       		.uleb128 0x10
+ 655 0010 06       		.uleb128 0x6
+ 656 0011 00       		.byte	0
+ 657 0012 00       		.byte	0
+ 658 0013 02       		.uleb128 0x2
+ 659 0014 13       		.uleb128 0x13
+ 660 0015 01       		.byte	0x1
+ 661 0016 03       		.uleb128 0x3
+ 662 0017 0E       		.uleb128 0xe
+ 663 0018 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 16
+
+
+ 664 0019 0B       		.uleb128 0xb
+ 665 001a 3A       		.uleb128 0x3a
+ 666 001b 0B       		.uleb128 0xb
+ 667 001c 3B       		.uleb128 0x3b
+ 668 001d 0B       		.uleb128 0xb
+ 669 001e 01       		.uleb128 0x1
+ 670 001f 13       		.uleb128 0x13
+ 671 0020 00       		.byte	0
+ 672 0021 00       		.byte	0
+ 673 0022 03       		.uleb128 0x3
+ 674 0023 0D       		.uleb128 0xd
+ 675 0024 00       		.byte	0
+ 676 0025 03       		.uleb128 0x3
+ 677 0026 0E       		.uleb128 0xe
+ 678 0027 3A       		.uleb128 0x3a
+ 679 0028 0B       		.uleb128 0xb
+ 680 0029 3B       		.uleb128 0x3b
+ 681 002a 0B       		.uleb128 0xb
+ 682 002b 49       		.uleb128 0x49
+ 683 002c 13       		.uleb128 0x13
+ 684 002d 38       		.uleb128 0x38
+ 685 002e 0A       		.uleb128 0xa
+ 686 002f 00       		.byte	0
+ 687 0030 00       		.byte	0
+ 688 0031 04       		.uleb128 0x4
+ 689 0032 0F       		.uleb128 0xf
+ 690 0033 00       		.byte	0
+ 691 0034 0B       		.uleb128 0xb
+ 692 0035 0B       		.uleb128 0xb
+ 693 0036 49       		.uleb128 0x49
+ 694 0037 13       		.uleb128 0x13
+ 695 0038 00       		.byte	0
+ 696 0039 00       		.byte	0
+ 697 003a 05       		.uleb128 0x5
+ 698 003b 16       		.uleb128 0x16
+ 699 003c 00       		.byte	0
+ 700 003d 03       		.uleb128 0x3
+ 701 003e 0E       		.uleb128 0xe
+ 702 003f 3A       		.uleb128 0x3a
+ 703 0040 0B       		.uleb128 0xb
+ 704 0041 3B       		.uleb128 0x3b
+ 705 0042 0B       		.uleb128 0xb
+ 706 0043 49       		.uleb128 0x49
+ 707 0044 13       		.uleb128 0x13
+ 708 0045 00       		.byte	0
+ 709 0046 00       		.byte	0
+ 710 0047 06       		.uleb128 0x6
+ 711 0048 24       		.uleb128 0x24
+ 712 0049 00       		.byte	0
+ 713 004a 0B       		.uleb128 0xb
+ 714 004b 0B       		.uleb128 0xb
+ 715 004c 3E       		.uleb128 0x3e
+ 716 004d 0B       		.uleb128 0xb
+ 717 004e 03       		.uleb128 0x3
+ 718 004f 0E       		.uleb128 0xe
+ 719 0050 00       		.byte	0
+ 720 0051 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 17
+
+
+ 721 0052 07       		.uleb128 0x7
+ 722 0053 24       		.uleb128 0x24
+ 723 0054 00       		.byte	0
+ 724 0055 0B       		.uleb128 0xb
+ 725 0056 0B       		.uleb128 0xb
+ 726 0057 3E       		.uleb128 0x3e
+ 727 0058 0B       		.uleb128 0xb
+ 728 0059 03       		.uleb128 0x3
+ 729 005a 08       		.uleb128 0x8
+ 730 005b 00       		.byte	0
+ 731 005c 00       		.byte	0
+ 732 005d 08       		.uleb128 0x8
+ 733 005e 0F       		.uleb128 0xf
+ 734 005f 00       		.byte	0
+ 735 0060 0B       		.uleb128 0xb
+ 736 0061 0B       		.uleb128 0xb
+ 737 0062 00       		.byte	0
+ 738 0063 00       		.byte	0
+ 739 0064 09       		.uleb128 0x9
+ 740 0065 2E       		.uleb128 0x2e
+ 741 0066 01       		.byte	0x1
+ 742 0067 3F       		.uleb128 0x3f
+ 743 0068 0C       		.uleb128 0xc
+ 744 0069 03       		.uleb128 0x3
+ 745 006a 0E       		.uleb128 0xe
+ 746 006b 3A       		.uleb128 0x3a
+ 747 006c 0B       		.uleb128 0xb
+ 748 006d 3B       		.uleb128 0x3b
+ 749 006e 0B       		.uleb128 0xb
+ 750 006f 27       		.uleb128 0x27
+ 751 0070 0C       		.uleb128 0xc
+ 752 0071 11       		.uleb128 0x11
+ 753 0072 01       		.uleb128 0x1
+ 754 0073 12       		.uleb128 0x12
+ 755 0074 01       		.uleb128 0x1
+ 756 0075 40       		.uleb128 0x40
+ 757 0076 06       		.uleb128 0x6
+ 758 0077 9742     		.uleb128 0x2117
+ 759 0079 0C       		.uleb128 0xc
+ 760 007a 01       		.uleb128 0x1
+ 761 007b 13       		.uleb128 0x13
+ 762 007c 00       		.byte	0
+ 763 007d 00       		.byte	0
+ 764 007e 0A       		.uleb128 0xa
+ 765 007f 05       		.uleb128 0x5
+ 766 0080 00       		.byte	0
+ 767 0081 03       		.uleb128 0x3
+ 768 0082 0E       		.uleb128 0xe
+ 769 0083 3A       		.uleb128 0x3a
+ 770 0084 0B       		.uleb128 0xb
+ 771 0085 3B       		.uleb128 0x3b
+ 772 0086 0B       		.uleb128 0xb
+ 773 0087 49       		.uleb128 0x49
+ 774 0088 13       		.uleb128 0x13
+ 775 0089 02       		.uleb128 0x2
+ 776 008a 06       		.uleb128 0x6
+ 777 008b 00       		.byte	0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 18
+
+
+ 778 008c 00       		.byte	0
+ 779 008d 0B       		.uleb128 0xb
+ 780 008e 34       		.uleb128 0x34
+ 781 008f 00       		.byte	0
+ 782 0090 03       		.uleb128 0x3
+ 783 0091 0E       		.uleb128 0xe
+ 784 0092 3A       		.uleb128 0x3a
+ 785 0093 0B       		.uleb128 0xb
+ 786 0094 3B       		.uleb128 0x3b
+ 787 0095 0B       		.uleb128 0xb
+ 788 0096 49       		.uleb128 0x49
+ 789 0097 13       		.uleb128 0x13
+ 790 0098 02       		.uleb128 0x2
+ 791 0099 06       		.uleb128 0x6
+ 792 009a 00       		.byte	0
+ 793 009b 00       		.byte	0
+ 794 009c 0C       		.uleb128 0xc
+ 795 009d 898201   		.uleb128 0x4109
+ 796 00a0 01       		.byte	0x1
+ 797 00a1 11       		.uleb128 0x11
+ 798 00a2 01       		.uleb128 0x1
+ 799 00a3 31       		.uleb128 0x31
+ 800 00a4 13       		.uleb128 0x13
+ 801 00a5 01       		.uleb128 0x1
+ 802 00a6 13       		.uleb128 0x13
+ 803 00a7 00       		.byte	0
+ 804 00a8 00       		.byte	0
+ 805 00a9 0D       		.uleb128 0xd
+ 806 00aa 8A8201   		.uleb128 0x410a
+ 807 00ad 00       		.byte	0
+ 808 00ae 02       		.uleb128 0x2
+ 809 00af 0A       		.uleb128 0xa
+ 810 00b0 9142     		.uleb128 0x2111
+ 811 00b2 0A       		.uleb128 0xa
+ 812 00b3 00       		.byte	0
+ 813 00b4 00       		.byte	0
+ 814 00b5 0E       		.uleb128 0xe
+ 815 00b6 898201   		.uleb128 0x4109
+ 816 00b9 01       		.byte	0x1
+ 817 00ba 11       		.uleb128 0x11
+ 818 00bb 01       		.uleb128 0x1
+ 819 00bc 01       		.uleb128 0x1
+ 820 00bd 13       		.uleb128 0x13
+ 821 00be 00       		.byte	0
+ 822 00bf 00       		.byte	0
+ 823 00c0 0F       		.uleb128 0xf
+ 824 00c1 898201   		.uleb128 0x4109
+ 825 00c4 01       		.byte	0x1
+ 826 00c5 11       		.uleb128 0x11
+ 827 00c6 01       		.uleb128 0x1
+ 828 00c7 31       		.uleb128 0x31
+ 829 00c8 13       		.uleb128 0x13
+ 830 00c9 00       		.byte	0
+ 831 00ca 00       		.byte	0
+ 832 00cb 10       		.uleb128 0x10
+ 833 00cc 15       		.uleb128 0x15
+ 834 00cd 01       		.byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 19
+
+
+ 835 00ce 27       		.uleb128 0x27
+ 836 00cf 0C       		.uleb128 0xc
+ 837 00d0 01       		.uleb128 0x1
+ 838 00d1 13       		.uleb128 0x13
+ 839 00d2 00       		.byte	0
+ 840 00d3 00       		.byte	0
+ 841 00d4 11       		.uleb128 0x11
+ 842 00d5 05       		.uleb128 0x5
+ 843 00d6 00       		.byte	0
+ 844 00d7 49       		.uleb128 0x49
+ 845 00d8 13       		.uleb128 0x13
+ 846 00d9 00       		.byte	0
+ 847 00da 00       		.byte	0
+ 848 00db 12       		.uleb128 0x12
+ 849 00dc 2E       		.uleb128 0x2e
+ 850 00dd 01       		.byte	0x1
+ 851 00de 3F       		.uleb128 0x3f
+ 852 00df 0C       		.uleb128 0xc
+ 853 00e0 03       		.uleb128 0x3
+ 854 00e1 0E       		.uleb128 0xe
+ 855 00e2 3A       		.uleb128 0x3a
+ 856 00e3 0B       		.uleb128 0xb
+ 857 00e4 3B       		.uleb128 0x3b
+ 858 00e5 0B       		.uleb128 0xb
+ 859 00e6 27       		.uleb128 0x27
+ 860 00e7 0C       		.uleb128 0xc
+ 861 00e8 49       		.uleb128 0x49
+ 862 00e9 13       		.uleb128 0x13
+ 863 00ea 11       		.uleb128 0x11
+ 864 00eb 01       		.uleb128 0x1
+ 865 00ec 12       		.uleb128 0x12
+ 866 00ed 01       		.uleb128 0x1
+ 867 00ee 40       		.uleb128 0x40
+ 868 00ef 0A       		.uleb128 0xa
+ 869 00f0 9742     		.uleb128 0x2117
+ 870 00f2 0C       		.uleb128 0xc
+ 871 00f3 01       		.uleb128 0x1
+ 872 00f4 13       		.uleb128 0x13
+ 873 00f5 00       		.byte	0
+ 874 00f6 00       		.byte	0
+ 875 00f7 13       		.uleb128 0x13
+ 876 00f8 34       		.uleb128 0x34
+ 877 00f9 00       		.byte	0
+ 878 00fa 03       		.uleb128 0x3
+ 879 00fb 08       		.uleb128 0x8
+ 880 00fc 3A       		.uleb128 0x3a
+ 881 00fd 0B       		.uleb128 0xb
+ 882 00fe 3B       		.uleb128 0x3b
+ 883 00ff 0B       		.uleb128 0xb
+ 884 0100 49       		.uleb128 0x49
+ 885 0101 13       		.uleb128 0x13
+ 886 0102 02       		.uleb128 0x2
+ 887 0103 06       		.uleb128 0x6
+ 888 0104 00       		.byte	0
+ 889 0105 00       		.byte	0
+ 890 0106 14       		.uleb128 0x14
+ 891 0107 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 20
+
+
+ 892 0108 01       		.byte	0x1
+ 893 0109 3F       		.uleb128 0x3f
+ 894 010a 0C       		.uleb128 0xc
+ 895 010b 03       		.uleb128 0x3
+ 896 010c 0E       		.uleb128 0xe
+ 897 010d 3A       		.uleb128 0x3a
+ 898 010e 0B       		.uleb128 0xb
+ 899 010f 3B       		.uleb128 0x3b
+ 900 0110 0B       		.uleb128 0xb
+ 901 0111 27       		.uleb128 0x27
+ 902 0112 0C       		.uleb128 0xc
+ 903 0113 49       		.uleb128 0x49
+ 904 0114 13       		.uleb128 0x13
+ 905 0115 11       		.uleb128 0x11
+ 906 0116 01       		.uleb128 0x1
+ 907 0117 12       		.uleb128 0x12
+ 908 0118 01       		.uleb128 0x1
+ 909 0119 40       		.uleb128 0x40
+ 910 011a 06       		.uleb128 0x6
+ 911 011b 9742     		.uleb128 0x2117
+ 912 011d 0C       		.uleb128 0xc
+ 913 011e 01       		.uleb128 0x1
+ 914 011f 13       		.uleb128 0x13
+ 915 0120 00       		.byte	0
+ 916 0121 00       		.byte	0
+ 917 0122 15       		.uleb128 0x15
+ 918 0123 05       		.uleb128 0x5
+ 919 0124 00       		.byte	0
+ 920 0125 03       		.uleb128 0x3
+ 921 0126 0E       		.uleb128 0xe
+ 922 0127 3A       		.uleb128 0x3a
+ 923 0128 0B       		.uleb128 0xb
+ 924 0129 3B       		.uleb128 0x3b
+ 925 012a 0B       		.uleb128 0xb
+ 926 012b 49       		.uleb128 0x49
+ 927 012c 13       		.uleb128 0x13
+ 928 012d 02       		.uleb128 0x2
+ 929 012e 0A       		.uleb128 0xa
+ 930 012f 00       		.byte	0
+ 931 0130 00       		.byte	0
+ 932 0131 16       		.uleb128 0x16
+ 933 0132 0B       		.uleb128 0xb
+ 934 0133 01       		.byte	0x1
+ 935 0134 55       		.uleb128 0x55
+ 936 0135 06       		.uleb128 0x6
+ 937 0136 00       		.byte	0
+ 938 0137 00       		.byte	0
+ 939 0138 17       		.uleb128 0x17
+ 940 0139 34       		.uleb128 0x34
+ 941 013a 00       		.byte	0
+ 942 013b 03       		.uleb128 0x3
+ 943 013c 0E       		.uleb128 0xe
+ 944 013d 3A       		.uleb128 0x3a
+ 945 013e 0B       		.uleb128 0xb
+ 946 013f 3B       		.uleb128 0x3b
+ 947 0140 0B       		.uleb128 0xb
+ 948 0141 49       		.uleb128 0x49
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 21
+
+
+ 949 0142 13       		.uleb128 0x13
+ 950 0143 02       		.uleb128 0x2
+ 951 0144 0A       		.uleb128 0xa
+ 952 0145 00       		.byte	0
+ 953 0146 00       		.byte	0
+ 954 0147 18       		.uleb128 0x18
+ 955 0148 2E       		.uleb128 0x2e
+ 956 0149 00       		.byte	0
+ 957 014a 3F       		.uleb128 0x3f
+ 958 014b 0C       		.uleb128 0xc
+ 959 014c 3C       		.uleb128 0x3c
+ 960 014d 0C       		.uleb128 0xc
+ 961 014e 8740     		.uleb128 0x2007
+ 962 0150 0E       		.uleb128 0xe
+ 963 0151 03       		.uleb128 0x3
+ 964 0152 0E       		.uleb128 0xe
+ 965 0153 3A       		.uleb128 0x3a
+ 966 0154 0B       		.uleb128 0xb
+ 967 0155 3B       		.uleb128 0x3b
+ 968 0156 0B       		.uleb128 0xb
+ 969 0157 00       		.byte	0
+ 970 0158 00       		.byte	0
+ 971 0159 00       		.byte	0
+ 972              		.section	.debug_loc,"",%progbits
+ 973              	.Ldebug_loc0:
+ 974              	.LLST8:
+ 975 0000 BE000000 		.4byte	.LFB3-.Ltext0
+ 976 0004 C0000000 		.4byte	.LCFI6-.Ltext0
+ 977 0008 0200     		.2byte	0x2
+ 978 000a 7D       		.byte	0x7d
+ 979 000b 00       		.sleb128 0
+ 980 000c C0000000 		.4byte	.LCFI6-.Ltext0
+ 981 0010 EC000000 		.4byte	.LFE3-.Ltext0
+ 982 0014 0200     		.2byte	0x2
+ 983 0016 7D       		.byte	0x7d
+ 984 0017 10       		.sleb128 16
+ 985 0018 00000000 		.4byte	0
+ 986 001c 00000000 		.4byte	0
+ 987              	.LLST9:
+ 988 0020 BE000000 		.4byte	.LVL29-.Ltext0
+ 989 0024 C7000000 		.4byte	.LVL30-1-.Ltext0
+ 990 0028 0100     		.2byte	0x1
+ 991 002a 50       		.byte	0x50
+ 992 002b C7000000 		.4byte	.LVL30-1-.Ltext0
+ 993 002f EC000000 		.4byte	.LFE3-.Ltext0
+ 994 0033 0400     		.2byte	0x4
+ 995 0035 F3       		.byte	0xf3
+ 996 0036 01       		.uleb128 0x1
+ 997 0037 50       		.byte	0x50
+ 998 0038 9F       		.byte	0x9f
+ 999 0039 00000000 		.4byte	0
+ 1000 003d 00000000 		.4byte	0
+ 1001              	.LLST10:
+ 1002 0041 BE000000 		.4byte	.LVL29-.Ltext0
+ 1003 0045 C7000000 		.4byte	.LVL30-1-.Ltext0
+ 1004 0049 0100     		.2byte	0x1
+ 1005 004b 51       		.byte	0x51
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 22
+
+
+ 1006 004c C7000000 		.4byte	.LVL30-1-.Ltext0
+ 1007 0050 E6000000 		.4byte	.LVL37-.Ltext0
+ 1008 0054 0100     		.2byte	0x1
+ 1009 0056 55       		.byte	0x55
+ 1010 0057 E6000000 		.4byte	.LVL37-.Ltext0
+ 1011 005b EC000000 		.4byte	.LFE3-.Ltext0
+ 1012 005f 0400     		.2byte	0x4
+ 1013 0061 F3       		.byte	0xf3
+ 1014 0062 01       		.uleb128 0x1
+ 1015 0063 51       		.byte	0x51
+ 1016 0064 9F       		.byte	0x9f
+ 1017 0065 00000000 		.4byte	0
+ 1018 0069 00000000 		.4byte	0
+ 1019              	.LLST11:
+ 1020 006d BE000000 		.4byte	.LVL29-.Ltext0
+ 1021 0071 C7000000 		.4byte	.LVL30-1-.Ltext0
+ 1022 0075 0100     		.2byte	0x1
+ 1023 0077 52       		.byte	0x52
+ 1024 0078 C7000000 		.4byte	.LVL30-1-.Ltext0
+ 1025 007c E6000000 		.4byte	.LVL37-.Ltext0
+ 1026 0080 0100     		.2byte	0x1
+ 1027 0082 56       		.byte	0x56
+ 1028 0083 E6000000 		.4byte	.LVL37-.Ltext0
+ 1029 0087 EC000000 		.4byte	.LFE3-.Ltext0
+ 1030 008b 0400     		.2byte	0x4
+ 1031 008d F3       		.byte	0xf3
+ 1032 008e 01       		.uleb128 0x1
+ 1033 008f 52       		.byte	0x52
+ 1034 0090 9F       		.byte	0x9f
+ 1035 0091 00000000 		.4byte	0
+ 1036 0095 00000000 		.4byte	0
+ 1037              	.LLST12:
+ 1038 0099 CA000000 		.4byte	.LVL31-.Ltext0
+ 1039 009d D2000000 		.4byte	.LVL32-.Ltext0
+ 1040 00a1 0100     		.2byte	0x1
+ 1041 00a3 55       		.byte	0x55
+ 1042 00a4 D2000000 		.4byte	.LVL32-.Ltext0
+ 1043 00a8 DE000000 		.4byte	.LVL35-.Ltext0
+ 1044 00ac 0100     		.2byte	0x1
+ 1045 00ae 54       		.byte	0x54
+ 1046 00af 00000000 		.4byte	0
+ 1047 00b3 00000000 		.4byte	0
+ 1048              	.LLST5:
+ 1049 00b7 A0000000 		.4byte	.LVL20-.Ltext0
+ 1050 00bb AC000000 		.4byte	.LVL22-.Ltext0
+ 1051 00bf 0100     		.2byte	0x1
+ 1052 00c1 50       		.byte	0x50
+ 1053 00c2 AC000000 		.4byte	.LVL22-.Ltext0
+ 1054 00c6 B6000000 		.4byte	.LVL25-.Ltext0
+ 1055 00ca 0100     		.2byte	0x1
+ 1056 00cc 52       		.byte	0x52
+ 1057 00cd B6000000 		.4byte	.LVL25-.Ltext0
+ 1058 00d1 B8000000 		.4byte	.LVL26-.Ltext0
+ 1059 00d5 0100     		.2byte	0x1
+ 1060 00d7 50       		.byte	0x50
+ 1061 00d8 B8000000 		.4byte	.LVL26-.Ltext0
+ 1062 00dc BA000000 		.4byte	.LVL27-.Ltext0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 23
+
+
+ 1063 00e0 0100     		.2byte	0x1
+ 1064 00e2 52       		.byte	0x52
+ 1065 00e3 BA000000 		.4byte	.LVL27-.Ltext0
+ 1066 00e7 BC000000 		.4byte	.LVL28-.Ltext0
+ 1067 00eb 0100     		.2byte	0x1
+ 1068 00ed 50       		.byte	0x50
+ 1069 00ee BC000000 		.4byte	.LVL28-.Ltext0
+ 1070 00f2 BE000000 		.4byte	.LFE2-.Ltext0
+ 1071 00f6 0100     		.2byte	0x1
+ 1072 00f8 52       		.byte	0x52
+ 1073 00f9 00000000 		.4byte	0
+ 1074 00fd 00000000 		.4byte	0
+ 1075              	.LLST6:
+ 1076 0101 A0000000 		.4byte	.LVL20-.Ltext0
+ 1077 0105 AC000000 		.4byte	.LVL22-.Ltext0
+ 1078 0109 0100     		.2byte	0x1
+ 1079 010b 50       		.byte	0x50
+ 1080 010c AC000000 		.4byte	.LVL22-.Ltext0
+ 1081 0110 B0000000 		.4byte	.LVL24-.Ltext0
+ 1082 0114 0100     		.2byte	0x1
+ 1083 0116 53       		.byte	0x53
+ 1084 0117 B6000000 		.4byte	.LVL25-.Ltext0
+ 1085 011b B8000000 		.4byte	.LVL26-.Ltext0
+ 1086 011f 0100     		.2byte	0x1
+ 1087 0121 50       		.byte	0x50
+ 1088 0122 B8000000 		.4byte	.LVL26-.Ltext0
+ 1089 0126 BA000000 		.4byte	.LVL27-.Ltext0
+ 1090 012a 0100     		.2byte	0x1
+ 1091 012c 52       		.byte	0x52
+ 1092 012d BA000000 		.4byte	.LVL27-.Ltext0
+ 1093 0131 BC000000 		.4byte	.LVL28-.Ltext0
+ 1094 0135 0100     		.2byte	0x1
+ 1095 0137 50       		.byte	0x50
+ 1096 0138 BC000000 		.4byte	.LVL28-.Ltext0
+ 1097 013c BE000000 		.4byte	.LFE2-.Ltext0
+ 1098 0140 0100     		.2byte	0x1
+ 1099 0142 52       		.byte	0x52
+ 1100 0143 00000000 		.4byte	0
+ 1101 0147 00000000 		.4byte	0
+ 1102              	.LLST7:
+ 1103 014b A0000000 		.4byte	.LVL20-.Ltext0
+ 1104 014f A4000000 		.4byte	.LVL21-.Ltext0
+ 1105 0153 0200     		.2byte	0x2
+ 1106 0155 30       		.byte	0x30
+ 1107 0156 9F       		.byte	0x9f
+ 1108 0157 A4000000 		.4byte	.LVL21-.Ltext0
+ 1109 015b AC000000 		.4byte	.LVL22-.Ltext0
+ 1110 015f 0200     		.2byte	0x2
+ 1111 0161 31       		.byte	0x31
+ 1112 0162 9F       		.byte	0x9f
+ 1113 0163 AC000000 		.4byte	.LVL22-.Ltext0
+ 1114 0167 B6000000 		.4byte	.LVL25-.Ltext0
+ 1115 016b 0100     		.2byte	0x1
+ 1116 016d 50       		.byte	0x50
+ 1117 016e B6000000 		.4byte	.LVL25-.Ltext0
+ 1118 0172 BA000000 		.4byte	.LVL27-.Ltext0
+ 1119 0176 0200     		.2byte	0x2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 24
+
+
+ 1120 0178 30       		.byte	0x30
+ 1121 0179 9F       		.byte	0x9f
+ 1122 017a BA000000 		.4byte	.LVL27-.Ltext0
+ 1123 017e BE000000 		.4byte	.LFE2-.Ltext0
+ 1124 0182 0200     		.2byte	0x2
+ 1125 0184 31       		.byte	0x31
+ 1126 0185 9F       		.byte	0x9f
+ 1127 0186 00000000 		.4byte	0
+ 1128 018a 00000000 		.4byte	0
+ 1129              	.LLST2:
+ 1130 018e 3C000000 		.4byte	.LFB1-.Ltext0
+ 1131 0192 3E000000 		.4byte	.LCFI3-.Ltext0
+ 1132 0196 0200     		.2byte	0x2
+ 1133 0198 7D       		.byte	0x7d
+ 1134 0199 00       		.sleb128 0
+ 1135 019a 3E000000 		.4byte	.LCFI3-.Ltext0
+ 1136 019e 64000000 		.4byte	.LCFI4-.Ltext0
+ 1137 01a2 0200     		.2byte	0x2
+ 1138 01a4 7D       		.byte	0x7d
+ 1139 01a5 04       		.sleb128 4
+ 1140 01a6 64000000 		.4byte	.LCFI4-.Ltext0
+ 1141 01aa 66000000 		.4byte	.LCFI5-.Ltext0
+ 1142 01ae 0200     		.2byte	0x2
+ 1143 01b0 7D       		.byte	0x7d
+ 1144 01b1 00       		.sleb128 0
+ 1145 01b2 66000000 		.4byte	.LCFI5-.Ltext0
+ 1146 01b6 A0000000 		.4byte	.LFE1-.Ltext0
+ 1147 01ba 0200     		.2byte	0x2
+ 1148 01bc 7D       		.byte	0x7d
+ 1149 01bd 04       		.sleb128 4
+ 1150 01be 00000000 		.4byte	0
+ 1151 01c2 00000000 		.4byte	0
+ 1152              	.LLST3:
+ 1153 01c6 3C000000 		.4byte	.LVL7-.Ltext0
+ 1154 01ca 62000000 		.4byte	.LVL12-.Ltext0
+ 1155 01ce 0100     		.2byte	0x1
+ 1156 01d0 50       		.byte	0x50
+ 1157 01d1 62000000 		.4byte	.LVL12-.Ltext0
+ 1158 01d5 66000000 		.4byte	.LVL13-.Ltext0
+ 1159 01d9 0400     		.2byte	0x4
+ 1160 01db F3       		.byte	0xf3
+ 1161 01dc 01       		.uleb128 0x1
+ 1162 01dd 50       		.byte	0x50
+ 1163 01de 9F       		.byte	0x9f
+ 1164 01df 66000000 		.4byte	.LVL13-.Ltext0
+ 1165 01e3 A0000000 		.4byte	.LFE1-.Ltext0
+ 1166 01e7 0100     		.2byte	0x1
+ 1167 01e9 50       		.byte	0x50
+ 1168 01ea 00000000 		.4byte	0
+ 1169 01ee 00000000 		.4byte	0
+ 1170              	.LLST4:
+ 1171 01f2 4C000000 		.4byte	.LVL8-.Ltext0
+ 1172 01f6 50000000 		.4byte	.LVL9-.Ltext0
+ 1173 01fa 0100     		.2byte	0x1
+ 1174 01fc 52       		.byte	0x52
+ 1175 01fd 50000000 		.4byte	.LVL9-.Ltext0
+ 1176 0201 60000000 		.4byte	.LVL11-.Ltext0
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 25
+
+
+ 1177 0205 0100     		.2byte	0x1
+ 1178 0207 53       		.byte	0x53
+ 1179 0208 66000000 		.4byte	.LVL13-.Ltext0
+ 1180 020c 68000000 		.4byte	.LVL14-.Ltext0
+ 1181 0210 0100     		.2byte	0x1
+ 1182 0212 52       		.byte	0x52
+ 1183 0213 8E000000 		.4byte	.LVL15-.Ltext0
+ 1184 0217 90000000 		.4byte	.LVL16-.Ltext0
+ 1185 021b 0100     		.2byte	0x1
+ 1186 021d 53       		.byte	0x53
+ 1187 021e 90000000 		.4byte	.LVL16-.Ltext0
+ 1188 0222 92000000 		.4byte	.LVL17-.Ltext0
+ 1189 0226 0200     		.2byte	0x2
+ 1190 0228 72       		.byte	0x72
+ 1191 0229 04       		.sleb128 4
+ 1192 022a 92000000 		.4byte	.LVL17-.Ltext0
+ 1193 022e 98000000 		.4byte	.LVL18-.Ltext0
+ 1194 0232 0100     		.2byte	0x1
+ 1195 0234 52       		.byte	0x52
+ 1196 0235 98000000 		.4byte	.LVL18-.Ltext0
+ 1197 0239 9A000000 		.4byte	.LVL19-.Ltext0
+ 1198 023d 0200     		.2byte	0x2
+ 1199 023f 70       		.byte	0x70
+ 1200 0240 00       		.sleb128 0
+ 1201 0241 00000000 		.4byte	0
+ 1202 0245 00000000 		.4byte	0
+ 1203              	.LLST0:
+ 1204 0249 00000000 		.4byte	.LFB0-.Ltext0
+ 1205 024d 02000000 		.4byte	.LCFI0-.Ltext0
+ 1206 0251 0200     		.2byte	0x2
+ 1207 0253 7D       		.byte	0x7d
+ 1208 0254 00       		.sleb128 0
+ 1209 0255 02000000 		.4byte	.LCFI0-.Ltext0
+ 1210 0259 0C000000 		.4byte	.LCFI1-.Ltext0
+ 1211 025d 0200     		.2byte	0x2
+ 1212 025f 7D       		.byte	0x7d
+ 1213 0260 04       		.sleb128 4
+ 1214 0261 0C000000 		.4byte	.LCFI1-.Ltext0
+ 1215 0265 0E000000 		.4byte	.LCFI2-.Ltext0
+ 1216 0269 0200     		.2byte	0x2
+ 1217 026b 7D       		.byte	0x7d
+ 1218 026c 00       		.sleb128 0
+ 1219 026d 0E000000 		.4byte	.LCFI2-.Ltext0
+ 1220 0271 3C000000 		.4byte	.LFE0-.Ltext0
+ 1221 0275 0200     		.2byte	0x2
+ 1222 0277 7D       		.byte	0x7d
+ 1223 0278 04       		.sleb128 4
+ 1224 0279 00000000 		.4byte	0
+ 1225 027d 00000000 		.4byte	0
+ 1226              	.LLST1:
+ 1227 0281 00000000 		.4byte	.LVL0-.Ltext0
+ 1228 0285 0A000000 		.4byte	.LVL1-.Ltext0
+ 1229 0289 0100     		.2byte	0x1
+ 1230 028b 51       		.byte	0x51
+ 1231 028c 0A000000 		.4byte	.LVL1-.Ltext0
+ 1232 0290 0E000000 		.4byte	.LVL2-.Ltext0
+ 1233 0294 0100     		.2byte	0x1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 26
+
+
+ 1234 0296 53       		.byte	0x53
+ 1235 0297 0E000000 		.4byte	.LVL2-.Ltext0
+ 1236 029b 1A000000 		.4byte	.LVL3-.Ltext0
+ 1237 029f 0100     		.2byte	0x1
+ 1238 02a1 51       		.byte	0x51
+ 1239 02a2 1A000000 		.4byte	.LVL3-.Ltext0
+ 1240 02a6 1C000000 		.4byte	.LVL4-.Ltext0
+ 1241 02aa 0100     		.2byte	0x1
+ 1242 02ac 53       		.byte	0x53
+ 1243 02ad 1C000000 		.4byte	.LVL4-.Ltext0
+ 1244 02b1 26000000 		.4byte	.LVL5-.Ltext0
+ 1245 02b5 0100     		.2byte	0x1
+ 1246 02b7 51       		.byte	0x51
+ 1247 02b8 26000000 		.4byte	.LVL5-.Ltext0
+ 1248 02bc 3C000000 		.4byte	.LFE0-.Ltext0
+ 1249 02c0 0100     		.2byte	0x1
+ 1250 02c2 53       		.byte	0x53
+ 1251 02c3 00000000 		.4byte	0
+ 1252 02c7 00000000 		.4byte	0
+ 1253              		.section	.debug_aranges,"",%progbits
+ 1254 0000 1C000000 		.4byte	0x1c
+ 1255 0004 0200     		.2byte	0x2
+ 1256 0006 00000000 		.4byte	.Ldebug_info0
+ 1257 000a 04       		.byte	0x4
+ 1258 000b 00       		.byte	0
+ 1259 000c 0000     		.2byte	0
+ 1260 000e 0000     		.2byte	0
+ 1261 0010 00000000 		.4byte	.Ltext0
+ 1262 0014 EC000000 		.4byte	.Letext0-.Ltext0
+ 1263 0018 00000000 		.4byte	0
+ 1264 001c 00000000 		.4byte	0
+ 1265              		.section	.debug_ranges,"",%progbits
+ 1266              	.Ldebug_ranges0:
+ 1267 0000 18000000 		.4byte	.LBB2-.Ltext0
+ 1268 0004 1C000000 		.4byte	.LBE2-.Ltext0
+ 1269 0008 26000000 		.4byte	.LBB3-.Ltext0
+ 1270 000c 3C000000 		.4byte	.LBE3-.Ltext0
+ 1271 0010 00000000 		.4byte	0
+ 1272 0014 00000000 		.4byte	0
+ 1273              		.section	.debug_line,"",%progbits
+ 1274              	.Ldebug_line0:
+ 1275 0000 C7000000 		.section	.debug_str,"MS",%progbits,1
+ 1275      02004A00 
+ 1275      00000201 
+ 1275      FB0E0D00 
+ 1275      01010101 
+ 1276              	.LASF1:
+ 1277 0000 6E657874 		.ascii	"next\000"
+ 1277      00
+ 1278              	.LASF19:
+ 1279 0005 71756575 		.ascii	"queue_print\000"
+ 1279      655F7072 
+ 1279      696E7400 
+ 1280              	.LASF6:
+ 1281 0011 6C6F6E67 		.ascii	"long int\000"
+ 1281      20696E74 
+ 1281      00
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 27
+
+
+ 1282              	.LASF15:
+ 1283 001a 71706F73 		.ascii	"qpos\000"
+ 1283      00
+ 1284              	.LASF17:
+ 1285 001f 71756575 		.ascii	"queue_remove\000"
+ 1285      655F7265 
+ 1285      6D6F7665 
+ 1285      00
+ 1286              	.LASF3:
+ 1287 002c 756E7369 		.ascii	"unsigned char\000"
+ 1287      676E6564 
+ 1287      20636861 
+ 1287      7200
+ 1288              	.LASF7:
+ 1289 003a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1289      20756E73 
+ 1289      69676E65 
+ 1289      6420696E 
+ 1289      7400
+ 1290              	.LASF21:
+ 1291 004c 74656D70 		.ascii	"temp\000"
+ 1291      00
+ 1292              	.LASF5:
+ 1293 0051 73686F72 		.ascii	"short unsigned int\000"
+ 1293      7420756E 
+ 1293      7369676E 
+ 1293      65642069 
+ 1293      6E7400
+ 1294              	.LASF16:
+ 1295 0064 71756575 		.ascii	"queue_size\000"
+ 1295      655F7369 
+ 1295      7A6500
+ 1296              	.LASF20:
+ 1297 006f 71756575 		.ascii	"queue_append\000"
+ 1297      655F6170 
+ 1297      70656E64 
+ 1297      00
+ 1298              	.LASF26:
+ 1299 007c 55415254 		.ascii	"UARTprintf\000"
+ 1299      7072696E 
+ 1299      746600
+ 1300              	.LASF18:
+ 1301 0087 656C656D 		.ascii	"elem\000"
+ 1301      00
+ 1302              	.LASF23:
+ 1303 008c 51756575 		.ascii	"Queue/queue.c\000"
+ 1303      652F7175 
+ 1303      6575652E 
+ 1303      6300
+ 1304              	.LASF10:
+ 1305 009a 756E7369 		.ascii	"unsigned int\000"
+ 1305      676E6564 
+ 1305      20696E74 
+ 1305      00
+ 1306              	.LASF25:
+ 1307 00a7 71756575 		.ascii	"queue_t\000"
+ 1307      655F7400 
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 28
+
+
+ 1308              	.LASF9:
+ 1309 00af 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1309      206C6F6E 
+ 1309      6720756E 
+ 1309      7369676E 
+ 1309      65642069 
+ 1310              	.LASF12:
+ 1311 00c6 71756575 		.ascii	"queue\000"
+ 1311      6500
+ 1312              	.LASF8:
+ 1313 00cc 6C6F6E67 		.ascii	"long long int\000"
+ 1313      206C6F6E 
+ 1313      6720696E 
+ 1313      7400
+ 1314              	.LASF11:
+ 1315 00da 6E616D65 		.ascii	"name\000"
+ 1315      00
+ 1316              	.LASF13:
+ 1317 00df 7072696E 		.ascii	"print_elem\000"
+ 1317      745F656C 
+ 1317      656D00
+ 1318              	.LASF4:
+ 1319 00ea 73686F72 		.ascii	"short int\000"
+ 1319      7420696E 
+ 1319      7400
+ 1320              	.LASF22:
+ 1321 00f4 474E5520 		.ascii	"GNU C11 7.3.1 20180622 (release) [ARM/embedded-7-br"
+ 1321      43313120 
+ 1321      372E332E 
+ 1321      31203230 
+ 1321      31383036 
+ 1322 0127 616E6368 		.ascii	"anch revision 261907] -mcpu=cortex-m4 -mthumb -mapc"
+ 1322      20726576 
+ 1322      6973696F 
+ 1322      6E203236 
+ 1322      31393037 
+ 1323 015a 732D6672 		.ascii	"s-frame -mthumb-interwork -gdwarf-2 -O\000"
+ 1323      616D6520 
+ 1323      2D6D7468 
+ 1323      756D622D 
+ 1323      696E7465 
+ 1324              	.LASF14:
+ 1325 0181 63686172 		.ascii	"char\000"
+ 1325      00
+ 1326              	.LASF2:
+ 1327 0186 7369676E 		.ascii	"signed char\000"
+ 1327      65642063 
+ 1327      68617200 
+ 1328              	.LASF24:
+ 1329 0192 443A5C55 		.ascii	"D:\\UTFPR\\SISTEMAS OPERACIONAIS\\multithread\000"
+ 1329      54465052 
+ 1329      5C534953 
+ 1329      54454D41 
+ 1329      53204F50 
+ 1330              	.LASF0:
+ 1331 01bd 70726576 		.ascii	"prev\000"
+ 1331      00
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 29
+
+
+ 1332              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s 			page 30
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:15     .text:00000000 $t
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:22     .text:00000000 queue_append
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:110    .text:0000003c queue_remove
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:234    .text:000000a0 queue_size
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:286    .text:000000be queue_print
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:340    .text:000000e8 $d
+C:\Users\Diogo\AppData\Local\Temp\cc6p3cHB.s:345    .rodata.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+UARTprintf

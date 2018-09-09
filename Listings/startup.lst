@@ -1,0 +1,665 @@
+ARM GAS  startup.s 			page 1
+
+
+   1              	; <<< Use Configuration Wizard in Context Menu >>>
+   2              	;******************************************************************************
+   3              	;
+   4              	; startup_rvmdk.S - Startup code for use with Keil's uVision.
+   5              	;
+   6              	; Copyright (c) 2014 Texas Instruments Incorporated.  All rights reserved.
+   7              	; Software License Agreement
+   8              	;
+   9              	; Texas Instruments (TI) is supplying this software for use solely and
+  10              	; exclusively on TI's microcontroller products. The software is owned by
+  11              	; TI and/or its suppliers, and is protected under applicable copyright
+  12              	; laws. You may not combine this software with "viral" open-source
+  13              	; software in order to form a larger program.
+  14              	;
+  15              	; THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
+  16              	; NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
+  17              	; NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  18              	; A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
+  19              	; CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
+  20              	; DAMAGES, FOR ANY REASON WHATSOEVER.
+  21              	;
+  22              	; This is part of revision 2.1.0.12573 of the EK-TM4C1294XL Firmware Package.
+  23              	;
+  24              	;******************************************************************************
+  25              	;******************************************************************************
+  26              	;
+  27              	; <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+  28              	;
+  29              	;******************************************************************************
+  30              	Stack   EQU     0x00000400
+  31              	
+  32              	END_VOLTAS		EQU 0x20000060
+  33              	END_EN_MOTOR	EQU 0x20000065
+  34              	GPIOICR_PORTJ	EQU 0x4006041C
+  35              	GPTM_TIMER0_ICR EQU 0x40030024
+  36              	END_TON			EQU 0x20000060
+  37              	END_TOFF		EQU 0x20000061
+  38              	END_SENT		EQU 0x20000062
+  39              	END_PWM_TON		EQU 0x20000063
+  40              	END_PWM_TOFF	EQU 0x20000064
+  41              	END_PWM_ON_OFF	EQU 0x20000075
+  42              	;******************************************************************************
+  43              	;
+  44              	; <o> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+  45              	;
+  46              	;******************************************************************************
+  47              	Heap    EQU     0x00000000
+  48              	
+  49              	;******************************************************************************
+  50              	;
+  51              	; Allocate space for the stack.
+  52              	;
+  53              	;******************************************************************************
+  54              	        AREA    STACK, NOINIT, READWRITE, ALIGN=3
+  55              	StackMem
+  56              	        SPACE   Stack
+  57              	__initial_sp
+ARM GAS  startup.s 			page 2
+
+
+  58              	
+  59              	;******************************************************************************
+  60              	;
+  61              	; Allocate space for the heap.
+  62              	;
+  63              	;******************************************************************************
+  64              	        AREA    HEAP, NOINIT, READWRITE, ALIGN=3
+  65              	__heap_base
+  66              	HeapMem
+  67              	        SPACE   Heap
+  68              	__heap_limit
+  69              	
+  70              	;******************************************************************************
+  71              	;
+  72              	; Indicate that the code in this file preserves 8-byte alignment of the stack.
+  73              	;
+  74              	;******************************************************************************
+  75              	        PRESERVE8
+  76              	
+  77              	;******************************************************************************
+  78              	;
+  79              	; Place code into the reset code section.
+  80              	;
+  81              	;******************************************************************************
+  82              	        AREA    RESET, CODE, READONLY
+  83              	        THUMB
+  84              	
+  85              	;******************************************************************************
+  86              	;
+  87              	; The vector table.
+  88              	;
+  89              	;******************************************************************************
+  90              	        EXPORT  __Vectors
+  91              	__Vectors
+  92              	        DCD     StackMem + Stack            ;   0) Top of Stack
+  93              	        DCD     Reset_Handler               ;   1) Reset Handler
+  94              	        DCD     NMI_Handler                 ;   2) NMI Handler
+  95              	        DCD     HardFault_Handler           ;   3) Hard Fault Handler
+  96              	        DCD     MemManage_Handler           ;   4) MPU Fault Handler
+  97              	        DCD     BusFault_Handler            ;   5) Bus Fault Handler
+  98              	        DCD     UsageFault_Handler          ;   6) Usage Fault Handler
+  99              	        DCD     0                           ;   7) Reserved
+ 100              	        DCD     0                           ;   8) Reserved
+ 101              	        DCD     0                           ;   9) Reserved
+ 102              	        DCD     0                           ;  10) Reserved
+ 103              	        DCD     SVC_Handler                 ;  11) SVCall Handler
+ 104              	        DCD     DebugMon_Handler            ;  12) Debug Monitor Handler
+ 105              	        DCD     0                           ;  13) Reserved
+ 106              	        DCD     PendSV_Handler              ;  14) PendSV Handler
+ 107              	        DCD     SysTick_Handler             ;  15) SysTick Handler
+ 108              	        DCD     GPIOPortA_Handler           ;  16) GPIO Port A
+ 109              	        DCD     GPIOPortB_Handler           ;  17) GPIO Port B
+ 110              	        DCD     GPIOPortC_Handler           ;  18) GPIO Port C
+ 111              	        DCD     GPIOPortD_Handler           ;  19) GPIO Port D
+ 112              	        DCD     GPIOPortE_Handler           ;  20) GPIO Port E
+ 113              	        DCD     UART0_Handler               ;  21) UART0 Rx and Tx
+ 114              	        DCD     UART1_Handler               ;  22) UART1 Rx and Tx
+ARM GAS  startup.s 			page 3
+
+
+ 115              	        DCD     SSI0_Handler                ;  23) SSI0 Rx and Tx
+ 116              	        DCD     I2C0_Handler                ;  24) I2C0 Master and Slave
+ 117              	        DCD     PWM0Fault_Handler           ;  25) PWM 0 Fault
+ 118              	        DCD     PWM0Generator0_Handler      ;  26) PWM 0 Generator 0
+ 119              	        DCD     PWM0Generator1_Handler      ;  27) PWM 0 Generator 1
+ 120              	        DCD     PWM0Generator2_Handler      ;  28) PWM 0 Generator 2
+ 121              	        DCD     Quadrature0_Handler         ;  29) Quadrature Encoder 0
+ 122              	        DCD     ADC0Seq0_Handler            ;  30) ADC0 Sequence 0
+ 123              	        DCD     ADC0Seq1_Handler            ;  31) ADC0 Sequence 1
+ 124              	        DCD     ADC0Seq2_Handler            ;  32) ADC0 Sequence 2
+ 125              	        DCD     ADC0Seq3_Handler            ;  33) ADC0 Sequence 3
+ 126              	        DCD     WDT_Handler                 ;  34) Watchdog Timers 0 and 1
+ 127              	        DCD     Timer0A_Handler             ;  35) Timer 0 subtimer A
+ 128              	        DCD     Timer0B_Handler             ;  36) Timer 0 subtimer B
+ 129              	        DCD     Timer1A_Handler             ;  37) Timer 1 subtimer A
+ 130              	        DCD     Timer1B_Handler             ;  38) Timer 1 subtimer B
+ 131              	        DCD     Timer2A_Handler             ;  39) Timer 2 subtimer A
+ 132              	        DCD     Timer2B_Handler             ;  40) Timer 2 subtimer B
+ 133              	        DCD     Comp0_Handler               ;  41) Analog Comp 0
+ 134              	        DCD     Comp1_Handler               ;  42) Analog Comp 1
+ 135              	        DCD     Comp2_Handler               ;  43) Analog Comp 2
+ 136              	        DCD     SysCtl_Handler              ;  44) System Control (PLL, OSC, BO)
+ 137              	        DCD     FlashCtl_Handler            ;  45) Flash Control
+ 138              	        DCD     GPIOPortF_Handler           ;  46) GPIO Port F
+ 139              	        DCD     GPIOPortG_Handler           ;  47) GPIO Port G
+ 140              	        DCD     GPIOPortH_Handler           ;  48) GPIO Port H
+ 141              	        DCD     UART2_Handler               ;  49) UART2 Rx and Tx
+ 142              	        DCD     SSI1_Handler                ;  50) SSI1 Rx and Tx
+ 143              	        DCD     Timer3A_Handler             ;  51) Timer 3 subtimer A
+ 144              	        DCD     Timer3B_Handler             ;  52) Timer 3 subtimer B
+ 145              	        DCD     I2C1_Handler                ;  53) I2C1 Master and Slave
+ 146              	        DCD     CAN0_Handler                ;  54) CAN0
+ 147              	        DCD     CAN1_Handler                ;  55) CAN1
+ 148              	        DCD     Ethernet_Handler            ;  56) Ethernet
+ 149              	        DCD     Hibernate_Handler           ;  57) Hibernate
+ 150              	        DCD     USB0_Handler                ;  58) USB0
+ 151              	        DCD     PWM0Generator3_Handler      ;  59) PWM 0 Generator 3
+ 152              	        DCD     uDMA_Handler                ;  60) uDMA Software Transfer
+ 153              	        DCD     uDMA_Error                  ;  61) uDMA Error
+ 154              	        DCD     ADC1Seq0_Handler            ;  62) ADC1 Sequence 0
+ 155              	        DCD     ADC1Seq1_Handler            ;  63) ADC1 Sequence 1
+ 156              	        DCD     ADC1Seq2_Handler            ;  64) ADC1 Sequence 2
+ 157              	        DCD     ADC1Seq3_Handler            ;  65) ADC1 Sequence 3
+ 158              	        DCD     ExtBus_Handler              ;  66) External Bus Interface 0
+ 159              	        DCD     GPIOPortJ_Handler           ;  67) GPIO Port J
+ 160              	        DCD     GPIOPortK_Handler           ;  68) GPIO Port K
+ 161              	        DCD     GPIOPortL_Handler           ;  69) GPIO Port L
+ 162              	        DCD     SSI2_Handler                ;  70) SSI2 Rx and Tx
+ 163              	        DCD     SSI3_Handler                ;  71) SSI3 Rx and Tx
+ 164              	        DCD     UART3_Handler               ;  72) UART3 Rx and Tx
+ 165              	        DCD     UART4_Handler               ;  73) UART4 Rx and Tx
+ 166              	        DCD     UART5_Handler               ;  74) UART5 Rx and Tx
+ 167              	        DCD     UART6_Handler               ;  75) UART6 Rx and Tx
+ 168              	        DCD     UART7_Handler               ;  76) UART7 Rx and Tx
+ 169              	        DCD     I2C2_Handler                ;  77) I2C2 Master and Slave
+ 170              	        DCD     I2C3_Handler                ;  78) I2C3 Master and Slave
+ 171              	        DCD     Timer4A_Handler             ;  79) Timer 4 subtimer A
+ARM GAS  startup.s 			page 4
+
+
+ 172              	        DCD     Timer4B_Handler             ;  80) Timer 4 subtimer B
+ 173              	        DCD     Timer5A_Handler             ;  81) Timer 5 subtimer A
+ 174              	        DCD     Timer5B_Handler             ;  82) Timer 5 subtimer B
+ 175              	        DCD     FPU_Handler                 ;  83) Floating-Point Exception (imprecise)
+ 176              	        DCD     0                           ;  84) Reserved
+ 177              	        DCD     0                           ;  85) Reserved
+ 178              	        DCD     I2C4_Handler                ;  86) I2C4 Master and Slave
+ 179              	        DCD     I2C5_Handler                ;  87) I2C5 Master and Slave
+ 180              	        DCD     GPIOPortM_Handler           ;  88) GPIO Port M
+ 181              	        DCD     GPIOPortN_Handler           ;  89) GPIO Port N
+ 182              	        DCD     0                           ;  90) Reserved
+ 183              	        DCD     Tamper_Handler              ;  91) Tamper
+ 184              	        DCD     GPIOPortP_Handler           ;  92) GPIO Port P (Summary or P0)
+ 185              	        DCD     GPIOPortP1_Handler          ;  93) GPIO Port P1
+ 186              	        DCD     GPIOPortP2_Handler          ;  94) GPIO Port P2
+ 187              	        DCD     GPIOPortP3_Handler          ;  95) GPIO Port P3
+ 188              	        DCD     GPIOPortP4_Handler          ;  96) GPIO Port P4
+ 189              	        DCD     GPIOPortP5_Handler          ;  97) GPIO Port P5
+ 190              	        DCD     GPIOPortP6_Handler          ;  98) GPIO Port P6
+ 191              	        DCD     GPIOPortP7_Handler          ;  99) GPIO Port P7
+ 192              	        DCD     GPIOPortQ_Handler           ; 100) GPIO Port Q (Summary or Q0)
+ 193              	        DCD     GPIOPortQ1_Handler          ; 101) GPIO Port Q1
+ 194              	        DCD     GPIOPortQ2_Handler          ; 102) GPIO Port Q2
+ 195              	        DCD     GPIOPortQ3_Handler          ; 103) GPIO Port Q3
+ 196              	        DCD     GPIOPortQ4_Handler          ; 104) GPIO Port Q4
+ 197              	        DCD     GPIOPortQ5_Handler          ; 105) GPIO Port Q5
+ 198              	        DCD     GPIOPortQ6_Handler          ; 106) GPIO Port Q6
+ 199              	        DCD     GPIOPortQ7_Handler          ; 107) GPIO Port Q7
+ 200              	        DCD     0                           ; 108) Reserved
+ 201              	        DCD     0                           ; 109) Reserved
+ 202              	        DCD     0                           ; 110) Reserved
+ 203              	        DCD     0                           ; 111) Reserved
+ 204              	        DCD     0                           ; 112) Reserved
+ 205              	        DCD     0                           ; 113) Reserved
+ 206              	        DCD     Timer6A_Handler             ; 114) Timer 6 subtimer A
+ 207              	        DCD     Timer6B_Handler             ; 115) Timer 6 subtimer B
+ 208              	        DCD     Timer7A_Handler             ; 116) Timer 7 subtimer A
+ 209              	        DCD     Timer7B_Handler             ; 117) Timer 7 subtimer B
+ 210              	        DCD     I2C6_Handler                ; 118) I2C6 Master and Slave
+ 211              	        DCD     I2C7_Handler                ; 119) I2C7 Master and Slave
+ 212              	        DCD     0                           ; 120) Reserved
+ 213              	        DCD     0                           ; 121) Reserved
+ 214              	        DCD     0                           ; 122) Reserved
+ 215              	        DCD     0                           ; 123) Reserved
+ 216              	        DCD     0                           ; 124) Reserved
+ 217              	        DCD     I2C8_Handler                ; 125) I2C8 Master and Slave
+ 218              	        DCD     I2C9_Handler                ; 126) I2C9 Master and Slave
+ 219              	        DCD     0                           ; 127) Reserved
+ 220              	        DCD     0                           ; 128) Reserved
+ 221              	        DCD     0                           ; 129) Reserved
+ 222              	
+ 223              	;******************************************************************************
+ 224              	;
+ 225              	; This is the code that gets called when the processor first starts execution
+ 226              	; following a reset event.
+ 227              	;
+ 228              	;******************************************************************************
+ARM GAS  startup.s 			page 5
+
+
+ 229              	        EXPORT  Reset_Handler
+ 230              	Reset_Handler
+ 231              	        ;
+ 232              	        ; Do not enable the floating-point unit.  Un-comment this to handle the
+ 233              	        ; case where main() uses floating-point and the function prologue saves
+ 234              	        ; floating-point registers (which will fault if floating-point is not
+ 235              	        ; enabled).  Any configuration of the floating-point unit using
+ 236              	        ; DriverLib APIs must be done here prior to the floating-point unit
+ 237              	        ; being enabled.
+ 238              	        ;
+ 239              	        ; Note that this does not use DriverLib since it might not be included
+ 240              	        ; in this project.
+ 241              	        ;
+ 242 ???? 4EF68850 	;        MOVW    R0, #0xED88
+ 243 ???? CEF20000 	;        MOVT    R0, #0xE000
+ 244 ???? 0168     	;        LDR     R1, [R0]
+ 245              	;        ORR     R1, #0x00F00000
+ 246 ???? 0160     	;        STR     R1, [R0]
+ 247              	
+ 248              	        ;
+ 249              	        ; Call the C library enty point that handles startup.  This will copy
+ 250              	        ; the .data section initializers from flash to SRAM and zero fill the
+ 251              	        ; .bss section.
+ 252              	        ;
+ 253              	        IMPORT  Start
+ 254 ???? FEE7     	        B       Start     ;call user assembly language program
+****  Error: bad instruction `call user assembly language program'
+ 255              	
+ 256              	;******************************************************************************
+ 257              	;
+ 258              	; This is the code that gets called when the processor receives a NMI.  This
+ 259              	; simply enters an infinite loop, preserving the system state for examination
+ 260              	; by a debugger.
+ 261              	;
+ 262              	;******************************************************************************
+ 263              	NMI_Handler     PROC
+ 264              	                EXPORT  NMI_Handler               [WEAK]
+ 265 ???? FEE7     	                B       .
+ 266              	                ENDP
+ 267              	
+ 268              	;******************************************************************************
+ 269              	;
+ 270              	; This is the code that gets called when the processor receives a fault
+ 271              	; interrupt.  This simply enters an infinite loop, preserving the system state
+ 272              	; for examination by a debugger.
+ 273              	;
+ 274              	;******************************************************************************
+ 275              	HardFault_Handler\
+ 276              	                PROC
+ 277              	                EXPORT  HardFault_Handler         [WEAK]
+ 278 ???? FEE7     	                B       .
+ 279              	                ENDP
+ 280              	
+ 281              	MemManage_Handler\
+ 282              	                PROC
+ 283              	                EXPORT  MemManage_Handler         [WEAK]
+ 284 ???? FEE7     	                B       .
+ARM GAS  startup.s 			page 6
+
+
+ 285              	                ENDP
+ 286              	BusFault_Handler\
+ 287              	                PROC
+ 288              	                EXPORT  BusFault_Handler          [WEAK]
+ 289 ???? FEE7     	                B       .
+ 290              	                ENDP
+ 291              	UsageFault_Handler\
+ 292              	                PROC
+ 293              	                EXPORT  UsageFault_Handler        [WEAK]
+ 294 ???? FEE7     	                B       .
+ 295              	                ENDP
+ 296              	SVC_Handler     PROC
+ 297              	                EXPORT  SVC_Handler               [WEAK]
+ 298 ???? FEE7     	                B       .
+ 299              	                ENDP
+ 300              	DebugMon_Handler\
+ 301              	                PROC
+ 302              	                EXPORT  DebugMon_Handler          [WEAK]
+ 303 ???? FEE7     	                B       .
+ 304              	                ENDP
+ 305              	PendSV_Handler  PROC
+ 306              	                EXPORT  PendSV_Handler            [WEAK]
+ 307 ???? FEE7     	                B       .
+ 308              	                ENDP
+ 309              	SysTick_Handler PROC
+ 310              	                EXPORT  SysTick_Handler           [WEAK]
+ 311 ???? FEE7     	                B       .
+ 312              	                ENDP
+ 313              	IntDefaultHandler\
+ 314              	                PROC
+ 315              	
+ 316              	                EXPORT  GPIOPortA_Handler         [WEAK]
+ 317              	                EXPORT  GPIOPortB_Handler         [WEAK]
+ 318              	                EXPORT  GPIOPortC_Handler         [WEAK]
+ 319              	                EXPORT  GPIOPortD_Handler         [WEAK]
+ 320              	                EXPORT  GPIOPortE_Handler         [WEAK]
+ 321              	                EXPORT  UART0_Handler             [WEAK]
+ 322              	                EXPORT  UART1_Handler             [WEAK]
+ 323              	                EXPORT  SSI0_Handler              [WEAK]
+ 324              	                EXPORT  I2C0_Handler              [WEAK]
+ 325              	                EXPORT  PWM0Fault_Handler         [WEAK]
+ 326              	                EXPORT  PWM0Generator0_Handler    [WEAK]
+ 327              	                EXPORT  PWM0Generator1_Handler    [WEAK]
+ 328              	                EXPORT  PWM0Generator2_Handler    [WEAK]
+ 329              	                EXPORT  Quadrature0_Handler       [WEAK]
+ 330              	                EXPORT  ADC0Seq0_Handler          [WEAK]
+ 331              	                EXPORT  ADC0Seq1_Handler          [WEAK]
+ 332              	                EXPORT  ADC0Seq2_Handler          [WEAK]
+ 333              	                EXPORT  ADC0Seq3_Handler          [WEAK]
+ 334              	                EXPORT  WDT_Handler               [WEAK]
+ 335              	                EXPORT  Timer0A_Handler           [WEAK]
+ 336              	                EXPORT  Timer0B_Handler           [WEAK]
+ 337              	                EXPORT  Timer1A_Handler           [WEAK]
+ 338              	                EXPORT  Timer1B_Handler           [WEAK]
+ 339              	                EXPORT  Timer2A_Handler           [WEAK]
+ 340              	                EXPORT  Timer2B_Handler           [WEAK]
+ 341              	                EXPORT  Comp0_Handler             [WEAK]
+ARM GAS  startup.s 			page 7
+
+
+ 342              	                EXPORT  Comp1_Handler             [WEAK]
+ 343              	                EXPORT  Comp2_Handler             [WEAK]
+ 344              	                EXPORT  SysCtl_Handler            [WEAK]
+ 345              	                EXPORT  FlashCtl_Handler          [WEAK]
+ 346              	                EXPORT  GPIOPortF_Handler         [WEAK]
+ 347              	                EXPORT  GPIOPortG_Handler         [WEAK]
+ 348              	                EXPORT  GPIOPortH_Handler         [WEAK]
+ 349              	                EXPORT  UART2_Handler             [WEAK]
+ 350              	                EXPORT  SSI1_Handler              [WEAK]
+ 351              	                EXPORT  Timer3A_Handler           [WEAK]
+ 352              	                EXPORT  Timer3B_Handler           [WEAK]
+ 353              	                EXPORT  I2C1_Handler              [WEAK]
+ 354              	                EXPORT  CAN0_Handler              [WEAK]
+ 355              	                EXPORT  CAN1_Handler              [WEAK]
+ 356              	                EXPORT  Ethernet_Handler          [WEAK]
+ 357              	                EXPORT  Hibernate_Handler         [WEAK]
+ 358              	                EXPORT  USB0_Handler              [WEAK]
+ 359              	                EXPORT  PWM0Generator3_Handler    [WEAK]
+ 360              	                EXPORT  uDMA_Handler              [WEAK]
+ 361              	                EXPORT  uDMA_Error                [WEAK]
+ 362              	                EXPORT  ADC1Seq0_Handler          [WEAK]
+ 363              	                EXPORT  ADC1Seq1_Handler          [WEAK]
+ 364              	                EXPORT  ADC1Seq2_Handler          [WEAK]
+ 365              	                EXPORT  ADC1Seq3_Handler          [WEAK]
+ 366              	                EXPORT  ExtBus_Handler            [WEAK]
+ 367              	                EXPORT  GPIOPortJ_Handler         [WEAK]
+ 368              	                EXPORT  GPIOPortK_Handler         [WEAK]
+ 369              	                EXPORT  GPIOPortL_Handler         [WEAK]
+ 370              	                EXPORT  SSI2_Handler              [WEAK]
+ 371              	                EXPORT  SSI3_Handler              [WEAK]
+ 372              	                EXPORT  UART3_Handler             [WEAK]
+ 373              	                EXPORT  UART4_Handler             [WEAK]
+ 374              	                EXPORT  UART5_Handler             [WEAK]
+ 375              	                EXPORT  UART6_Handler             [WEAK]
+ 376              	                EXPORT  UART7_Handler             [WEAK]
+ 377              	                EXPORT  I2C2_Handler              [WEAK]
+ 378              	                EXPORT  I2C3_Handler              [WEAK]
+ 379              	                EXPORT  Timer4A_Handler           [WEAK]
+ 380              	                EXPORT  Timer4B_Handler           [WEAK]
+ 381              	                EXPORT  Timer5A_Handler           [WEAK]
+ 382              	                EXPORT  Timer5B_Handler           [WEAK]
+ 383              	                EXPORT  FPU_Handler               [WEAK]
+ 384              	                EXPORT  I2C4_Handler              [WEAK]
+ 385              	                EXPORT  I2C5_Handler              [WEAK]
+ 386              	                EXPORT  GPIOPortM_Handler         [WEAK]
+ 387              	                EXPORT  GPIOPortN_Handler         [WEAK]
+ 388              	                EXPORT  Tamper_Handler            [WEAK]
+ 389              	                EXPORT  GPIOPortP_Handler         [WEAK]
+ 390              	                EXPORT  GPIOPortP1_Handler        [WEAK]
+ 391              	                EXPORT  GPIOPortP2_Handler        [WEAK]
+ 392              	                EXPORT  GPIOPortP3_Handler        [WEAK]
+ 393              	                EXPORT  GPIOPortP4_Handler        [WEAK]
+ 394              	                EXPORT  GPIOPortP5_Handler        [WEAK]
+ 395              	                EXPORT  GPIOPortP6_Handler        [WEAK]
+ 396              	                EXPORT  GPIOPortP7_Handler        [WEAK]
+ 397              	                EXPORT  GPIOPortQ_Handler         [WEAK]
+ 398              	                EXPORT  GPIOPortQ1_Handler        [WEAK]
+ARM GAS  startup.s 			page 8
+
+
+ 399              	                EXPORT  GPIOPortQ2_Handler        [WEAK]
+ 400              	                EXPORT  GPIOPortQ3_Handler        [WEAK]
+ 401              	                EXPORT  GPIOPortQ4_Handler        [WEAK]
+ 402              	                EXPORT  GPIOPortQ5_Handler        [WEAK]
+ 403              	                EXPORT  GPIOPortQ6_Handler        [WEAK]
+ 404              	                EXPORT  GPIOPortQ7_Handler        [WEAK]
+ 405              	                EXPORT  Timer6A_Handler           [WEAK]
+ 406              	                EXPORT  Timer6B_Handler           [WEAK]
+ 407              	                EXPORT  Timer7A_Handler           [WEAK]
+ 408              	                EXPORT  Timer7B_Handler           [WEAK]
+ 409              	                EXPORT  I2C6_Handler              [WEAK]
+ 410              	                EXPORT  I2C7_Handler              [WEAK]
+ 411              	                EXPORT  I2C8_Handler              [WEAK]
+ 412              	                EXPORT  I2C9_Handler              [WEAK]
+ 413              					
+ 414              					IMPORT	PortL_Output
+ 415              	GPIOPortA_Handler
+ 416              	GPIOPortB_Handler
+ 417              	GPIOPortC_Handler
+ 418              	GPIOPortD_Handler
+ 419              	GPIOPortE_Handler
+ 420              	UART0_Handler
+ 421              	UART1_Handler
+ 422              	SSI0_Handler
+ 423              	I2C0_Handler
+ 424              	PWM0Fault_Handler
+ 425              	PWM0Generator0_Handler
+ 426              	PWM0Generator1_Handler
+ 427              	PWM0Generator2_Handler
+ 428              	Quadrature0_Handler
+ 429              	ADC0Seq0_Handler
+ 430              	ADC0Seq1_Handler
+ 431              	ADC0Seq2_Handler
+ 432              	ADC0Seq3_Handler
+ 433              	WDT_Handler
+ 434              	Timer0A_Handler
+ 435              	Timer0B_Handler
+ 436              	Timer1A_Handler
+ 437              	Timer1B_Handler
+ 438              	Timer2A_Handler
+ 439              	Timer2B_Handler
+ 440              	Comp0_Handler
+ 441              	Comp1_Handler
+ 442              	Comp2_Handler
+ 443              	SysCtl_Handler
+ 444              	FlashCtl_Handler
+ 445              	GPIOPortF_Handler
+ 446              	GPIOPortG_Handler
+ 447              	GPIOPortH_Handler
+ 448              	UART2_Handler
+ 449              	SSI1_Handler
+ 450              	Timer3A_Handler
+ 451              	Timer3B_Handler
+ 452              	I2C1_Handler
+ 453              	CAN0_Handler
+ 454              	CAN1_Handler
+ 455              	Ethernet_Handler
+ARM GAS  startup.s 			page 9
+
+
+ 456              	Hibernate_Handler
+ 457              	USB0_Handler
+ 458              	PWM0Generator3_Handler
+ 459              	uDMA_Handler
+ 460              	uDMA_Error
+ 461              	ADC1Seq0_Handler
+ 462              	ADC1Seq1_Handler
+ 463              	ADC1Seq2_Handler
+ 464              	ADC1Seq3_Handler
+ 465              	ExtBus_Handler
+ 466              	GPIOPortJ_Handler
+ 467 ???? 03B5     		;PUSH {LR,R0,R1}
+ 468 ???? 0A48     		;LDR  R0, =GPIOICR_PORTJ
+ 469 ???? 0321     		;MOV  R1, #0x03
+ 470 ???? 0160     		;STR  R1, [R0]
+ 471 ???? 0948     		;LDR R0, =END_EN_MOTOR
+ 472 ???? 0021     		;MOV R1, #0
+ 473 ???? 0170     		;STRB R1, [R0]
+ 474              		;;POP {LR,R0,R1}
+ 475 ???? 7047     		;BX   LR
+ 476              	GPIOPortK_Handler
+ 477              	GPIOPortL_Handler
+ 478              	SSI2_Handler
+ 479              	SSI3_Handler
+ 480              	UART3_Handler
+ 481              	UART4_Handler
+ 482              	UART5_Handler
+ 483              	UART6_Handler
+ 484              	UART7_Handler
+ 485              	I2C2_Handler
+ 486              	I2C3_Handler
+ 487              	Timer4A_Handler
+ 488              	Timer4B_Handler
+ 489              	Timer5A_Handler
+ 490              	Timer5B_Handler
+ 491              	FPU_Handler
+ 492              	I2C4_Handler
+ 493              	I2C5_Handler
+ 494              	GPIOPortM_Handler
+ 495              	GPIOPortN_Handler
+ 496              	Tamper_Handler
+ 497              	GPIOPortP_Handler
+ 498              	GPIOPortP1_Handler
+ 499              	GPIOPortP2_Handler
+ 500              	GPIOPortP3_Handler
+ 501              	GPIOPortP4_Handler
+ 502              	GPIOPortP5_Handler
+ 503              	GPIOPortP6_Handler
+ 504              	GPIOPortP7_Handler
+ 505              	GPIOPortQ_Handler
+ 506              	GPIOPortQ1_Handler
+ 507              	GPIOPortQ2_Handler
+ 508              	GPIOPortQ3_Handler
+ 509              	GPIOPortQ4_Handler
+ 510              	GPIOPortQ5_Handler
+ 511              	GPIOPortQ6_Handler
+ 512              	GPIOPortQ7_Handler
+ARM GAS  startup.s 			page 10
+
+
+ 513              	Timer6A_Handler
+ 514              	Timer6B_Handler
+ 515              	Timer7A_Handler
+ 516              	Timer7B_Handler
+ 517              	I2C6_Handler
+ 518              	I2C7_Handler
+ 519              	I2C8_Handler
+ 520              	I2C9_Handler
+ 521              	
+ 522 ???? FEE7     	                B       .
+ 523              	
+ 524              	                ENDP
+ 525              	
+ 526              	;******************************************************************************
+ 527              	;
+ 528              	; Make sure the end of this section is aligned.
+ 529              	;
+ 530              	;******************************************************************************
+ 531              	        ALIGN
+ 532              	
+ 533              	;******************************************************************************
+ 534              	;
+ 535              	; Some code in the normal code section for initializing the heap and stack.
+ 536              	;
+ 537              	;******************************************************************************
+ 538              	        AREA    |.text|, CODE, READONLY
+ 539              	
+ 540              	;******************************************************************************
+ 541              	;
+ 542              	; Useful functions.
+ 543              	;
+ 544              	;******************************************************************************
+ 545              	        EXPORT  DisableInterrupts
+ 546              	        EXPORT  EnableInterrupts
+ 547              	        EXPORT  StartCritical
+ 548              	        EXPORT  EndCritical
+ 549              	        EXPORT  WaitForInterrupt
+ 550              	
+ 551              	;*********** DisableInterrupts ***************
+ 552              	; disable interrupts
+ 553              	; inputs:  none
+ 554              	; outputs: none
+ 555              	DisableInterrupts
+ 556 ???? 72B6     	        CPSID  I
+ 557 ???? 7047     	        BX     LR
+ 558              	
+ 559              	;*********** EnableInterrupts ***************
+ 560              	; disable interrupts
+ 561              	; inputs:  none
+ 562              	; outputs: none
+ 563              	EnableInterrupts
+ 564 ???? 62B6     	        CPSIE  I
+ 565 ???? 7047     	        BX     LR
+ 566              	
+ 567              	;*********** StartCritical ************************
+ 568              	; make a copy of previous I bit, disable interrupts
+ 569              	; inputs:  none
+ARM GAS  startup.s 			page 11
+
+
+ 570              	; outputs: previous I bit
+ 571              	StartCritical
+ 572 ???? EFF31080 	        MRS    R0, PRIMASK  ; save old status
+****  Error: bad instruction `save old status'
+ 573 ???? 72B6     	        CPSID  I            ; mask all (except faults)
+****  Error: bad instruction `mask all(except faults)'
+ 574 ???? 7047     	        BX     LR
+ 575              	
+ 576              	;*********** EndCritical ************************
+ 577              	; using the copy of previous I bit, restore I bit to previous value
+ 578              	; inputs:  previous I bit
+ 579              	; outputs: none
+ 580              	EndCritical
+ 581 ???? 80F31088 	        MSR    PRIMASK, R0
+ 582 ???? 7047     	        BX     LR
+ 583              	
+ 584              	;*********** WaitForInterrupt ************************
+ 585              	; go to low power mode while waiting for the next interrupt
+ 586              	; inputs:  none
+ 587              	; outputs: none
+ 588              	WaitForInterrupt
+ 589 ???? 30BF     	        WFI
+ 590 ???? 7047     	        BX     LR
+ 591              	
+ 592              	
+ 593              	
+ 594              	
+ 595              	;******************************************************************************
+ 596              	;
+ 597              	; Make sure the end of this section is aligned.
+ 598              	;
+ 599              	;******************************************************************************
+ 600              	        ALIGN
+ 601              	
+ 602              	;******************************************************************************
+ 603              	;
+ 604              	; Tell the assembler that we're done.
+ 605              	;
+ 606              	;******************************************************************************
+ 607 ???? 00000000 	        END
+****  Error: bad instruction `end'
+****  Error: attempt to store non-zero value in section `.bss'
+****  Error: attempt to store non-zero value in section `.bss'
+ 607      00000000 
+ARM GAS  startup.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000001 TM4C1294NCPDT
+                            *ABS*:000002db __GCC_VERSION
+                            *ABS*:00000001 __GCC
+                            *ABS*:0000020d __UVISION_VERSION
+           startup.s:242    .text:00000000 $t
+           startup.s:254    .bss:00000000 $t
+           startup.s:553    .bss:00000026 inputs
+           startup.s:554    .bss:00000026 outputs
+           startup.s:607    .bss:00000040 $d
+
+UNDEFINED SYMBOLS
+Start
+GPIOICR_PORTJ
+END_EN_MOTOR
