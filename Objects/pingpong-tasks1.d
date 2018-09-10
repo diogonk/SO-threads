@@ -31,4 +31,5 @@ objects/pingpong-tasks1.o: Threads/pingpong-tasks1.c \
  C:/Program\ Files\ (x86)/GNU\ Tools\ Arm\ Embedded/7\ 2018-q2-update/arm-none-eabi/include/c++/7.3.1/stdlib.h \
  c:\program\ files\ (x86)\gnu\ tools\ arm\ embedded\7\ 2018-q2-update\arm-none-eabi\include\stdlib.h \
  c:\program\ files\ (x86)\gnu\ tools\ arm\ embedded\7\ 2018-q2-update\arm-none-eabi\include\machine\stdlib.h \
- c:\program\ files\ (x86)\gnu\ tools\ arm\ embedded\7\ 2018-q2-update\arm-none-eabi\include\alloca.h
+ c:\program\ files\ (x86)\gnu\ tools\ arm\ embedded\7\ 2018-q2-update\arm-none-eabi\include\alloca.h \
+ Threads/pingpong-tasks1.h inc/utils/uartstdio.h

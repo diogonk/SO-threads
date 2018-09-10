@@ -35,7 +35,7 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 #include "Threads/thread.h"
-#include "Threads/pingpong-tasks1.c"
+#include "Threads/pingpong-tasks1.h"
 #include "debug.h"
 
 #include <stdlib.h>
@@ -43,13 +43,11 @@
 int testafila(void);
 #define STACK_SIZE 64
 
-uint32_t * createThreadStack(void);
+uint32_t *createThreadStack(void);
 
 uint32_t Thread1Stack[STACK_SIZE];
 uint32_t Thread2Stack[STACK_SIZE];
 //uint32_t Thread3Stack[STACK_SIZE];
-
-
 
 //*****************************************************************************
 //
@@ -76,10 +74,9 @@ uint32_t g_ui32SysClock;
 //
 //*****************************************************************************
 #ifdef DEBUG
-void
-__error__(char *pcFilename, uint32_t ui32Line)
+void __error__(char *pcFilename, uint32_t ui32Line)
 {
-		 UARTprintf("%s %d\n" ,pcFilename, ui32Line);
+  UARTprintf("%s %d\n", pcFilename, ui32Line);
 }
 #endif
 
@@ -88,158 +85,103 @@ __error__(char *pcFilename, uint32_t ui32Line)
 // Configure the UART and its pins.  This must be called before UARTprintf().
 //
 //*****************************************************************************
-void
-ConfigureUART(void)
+void ConfigureUART(void)
 {
-    //
-    // Enable the GPIO Peripheral used by the UART.
-    //
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+  //
+  // Enable the GPIO Peripheral used by the UART.
+  //
+  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
-    //
-    // Enable UART0
-    //
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+  //
+  // Enable UART0
+  //
+  ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
 
-    //
-    // Configure GPIO Pins for UART mode.
-    //
-    ROM_GPIOPinConfigure(GPIO_PA0_U0RX);
-    ROM_GPIOPinConfigure(GPIO_PA1_U0TX);
-    ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-    ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2);
+  //
+  // Configure GPIO Pins for UART mode.
+  //
+  ROM_GPIOPinConfigure(GPIO_PA0_U0RX);
+  ROM_GPIOPinConfigure(GPIO_PA1_U0TX);
+  ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2);
 
-    //
-    // Initialize the UART for console I/O.
-    //
-    UARTStdioConfig(0, 115200, g_ui32SysClock);
+  //
+  // Initialize the UART for console I/O.
+  //
+  UARTStdioConfig(0, 115200, g_ui32SysClock);
 }
 
-/*
-void Thread1(void)
+uint32_t *createThreadStack(void)
 {
-    uint16_t counter;
-    counter = 0;
-    while(1)
-    {
-        if (counter%31 == 0)
-        {
-            UARTprintf("Thread 1 - Value: %i\n", counter);
-        }
-        counter++;
-        if (counter>5000){counter =0;}
-    }
+  uint32_t *aux;
+  aux = malloc(STACK_SIZE * sizeof(uint32_t));
+  return aux;
 }
-void Thread2(void)
-{
-    uint16_t counter;
-    counter = 0;
-    while(1)
-    {
-        if (counter%57 == 0)
-        {
-            UARTprintf("Thread 2 - Value: %i\n", counter);
-        }
-        counter++;
-        if (counter>5000){counter =0;}
-    }
-}
-void Thread3(void)
-{
-    uint16_t counter;
-    counter = 0;
-    while(1)
-    {
-        if (counter%71 == 0)
-        {
-            UARTprintf("Thread 3 - Value: %i\n", counter);
-        }
-        counter++;
-        if (counter>5000){counter =0;}
-    }
-}
-*/
-uint32_t* createThreadStack(void)
-{
-	uint32_t *aux;
-	aux = malloc(STACK_SIZE*sizeof(uint32_t));
-	return aux;
-}
-
 
 //*****************************************************************************
 //
 // Print "Hello World!" to the UART on the Intelligent UART Module.
 //
 //*****************************************************************************
-int
-main(void)
+int main(void)
 {
-    char teste[10];//
-		uint32_t cont;
-    // Run from the PLL at 120 MHz.
-    //
-    g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
-                SYSCTL_OSC_MAIN | SYSCTL_USE_PLL |
-                SYSCTL_CFG_VCO_480), 120000000);
+  char teste[10]; //
+  uint32_t cont;
+  // Run from the PLL at 120 MHz.
+  //
+  g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+                                           SYSCTL_OSC_MAIN | SYSCTL_USE_PLL |
+                                           SYSCTL_CFG_VCO_480),
+                                          120000000);
 
-    //
-    // Configure the device pins.
-    //
-    PinoutSet(false, false);
+  //
+  // Configure the device pins.
+  //
+  PinoutSet(false, false);
 
-    //
-    // Enable the GPIO pins for the LED D1 (PN1).
-    //
-    ROM_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1);
-    ROM_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_2);
+  //
+  // Enable the GPIO pins for the LED D1 (PN1).
+  //
+  ROM_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1);
+  ROM_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_2);
 
-    //
-    // Initialize the UART.
-    //
-    ConfigureUART();
+  //
+  // Initialize the UART.
+  //
+  ConfigureUART();
 
-    //
-    // Hello!
-    //
-		    UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
-				    UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
-						    UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
-    UARTprintf("Hello, world  TIVA CCCC !\n");
-    //UARTgets(char *pcBuf, uint32_t ui32Len)teste = getchar();//
-   // UARTgets(teste,  cont);//teste = getchar();//
+  //
+  // Hello!
+  //
+  UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
+  UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
+  UARTprintf("\n\n\n\n\n\n\n\n\n\n\n");
+  UARTprintf("Hello, world  TIVA CCCC !\n");
 
-		//ASSERT(teste[0] == '0');
+  UARTprintf("Ligando o LED\n");
+  //
+  // Turn on D1.
+  //
+  LEDWrite(CLP_D1, 1);
+  LEDWrite(CLP_D2, 0);
 
-		//testafila();
-// UARTprintf("%s %d\n" ,__FILE__, __LINE__);
-	 // We are finished.  Hang around flashing D1.
-    //
-		//exit(0);
-		UARTprintf("Ligando o LED\n");
-		//
-		// Turn on D1.
-		//
-		LEDWrite(CLP_D1, 1);
-		LEDWrite(CLP_D2, 0);
+  //
+  // Delay for a bit.
+  //
+  SysCtlDelay(g_ui32SysClock / 10 / 3);
 
-		//
-		// Delay for a bit.
-		//
-		SysCtlDelay(g_ui32SysClock / 10 / 3);
-
-		//
-		UARTprintf("Desligando o LED\n");
-		//
-		LEDWrite(CLP_D1, 0);
-		LEDWrite(CLP_D2, 1);
-		//
-		// Delay for a bit.
-		//
-		SysCtlDelay(g_ui32SysClock / 10 / 3);
-		UARTprintf("Criando Tarefa 1\n");
-        createThread(BodyPing,Thread1Stack,STACK_SIZE);
-		UARTprintf("Criando Tarefa 2\n");
-        createThread(BodyPong,Thread2Stack,STACK_SIZE);
-        startSwitcher(); // start the thread switching (this does not return)
+  //
+  UARTprintf("Desligando o LED\n");
+  //
+  LEDWrite(CLP_D1, 0);
+  LEDWrite(CLP_D2, 1);
+  //
+  // Delay for a bit.
+  //
+  SysCtlDelay(g_ui32SysClock / 10 / 3);
+  UARTprintf("Criando Tarefa 1\n");
+  createThread(BodyPing, Thread1Stack, STACK_SIZE);
+  UARTprintf("Criando Tarefa 2\n");
+  createThread(BodyPong, Thread2Stack, STACK_SIZE);
+  startSwitcher(); // start the thread switching (this does not return)
 }

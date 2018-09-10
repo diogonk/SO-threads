@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -34,7 +34,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
    7:Threads/thread.c **** typedef struct {
    8:Threads/thread.c ****     uint32_t *ThreadStack;
    9:Threads/thread.c ****     void (*ThreadFn )();
-  10:Threads/thread.c ****      uint32_t Attributes;   
+  10:Threads/thread.c ****      uint32_t Attributes;
   11:Threads/thread.c **** } ThreadControlBlock;
   12:Threads/thread.c **** 
   13:Threads/thread.c **** 
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
   34              		.cfi_offset 4, -12
   35              		.cfi_offset 5, -8
   36              		.cfi_offset 6, -4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 2
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 2
 
 
   22:Threads/thread.c ****     uint32_t Index;
@@ -86,7 +86,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
   54 0016 04EB8303 		add	r3, r4, r3, lsl #2
   55 001a 5860     		str	r0, [r3, #4]
   56              	.LVL1:
-  27:Threads/thread.c ****         
+  27:Threads/thread.c **** 
   28:Threads/thread.c ****         // The thread stack needs to be set up so that it can be context switched back to later
   29:Threads/thread.c ****         // First zero the stack (assuming 32 bit accesses.  Stacksize expressed in 32 bit words
   30:Threads/thread.c ****         for (Index=0;Index < StackSize; Index++)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
   33:Threads/thread.c ****         ThreadStack[StackSize-2] = (uint32_t) ThreadFn; // The "Stacked" PC goes here.
   79              		.loc 1 33 0
   80 003e 0B19     		adds	r3, r1, r4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 3
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 3
 
 
   81 0040 43F8040C 		str	r0, [r3, #-4]
@@ -177,8 +177,8 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  120              		.loc 1 47 0
  121 008c 0D22     		movs	r2, #13
  122 008e 43F8382C 		str	r2, [r3, #-56]
-  48:Threads/thread.c ****         ThreadStack[StackSize-16] = 14;// R4        
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 4
+  48:Threads/thread.c ****         ThreadStack[StackSize-16] = 14;// R4
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 4
 
 
  123              		.loc 1 48 0
@@ -187,7 +187,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  126 0096 CE18     		adds	r6, r1, r3
  127 0098 0E22     		movs	r2, #14
  128 009a CA50     		str	r2, [r1, r3]
-  49:Threads/thread.c ****         Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];               
+  49:Threads/thread.c ****         Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];
  129              		.loc 1 49 0
  130 009c 0649     		ldr	r1, .L6
  131              	.LVL8:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  171              		.thumb
  172              		.thumb_func
  173              		.fpu softvfp
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 5
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 5
 
 
  174              		.type	initSysTick, %function
@@ -257,7 +257,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
   59:Threads/thread.c **** 	// PIOSC runs at 16MHz.  This supplies the system clock
   60:Threads/thread.c **** 	// The systick timer is driven by PIOSC/4 (4MHz)
   61:Threads/thread.c **** 	// enable systick and its interrupts
-  62:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t)NVIC_ST_CTRL;
+  62:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t*)NVIC_ST_CTRL;
   63:Threads/thread.c ****     *ADDR_MEMORY |= 0x3;
  183              		.loc 1 63 0
  184 00c0 064A     		ldr	r2, .L9
@@ -265,21 +265,21 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  186 00c4 43F00303 		orr	r3, r3, #3
  187 00c8 1360     		str	r3, [r2]
  188              	.LVL11:
-  64:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t)NVIC_ST_RELOAD;
+  64:Threads/thread.c **** 		ADDR_MEMORY = (uint32_t*)NVIC_ST_RELOAD;
   65:Threads/thread.c ****     *ADDR_MEMORY = 4000;
  189              		.loc 1 65 0
  190 00ca 054B     		ldr	r3, .L9+4
  191 00cc 4FF47A62 		mov	r2, #4000
  192 00d0 1A60     		str	r2, [r3]
  193              	.LVL12:
-  66:Threads/thread.c ****     ADDR_MEMORY = (uint32_t)NVIC_ST_CURRENT;
+  66:Threads/thread.c ****     ADDR_MEMORY = (uint32_t*)NVIC_ST_CURRENT;
   67:Threads/thread.c ****     *ADDR_MEMORY = 1000;
  194              		.loc 1 67 0
  195 00d2 0433     		adds	r3, r3, #4
  196 00d4 4FF47A72 		mov	r2, #1000
  197 00d8 1A60     		str	r2, [r3]
   68:Threads/thread.c ****     /*
-  69:Threads/thread.c ****     SET_BIT(SYS_STCTRL,BIT0+BIT1); 
+  69:Threads/thread.c ****     SET_BIT(SYS_STCTRL,BIT0+BIT1);
   70:Threads/thread.c **** 	SYS_STRELOAD=4000;  // generate 1 millisecond time base
   71:Threads/thread.c **** 	SYS_STCURRENT=1000; // start the counter off at a low(ish) figure
   72:Threads/thread.c **** 	*/
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  209              		.global	startSwitcher
  210              		.syntax unified
  211              		.thumb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 6
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 6
 
 
  212              		.thumb_func
@@ -328,7 +328,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  227              		.loc 1 82 0
  228 00e6 FFF7FEFF 		bl	initSysTick
  229              	.LVL13:
-  83:Threads/thread.c ****     asm(" LDR R0,=Threads "); // point to start of TCB array    
+  83:Threads/thread.c ****     asm(" LDR R0,=Threads "); // point to start of TCB array
  230              		.loc 1 83 0
  231              		.syntax unified
  232              	@ 83 "Threads/thread.c" 1
@@ -339,18 +339,18 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  236              	@ 84 "Threads/thread.c" 1
  237 00ec 0068     		 LDR R0,[R0] 
  238              	@ 0 "" 2
-  85:Threads/thread.c ****     
+  85:Threads/thread.c **** 
   86:Threads/thread.c ****     asm(" ADD R0,#32 ");    // Adjust first thread stack
  239              		.loc 1 86 0
  240              	@ 86 "Threads/thread.c" 1
  241 00ee 00F12000 		 ADD R0,#32 
  242              	@ 0 "" 2
-  87:Threads/thread.c ****     asm(" MSR PSP,R0 ");    // write first stack pointer to process stack pointer        
+  87:Threads/thread.c ****     asm(" MSR PSP,R0 ");    // write first stack pointer to process stack pointer
  243              		.loc 1 87 0
  244              	@ 87 "Threads/thread.c" 1
  245 00f2 80F30988 		 MSR PSP,R0 
  246              	@ 0 "" 2
-  88:Threads/thread.c ****     asm(" cpsie i ");                
+  88:Threads/thread.c ****     asm(" cpsie i ");
  247              		.loc 1 88 0
  248              	@ 88 "Threads/thread.c" 1
  249 00f6 62B6     		 cpsie i 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  251              		.thumb
  252              		.syntax unified
  253              	.L12:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 7
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 7
 
 
  254 00f8 FEE7     		b	.L12
@@ -374,25 +374,25 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  264              		.type	SysTick_Handler, %function
  265              	SysTick_Handler:
  266              	.LFB3:
-  89:Threads/thread.c ****     while(1);    
+  89:Threads/thread.c ****     while(1);
   90:Threads/thread.c **** }
   91:Threads/thread.c **** 
   92:Threads/thread.c **** 
   93:Threads/thread.c **** 
   94:Threads/thread.c **** // Want the systick handler to be "pure assembler without any stack shenanigans by the compiler (he
-  95:Threads/thread.c **** __attribute__((naked)) void SysTick_Handler(void) 
+  95:Threads/thread.c **** __attribute__((naked)) void SysTick_Handler(void)
   96:Threads/thread.c **** {
  267              		.loc 1 96 0
  268              		.cfi_startproc
  269              		@ Naked Function: prologue and epilogue provided by programmer.
  270              		@ args = 0, pretend = 0, frame = 0
  271              		@ frame_needed = 0, uses_anonymous_args = 0
-  97:Threads/thread.c ****   
+  97:Threads/thread.c **** 
   98:Threads/thread.c **** 
   99:Threads/thread.c **** // Thread switching will happen here
  100:Threads/thread.c **** // On entry, R0,R1,R2,R3 and R12 for Thread 'A' (whichever one that may be) are on the thread stack
  101:Threads/thread.c **** 
- 102:Threads/thread.c **** // Preserve remaining registers on stack of thread that is being suspended (Thread A)     
+ 102:Threads/thread.c **** // Preserve remaining registers on stack of thread that is being suspended (Thread A)
  103:Threads/thread.c ****     asm(" cpsid i "); // disable interrupts during thread switch
  272              		.loc 1 103 0
  273              		.syntax unified
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  289              		.loc 1 107 0
  290              	@ 107 "Threads/thread.c" 1
  291 0106 4446     		 MOV R4,R8 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 8
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 8
 
 
  292              	@ 0 "" 2
@@ -458,7 +458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  318              	@ 115 "Threads/thread.c" 1
  319 0114 1C49     		 LDR R1,=ThreadIndex 
  320              	@ 0 "" 2
- 116:Threads/thread.c ****     asm(" LDR R1,[R1] ");   
+ 116:Threads/thread.c ****     asm(" LDR R1,[R1] ");
  321              		.loc 1 116 0
  322              	@ 116 "Threads/thread.c" 1
  323 0116 0968     		 LDR R1,[R1] 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  334              	@ 119 "Threads/thread.c" 1
  335 011e 0144     		 ADD R1,R0,R1 
  336              	@ 0 "" 2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 9
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 9
 
 
  120:Threads/thread.c ****     asm(" MRS R0,PSP ");   // get Thread A stack pointer
@@ -497,7 +497,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  346              	@ 123 "Threads/thread.c" 1
  347 0128 0860     		 STR R0,[R1] 
  348              	@ 0 "" 2
- 124:Threads/thread.c ****     
+ 124:Threads/thread.c **** 
  125:Threads/thread.c **** // Update the ThreadIndex
  126:Threads/thread.c ****     ThreadIndex++;
  349              		.loc 1 126 0
@@ -536,9 +536,9 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  375              	@ 133 "Threads/thread.c" 1
  376 0142 1149     		 LDR R1,=ThreadIndex 
  377              	@ 0 "" 2
- 134:Threads/thread.c ****     asm(" LDR R1,[R1] ");   
+ 134:Threads/thread.c ****     asm(" LDR R1,[R1] ");
  378              		.loc 1 134 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 10
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 10
 
 
  379              	@ 134 "Threads/thread.c" 1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  422              		.loc 1 145 0
  423              	@ 145 "Threads/thread.c" 1
  424 015e 0868     		 LDR R0,[R1] 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 11
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 11
 
 
  425              	@ 0 "" 2
@@ -622,7 +622,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  439              	@ 149 "Threads/thread.c" 1
  440 0168 80F30988 		 MSR PSP,R0 
  441              	@ 0 "" 2
- 150:Threads/thread.c ****     
+ 150:Threads/thread.c **** 
  151:Threads/thread.c ****     // The following is only really necessary for the first run of the scheduler.
  152:Threads/thread.c ****     asm(" MOV R0,#0 ");     // Force LR to 0xffffffd so that
  442              		.loc 1 152 0
@@ -639,7 +639,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  451              	@ 154 "Threads/thread.c" 1
  452 0174 8646     		 MOV LR,R0 
  453              	@ 0 "" 2
- 155:Threads/thread.c ****     
+ 155:Threads/thread.c **** 
  156:Threads/thread.c **** 
  157:Threads/thread.c ****     asm(" cpsie i "); // enable interrupts
  454              		.loc 1 157 0
@@ -651,14 +651,14 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  459              	@ 158 "Threads/thread.c" 1
  460 0178 7047     		 BX LR 
  461              	@ 0 "" 2
- 159:Threads/thread.c ****     
- 160:Threads/thread.c ****     
+ 159:Threads/thread.c **** 
+ 160:Threads/thread.c **** 
  161:Threads/thread.c **** }
  462              		.loc 1 161 0
  463              		.thumb
  464              		.syntax unified
  465              	.L16:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 12
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 12
 
 
  466 017a 00BF     		.align	2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  520 0034 02       		.byte	0x2
  521 0035 05       		.byte	0x5
  522 0036 4E010000 		.4byte	.LASF2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 13
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 13
 
 
  523 003a 02       		.uleb128 0x2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  577 00a0 03       		.byte	0x3
  578 00a1 00000000 		.4byte	ThreadCount
  579 00a5 06       		.uleb128 0x6
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 14
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 14
 
 
  580 00a6 0C       		.byte	0xc
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  634 010c 0F       		.byte	0xf
  635 010d F6000000 		.4byte	0xf6
  636 0111 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 15
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 15
 
 
  637 0112 05       		.byte	0x5
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  691 0181 D8000000 		.4byte	0xd8
  692 0185 20000000 		.4byte	.LLST5
  693 0189 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 16
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 16
 
 
  694 018a 12       		.uleb128 0x12
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  748 0010 06       		.uleb128 0x6
  749 0011 00       		.byte	0
  750 0012 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 17
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 17
 
 
  751 0013 02       		.uleb128 0x2
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  805 0049 01       		.byte	0x1
  806 004a 0B       		.uleb128 0xb
  807 004b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 18
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 18
 
 
  808 004c 3A       		.uleb128 0x3a
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  862 0082 21       		.uleb128 0x21
  863 0083 00       		.byte	0
  864 0084 49       		.uleb128 0x49
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 19
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 19
 
 
  865 0085 13       		.uleb128 0x13
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  919 00bf 11       		.uleb128 0x11
  920 00c0 01       		.uleb128 0x1
  921 00c1 31       		.uleb128 0x31
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 20
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 20
 
 
  922 00c2 13       		.uleb128 0x13
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  976 00f9 11       		.uleb128 0x11
  977 00fa 01       		.uleb128 0x1
  978 00fb 12       		.uleb128 0x12
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 21
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 21
 
 
  979 00fc 01       		.uleb128 0x1
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1033 004a 9E       		.byte	0x9e
  1034 004b 04       		.uleb128 0x4
  1035 004c 18E000E0 		.4byte	0xe000e018
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 22
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 22
 
 
  1036 0050 00000000 		.4byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1090 00c8 F3       		.byte	0xf3
  1091 00c9 01       		.uleb128 0x1
  1092 00ca 50       		.byte	0x50
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 23
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 23
 
 
  1093 00cb 9F       		.byte	0x9f
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1145 0000 1C000000 		.4byte	0x1c
  1146 0004 0200     		.2byte	0x2
  1147 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 24
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 24
 
 
  1148 000a 04       		.byte	0x4
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1178 007e 6C6F6E67 		.ascii	"long unsigned int\000"
  1178      20756E73 
  1178      69676E65 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 25
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 25
 
 
  1178      6420696E 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1200      61636B00 
  1201              	.LASF16:
  1202 012d 54687265 		.ascii	"ThreadControlBlock\000"
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 26
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 26
 
 
  1202      6164436F 
@@ -1547,27 +1547,27 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 1
  1218      5F4D454D 
  1218      4F525900 
  1219              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s 			page 27
+ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 thread.c
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:15     .text:00000000 $t
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:22     .text:00000000 createThread
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:163    .text:000000b8 $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:15     .text:00000000 $t
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:22     .text:00000000 createThread
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:163    .text:000000b8 $d
                             *COM*:00000078 Threads
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:168    .text:000000c0 $t
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:175    .text:000000c0 initSysTick
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:203    .text:000000dc $d
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:208    .text:000000e4 $t
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:215    .text:000000e4 startSwitcher
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:265    .text:000000fa SysTick_Handler
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:480    .data:00000000 TCB_Size
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:491    .bss:00000004 ThreadIndex
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:468    .text:0000017c $d
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:487    .bss:00000000 ThreadCount
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:477    .data:00000000 $d
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:483    .bss:00000000 $d
-C:\Users\Diogo\AppData\Local\Temp\cc9dracA.s:1219   .text:00000180 $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:168    .text:000000c0 $t
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:175    .text:000000c0 initSysTick
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:203    .text:000000dc $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:208    .text:000000e4 $t
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:215    .text:000000e4 startSwitcher
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:265    .text:000000fa SysTick_Handler
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:480    .data:00000000 TCB_Size
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:491    .bss:00000004 ThreadIndex
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:468    .text:0000017c $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:487    .bss:00000000 ThreadCount
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:477    .data:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:483    .bss:00000000 $d
+C:\Users\Diogo\AppData\Local\Temp\ccvGehoG.s:1219   .text:00000180 $d
 
 NO UNDEFINED SYMBOLS

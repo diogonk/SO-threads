@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "type_traits": "c",
+        "uart.h": "c",
+        "uartstdio.h": "c",
+        "rom_map.h": "c"
+    }
+}

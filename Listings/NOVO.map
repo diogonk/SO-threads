@@ -77,7 +77,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/g
 LOAD c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a
 END GROUP
 
-.text           0x00000000     0x3ffc
+.text           0x00000000     0x3fa4
                 0x00000000                _text = .
  *(.isr_vector)
  .isr_vector    0x00000000      0x200 ./objects/startup_gcc.o
@@ -85,437 +85,438 @@ END GROUP
  *(.text*)
  .text          0x00000200       0x6c ./objects/startup_gcc.o
                 0x00000206                ResetISR
- .text          0x0000026c      0x1dc ./objects/hello.o
-                0x0000026c                BodyPing
-                0x000002a0                BodyPong
-                0x000002c4                __error__
-                0x000002d8                ConfigureUART
-                0x00000338                createThreadStack
-                0x00000344                main
- .text          0x00000448        0x0 ./lib/libdriver.a(sysctl.o)
+ .text          0x0000026c      0x184 ./objects/hello.o
+                0x0000026c                __error__
+                0x00000280                ConfigureUART
+                0x000002e0                createThreadStack
+                0x000002ec                main
+ .text          0x000003f0        0x0 ./lib/libdriver.a(sysctl.o)
  .text._SysCtlMemTimingGet
-                0x00000448       0x24 ./lib/libdriver.a(sysctl.o)
+                0x000003f0       0x24 ./lib/libdriver.a(sysctl.o)
  .text.SysCtlSRAMSizeGet
-                0x0000046c       0x10 ./lib/libdriver.a(sysctl.o)
-                0x0000046c                SysCtlSRAMSizeGet
+                0x00000414       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000414                SysCtlSRAMSizeGet
  .text.SysCtlFlashSizeGet
-                0x0000047c       0x40 ./lib/libdriver.a(sysctl.o)
-                0x0000047c                SysCtlFlashSizeGet
+                0x00000424       0x40 ./lib/libdriver.a(sysctl.o)
+                0x00000424                SysCtlFlashSizeGet
  .text.SysCtlFlashSectorSizeGet
-                0x000004bc       0x3c ./lib/libdriver.a(sysctl.o)
-                0x000004bc                SysCtlFlashSectorSizeGet
+                0x00000464       0x3c ./lib/libdriver.a(sysctl.o)
+                0x00000464                SysCtlFlashSectorSizeGet
  .text.SysCtlPeripheralPresent
-                0x000004f8       0x34 ./lib/libdriver.a(sysctl.o)
-                0x000004f8                SysCtlPeripheralPresent
+                0x000004a0       0x34 ./lib/libdriver.a(sysctl.o)
+                0x000004a0                SysCtlPeripheralPresent
  .text.SysCtlPeripheralReady
-                0x0000052c       0x34 ./lib/libdriver.a(sysctl.o)
-                0x0000052c                SysCtlPeripheralReady
+                0x000004d4       0x34 ./lib/libdriver.a(sysctl.o)
+                0x000004d4                SysCtlPeripheralReady
  .text.SysCtlPeripheralPowerOn
-                0x00000560       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000560                SysCtlPeripheralPowerOn
+                0x00000508       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00000508                SysCtlPeripheralPowerOn
  .text.SysCtlPeripheralPowerOff
-                0x00000590       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000590                SysCtlPeripheralPowerOff
+                0x00000538       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00000538                SysCtlPeripheralPowerOff
  .text.SysCtlPeripheralReset
-                0x000005c0       0x48 ./lib/libdriver.a(sysctl.o)
-                0x000005c0                SysCtlPeripheralReset
+                0x00000568       0x48 ./lib/libdriver.a(sysctl.o)
+                0x00000568                SysCtlPeripheralReset
  .text.SysCtlPeripheralEnable
-                0x00000608       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000608                SysCtlPeripheralEnable
+                0x000005b0       0x30 ./lib/libdriver.a(sysctl.o)
+                0x000005b0                SysCtlPeripheralEnable
  .text.SysCtlPeripheralDisable
-                0x00000638       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000638                SysCtlPeripheralDisable
+                0x000005e0       0x30 ./lib/libdriver.a(sysctl.o)
+                0x000005e0                SysCtlPeripheralDisable
  .text.SysCtlPeripheralSleepEnable
-                0x00000668       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000668                SysCtlPeripheralSleepEnable
+                0x00000610       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00000610                SysCtlPeripheralSleepEnable
  .text.SysCtlPeripheralSleepDisable
-                0x00000698       0x30 ./lib/libdriver.a(sysctl.o)
-                0x00000698                SysCtlPeripheralSleepDisable
+                0x00000640       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00000640                SysCtlPeripheralSleepDisable
  .text.SysCtlPeripheralDeepSleepEnable
-                0x000006c8       0x30 ./lib/libdriver.a(sysctl.o)
-                0x000006c8                SysCtlPeripheralDeepSleepEnable
+                0x00000670       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00000670                SysCtlPeripheralDeepSleepEnable
  .text.SysCtlPeripheralDeepSleepDisable
-                0x000006f8       0x30 ./lib/libdriver.a(sysctl.o)
-                0x000006f8                SysCtlPeripheralDeepSleepDisable
+                0x000006a0       0x30 ./lib/libdriver.a(sysctl.o)
+                0x000006a0                SysCtlPeripheralDeepSleepDisable
  .text.SysCtlPeripheralClockGating
-                0x00000728       0x50 ./lib/libdriver.a(sysctl.o)
-                0x00000728                SysCtlPeripheralClockGating
+                0x000006d0       0x50 ./lib/libdriver.a(sysctl.o)
+                0x000006d0                SysCtlPeripheralClockGating
  .text.SysCtlIntRegister
-                0x00000778       0x14 ./lib/libdriver.a(sysctl.o)
-                0x00000778                SysCtlIntRegister
+                0x00000720       0x14 ./lib/libdriver.a(sysctl.o)
+                0x00000720                SysCtlIntRegister
  .text.SysCtlIntUnregister
-                0x0000078c       0x12 ./lib/libdriver.a(sysctl.o)
-                0x0000078c                SysCtlIntUnregister
- *fill*         0x0000079e        0x2 
+                0x00000734       0x12 ./lib/libdriver.a(sysctl.o)
+                0x00000734                SysCtlIntUnregister
+ *fill*         0x00000746        0x2 
  .text.SysCtlIntEnable
-                0x000007a0       0x10 ./lib/libdriver.a(sysctl.o)
-                0x000007a0                SysCtlIntEnable
+                0x00000748       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000748                SysCtlIntEnable
  .text.SysCtlIntDisable
-                0x000007b0       0x10 ./lib/libdriver.a(sysctl.o)
-                0x000007b0                SysCtlIntDisable
+                0x00000758       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000758                SysCtlIntDisable
  .text.SysCtlIntClear
-                0x000007c0        0xc ./lib/libdriver.a(sysctl.o)
-                0x000007c0                SysCtlIntClear
+                0x00000768        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000768                SysCtlIntClear
  .text.SysCtlIntStatus
-                0x000007cc       0x18 ./lib/libdriver.a(sysctl.o)
-                0x000007cc                SysCtlIntStatus
+                0x00000774       0x18 ./lib/libdriver.a(sysctl.o)
+                0x00000774                SysCtlIntStatus
  .text.SysCtlLDOSleepSet
-                0x000007e4        0xc ./lib/libdriver.a(sysctl.o)
-                0x000007e4                SysCtlLDOSleepSet
+                0x0000078c        0xc ./lib/libdriver.a(sysctl.o)
+                0x0000078c                SysCtlLDOSleepSet
  .text.SysCtlLDOSleepGet
-                0x000007f0        0xc ./lib/libdriver.a(sysctl.o)
-                0x000007f0                SysCtlLDOSleepGet
+                0x00000798        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000798                SysCtlLDOSleepGet
  .text.SysCtlLDODeepSleepSet
-                0x000007fc        0xc ./lib/libdriver.a(sysctl.o)
-                0x000007fc                SysCtlLDODeepSleepSet
+                0x000007a4        0xc ./lib/libdriver.a(sysctl.o)
+                0x000007a4                SysCtlLDODeepSleepSet
  .text.SysCtlLDODeepSleepGet
-                0x00000808        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000808                SysCtlLDODeepSleepGet
+                0x000007b0        0xc ./lib/libdriver.a(sysctl.o)
+                0x000007b0                SysCtlLDODeepSleepGet
  .text.SysCtlSleepPowerSet
-                0x00000814        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000814                SysCtlSleepPowerSet
+                0x000007bc        0xc ./lib/libdriver.a(sysctl.o)
+                0x000007bc                SysCtlSleepPowerSet
  .text.SysCtlDeepSleepPowerSet
-                0x00000820        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000820                SysCtlDeepSleepPowerSet
+                0x000007c8        0xc ./lib/libdriver.a(sysctl.o)
+                0x000007c8                SysCtlDeepSleepPowerSet
  .text.SysCtlReset
-                0x0000082c       0x10 ./lib/libdriver.a(sysctl.o)
-                0x0000082c                SysCtlReset
+                0x000007d4       0x10 ./lib/libdriver.a(sysctl.o)
+                0x000007d4                SysCtlReset
  .text.SysCtlSleep
-                0x0000083c        0x4 ./lib/libdriver.a(sysctl.o)
-                0x0000083c                SysCtlSleep
+                0x000007e4        0x4 ./lib/libdriver.a(sysctl.o)
+                0x000007e4                SysCtlSleep
  .text.SysCtlDeepSleep
-                0x00000840       0x20 ./lib/libdriver.a(sysctl.o)
-                0x00000840                SysCtlDeepSleep
+                0x000007e8       0x20 ./lib/libdriver.a(sysctl.o)
+                0x000007e8                SysCtlDeepSleep
  .text.SysCtlResetCauseGet
-                0x00000860        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000860                SysCtlResetCauseGet
+                0x00000808        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000808                SysCtlResetCauseGet
  .text.SysCtlResetCauseClear
-                0x0000086c       0x10 ./lib/libdriver.a(sysctl.o)
-                0x0000086c                SysCtlResetCauseClear
+                0x00000814       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000814                SysCtlResetCauseClear
  .text.SysCtlDelay
-                0x0000087c        0x6 ./lib/libdriver.a(sysctl.o)
-                0x0000087c                SysCtlDelay
- *fill*         0x00000882        0x2 
+                0x00000824        0x6 ./lib/libdriver.a(sysctl.o)
+                0x00000824                SysCtlDelay
+ *fill*         0x0000082a        0x2 
  .text.SysCtlMOSCConfigSet
-                0x00000884        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000884                SysCtlMOSCConfigSet
+                0x0000082c        0xc ./lib/libdriver.a(sysctl.o)
+                0x0000082c                SysCtlMOSCConfigSet
  .text.SysCtlPIOSCCalibrate
-                0x00000890       0x54 ./lib/libdriver.a(sysctl.o)
-                0x00000890                SysCtlPIOSCCalibrate
+                0x00000838       0x54 ./lib/libdriver.a(sysctl.o)
+                0x00000838                SysCtlPIOSCCalibrate
  .text.SysCtlResetBehaviorSet
-                0x000008e4        0xc ./lib/libdriver.a(sysctl.o)
-                0x000008e4                SysCtlResetBehaviorSet
+                0x0000088c        0xc ./lib/libdriver.a(sysctl.o)
+                0x0000088c                SysCtlResetBehaviorSet
  .text.SysCtlResetBehaviorGet
-                0x000008f0        0xc ./lib/libdriver.a(sysctl.o)
-                0x000008f0                SysCtlResetBehaviorGet
+                0x00000898        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000898                SysCtlResetBehaviorGet
  .text.SysCtlClockFreqSet
-                0x000008fc      0x264 ./lib/libdriver.a(sysctl.o)
-                0x000008fc                SysCtlClockFreqSet
+                0x000008a4      0x264 ./lib/libdriver.a(sysctl.o)
+                0x000008a4                SysCtlClockFreqSet
  .text.SysCtlClockSet
-                0x00000b60      0x128 ./lib/libdriver.a(sysctl.o)
-                0x00000b60                SysCtlClockSet
+                0x00000b08      0x128 ./lib/libdriver.a(sysctl.o)
+                0x00000b08                SysCtlClockSet
  .text.SysCtlClockGet
-                0x00000c88      0x15c ./lib/libdriver.a(sysctl.o)
-                0x00000c88                SysCtlClockGet
+                0x00000c30      0x15c ./lib/libdriver.a(sysctl.o)
+                0x00000c30                SysCtlClockGet
  .text.SysCtlDeepSleepClockSet
-                0x00000de4        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000de4                SysCtlDeepSleepClockSet
+                0x00000d8c        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000d8c                SysCtlDeepSleepClockSet
  .text.SysCtlDeepSleepClockConfigSet
-                0x00000df0       0x68 ./lib/libdriver.a(sysctl.o)
-                0x00000df0                SysCtlDeepSleepClockConfigSet
+                0x00000d98       0x68 ./lib/libdriver.a(sysctl.o)
+                0x00000d98                SysCtlDeepSleepClockConfigSet
  .text.SysCtlPWMClockSet
-                0x00000e58       0x14 ./lib/libdriver.a(sysctl.o)
-                0x00000e58                SysCtlPWMClockSet
+                0x00000e00       0x14 ./lib/libdriver.a(sysctl.o)
+                0x00000e00                SysCtlPWMClockSet
  .text.SysCtlPWMClockGet
-                0x00000e6c       0x18 ./lib/libdriver.a(sysctl.o)
-                0x00000e6c                SysCtlPWMClockGet
+                0x00000e14       0x18 ./lib/libdriver.a(sysctl.o)
+                0x00000e14                SysCtlPWMClockGet
  .text.SysCtlGPIOAHBEnable
-                0x00000e84       0x1c ./lib/libdriver.a(sysctl.o)
-                0x00000e84                SysCtlGPIOAHBEnable
+                0x00000e2c       0x1c ./lib/libdriver.a(sysctl.o)
+                0x00000e2c                SysCtlGPIOAHBEnable
  .text.SysCtlGPIOAHBDisable
-                0x00000ea0       0x1c ./lib/libdriver.a(sysctl.o)
-                0x00000ea0                SysCtlGPIOAHBDisable
+                0x00000e48       0x1c ./lib/libdriver.a(sysctl.o)
+                0x00000e48                SysCtlGPIOAHBDisable
  .text.SysCtlUSBPLLEnable
-                0x00000ebc       0x10 ./lib/libdriver.a(sysctl.o)
-                0x00000ebc                SysCtlUSBPLLEnable
+                0x00000e64       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000e64                SysCtlUSBPLLEnable
  .text.SysCtlUSBPLLDisable
-                0x00000ecc       0x10 ./lib/libdriver.a(sysctl.o)
-                0x00000ecc                SysCtlUSBPLLDisable
+                0x00000e74       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000e74                SysCtlUSBPLLDisable
  .text.SysCtlVoltageEventConfig
-                0x00000edc        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000edc                SysCtlVoltageEventConfig
+                0x00000e84        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000e84                SysCtlVoltageEventConfig
  .text.SysCtlVoltageEventStatus
-                0x00000ee8        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000ee8                SysCtlVoltageEventStatus
+                0x00000e90        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000e90                SysCtlVoltageEventStatus
  .text.SysCtlVoltageEventClear
-                0x00000ef4       0x10 ./lib/libdriver.a(sysctl.o)
-                0x00000ef4                SysCtlVoltageEventClear
+                0x00000e9c       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000e9c                SysCtlVoltageEventClear
  .text.SysCtlNMIStatus
-                0x00000f04        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000f04                SysCtlNMIStatus
+                0x00000eac        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000eac                SysCtlNMIStatus
  .text.SysCtlNMIClear
-                0x00000f10       0x10 ./lib/libdriver.a(sysctl.o)
-                0x00000f10                SysCtlNMIClear
+                0x00000eb8       0x10 ./lib/libdriver.a(sysctl.o)
+                0x00000eb8                SysCtlNMIClear
  .text.SysCtlClockOutConfig
-                0x00000f20       0x14 ./lib/libdriver.a(sysctl.o)
-                0x00000f20                SysCtlClockOutConfig
+                0x00000ec8       0x14 ./lib/libdriver.a(sysctl.o)
+                0x00000ec8                SysCtlClockOutConfig
  .text.SysCtlAltClkConfig
-                0x00000f34        0xc ./lib/libdriver.a(sysctl.o)
-                0x00000f34                SysCtlAltClkConfig
- .text          0x00000f40        0x0 ./lib/libdriver.a(cpu.o)
+                0x00000edc        0xc ./lib/libdriver.a(sysctl.o)
+                0x00000edc                SysCtlAltClkConfig
+ .text          0x00000ee8        0x0 ./lib/libdriver.a(cpu.o)
  .text.CPUcpsid
-                0x00000f40        0x8 ./lib/libdriver.a(cpu.o)
-                0x00000f40                CPUcpsid
+                0x00000ee8        0x8 ./lib/libdriver.a(cpu.o)
+                0x00000ee8                CPUcpsid
  .text.CPUprimask
-                0x00000f48        0x6 ./lib/libdriver.a(cpu.o)
-                0x00000f48                CPUprimask
+                0x00000ef0        0x6 ./lib/libdriver.a(cpu.o)
+                0x00000ef0                CPUprimask
  .text.CPUcpsie
-                0x00000f4e        0x8 ./lib/libdriver.a(cpu.o)
-                0x00000f4e                CPUcpsie
- .text.CPUwfi   0x00000f56        0x4 ./lib/libdriver.a(cpu.o)
-                0x00000f56                CPUwfi
+                0x00000ef6        0x8 ./lib/libdriver.a(cpu.o)
+                0x00000ef6                CPUcpsie
+ .text.CPUwfi   0x00000efe        0x4 ./lib/libdriver.a(cpu.o)
+                0x00000efe                CPUwfi
  .text.CPUbasepriSet
-                0x00000f5a        0x6 ./lib/libdriver.a(cpu.o)
-                0x00000f5a                CPUbasepriSet
+                0x00000f02        0x6 ./lib/libdriver.a(cpu.o)
+                0x00000f02                CPUbasepriSet
  .text.CPUbasepriGet
-                0x00000f60        0x6 ./lib/libdriver.a(cpu.o)
-                0x00000f60                CPUbasepriGet
- .text          0x00000f66        0x0 ./lib/libdriver.a(interrupt.o)
+                0x00000f08        0x6 ./lib/libdriver.a(cpu.o)
+                0x00000f08                CPUbasepriGet
+ .text          0x00000f0e        0x0 ./lib/libdriver.a(interrupt.o)
  .text._IntDefaultHandler
-                0x00000f66        0x2 ./lib/libdriver.a(interrupt.o)
+                0x00000f0e        0x2 ./lib/libdriver.a(interrupt.o)
  .text.IntMasterEnable
-                0x00000f68        0xe ./lib/libdriver.a(interrupt.o)
-                0x00000f68                IntMasterEnable
+                0x00000f10        0xe ./lib/libdriver.a(interrupt.o)
+                0x00000f10                IntMasterEnable
  .text.IntMasterDisable
-                0x00000f76        0xe ./lib/libdriver.a(interrupt.o)
-                0x00000f76                IntMasterDisable
+                0x00000f1e        0xe ./lib/libdriver.a(interrupt.o)
+                0x00000f1e                IntMasterDisable
  .text.IntRegister
-                0x00000f84       0x30 ./lib/libdriver.a(interrupt.o)
-                0x00000f84                IntRegister
+                0x00000f2c       0x30 ./lib/libdriver.a(interrupt.o)
+                0x00000f2c                IntRegister
  .text.IntUnregister
-                0x00000fb4       0x14 ./lib/libdriver.a(interrupt.o)
-                0x00000fb4                IntUnregister
+                0x00000f5c       0x14 ./lib/libdriver.a(interrupt.o)
+                0x00000f5c                IntUnregister
  .text.IntPriorityGroupingSet
-                0x00000fc8       0x1c ./lib/libdriver.a(interrupt.o)
-                0x00000fc8                IntPriorityGroupingSet
+                0x00000f70       0x1c ./lib/libdriver.a(interrupt.o)
+                0x00000f70                IntPriorityGroupingSet
  .text.IntPriorityGroupingGet
-                0x00000fe4       0x24 ./lib/libdriver.a(interrupt.o)
-                0x00000fe4                IntPriorityGroupingGet
+                0x00000f8c       0x24 ./lib/libdriver.a(interrupt.o)
+                0x00000f8c                IntPriorityGroupingGet
  .text.IntPrioritySet
-                0x00001008       0x28 ./lib/libdriver.a(interrupt.o)
-                0x00001008                IntPrioritySet
+                0x00000fb0       0x28 ./lib/libdriver.a(interrupt.o)
+                0x00000fb0                IntPrioritySet
  .text.IntPriorityGet
-                0x00001030       0x1c ./lib/libdriver.a(interrupt.o)
-                0x00001030                IntPriorityGet
+                0x00000fd8       0x1c ./lib/libdriver.a(interrupt.o)
+                0x00000fd8                IntPriorityGet
  .text.IntEnable
-                0x0000104c       0x60 ./lib/libdriver.a(interrupt.o)
-                0x0000104c                IntEnable
+                0x00000ff4       0x60 ./lib/libdriver.a(interrupt.o)
+                0x00000ff4                IntEnable
  .text.IntDisable
-                0x000010ac       0x60 ./lib/libdriver.a(interrupt.o)
-                0x000010ac                IntDisable
+                0x00001054       0x60 ./lib/libdriver.a(interrupt.o)
+                0x00001054                IntDisable
  .text.IntIsEnabled
-                0x0000110c       0x64 ./lib/libdriver.a(interrupt.o)
-                0x0000110c                IntIsEnabled
+                0x000010b4       0x64 ./lib/libdriver.a(interrupt.o)
+                0x000010b4                IntIsEnabled
  .text.IntPendSet
-                0x00001170       0x50 ./lib/libdriver.a(interrupt.o)
-                0x00001170                IntPendSet
+                0x00001118       0x50 ./lib/libdriver.a(interrupt.o)
+                0x00001118                IntPendSet
  .text.IntPendClear
-                0x000011c0       0x40 ./lib/libdriver.a(interrupt.o)
-                0x000011c0                IntPendClear
+                0x00001168       0x40 ./lib/libdriver.a(interrupt.o)
+                0x00001168                IntPendClear
  .text.IntPriorityMaskSet
-                0x00001200        0x4 ./lib/libdriver.a(interrupt.o)
-                0x00001200                IntPriorityMaskSet
+                0x000011a8        0x4 ./lib/libdriver.a(interrupt.o)
+                0x000011a8                IntPriorityMaskSet
  .text.IntPriorityMaskGet
-                0x00001204        0x4 ./lib/libdriver.a(interrupt.o)
-                0x00001204                IntPriorityMaskGet
+                0x000011ac        0x4 ./lib/libdriver.a(interrupt.o)
+                0x000011ac                IntPriorityMaskGet
  .text.IntTrigger
-                0x00001208        0xc ./lib/libdriver.a(interrupt.o)
-                0x00001208                IntTrigger
- .text          0x00001214      0x4c8 ./objects/uartstdio.o
-                0x00001214                UARTStdioConfig
-                0x00001288                UARTwrite
-                0x00001300                UARTgets
-                0x000013bc                UARTgetc
-                0x000013d8                UARTvprintf
-                0x000016c0                UARTprintf
- .text          0x000016dc      0x2c8 ./objects/pinout.o
-                0x000016dc                PinoutSet
-                0x000018d0                LEDWrite
-                0x00001948                LEDRead
- .text          0x000019a4      0xda4 ./objects/gpio.o
-                0x00001ab8                GPIODirModeSet
-                0x00001b10                GPIODirModeGet
-                0x00001b60                GPIOIntTypeSet
-                0x00001bf0                GPIOIntTypeGet
-                0x00001c64                GPIOPadConfigSet
-                0x00001df8                GPIOPadConfigGet
-                0x00001f04                GPIOIntEnable
-                0x00001f2c                GPIOIntDisable
-                0x00001f58                GPIOIntStatus
-                0x00001f84                GPIOIntClear
-                0x00001fa8                GPIOIntRegister
-                0x00001fec                GPIOIntUnregister
-                0x0000202c                GPIOPinRead
-                0x00002050                GPIOPinWrite
-                0x00002074                GPIOPinTypeADC
-                0x000020a8                GPIOPinTypeCAN
-                0x000020dc                GPIOPinTypeComparator
-                0x00002110                GPIOPinTypeEPI
-                0x00002144                GPIOPinTypeEthernetLED
-                0x00002178                GPIOPinTypeEthernetMII
-                0x000021ac                GPIOPinTypeGPIOInput
-                0x000021e0                GPIOPinTypeGPIOOutput
-                0x00002214                GPIOPinTypeGPIOOutputOD
-                0x00002248                GPIOPinTypeI2C
-                0x0000227c                GPIOPinTypeI2CSCL
-                0x000022b0                GPIOPinTypeLCD
-                0x000022e4                GPIOPinTypeLPC
-                0x00002318                GPIOPinTypePECIRx
-                0x0000234c                GPIOPinTypePECITx
-                0x00002380                GPIOPinTypePWM
-                0x000023b4                GPIOPinTypeQEI
-                0x000023e8                GPIOPinTypeSSI
-                0x0000241c                GPIOPinTypeTimer
-                0x00002450                GPIOPinTypeUART
-                0x00002484                GPIOPinTypeUSBAnalog
-                0x000024b8                GPIOPinTypeUSBDigital
-                0x000024ec                GPIOPinTypeWakeHigh
-                0x00002524                GPIOPinTypeWakeLow
-                0x0000255c                GPIOPinTypeKBRow
-                0x00002590                GPIOPinTypeKBColumn
-                0x000025c4                GPIOPinTypeLEDSeq
-                0x000025f8                GPIOPinTypeCIR
-                0x0000262c                GPIOPinWakeStatus
-                0x00002632                GPIOPinConfigure
-                0x000026a0                GPIODMATriggerEnable
-                0x000026c8                GPIODMATriggerDisable
-                0x000026f4                GPIOADCTriggerEnable
-                0x0000271c                GPIOADCTriggerDisable
- .text          0x00002748        0x0 ./objects/cpu.o
- .text          0x00002748       0xec ./objects/queue.o
-                0x00002748                queue_append
-                0x00002784                queue_remove
-                0x000027e8                queue_size
-                0x00002806                queue_print
- .text          0x00002834      0x73c ./objects/testafila.o
-                0x00002834                print_elem
-                0x00002878                fila_correta
-                0x000028e4                testafila
- .text          0x00002f70      0x18c ./objects/thread.o
-                0x00002f70                createThread
-                0x00003030                initSysTick
-                0x00003054                startSwitcher
-                0x0000306a                SysTick_Handler
- .text          0x000030fc       0x58 ./objects/pingpong-tasks1.o
- .text          0x00003154        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .text.exit     0x00003154       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
-                0x00003154                exit
- .text          0x0000317c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
- .text          0x0000317c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .text.malloc   0x0000317c       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
-                0x0000317c                malloc
- .text.free     0x0000318c       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
-                0x0000318c                free
- .text          0x0000319c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .text._free_r  0x0000319c       0x9c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
-                0x0000319c                _free_r
- .text          0x00003238        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x000011b0        0xc ./lib/libdriver.a(interrupt.o)
+                0x000011b0                IntTrigger
+ .text          0x000011bc      0x4c8 ./objects/uartstdio.o
+                0x000011bc                UARTStdioConfig
+                0x00001230                UARTwrite
+                0x000012a8                UARTgets
+                0x00001364                UARTgetc
+                0x00001380                UARTvprintf
+                0x00001668                UARTprintf
+ .text          0x00001684      0x2c8 ./objects/pinout.o
+                0x00001684                PinoutSet
+                0x00001878                LEDWrite
+                0x000018f0                LEDRead
+ .text          0x0000194c      0xda4 ./objects/gpio.o
+                0x00001a60                GPIODirModeSet
+                0x00001ab8                GPIODirModeGet
+                0x00001b08                GPIOIntTypeSet
+                0x00001b98                GPIOIntTypeGet
+                0x00001c0c                GPIOPadConfigSet
+                0x00001da0                GPIOPadConfigGet
+                0x00001eac                GPIOIntEnable
+                0x00001ed4                GPIOIntDisable
+                0x00001f00                GPIOIntStatus
+                0x00001f2c                GPIOIntClear
+                0x00001f50                GPIOIntRegister
+                0x00001f94                GPIOIntUnregister
+                0x00001fd4                GPIOPinRead
+                0x00001ff8                GPIOPinWrite
+                0x0000201c                GPIOPinTypeADC
+                0x00002050                GPIOPinTypeCAN
+                0x00002084                GPIOPinTypeComparator
+                0x000020b8                GPIOPinTypeEPI
+                0x000020ec                GPIOPinTypeEthernetLED
+                0x00002120                GPIOPinTypeEthernetMII
+                0x00002154                GPIOPinTypeGPIOInput
+                0x00002188                GPIOPinTypeGPIOOutput
+                0x000021bc                GPIOPinTypeGPIOOutputOD
+                0x000021f0                GPIOPinTypeI2C
+                0x00002224                GPIOPinTypeI2CSCL
+                0x00002258                GPIOPinTypeLCD
+                0x0000228c                GPIOPinTypeLPC
+                0x000022c0                GPIOPinTypePECIRx
+                0x000022f4                GPIOPinTypePECITx
+                0x00002328                GPIOPinTypePWM
+                0x0000235c                GPIOPinTypeQEI
+                0x00002390                GPIOPinTypeSSI
+                0x000023c4                GPIOPinTypeTimer
+                0x000023f8                GPIOPinTypeUART
+                0x0000242c                GPIOPinTypeUSBAnalog
+                0x00002460                GPIOPinTypeUSBDigital
+                0x00002494                GPIOPinTypeWakeHigh
+                0x000024cc                GPIOPinTypeWakeLow
+                0x00002504                GPIOPinTypeKBRow
+                0x00002538                GPIOPinTypeKBColumn
+                0x0000256c                GPIOPinTypeLEDSeq
+                0x000025a0                GPIOPinTypeCIR
+                0x000025d4                GPIOPinWakeStatus
+                0x000025da                GPIOPinConfigure
+                0x00002648                GPIODMATriggerEnable
+                0x00002670                GPIODMATriggerDisable
+                0x0000269c                GPIOADCTriggerEnable
+                0x000026c4                GPIOADCTriggerDisable
+ .text          0x000026f0        0x0 ./objects/cpu.o
+ .text          0x000026f0       0xec ./objects/queue.o
+                0x000026f0                queue_append
+                0x0000272c                queue_remove
+                0x00002790                queue_size
+                0x000027ae                queue_print
+ .text          0x000027dc      0x73c ./objects/testafila.o
+                0x000027dc                print_elem
+                0x00002820                fila_correta
+                0x0000288c                testafila
+ .text          0x00002f18      0x18c ./objects/thread.o
+                0x00002f18                createThread
+                0x00002fd8                initSysTick
+                0x00002ffc                startSwitcher
+                0x00003012                SysTick_Handler
+ .text          0x000030a4       0x58 ./objects/pingpong-tasks1.o
+                0x000030a4                BodyPing
+                0x000030d8                BodyPong
+ .text          0x000030fc        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x000030fc       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+                0x000030fc                exit
+ .text          0x00003124        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00003124        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .text.malloc   0x00003124       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+                0x00003124                malloc
+ .text.free     0x00003134       0x10 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+                0x00003134                free
+ .text          0x00003144        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .text._free_r  0x00003144       0x9c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00003144                _free_r
+ .text          0x000031e0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
  .text._malloc_r
-                0x00003238       0xb4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x00003238                _malloc_r
- .text          0x000032ec        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .text.srandom  0x000032ec       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
-                0x000032ec                srandom
- .text.random   0x00003334       0x68 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
-                0x00003334                random
- .text          0x0000339c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .text._sbrk_r  0x0000339c       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
-                0x0000339c                _sbrk_r
- .text          0x000033bc        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x000031e0       0xb4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x000031e0                _malloc_r
+ .text          0x00003294        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .text.srandom  0x00003294       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+                0x00003294                srandom
+ .text.random   0x000032dc       0x68 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+                0x000032dc                random
+ .text          0x00003344        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x00003344       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00003344                _sbrk_r
+ .text          0x00003364        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
  .text.__malloc_lock
-                0x000033bc        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
-                0x000033bc                __malloc_lock
+                0x00003364        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x00003364                __malloc_lock
  .text.__malloc_unlock
-                0x000033be        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
-                0x000033be                __malloc_unlock
- .text          0x000033c0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x00003366        0x2 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+                0x00003366                __malloc_unlock
+ .text          0x00003368        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
  .text.cleanup_glue
-                0x000033c0       0x1a c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x000033c0                cleanup_glue
- *fill*         0x000033da        0x2 
+                0x00003368       0x1a c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x00003368                cleanup_glue
+ *fill*         0x00003382        0x2 
  .text._reclaim_reent
-                0x000033dc       0xb8 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x000033dc                _reclaim_reent
- .text          0x00003494        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .text._sbrk    0x00003494       0x1c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
-                0x00003494                _sbrk
- .text          0x000034b0        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
- .text._exit    0x000034b0        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
-                0x000034b0                _exit
+                0x00003384       0xb8 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x00003384                _reclaim_reent
+ .text          0x0000343c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .text._sbrk    0x0000343c       0x1c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+                0x0000343c                _sbrk
+ .text          0x00003458        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+ .text._exit    0x00003458        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+                0x00003458                _exit
  *(.rodata*)
  .rodata.str1.4
-                0x000034b4       0x8a ./objects/hello.o
- *fill*         0x0000353e        0x2 
+                0x0000345c       0x7a ./objects/hello.o
+ *fill*         0x000034d6        0x2 
  .rodata.g_pppui32XTALtoVCO
-                0x00003540      0x120 ./lib/libdriver.a(sysctl.o)
+                0x000034d8      0x120 ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32VCOFrequencies
-                0x00003660        0x8 ./lib/libdriver.a(sysctl.o)
+                0x000035f8        0x8 ./lib/libdriver.a(sysctl.o)
  .rodata.g_sXTALtoMEMTIM
-                0x00003668       0x30 ./lib/libdriver.a(sysctl.o)
+                0x00003600       0x30 ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32Xtals
-                0x00003698       0x6c ./lib/libdriver.a(sysctl.o)
+                0x00003630       0x6c ./lib/libdriver.a(sysctl.o)
  .rodata.g_pui32Priority
-                0x00003704       0x20 ./lib/libdriver.a(interrupt.o)
+                0x0000369c       0x20 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32Dii16Regs
-                0x00003724       0x14 ./lib/libdriver.a(interrupt.o)
+                0x000036bc       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32PendRegs
-                0x00003738       0x14 ./lib/libdriver.a(interrupt.o)
+                0x000036d0       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32Regs
-                0x0000374c       0x9c ./lib/libdriver.a(interrupt.o)
+                0x000036e4       0x9c ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32EnRegs
-                0x000037e8       0x14 ./lib/libdriver.a(interrupt.o)
+                0x00003780       0x14 ./lib/libdriver.a(interrupt.o)
  .rodata.g_pui32UnpendRegs
-                0x000037fc       0x14 ./lib/libdriver.a(interrupt.o)
- .rodata        0x00003810       0x18 ./objects/uartstdio.o
+                0x00003794       0x14 ./lib/libdriver.a(interrupt.o)
+ .rodata        0x000037a8       0x18 ./objects/uartstdio.o
  .rodata.str1.4
-                0x00003828       0x32 ./objects/uartstdio.o
- *fill*         0x0000385a        0x2 
- .rodata        0x0000385c      0x210 ./objects/gpio.o
+                0x000037c0       0x32 ./objects/uartstdio.o
+ *fill*         0x000037f2        0x2 
+ .rodata        0x000037f4      0x210 ./objects/gpio.o
  .rodata.str1.4
-                0x00003a6c        0x7 ./objects/gpio.o
+                0x00003a04        0x7 ./objects/gpio.o
  .rodata.str1.4
-                0x00003a73        0x7 ./objects/queue.o
+                0x00003a0b        0x7 ./objects/queue.o
                                   0x2 (size before relaxing)
- *fill*         0x00003a73        0x1 
+ *fill*         0x00003a0b        0x1 
  .rodata.str1.4
-                0x00003a74      0x584 ./objects/testafila.o
-                                0x582 (size before relaxing)
+                0x00003a0c      0x582 ./objects/testafila.o
+ *fill*         0x00003f8e        0x2 
  .rodata.str1.4
-                0x00003ff8        0xe ./objects/pingpong-tasks1.o
+                0x00003f90       0x10 ./objects/pingpong-tasks1.o
+                                  0xe (size before relaxing)
  .rodata._global_impure_ptr
-                0x00003ff8        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
-                0x00003ff8                _global_impure_ptr
-                0x00004006                _etext = .
+                0x00003fa0        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+                0x00003fa0                _global_impure_ptr
+                0x00003fa4                _etext = .
 
-.glue_7         0x00003ffc        0x0
- .glue_7        0x00003ffc        0x0 linker stubs
+.glue_7         0x00003fa4        0x0
+ .glue_7        0x00003fa4        0x0 linker stubs
 
-.glue_7t        0x00003ffc        0x0
- .glue_7t       0x00003ffc        0x0 linker stubs
+.glue_7t        0x00003fa4        0x0
+ .glue_7t       0x00003fa4        0x0 linker stubs
 
-.vfp11_veneer   0x00003ffc        0x0
- .vfp11_veneer  0x00003ffc        0x0 linker stubs
+.vfp11_veneer   0x00003fa4        0x0
+ .vfp11_veneer  0x00003fa4        0x0 linker stubs
 
-.v4_bx          0x00003ffc        0x0
- .v4_bx         0x00003ffc        0x0 linker stubs
+.v4_bx          0x00003fa4        0x0
+ .v4_bx         0x00003fa4        0x0 linker stubs
 
-.iplt           0x00003ffc        0x0
- .iplt          0x00003ffc        0x0 ./objects/startup_gcc.o
+.iplt           0x00003fa4        0x0
+ .iplt          0x00003fa4        0x0 ./objects/startup_gcc.o
 
-.rel.dyn        0x00003ffc        0x0
- .rel.iplt      0x00003ffc        0x0 ./objects/startup_gcc.o
+.rel.dyn        0x00003fa4        0x0
+ .rel.iplt      0x00003fa4        0x0 ./objects/startup_gcc.o
 
-.data           0x20000000      0x468 load address 0x00003ffc
+.data           0x20000000      0x468 load address 0x00003fa4
                 0x20000000                _data = .
  *(vtable)
  vtable         0x20000000      0x400 ./lib/libdriver.a(interrupt.o)
@@ -552,104 +553,103 @@ END GROUP
  .data          0x20000468        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
                 0x20000468                _edata = .
 
-.igot.plt       0x20000468        0x0 load address 0x00004464
+.igot.plt       0x20000468        0x0 load address 0x0000440c
  .igot.plt      0x20000468        0x0 ./objects/startup_gcc.o
 
-.bss            0x20000468      0x964 load address 0x00004464
+.bss            0x20000468      0x960 load address 0x0000440c
                 0x20000468                _bss = .
  *(.bss*)
  .bss           0x20000468      0x200 ./objects/startup_gcc.o
- .bss           0x20000668        0x1 ./objects/hello.o
-                0x20000668                pingpong
- .bss           0x20000669        0x0 ./lib/libdriver.a(sysctl.o)
- .bss           0x20000669        0x0 ./lib/libdriver.a(cpu.o)
- .bss           0x20000669        0x0 ./lib/libdriver.a(interrupt.o)
- *fill*         0x20000669        0x3 
- .bss           0x2000066c        0x5 ./objects/uartstdio.o
- .bss           0x20000671        0x0 ./objects/pinout.o
- .bss           0x20000671        0x0 ./objects/gpio.o
- .bss           0x20000671        0x0 ./objects/cpu.o
- .bss           0x20000671        0x0 ./objects/queue.o
- .bss           0x20000671        0x0 ./objects/testafila.o
- *fill*         0x20000671        0x3 
- .bss           0x20000674        0x8 ./objects/thread.o
-                0x20000674                ThreadCount
-                0x20000678                ThreadIndex
- .bss           0x2000067c        0x1 ./objects/pingpong-tasks1.o
- .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
- .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .bss           0x2000067d        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
- *fill*         0x2000067d        0x3 
+ .bss           0x20000668        0x0 ./objects/hello.o
+ .bss           0x20000668        0x0 ./lib/libdriver.a(sysctl.o)
+ .bss           0x20000668        0x0 ./lib/libdriver.a(cpu.o)
+ .bss           0x20000668        0x0 ./lib/libdriver.a(interrupt.o)
+ .bss           0x20000668        0x5 ./objects/uartstdio.o
+ .bss           0x2000066d        0x0 ./objects/pinout.o
+ .bss           0x2000066d        0x0 ./objects/gpio.o
+ .bss           0x2000066d        0x0 ./objects/cpu.o
+ .bss           0x2000066d        0x0 ./objects/queue.o
+ .bss           0x2000066d        0x0 ./objects/testafila.o
+ *fill*         0x2000066d        0x3 
+ .bss           0x20000670        0x8 ./objects/thread.o
+                0x20000670                ThreadCount
+                0x20000674                ThreadIndex
+ .bss           0x20000678        0x1 ./objects/pingpong-tasks1.o
+                0x20000678                pingpong
+ .bss           0x20000679        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x20000679        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x20000679        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .bss           0x20000679        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .bss           0x20000679        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ *fill*         0x20000679        0x3 
  .bss.__malloc_free_list
-                0x20000680        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x20000680                __malloc_free_list
+                0x2000067c        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x2000067c                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x20000684        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x20000684                __malloc_sbrk_start
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
- .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+                0x20000680        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x20000680                __malloc_sbrk_start
+ .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+ .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+ .bss           0x20000684        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
  .bss.heap_end.4102
-                0x20000688        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .bss           0x2000068c        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+                0x20000684        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .bss           0x20000688        0x0 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
  *(COMMON)
- COMMON         0x2000068c      0x204 ./objects/hello.o
-                0x2000068c                Thread2Stack
-                0x2000078c                g_ui32SysClock
-                0x20000790                Thread1Stack
- COMMON         0x20000890      0x4c0 ./objects/testafila.o
-                0x20000890                final
-                0x20000894                fila0
-                0x20000898                aux
-                0x2000089c                item
-                0x20000d4c                fila1
- COMMON         0x20000d50       0x78 ./objects/thread.o
-                0x20000d50                Threads
- COMMON         0x20000dc8        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
-                0x20000dc8                errno
-                0x20000dcc                _ebss = .
-                0x20000dcc                _end = .
-                0x20000dcc                PROVIDE (end = .)
+ COMMON         0x20000688      0x204 ./objects/hello.o
+                0x20000688                Thread2Stack
+                0x20000788                g_ui32SysClock
+                0x2000078c                Thread1Stack
+ COMMON         0x2000088c      0x4c0 ./objects/testafila.o
+                0x2000088c                final
+                0x20000890                fila0
+                0x20000894                aux
+                0x20000898                item
+                0x20000d48                fila1
+ COMMON         0x20000d4c       0x78 ./objects/thread.o
+                0x20000d4c                Threads
+ COMMON         0x20000dc4        0x4 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+                0x20000dc4                errno
+                0x20000dc8                _ebss = .
+                0x20000dc8                _end = .
+                0x20000dc8                PROVIDE (end = .)
 OUTPUT(./Objects/NOVO.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x5fd8
+.debug_info     0x00000000     0x5ef5
  .debug_info    0x00000000      0x1a8 ./objects/startup_gcc.o
- .debug_info    0x000001a8      0xe50 ./objects/hello.o
- .debug_info    0x00000ff8      0x5ae ./objects/uartstdio.o
- .debug_info    0x000015a6      0x54b ./objects/pinout.o
- .debug_info    0x00001af1     0x2027 ./objects/gpio.o
- .debug_info    0x00003b18       0x64 ./objects/cpu.o
- .debug_info    0x00003b7c      0x24d ./objects/queue.o
- .debug_info    0x00003dc9     0x15bb ./objects/testafila.o
- .debug_info    0x00005384      0x1de ./objects/thread.o
- .debug_info    0x00005562      0xa76 ./objects/pingpong-tasks1.o
+ .debug_info    0x000001a8      0xd9f ./objects/hello.o
+ .debug_info    0x00000f47      0x5ae ./objects/uartstdio.o
+ .debug_info    0x000014f5      0x54b ./objects/pinout.o
+ .debug_info    0x00001a40     0x2027 ./objects/gpio.o
+ .debug_info    0x00003a67       0x64 ./objects/cpu.o
+ .debug_info    0x00003acb      0x24d ./objects/queue.o
+ .debug_info    0x00003d18     0x15bb ./objects/testafila.o
+ .debug_info    0x000052d3      0x1de ./objects/thread.o
+ .debug_info    0x000054b1      0xa44 ./objects/pingpong-tasks1.o
 
-.debug_abbrev   0x00000000      0xe4e
+.debug_abbrev   0x00000000      0xe0a
  .debug_abbrev  0x00000000       0xfa ./objects/startup_gcc.o
- .debug_abbrev  0x000000fa      0x266 ./objects/hello.o
- .debug_abbrev  0x00000360      0x1a8 ./objects/uartstdio.o
- .debug_abbrev  0x00000508       0xd3 ./objects/pinout.o
- .debug_abbrev  0x000005db      0x176 ./objects/gpio.o
- .debug_abbrev  0x00000751       0x26 ./objects/cpu.o
- .debug_abbrev  0x00000777      0x15a ./objects/queue.o
- .debug_abbrev  0x000008d1      0x260 ./objects/testafila.o
- .debug_abbrev  0x00000b31      0x114 ./objects/thread.o
- .debug_abbrev  0x00000c45      0x209 ./objects/pingpong-tasks1.o
+ .debug_abbrev  0x000000fa      0x241 ./objects/hello.o
+ .debug_abbrev  0x0000033b      0x1a8 ./objects/uartstdio.o
+ .debug_abbrev  0x000004e3       0xd3 ./objects/pinout.o
+ .debug_abbrev  0x000005b6      0x176 ./objects/gpio.o
+ .debug_abbrev  0x0000072c       0x26 ./objects/cpu.o
+ .debug_abbrev  0x00000752      0x15a ./objects/queue.o
+ .debug_abbrev  0x000008ac      0x260 ./objects/testafila.o
+ .debug_abbrev  0x00000b0c      0x114 ./objects/thread.o
+ .debug_abbrev  0x00000c20      0x1ea ./objects/pingpong-tasks1.o
 
-.debug_loc      0x00000000     0x29ac
+.debug_loc      0x00000000     0x2920
  .debug_loc     0x00000000       0x4b ./objects/startup_gcc.o
- .debug_loc     0x0000004b      0x164 ./objects/hello.o
- .debug_loc     0x000001af      0x88a ./objects/uartstdio.o
- .debug_loc     0x00000a39      0x126 ./objects/pinout.o
- .debug_loc     0x00000b5f     0x16a6 ./objects/gpio.o
- .debug_loc     0x00002205      0x2cb ./objects/queue.o
- .debug_loc     0x000024d0      0x304 ./objects/testafila.o
- .debug_loc     0x000027d4      0x14c ./objects/thread.o
- .debug_loc     0x00002920       0x8c ./objects/pingpong-tasks1.o
+ .debug_loc     0x0000004b       0xd8 ./objects/hello.o
+ .debug_loc     0x00000123      0x88a ./objects/uartstdio.o
+ .debug_loc     0x000009ad      0x126 ./objects/pinout.o
+ .debug_loc     0x00000ad3     0x16a6 ./objects/gpio.o
+ .debug_loc     0x00002179      0x2cb ./objects/queue.o
+ .debug_loc     0x00002444      0x304 ./objects/testafila.o
+ .debug_loc     0x00002748      0x14c ./objects/thread.o
+ .debug_loc     0x00002894       0x8c ./objects/pingpong-tasks1.o
 
 .debug_aranges  0x00000000      0x138
  .debug_aranges
@@ -673,39 +673,39 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .debug_aranges
                 0x00000118       0x20 ./objects/pingpong-tasks1.o
 
-.debug_line     0x00000000     0x16fd
+.debug_line     0x00000000     0x16df
  .debug_line    0x00000000      0x12c ./objects/startup_gcc.o
- .debug_line    0x0000012c      0x2c0 ./objects/hello.o
- .debug_line    0x000003ec      0x34e ./objects/uartstdio.o
- .debug_line    0x0000073a      0x180 ./objects/pinout.o
- .debug_line    0x000008ba      0x55f ./objects/gpio.o
- .debug_line    0x00000e19       0x1d ./objects/cpu.o
- .debug_line    0x00000e36       0xcb ./objects/queue.o
- .debug_line    0x00000f01      0x459 ./objects/testafila.o
- .debug_line    0x0000135a      0x178 ./objects/thread.o
- .debug_line    0x000014d2      0x22b ./objects/pingpong-tasks1.o
+ .debug_line    0x0000012c      0x28d ./objects/hello.o
+ .debug_line    0x000003b9      0x34e ./objects/uartstdio.o
+ .debug_line    0x00000707      0x180 ./objects/pinout.o
+ .debug_line    0x00000887      0x55f ./objects/gpio.o
+ .debug_line    0x00000de6       0x1d ./objects/cpu.o
+ .debug_line    0x00000e03       0xcb ./objects/queue.o
+ .debug_line    0x00000ece      0x459 ./objects/testafila.o
+ .debug_line    0x00001327      0x178 ./objects/thread.o
+ .debug_line    0x0000149f      0x240 ./objects/pingpong-tasks1.o
 
 .debug_str      0x00000000      0xe20
  .debug_str     0x00000000      0x199 ./objects/startup_gcc.o
                                 0x1d6 (size before relaxing)
- .debug_str     0x00000199      0x4ba ./objects/hello.o
-                                0x64c (size before relaxing)
- .debug_str     0x00000653      0x12b ./objects/uartstdio.o
+ .debug_str     0x00000199      0x496 ./objects/hello.o
+                                0x621 (size before relaxing)
+ .debug_str     0x0000062f      0x134 ./objects/uartstdio.o
                                 0x2cd (size before relaxing)
- .debug_str     0x0000077e       0x81 ./objects/pinout.o
+ .debug_str     0x00000763       0x81 ./objects/pinout.o
                                 0x1f0 (size before relaxing)
- .debug_str     0x000007ff      0x4b1 ./objects/gpio.o
+ .debug_str     0x000007e4      0x4b1 ./objects/gpio.o
                                 0x6c4 (size before relaxing)
- .debug_str     0x00000cb0        0x6 ./objects/cpu.o
+ .debug_str     0x00000c95        0x6 ./objects/cpu.o
                                 0x141 (size before relaxing)
- .debug_str     0x00000cb6       0x67 ./objects/queue.o
+ .debug_str     0x00000c9b       0x67 ./objects/queue.o
                                 0x1c1 (size before relaxing)
- .debug_str     0x00000d1d       0x56 ./objects/testafila.o
+ .debug_str     0x00000d02       0x56 ./objects/testafila.o
                                 0x601 (size before relaxing)
- .debug_str     0x00000d73       0x93 ./objects/thread.o
+ .debug_str     0x00000d58       0x93 ./objects/thread.o
                                 0x20f (size before relaxing)
- .debug_str     0x00000e06       0x1a ./objects/pingpong-tasks1.o
-                                0x596 (size before relaxing)
+ .debug_str     0x00000deb       0x35 ./objects/pingpong-tasks1.o
+                                0x598 (size before relaxing)
 
 .comment        0x00000000       0xaa
  .comment       0x00000000       0x7f ./objects/startup_gcc.o
@@ -775,27 +775,26 @@ OUTPUT(./Objects/NOVO.elf elf32-littlearm)
  .ARM.attributes
                 0x0000046f       0x2e c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
 
-.debug_frame    0x00000000      0xc90
+.debug_frame    0x00000000      0xc54
  .debug_frame   0x00000000       0x5c ./objects/startup_gcc.o
- .debug_frame   0x0000005c       0xc0 ./objects/hello.o
- .debug_frame   0x0000011c      0x120 ./objects/uartstdio.o
- .debug_frame   0x0000023c       0x6c ./objects/pinout.o
- .debug_frame   0x000002a8      0x638 ./objects/gpio.o
- .debug_frame   0x000008e0       0x80 ./objects/queue.o
- .debug_frame   0x00000960       0x74 ./objects/testafila.o
- .debug_frame   0x000009d4       0x74 ./objects/thread.o
- .debug_frame   0x00000a48       0x4c ./objects/pingpong-tasks1.o
- .debug_frame   0x00000a94       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00000abc       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
- .debug_frame   0x00000aec       0x38 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00000b24       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00000b50       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
- .debug_frame   0x00000b98       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000bc4       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00000bf4       0x5c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
- .debug_frame   0x00000c50       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
- .debug_frame   0x00000c70       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
+ .debug_frame   0x0000005c       0x84 ./objects/hello.o
+ .debug_frame   0x000000e0      0x120 ./objects/uartstdio.o
+ .debug_frame   0x00000200       0x6c ./objects/pinout.o
+ .debug_frame   0x0000026c      0x638 ./objects/gpio.o
+ .debug_frame   0x000008a4       0x80 ./objects/queue.o
+ .debug_frame   0x00000924       0x74 ./objects/testafila.o
+ .debug_frame   0x00000998       0x74 ./objects/thread.o
+ .debug_frame   0x00000a0c       0x4c ./objects/pingpong-tasks1.o
+ .debug_frame   0x00000a58       0x28 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00000a80       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00000ab0       0x38 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00000ae8       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00000b14       0x48 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-random.o)
+ .debug_frame   0x00000b5c       0x2c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000b88       0x30 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000bb8       0x5c c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libg_nano.a(lib_a-reent.o)
+ .debug_frame   0x00000c14       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(sbrk.o)
+ .debug_frame   0x00000c34       0x20 c:/program files (x86)/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libnosys.a(_exit.o)
 
-.debug_ranges   0x00000000       0x48
+.debug_ranges   0x00000000       0x18
  .debug_ranges  0x00000000       0x18 ./objects/queue.o
- .debug_ranges  0x00000018       0x30 ./objects/pingpong-tasks1.o

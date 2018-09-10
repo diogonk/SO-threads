@@ -7,7 +7,7 @@ uint32_t ThreadCount = 0;
 typedef struct {
     uint32_t *ThreadStack;
     void (*ThreadFn )();
-     uint32_t Attributes;   
+     uint32_t Attributes;
 } ThreadControlBlock;
 
 
@@ -24,7 +24,7 @@ void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize
     {
         asm(" cpsid i "); // disable interrupts during thread creation
         Threads[ThreadCount].ThreadFn = ThreadFn;
-        
+
         // The thread stack needs to be set up so that it can be context switched back to later
         // First zero the stack (assuming 32 bit accesses.  Stacksize expressed in 32 bit words
         for (Index=0;Index < StackSize; Index++)
@@ -45,8 +45,8 @@ void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize
         ThreadStack[StackSize-13] = 11;// R7
         ThreadStack[StackSize-14] = 12;// R6
         ThreadStack[StackSize-15] = 13;// R5
-        ThreadStack[StackSize-16] = 14;// R4        
-        Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];               
+        ThreadStack[StackSize-16] = 14;// R4
+        Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];
         Threads[ThreadCount].Attributes = 1; // lets say 1 means "schedulable"
         ThreadCount++;
         asm(" cpsie i "); // enable interrupts
@@ -59,14 +59,14 @@ void initSysTick()
 	// PIOSC runs at 16MHz.  This supplies the system clock
 	// The systick timer is driven by PIOSC/4 (4MHz)
 	// enable systick and its interrupts
-		ADDR_MEMORY = (uint32_t)NVIC_ST_CTRL;
+		ADDR_MEMORY = (uint32_t*)NVIC_ST_CTRL;
     *ADDR_MEMORY |= 0x3;
-		ADDR_MEMORY = (uint32_t)NVIC_ST_RELOAD;
+		ADDR_MEMORY = (uint32_t*)NVIC_ST_RELOAD;
     *ADDR_MEMORY = 4000;
-    ADDR_MEMORY = (uint32_t)NVIC_ST_CURRENT;
+    ADDR_MEMORY = (uint32_t*)NVIC_ST_CURRENT;
     *ADDR_MEMORY = 1000;
     /*
-    SET_BIT(SYS_STCTRL,BIT0+BIT1); 
+    SET_BIT(SYS_STCTRL,BIT0+BIT1);
 	SYS_STRELOAD=4000;  // generate 1 millisecond time base
 	SYS_STCURRENT=1000; // start the counter off at a low(ish) figure
 	*/
@@ -80,26 +80,26 @@ void startSwitcher()
     // If we do not take this into account, the stack pointer for the first thread will
     // be off by this amount so we need to adjust it in advanace by
     initSysTick();
-    asm(" LDR R0,=Threads "); // point to start of TCB array    
+    asm(" LDR R0,=Threads "); // point to start of TCB array
     asm(" LDR R0,[R0] ");   // read first Thread Stack pointer
-    
+
     asm(" ADD R0,#32 ");    // Adjust first thread stack
-    asm(" MSR PSP,R0 ");    // write first stack pointer to process stack pointer        
-    asm(" cpsie i ");                
-    while(1);    
+    asm(" MSR PSP,R0 ");    // write first stack pointer to process stack pointer
+    asm(" cpsie i ");
+    while(1);
 }
 
 
 
 // Want the systick handler to be "pure assembler without any stack shenanigans by the compiler (hence the naked attribute)
-__attribute__((naked)) void SysTick_Handler(void) 
+__attribute__((naked)) void SysTick_Handler(void)
 {
-  
+
 
 // Thread switching will happen here
 // On entry, R0,R1,R2,R3 and R12 for Thread 'A' (whichever one that may be) are on the thread stack
 
-// Preserve remaining registers on stack of thread that is being suspended (Thread A)     
+// Preserve remaining registers on stack of thread that is being suspended (Thread A)
     asm(" cpsid i "); // disable interrupts during thread switch
     asm(" MRS R0,PSP ");  // get Thread A stack pointer
     asm(" SUB R0,#32");   // Make room for the other registers : R4-R11 = 8 x 4 = 32 bytes
@@ -113,7 +113,7 @@ __attribute__((naked)) void SysTick_Handler(void)
     asm(" LDR R0,=TCB_Size "); // get the size of each TCB
     asm(" LDR R0,[R0] ");
     asm(" LDR R1,=ThreadIndex "); // Which one is being used right now?
-    asm(" LDR R1,[R1] ");   
+    asm(" LDR R1,[R1] ");
     asm(" MUL R1,R0,R1 "); // Calculate offset of Thread A TCB from start of TCB array
     asm(" LDR R0,=Threads "); // point to start of TCB array
     asm(" ADD R1,R0,R1 ");  // add offset to get pointer to Thread A TCB
@@ -121,7 +121,7 @@ __attribute__((naked)) void SysTick_Handler(void)
 // Save Thread A's stack pointer (adjusted for new registers being pushed
     asm(" SUB R0,#32 ");   // Adjust for the other registers : R4-R11 = 8 x 4 = 32 bytes
     asm(" STR R0,[R1] ");  // Save Thread A Stack pointer to the TCB (first entry = Saved stack pointer)
-    
+
 // Update the ThreadIndex
     ThreadIndex++;
     if (ThreadIndex >= ThreadCount)
@@ -131,7 +131,7 @@ __attribute__((naked)) void SysTick_Handler(void)
     asm(" LDR R0,=TCB_Size "); // get the size of each TCB
     asm(" LDR R0,[R0] ");
     asm(" LDR R1,=ThreadIndex "); // Which one is being used right now?
-    asm(" LDR R1,[R1] ");   
+    asm(" LDR R1,[R1] ");
     asm(" MUL R1,R0,R1 ");  // Calculate offset of Thread A TCB from start of TCB array
     asm(" LDR R0,=Threads "); // point to start of TCB array
     asm(" ADD R1,R0,R1 ");  // add offset to get pointer to Thread B TCB
@@ -147,15 +147,15 @@ __attribute__((naked)) void SysTick_Handler(void)
     asm(" LDR R0,[R1] ");   // read saved Thread B Stack pointer
     asm(" ADD R0,#32 ");    // re-adjust saved stack pointer
     asm(" MSR PSP,R0 ");    // write Thread B stack pointer
-    
+
     // The following is only really necessary for the first run of the scheduler.
     asm(" MOV R0,#0 ");     // Force LR to 0xffffffd so that
     asm(" SUB R0,#3 ");     // on return from interrupt the CPU
     asm(" MOV LR,R0 ");     // will switch to thread stack
-    
+
 
     asm(" cpsie i "); // enable interrupts
     asm(" BX LR ");  // return to Thread B
-    
-    
+
+
 }
