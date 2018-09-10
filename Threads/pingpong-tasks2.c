@@ -6,45 +6,36 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ppos.h"
+#include <stdint.h>
+#include "thread.h"
 
 #define MAXTASK 1000
 
-task_t task[MAXTASK+1] ;
+uint32_t activeThread = 0;
 
 // corpo das threads
-void BodyTask (void * arg)
+void BodyTask(void* arg)
 {
-   int next ;
+  int next;
 
-   printf ("Iniciei  tarefa %5d\n", task_id()) ;
+  int wait = 0;
 
-   // passa o controle para a proxima tarefa
-   next = (task_id() < MAXTASK) ? task_id() + 1 : 1 ;
-   task_switch (&task[next]);
+  printf("Iniciei  tarefa %i\n", getCurrentThread());
+  activeThread = getCurrentThread();
+  while (activeThread <= MAXTASK)
+  {
+  }
+  //while(id != activeThread) {}
 
-   printf ("Encerrei tarefa %5d\n", task_id()) ;
+  //activeThread++;
+  // passa o controle para a proxima tarefa
+  // while(currentThread != task[])
+  // next = (task_id() < MAXTASK) ? task_id() + 1 : 1;
+  // task_switch(&task[next]);
 
-   task_exit (0) ;
+  printf("Encerrei tarefa %i\n", getCurrentThread());
+  task_exit(0);
 }
 
-int main (int argc, char *argv[])
-{
-   int i ;
 
-   printf ("main: inicio\n");
-
-   ppos_init () ;
-
-   // cria MAXTASK tarefas
-   for (i=1; i<=MAXTASK; i++)
-      task_create (&task[i], BodyTask, NULL) ;
-
-   // passa o controle para cada uma delas em sequencia
-   for (i=1; i<=MAXTASK; i++)
-      task_switch (&task[i]) ;
-
-   printf ("main: fim\n");
-
-   exit (0);
 }

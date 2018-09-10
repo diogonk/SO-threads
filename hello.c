@@ -36,18 +36,23 @@
 #include "utils/uartstdio.h"
 #include "Threads/thread.h"
 #include "Threads/pingpong-tasks1.h"
+#include "Threads/pingpong-tasks2.c"
 #include "debug.h"
 
 #include <stdlib.h>
 
 int testafila(void);
 #define STACK_SIZE 64
+#define MAXTASK 1000
 
 uint32_t *createThreadStack(void);
 
 uint32_t Thread1Stack[STACK_SIZE];
 uint32_t Thread2Stack[STACK_SIZE];
 //uint32_t Thread3Stack[STACK_SIZE];
+
+ThreadControlBlock task[MAXTASK + 1];
+uint32_t ThreadStacks[MAXTASK][STACK_SIZE];
 
 //*****************************************************************************
 //
@@ -118,6 +123,19 @@ uint32_t *createThreadStack(void)
   return aux;
 }
 
+int initThreads(void)
+{
+  int i;
+  printf("Inicializando Tarefas\n");
+
+  for (i = 0; i = MAXTASK; i++)
+  {
+    UARTprintf("Criando Tarefa %i\n", i);
+  createThread(BodyTask, ThreadStacks[i], STACK_SIZE);
+  }
+}
+
+
 //*****************************************************************************
 //
 // Print "Hello World!" to the UART on the Intelligent UART Module.
@@ -179,9 +197,6 @@ int main(void)
   // Delay for a bit.
   //
   SysCtlDelay(g_ui32SysClock / 10 / 3);
-  UARTprintf("Criando Tarefa 1\n");
-  createThread(BodyPing, Thread1Stack, STACK_SIZE);
-  UARTprintf("Criando Tarefa 2\n");
-  createThread(BodyPong, Thread2Stack, STACK_SIZE);
+  initThreads();
   startSwitcher(); // start the thread switching (this does not return)
 }

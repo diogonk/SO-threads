@@ -29,7 +29,7 @@ void task_exit (int exitCode) ;
 int task_switch (task_t *task) ;
 
 // retorna o identificador da tarefa corrente (main deve ser 0)
-int task_id () ;
+int task_id ();
 
 // operações de escalonamento ==================================================
 

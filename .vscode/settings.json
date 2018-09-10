@@ -3,6 +3,10 @@
         "type_traits": "c",
         "uart.h": "c",
         "uartstdio.h": "c",
-        "rom_map.h": "c"
+        "rom_map.h": "c",
+        "hw_nvic.h": "c",
+        "thread.h": "c",
+        "pin_map.h": "c",
+        "stdint.h": "c"
     }
 }

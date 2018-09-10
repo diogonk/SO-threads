@@ -1,21 +1,25 @@
 #include <stdint.h>
 #include "hw_nvic.h"
-#define MAX_THREADS 10
+#define MAX_THREADS 1000
 
 uint32_t ThreadIndex = 0;
 uint32_t ThreadCount = 0;
-typedef struct {
-    uint32_t *ThreadStack;
-    void (*ThreadFn )();
-     uint32_t Attributes;
-} ThreadControlBlock;
+// typedef struct {
+//     uint32_t *ThreadStack;
+//     void (*ThreadFn )();
+//     uint32_t Attributes;
+//     uint32_t id;
+// } ThreadControlBlock;
 
 
 
 ThreadControlBlock Threads[MAX_THREADS];
 uint32_t TCB_Size = sizeof(ThreadControlBlock);
 
-
+uint32_t getCurrentThread(void)
+{
+    return ThreadIndex;
+}
 
 void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize)
 {
@@ -48,10 +52,14 @@ void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize
         ThreadStack[StackSize-16] = 14;// R4
         Threads[ThreadCount].ThreadStack = &ThreadStack[StackSize-16];
         Threads[ThreadCount].Attributes = 1; // lets say 1 means "schedulable"
+        Threads[ThreadCount].id = ThreadCount;
         ThreadCount++;
         asm(" cpsie i "); // enable interrupts
     }
 }
+
+
+
 void initSysTick()
 {
 	uint32_t *ADDR_MEMORY;
