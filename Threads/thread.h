@@ -1,5 +1,5 @@
 /* tasks.h */
-typedef struct {
+typedef struct ThreadControlBlock {
     uint32_t *ThreadStack;
     void (*ThreadFn )();
     uint32_t Attributes;
@@ -7,5 +7,5 @@ typedef struct {
 } ThreadControlBlock;
 
 void createThread(void (*ThreadFn )(), uint32_t *ThreadStack, uint32_t StackSize);
-uint32_t getCurrentThread(void)
+uint32_t getCurrentThread(void);
 void startSwitcher(void);
