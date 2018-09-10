@@ -32,7 +32,7 @@ I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\lib\gcc\arm-no
 I (Threads\thread.h)(0x5B95C187)
 I (inc\hw_nvic.h)(0x587EDF0E)
 I (Threads\pingpong-tasks1.h)(0x5B95B410)
-I (Threads\pingpong-tasks2.c)(0x5B95C340)
+I (Threads\pingpong-tasks2.c)(0x5B95C6E0)
 I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\arm-none-eabi\include\stdio.h)(0x5B2D32A0)
 I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\arm-none-eabi\include\_ansi.h)(0x5B2D32A0)
 I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\arm-none-eabi\include\newlib.h)(0x5B2D32A2)
@@ -180,7 +180,7 @@ I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\arm-none-eabi\
 I (Queue\queue.h)(0x5B885E39)
 I (inc\utils\uartstdio.h)(0x587EDF0E)
 I (inc\debug.h)(0x59A07746)
-F (.\Threads\thread.c)(0x5B95C119)(-c -mcpu=cortex-m4 -mthumb -gdwarf-2 -MD -Wall -O -mapcs-frame -mthumb-interwork -I ./inc -D TARGET_IS_TM4C129_RA1 -D PART_TM4C1294NCPDT -D DEBUG -IC:/Keil_v5/ARM/CMSIS/Include -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/lib/gcc/arm-none-eabi/7.3.1/include" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include/c++/7.3.1" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include/c++/7.3.1/arm-none-eabi" -D__UVISION_VERSION="525" -D__GCC -D__GCC_VERSION="731" -DTM4C1294NCPDT-Wa,-alhms=./listings/thread.lst -o ./objects/thread.o)
+F (.\Threads\thread.c)(0x5B95C3DC)(-c -mcpu=cortex-m4 -mthumb -gdwarf-2 -MD -Wall -O -mapcs-frame -mthumb-interwork -I ./inc -D TARGET_IS_TM4C129_RA1 -D PART_TM4C1294NCPDT -D DEBUG -IC:/Keil_v5/ARM/CMSIS/Include -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/lib/gcc/arm-none-eabi/7.3.1/include" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include/c++/7.3.1" -I"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/arm-none-eabi/include/c++/7.3.1/arm-none-eabi" -D__UVISION_VERSION="525" -D__GCC -D__GCC_VERSION="731" -DTM4C1294NCPDT-Wa,-alhms=./listings/thread.lst -o ./objects/thread.o)
 I (Threads\thread.h)(0x5B95C187)
 I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\lib\gcc\arm-none-eabi\7.3.1\include\stdint.h)(0x5B2D34A2)
 I (c:\program files (x86)\gnu tools arm embedded\7 2018-q2-update\arm-none-eabi\include\stdint.h)(0x5B2D32A0)

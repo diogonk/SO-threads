@@ -14,23 +14,23 @@
 uint32_t activeThread = 0;
 
 // corpo das threads
-void BodyTask(void* arg)
+void BodyTask(void *arg)
 {
 
-  UARTprintf("Iniciei  tarefa %lu\n", getCurrentThread());
-  activeThread = getCurrentThread();
-  while (activeThread <= MAXTASK)
+  uint8_t status = 0;
+  while (1)
   {
+    if (activeThread == getCurrentThread() && status == 0)
+    {
+      UARTprintf("Iniciei  tarefa %i\n", getCurrentThread());
+      activeThread++;
+      status = 1;
+    }
+    if (activeThread == getCurrentThread() && status == 1)
+    {
+      UARTprintf("Ence&& status == 0 \n(", getCurrentThread());
+      activeThread--;
+      status = 2;
+    }
   }
-  //while(id != activeThread) {}
-
-  //activeThread++;
-  // passa o controle para a proxima tarefa
-  // while(currentThread != task[])
-  // next = (task_id() < MAXTASK) ? task_id() + 1 : 1;
-  // task_switch(&task[next]);
-
-  UARTprintf("Encerrei tarefa %lu\n", getCurrentThread());
-  //task_exit(0);
-	while(1){;}
 }
