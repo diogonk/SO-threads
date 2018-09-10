@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include "thread.h"
 
-#define MAXTASK 1000
+#define MAXTASK 20
 
 uint32_t activeThread = 0;
 
@@ -32,5 +32,5 @@ void BodyTask(void* arg)
 
   UARTprintf("Encerrei tarefa %lu\n", getCurrentThread());
   //task_exit(0);
-	return;
+	while(1){;}
 }

@@ -1,7 +1,6 @@
-#include <stdint.h>
-#include "hw_nvic.h"
+
 #include "thread.h"
-#define MAX_THREADS 1000
+
 
 uint32_t ThreadIndex = 0;
 uint32_t ThreadCount = 0;

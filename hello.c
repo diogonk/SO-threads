@@ -43,7 +43,7 @@
 
 int testafila(void);
 #define STACK_SIZE 64
-#define MAXTASK 1000
+#define MAXTASK 20
 
 uint32_t *createThreadStack(void);
 
@@ -123,12 +123,12 @@ uint32_t *createThreadStack(void)
   return aux;
 }
 
-int initThreads(void)
+void initThreads(void)
 {
   int i;
   printf("Inicializando Tarefas\n");
 
-  for (i = 0; i = MAXTASK; i++)
+  for (i = 0; i <= MAXTASK; i++)
   {
     UARTprintf("Criando Tarefa %i\n", i);
   createThread(BodyTask, ThreadStacks[i], STACK_SIZE);
@@ -143,8 +143,6 @@ int initThreads(void)
 //*****************************************************************************
 int main(void)
 {
-  char teste[10]; //
-  uint32_t cont;
   // Run from the PLL at 120 MHz.
   //
   g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
