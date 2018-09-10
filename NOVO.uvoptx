@@ -119,6 +119,10 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>UL2CM3</Key>
           <Name>UL2CM3(-S0 -C0 -P0 ) -FN1 -FC1000 -FD20000000 -FF0TM4C129_1024 -FL0100000 -FS00 -FP0($$Device:TM4C1294NCPDT$Flash\TM4C129_1024.FLM)</Name>
         </SetRegEntry>
@@ -149,14 +153,14 @@
           <Type>0</Type>
           <LineNumber>89</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10436</Address>
+          <Address>10472</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
+          <Filename>C:\repositories\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\89</Expression>
         </Bp>
@@ -165,14 +169,14 @@
           <Type>0</Type>
           <LineNumber>80</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10426</Address>
+          <Address>10462</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
+          <Filename>C:\repositories\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\80</Expression>
         </Bp>
@@ -181,14 +185,14 @@
           <Type>0</Type>
           <LineNumber>41</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10294</Address>
+          <Address>10330</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
+          <Filename>C:\repositories\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\41</Expression>
         </Bp>
@@ -197,14 +201,14 @@
           <Type>0</Type>
           <LineNumber>46</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10318</Address>
+          <Address>10354</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\UTFPR\SISTEMAS OPERACIONAIS\SO-threads\Queue\testafila.c</Filename>
+          <Filename>C:\repositories\SO-threads\Queue\testafila.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NOVO\Queue/testafila.c\46</Expression>
         </Bp>
@@ -213,32 +217,7 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>item</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>fila0</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>print_elem</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>queue</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>elem</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>qpos-&gt;next</ItemText>
+          <ItemText>activeThread,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

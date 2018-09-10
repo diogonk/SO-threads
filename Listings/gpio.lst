@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
   32:gpio.c        **** // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
   33:gpio.c        **** // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   34:gpio.c        **** // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 2
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 2
 
 
   35:gpio.c        **** // 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
   89:gpio.c        **** };
   90:gpio.c        **** static const uint_fast32_t g_ui32GPIOIntMapBlizzardRows =
   91:gpio.c        ****     sizeof(g_ppui32GPIOIntMapBlizzard) / sizeof(g_ppui32GPIOIntMapBlizzard[0]);
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 3
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 3
 
 
   92:gpio.c        **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  146:gpio.c        ****     GPIO_PORTQ_BASE, GPIO_PORTQ_BASE,
  147:gpio.c        ****     GPIO_PORTR_BASE, GPIO_PORTR_BASE,
  148:gpio.c        ****     GPIO_PORTS_BASE, GPIO_PORTS_BASE,
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 4
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 4
 
 
  149:gpio.c        ****     GPIO_PORTT_BASE, GPIO_PORTT_BASE,
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
   32 0004 B3F1402F 		cmp	r3, #1073758208
   33 0008 34D0     		beq	.L3
  169:gpio.c        ****     return((ui32Port == GPIO_PORTA_BASE) ||
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 5
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 5
 
 
   34              		.loc 1 169 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  191:gpio.c        ****            (ui32Port == GPIO_PORTQ_BASE) ||
   78              		.loc 1 191 0
   79 0060 02F50052 		add	r2, r2, #8192
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 6
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 6
 
 
   80 0064 9342     		cmp	r3, r2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  133 0094 0120     		movs	r0, #1
  134              	.LVL19:
  135 0096 7047     		bx	lr
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 7
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 7
 
 
  136              	.LVL20:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  212:gpio.c        **** _GPIOIntNumberGet(uint32_t ui32Port)
  213:gpio.c        **** {
  173              		.loc 1 213 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 8
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 8
 
 
  174              		.cfi_startproc
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  239:gpio.c        ****         //
  240:gpio.c        ****         if(ppui32GPIOIntMap[ui32Idx][0] == ui32Port)
  203              		.loc 1 240 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 9
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 9
 
 
  204 00d0 0B68     		ldr	r3, [r1]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  242 0100 00E00F40 		.word	1074782208
  243 0104 0000FF70 		.word	1895759872
  244 0108 00000A10 		.word	269090816
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 10
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 10
 
 
  245 010c 00000000 		.word	.LANCHOR0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  294:gpio.c        **** //! \return None.
  295:gpio.c        **** //
  296:gpio.c        **** //*****************************************************************************
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 11
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 11
 
 
  297:gpio.c        **** void
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  292 0138 16F0020F 		tst	r6, #2
  315:gpio.c        ****                                        ui8Pins) :
  293              		.loc 1 315 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 12
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 12
 
 
  294 013c D4F82034 		ldr	r3, [r4, #1056]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  328:gpio.c        **** //! This function gets the direction and control mode for a specified pin on
  329:gpio.c        **** //! the selected GPIO port.  The pin can be configured as either an input or
  330:gpio.c        **** //! output under software control, or it can be under hardware control.  The
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 13
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 13
 
 
  331:gpio.c        **** //! type of control and direction are returned as an enumerated data type.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  361              		.loc 1 357 0
  362 0180 D5F82034 		ldr	r3, [r5, #1056]
  363              	.LVL47:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 14
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 14
 
 
  351:gpio.c        **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  360:gpio.c        **** 
  361:gpio.c        **** //*****************************************************************************
  362:gpio.c        **** //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 15
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 15
 
 
  363:gpio.c        **** //! Sets the interrupt type for the specified pin(s).
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  425 01be 0446     		mov	r4, r0
  426 01c0 0E46     		mov	r6, r1
  427 01c2 1546     		mov	r5, r2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 16
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 16
 
 
  405:gpio.c        ****     //
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  421:gpio.c        ****                                    (HWREG(ui32Port + GPIO_O_IS) | ui8Pins) :
  463              		.loc 1 421 0
  464 0200 C4F80434 		str	r3, [r4, #1028]
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 17
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 17
 
 
  423:gpio.c        ****                                    (HWREG(ui32Port + GPIO_O_IS) & ~(ui8Pins)));
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  501              		.cfi_endproc
  502              	.LFE4:
  503              		.size	GPIOIntTypeSet, .-GPIOIntTypeSet
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 18
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 18
 
 
  504              		.align	1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  462:gpio.c        ****     ASSERT(ui8Pin < 8);
  532              		.loc 1 462 0
  533 0258 072D     		cmp	r5, #7
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 19
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 19
 
 
  534 025a 29D8     		bhi	.L74
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  476:gpio.c        ****     return(((ui32IBE & ui8Pin) ? 1 : 0) | ((ui32IS & ui8Pin) ? 2 : 0) |
  572              		.loc 1 476 0
  573 0290 0B43     		orrs	r3, r3, r1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 20
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 20
 
 
  574              		.loc 1 477 0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  489:gpio.c        **** //! This function sets the drive strength and type for the specified pin(s)
  490:gpio.c        **** //! on the selected GPIO port.  For pin(s) configured as input ports, the
  491:gpio.c        **** //! pad is configured as requested, but the only real effect on the input
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 21
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 21
 
 
  492:gpio.c        **** //! is the configuration of the pull-up or pull-down termination.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  546:gpio.c        **** GPIOPadConfigSet(uint32_t ui32Port, uint8_t ui8Pins,
  547:gpio.c        ****                  uint32_t ui32Strength, uint32_t ui32PinType)
  548:gpio.c        **** {
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 22
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 22
 
 
  615              		.loc 1 548 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  655 02f0 B6F5027F 		cmp	r6, #520
  656 02f4 07D0     		beq	.L81
  657              		.loc 1 562 0 discriminator 6
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 23
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 23
 
 
  658 02f6 0C2E     		cmp	r6, #12
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  687              	.LVL75:
  688 032a DEE7     		b	.L79
  689              	.L82:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 24
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 24
 
 
  562:gpio.c        ****            (ui32PinType == GPIO_PIN_TYPE_STD_WPU) ||
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  727              		.loc 1 592 0
  728 036e D4F80035 		ldr	r3, [r4, #1280]
  729              		.loc 1 593 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 25
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 25
 
 
  730 0372 14BF     		ite	ne
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  606:gpio.c        ****                                     (HWREG(ui32Port + GPIO_O_SLR) |
  763              		.loc 1 606 0
  764 03ae C4F81835 		str	r3, [r4, #1304]
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 26
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 26
 
 
  609:gpio.c        ****                                     (HWREG(ui32Port + GPIO_O_SLR) &
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  633:gpio.c        ****                                     (HWREG(ui32Port + GPIO_O_PDR) | ui8Pins) :
  791              		.loc 1 633 0
  792 03e8 16F0040F 		tst	r6, #4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 27
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 27
 
 
  793 03ec D4F81435 		ldr	r3, [r4, #1300]
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  824 042a 8343     		biceq	r3, r3, r0
  649:gpio.c        ****                                         (HWREG(ui32Port + GPIO_O_WAKEPEN) |
  825              		.loc 1 649 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 28
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 28
 
 
  826 042c C4F84035 		str	r3, [r4, #1344]
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  668:gpio.c        **** //! \param ui32Port is the base address of the GPIO port.
  669:gpio.c        **** //! \param ui8Pin is the pin number.
  670:gpio.c        **** //! \param pui32Strength is a pointer to storage for the output drive strength.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 29
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 29
 
 
  671:gpio.c        **** //! \param pui32PinType is a pointer to storage for the output drive type.
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  696:gpio.c        ****     // Convert from a pin number to a bit position.
  697:gpio.c        ****     //
  698:gpio.c        ****     ui8Pin = (1 << ui8Pin);
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 30
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 30
 
 
  699:gpio.c        **** 
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  933 04c2 D4F8C42F 		ldr	r2, [r4, #4036]
  709:gpio.c        ****                        (2 * ui8Pin)) & 0x3) << 5);
  934              		.loc 1 709 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 31
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 31
 
 
  935 04c6 4B00     		lsls	r3, r1, #1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  978 0510 D4F81C35 		ldr	r3, [r4, #1308]
  979 0514 0B40     		ands	r3, r3, r1
  980 0516 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 32
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 32
 
 
  981 0518 14BF     		ite	ne
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1025 055c 00000000 		.word	.LC0
  1026              		.cfi_endproc
  1027              	.LFE7:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 33
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 33
 
 
  1028              		.size	GPIOPadConfigGet, .-GPIOPadConfigGet
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1043 0560 38B5     		push	{r3, r4, r5, lr}
  1044              	.LCFI7:
  1045              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 34
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 34
 
 
  1046              		.cfi_offset 3, -16
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  777:gpio.c        **** //
  778:gpio.c        **** //! Disables the specified GPIO interrupts.
  779:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 35
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 35
 
 
  780:gpio.c        **** //! \param ui32Port is the base address of the GPIO port.
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1107 0594 D4F81014 		ldr	r1, [r4, #1040]
  1108 0598 21EA0501 		bic	r1, r1, r5
  1109 059c C4F81014 		str	r1, [r4, #1040]
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 36
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 36
 
 
  814:gpio.c        **** }
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1142              	.LCFI9:
  1143              		.cfi_def_cfa_offset 16
  1144              		.cfi_offset 3, -16
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 37
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 37
 
 
  1145              		.cfi_offset 4, -12
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1180              		.size	GPIOIntStatus, .-GPIOIntStatus
  1181              		.align	1
  1182              		.global	GPIOIntClear
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 38
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 38
 
 
  1183              		.syntax unified
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1205 05e6 FFF70BFD 		bl	_GPIOBaseValid
  1206              	.LVL113:
  1207 05ea 10B1     		cbz	r0, .L159
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 39
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 39
 
 
  1208              	.L158:
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  908:gpio.c        **** //! \return None.
  909:gpio.c        **** //
  910:gpio.c        **** //*****************************************************************************
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 40
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 40
 
 
  911:gpio.c        **** void
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1270              	.LVL121:
  932:gpio.c        **** 
  933:gpio.c        ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 41
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 41
 
 
  934:gpio.c        ****     // Enable the GPIO interrupt.
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  947:gpio.c        **** //! GPIO port interrupt in the interrupt controller; individual GPIO interrupts
  948:gpio.c        **** //! and interrupt sources must be disabled with GPIOIntDisable().
  949:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 42
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 42
 
 
  950:gpio.c        **** //! \sa IntRegister() for important information about registering interrupt
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1337 065c 2046     		mov	r0, r4
  1338 065e FFF7FEFF 		bl	IntDisable
  1339              	.LVL133:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 43
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 43
 
 
  977:gpio.c        **** 
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  990:gpio.c        **** //!
  991:gpio.c        **** //! The values at the specified pin(s) are read, as specified by \e ui8Pins.
  992:gpio.c        **** //! Values are returned for both input and output pin(s), and the value
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 44
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 44
 
 
  993:gpio.c        **** //! for pin(s) that are not specified by \e ui8Pins are set to 0.
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1407 06a0 FFF7FEFF 		bl	__error__
  1408              	.LVL143:
  1409 06a4 F6E7     		b	.L177
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 45
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 45
 
 
  1410              	.L180:
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1041:gpio.c        ****     // Check the arguments.
 1042:gpio.c        ****     //
 1043:gpio.c        ****     ASSERT(_GPIOBaseValid(ui32Port));
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 46
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 46
 
 
  1441              		.loc 1 1043 0
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1064:gpio.c        **** //! represents GPIO port pin 0, bit 1 represents GPIO port pin 1, and so on.
 1065:gpio.c        **** //!
 1066:gpio.c        **** //! \note This function cannot be used to turn any pin into an ADC input; it
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 47
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 47
 
 
 1067:gpio.c        **** //! only configures an ADC input pin for proper operation.
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1096:gpio.c        ****     GPIOPadConfigSet(ui32Port, ui8Pins, GPIO_STRENGTH_2MA,
  1499              		.loc 1 1096 0
  1500 06e6 0023     		movs	r3, #0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 48
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 48
 
 
  1501 06e8 0122     		movs	r2, #1
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1119:gpio.c        **** //!  function.
 1120:gpio.c        **** //!
 1121:gpio.c        **** //! \note A subset of GPIO pins on Tiva devices, notably those used by the
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 49
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 49
 
 
 1122:gpio.c        **** //! JTAG/SWD interface and any pin capable of acting as an NMI input, are
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1559 071c 6622     		movs	r2, #102
  1560 071e 2946     		mov	r1, r5
  1561 0720 2046     		mov	r0, r4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 50
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 50
 
 
  1562 0722 FFF7FEFF 		bl	GPIOPadConfigSet
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1174:gpio.c        **** //! using direct register writes to the relevant GPIO_O_LOCK and GPIO_O_CR
 1175:gpio.c        **** //! registers before this function can be called.  Please see the ``gpio_jtag''
 1176:gpio.c        **** //! example application for the mechanism required and consult your part
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 51
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 51
 
 
 1177:gpio.c        **** //! datasheet for information on affected pins.
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1199:gpio.c        ****                      GPIO_PIN_TYPE_ANALOG);
 1200:gpio.c        **** }
  1622              		.loc 1 1200 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 52
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 52
 
 
  1623 075a 38BD     		pop	{r3, r4, r5, pc}
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1229:gpio.c        **** //! registers before this function can be called.  Please see the ``gpio_jtag''
 1230:gpio.c        **** //! example application for the mechanism required and consult your part
 1231:gpio.c        **** //! datasheet for information on affected pins.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 53
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 53
 
 
 1232:gpio.c        **** //!
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1680              		.loc 1 1253 0
  1681 078e 38BD     		pop	{r3, r4, r5, pc}
  1682              	.LVL170:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 54
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 54
 
 
  1683              	.L203:
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1284:gpio.c        **** //
 1285:gpio.c        **** //*****************************************************************************
 1286:gpio.c        **** void
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 55
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 55
 
 
 1287:gpio.c        **** GPIOPinTypeEthernetLED(uint32_t ui32Port, uint8_t ui8Pins)
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1742              		.loc 1 1292 0 discriminator 1
  1743 07c4 40F20C51 		movw	r1, #1292
  1744 07c8 0148     		ldr	r0, .L209
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 56
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 56
 
 
  1745 07ca FFF7FEFF 		bl	__error__
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1764              		.loc 1 1338 0
  1765              		.cfi_startproc
  1766              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 57
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 57
 
 
  1767              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1805 0802 EDE7     		b	.L212
  1806              	.L215:
  1807              		.align	2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 58
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 58
 
 
  1808              	.L214:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1832              		.cfi_offset 5, -8
  1833              		.cfi_offset 14, -4
  1834 080a 0446     		mov	r4, r0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 59
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 59
 
 
  1835 080c 0D46     		mov	r5, r1
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1873              		.syntax unified
  1874              		.thumb
  1875              		.thumb_func
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 60
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 60
 
 
  1876              		.fpu softvfp
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1896              	.LVL191:
  1897 0846 58B1     		cbz	r0, .L223
  1898              	.L222:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 61
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 61
 
 
 1433:gpio.c        **** 
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1447:gpio.c        **** //! Configures pin(s) for use as GPIO open drain outputs.
 1448:gpio.c        **** //!
 1449:gpio.c        **** //! \param ui32Port is the base address of the GPIO port.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 62
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 62
 
 
 1450:gpio.c        **** //! \param ui8Pins is the bit-packed representation of the pin(s).
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  1959 087e 0122     		movs	r2, #1
  1960 0880 2946     		mov	r1, r5
  1961 0882 2046     		mov	r0, r4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 63
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 63
 
 
  1962 0884 FFF7FEFF 		bl	GPIOPadConfigSet
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1502:gpio.c        **** //! set identifies the pin to be accessed, and where bit 0 of the byte
 1503:gpio.c        **** //! represents GPIO port pin 0, bit 1 represents GPIO port pin 1, and so on.
 1504:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 64
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 64
 
 
 1505:gpio.c        **** //! \note This function cannot be used to turn any pin into an I2C SDA pin; it
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1534:gpio.c        ****     //
 1535:gpio.c        ****     // Set the pad(s) for open-drain operation with a weak pull-up.
 1536:gpio.c        ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 65
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 65
 
 
 1537:gpio.c        ****     GPIOPadConfigSet(ui32Port, ui8Pins, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_OD);
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1557:gpio.c        **** //! GPIOPinConfigure() function call is also required to properly configure a
 1558:gpio.c        **** //! pin for the I2C SCL function.
 1559:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 66
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 66
 
 
 1560:gpio.c        **** //! \note A subset of GPIO pins on Tiva devices, notably those used by the
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2080 08ee 0823     		movs	r3, #8
  2081 08f0 0122     		movs	r2, #1
  2082 08f2 2946     		mov	r1, r5
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 67
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 67
 
 
  2083 08f4 2046     		mov	r0, r4
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1612:gpio.c        **** //! JTAG/SWD interface and any pin capable of acting as an NMI input, are
 1613:gpio.c        **** //! locked against inadvertent reconfiguration.  These pins must be unlocked
 1614:gpio.c        **** //! using direct register writes to the relevant GPIO_O_LOCK and GPIO_O_CR
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 68
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 68
 
 
 1615:gpio.c        **** //! registers before this function can be called.  Please see the ``gpio_jtag''
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2142 092a FFF7FEFF 		bl	GPIOPadConfigSet
  2143              	.LVL217:
 1639:gpio.c        **** }
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 69
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 69
 
 
  2144              		.loc 1 1639 0
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1667:gpio.c        **** //! example application for the mechanism required and consult your part
 1668:gpio.c        **** //! datasheet for information on affected pins.
 1669:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 70
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 70
 
 
 1670:gpio.c        **** //! \return None.
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2203 0962 38BD     		pop	{r3, r4, r5, pc}
  2204              	.LVL224:
  2205              	.L248:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 71
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 71
 
 
 1679:gpio.c        **** 
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1722:gpio.c        **** //*****************************************************************************
 1723:gpio.c        **** void
 1724:gpio.c        **** GPIOPinTypePECIRx(uint32_t ui32Port, uint8_t ui8Pins)
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 72
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 72
 
 
 1725:gpio.c        **** {
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2264              		.loc 1 1729 0 discriminator 1
  2265 0998 40F2C161 		movw	r1, #1729
  2266 099c 0148     		ldr	r0, .L254
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 73
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 73
 
 
  2267 099e FFF7FEFF 		bl	__error__
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2286              		.loc 1 1776 0
  2287              		.cfi_startproc
  2288              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 74
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 74
 
 
  2289              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2327 09d6 EDE7     		b	.L257
  2328              	.L260:
  2329              		.align	2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 75
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 75
 
 
  2330              	.L259:
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2348              	.LVL238:
  2349 09dc 38B5     		push	{r3, r4, r5, lr}
  2350              	.LCFI30:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 76
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 76
 
 
  2351              		.cfi_def_cfa_offset 16
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2389 0a0c 00000000 		.word	.LC0
  2390              		.cfi_endproc
  2391              	.LFE31:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 77
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 77
 
 
  2392              		.size	GPIOPinTypePWM, .-GPIOPinTypePWM
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2410              		.cfi_offset 3, -16
  2411              		.cfi_offset 4, -12
  2412              		.cfi_offset 5, -8
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 78
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 78
 
 
  2413              		.cfi_offset 14, -4
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2450              		.size	GPIOPinTypeQEI, .-GPIOPinTypeQEI
  2451              		.align	1
  2452              		.global	GPIOPinTypeSSI
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 79
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 79
 
 
  2453              		.syntax unified
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2471              		.cfi_offset 14, -4
  2472 0a46 0446     		mov	r4, r0
  2473 0a48 0D46     		mov	r5, r1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 80
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 80
 
 
 1931:gpio.c        ****     //
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2512              		.thumb
  2513              		.thumb_func
  2514              		.fpu softvfp
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 81
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 81
 
 
  2515              		.type	GPIOPinTypeTimer, %function
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 1983:gpio.c        ****     // Check the arguments.
 1984:gpio.c        ****     //
 1985:gpio.c        ****     ASSERT(_GPIOBaseValid(ui32Port));
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 82
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 82
 
 
  2532              		.loc 1 1985 0
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2574              	GPIOPinTypeUART:
  2575              	.LFB35:
 1997:gpio.c        **** 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 83
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 83
 
 
 1998:gpio.c        **** //*****************************************************************************
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2591 0ab2 FFF7A5FA 		bl	_GPIOBaseValid
  2592              	.LVL263:
  2593 0ab6 58B1     		cbz	r0, .L283
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 84
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 84
 
 
  2594              	.L282:
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2050:gpio.c        **** //
 2051:gpio.c        **** //! Configures pin(s) for use by the USB peripheral.
 2052:gpio.c        **** //!
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 85
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 85
 
 
 2053:gpio.c        **** //! \param ui32Port is the base address of the GPIO port.
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2088:gpio.c        ****     //
 2089:gpio.c        ****     // Make the pin(s) be inputs.
 2090:gpio.c        ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 86
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 86
 
 
 2091:gpio.c        ****     GPIODirModeSet(ui32Port, ui8Pins, GPIO_DIR_MODE_IN);
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2105:gpio.c        **** //! \param ui8Pins is the bit-packed representation of the pin(s).
 2106:gpio.c        **** //!
 2107:gpio.c        **** //! USB digital pins must be properly configured for the USB peripheral to
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 87
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 87
 
 
 2108:gpio.c        **** //! function correctly.  This function provides a typical configuration for
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2143:gpio.c        **** 
 2144:gpio.c        ****     //
 2145:gpio.c        ****     // Make the pin(s) be peripheral controlled.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 88
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 88
 
 
 2146:gpio.c        ****     //
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2160:gpio.c        **** //! \param ui8Pins is the bit-packed representation of the pin(s).
 2161:gpio.c        **** //!
 2162:gpio.c        **** //! The GPIO pins must be properly configured in order to function correctly as
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 89
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 89
 
 
 2163:gpio.c        **** //! hibernate wake-high inputs.  This function provides the proper
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2774              	.LVL282:
 2193:gpio.c        **** 
 2194:gpio.c        ****     //
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 90
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 90
 
 
 2195:gpio.c        ****     // Set the pad(s) for wake-high operation.
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2215:gpio.c        **** //!
 2216:gpio.c        **** //! \note A subset of GPIO pins on Tiva devices, notably those used by the
 2217:gpio.c        **** //! JTAG/SWD interface and any pin capable of acting as an NMI input, are
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 91
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 91
 
 
 2218:gpio.c        **** //! locked against inadvertent reconfiguration.  These pins must be unlocked
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2836 0b9c 2946     		mov	r1, r5
  2837 0b9e 2046     		mov	r0, r4
  2838 0ba0 FFF7FEFF 		bl	GPIOPadConfigSet
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 92
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 92
 
 
  2839              	.LVL289:
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2270:gpio.c        **** //! locked against inadvertent reconfiguration.  These pins must be unlocked
 2271:gpio.c        **** //! using direct register writes to the relevant GPIO_O_LOCK and GPIO_O_CR
 2272:gpio.c        **** //! registers before this function can be called.  Please see the ``gpio_jtag''
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 93
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 93
 
 
 2273:gpio.c        **** //! example application for the mechanism required and consult your part
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2897              	.LVL295:
 2296:gpio.c        **** }
  2898              		.loc 1 2296 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 94
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 94
 
 
  2899 0bda 38BD     		pop	{r3, r4, r5, pc}
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2325:gpio.c        **** //! datasheet for information on affected pins.
 2326:gpio.c        **** //!
 2327:gpio.c        **** //! \return None.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 95
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 95
 
 
 2328:gpio.c        **** //
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  2957 0c0e 38BD     		pop	{r3, r4, r5, pc}
  2958              	.LVL302:
  2959              	.L313:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 96
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 96
 
 
 2336:gpio.c        **** 
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2380:gpio.c        **** //*****************************************************************************
 2381:gpio.c        **** void
 2382:gpio.c        **** GPIOPinTypeLEDSeq(uint32_t ui32Port, uint8_t ui8Pins)
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 97
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 97
 
 
 2383:gpio.c        **** {
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2387:gpio.c        **** 
  3018              		.loc 1 2387 0 discriminator 1
  3019 0c44 40F65311 		movw	r1, #2387
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 98
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 98
 
 
  3020 0c48 0148     		ldr	r0, .L319
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2435:gpio.c        **** {
  3040              		.loc 1 2435 0
  3041              		.cfi_startproc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 99
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 99
 
 
  3042              		@ args = 0, pretend = 0, frame = 0
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3080              	.LVL315:
  3081 0c82 EDE7     		b	.L322
  3082              	.L325:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 100
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 100
 
 
  3083              		.align	2
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3108              		.cfi_endproc
  3109              	.LFE44:
  3110              		.size	GPIOPinWakeStatus, .-GPIOPinWakeStatus
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 101
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 101
 
 
  3111              		.align	1
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2512:gpio.c        **** 
 2513:gpio.c        ****     //
 2514:gpio.c        ****     // Check the argument.
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 102
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 102
 
 
 2515:gpio.c        ****     //
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3161              		.loc 1 2540 0
  3162 0cbc EDB2     		uxtb	r5, r5
  3163              	.LVL324:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 103
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 103
 
 
 2541:gpio.c        **** 
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3205              		.size	GPIOPinConfigure, .-GPIOPinConfigure
  3206              		.align	1
  3207              		.global	GPIODMATriggerEnable
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 104
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 104
 
 
  3208              		.syntax unified
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3234              		.loc 1 2576 0
  3235 0d08 D5F83435 		ldr	r3, [r5, #1332]
  3236 0d0c 1C43     		orrs	r4, r4, r3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 105
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 105
 
 
  3237 0d0e C5F83445 		str	r4, [r5, #1332]
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3271              		.cfi_def_cfa_offset 16
  3272              		.cfi_offset 3, -16
  3273              		.cfi_offset 4, -12
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 106
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 106
 
 
  3274              		.cfi_offset 5, -8
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
 2610:gpio.c        **** //!
 2611:gpio.c        **** //! \param ui32Port is the base address of the GPIO port.
 2612:gpio.c        **** //! \param ui8Pins is the bit-packed representation of the pin(s).
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 107
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 107
 
 
 2613:gpio.c        **** //!
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3342 0d6c 0148     		ldr	r0, .L349
  3343 0d6e FFF7FEFF 		bl	__error__
  3344              	.LVL341:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 108
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 108
 
 
  3345 0d72 F3E7     		b	.L347
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3377 0d7e FFF73FF9 		bl	_GPIOBaseValid
  3378              	.LVL343:
  3379 0d82 30B1     		cbz	r0, .L353
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 109
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 109
 
 
  3380              	.L352:
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3427 004c 14000000 		.word	20
  3428 0050 00500240 		.word	1073893376
  3429 0054 2E000000 		.word	46
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 110
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 110
 
 
  3430 0058 00D00540 		.word	1074122752
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3484 0124 2F000000 		.word	47
  3485 0128 00E00540 		.word	1074126848
  3486 012c 2F000000 		.word	47
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 111
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 111
 
 
  3487 0130 00700240 		.word	1073901568
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3541 01fc 00700640 		.word	1074163712
  3542 0200 00800640 		.word	1074167808
  3543 0204 00800640 		.word	1074167808
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 112
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 112
 
 
  3544 0208 00900640 		.word	1074171904
@@ -6684,15 +6684,15 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3563 000b 01       		.uleb128 0x1
  3564 000c 5D000000 		.4byte	.LASF104
  3565 0010 0C       		.byte	0xc
- 3566 0011 86060000 		.4byte	.LASF105
- 3567 0015 59030000 		.4byte	.LASF106
+ 3566 0011 5C060000 		.4byte	.LASF105
+ 3567 0015 6B060000 		.4byte	.LASF106
  3568 0019 00000000 		.4byte	.Ltext0
  3569 001d A40D0000 		.4byte	.Letext0
  3570 0021 00000000 		.4byte	.Ldebug_line0
  3571 0025 02       		.uleb128 0x2
  3572 0026 01       		.byte	0x1
  3573 0027 06       		.byte	0x6
- 3574 0028 3D040000 		.4byte	.LASF0
+ 3574 0028 13040000 		.4byte	.LASF0
  3575 002c 03       		.uleb128 0x3
  3576 002d 37030000 		.4byte	.LASF4
  3577 0031 02       		.byte	0x2
@@ -6701,7 +6701,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3580 0037 02       		.uleb128 0x2
  3581 0038 01       		.byte	0x1
  3582 0039 08       		.byte	0x8
- 3583 003a FB030000 		.4byte	.LASF1
+ 3583 003a D1030000 		.4byte	.LASF1
  3584 003e 02       		.uleb128 0x2
  3585 003f 02       		.byte	0x2
  3586 0040 05       		.byte	0x5
@@ -6709,16 +6709,16 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3588 0045 02       		.uleb128 0x2
  3589 0046 02       		.byte	0x2
  3590 0047 07       		.byte	0x7
- 3591 0048 D7040000 		.4byte	.LASF3
+ 3591 0048 AD040000 		.4byte	.LASF3
  3592 004c 03       		.uleb128 0x3
- 3593 004d 1A060000 		.4byte	.LASF5
+ 3593 004d F0050000 		.4byte	.LASF5
  3594 0051 02       		.byte	0x2
  3595 0052 4D       		.byte	0x4d
  3596 0053 57000000 		.4byte	0x57
  3597 0057 02       		.uleb128 0x2
  3598 0058 04       		.byte	0x4
  3599 0059 05       		.byte	0x5
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 113
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 113
 
 
  3600 005a 0A030000 		.4byte	.LASF6
@@ -6730,7 +6730,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3606 0069 02       		.uleb128 0x2
  3607 006a 04       		.byte	0x4
  3608 006b 07       		.byte	0x7
- 3609 006c 93050000 		.4byte	.LASF8
+ 3609 006c 69050000 		.4byte	.LASF8
  3610 0070 02       		.uleb128 0x2
  3611 0071 08       		.byte	0x8
  3612 0072 05       		.byte	0x5
@@ -6738,7 +6738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3614 0077 02       		.uleb128 0x2
  3615 0078 08       		.byte	0x8
  3616 0079 07       		.byte	0x7
- 3617 007a 49040000 		.4byte	.LASF10
+ 3617 007a 1F040000 		.4byte	.LASF10
  3618 007e 04       		.uleb128 0x4
  3619 007f 04       		.byte	0x4
  3620 0080 05       		.byte	0x5
@@ -6746,26 +6746,26 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3622 0085 02       		.uleb128 0x2
  3623 0086 04       		.byte	0x4
  3624 0087 07       		.byte	0x7
- 3625 0088 85040000 		.4byte	.LASF11
+ 3625 0088 5B040000 		.4byte	.LASF11
  3626 008c 03       		.uleb128 0x3
  3627 008d E4010000 		.4byte	.LASF12
  3628 0091 03       		.byte	0x3
  3629 0092 18       		.byte	0x18
  3630 0093 2C000000 		.4byte	0x2c
  3631 0097 03       		.uleb128 0x3
- 3632 0098 28050000 		.4byte	.LASF13
+ 3632 0098 FE040000 		.4byte	.LASF13
  3633 009c 03       		.byte	0x3
  3634 009d 2C       		.byte	0x2c
  3635 009e 4C000000 		.4byte	0x4c
  3636 00a2 03       		.uleb128 0x3
- 3637 00a3 6D040000 		.4byte	.LASF14
+ 3637 00a3 43040000 		.4byte	.LASF14
  3638 00a7 03       		.byte	0x3
  3639 00a8 30       		.byte	0x30
  3640 00a9 5E000000 		.4byte	0x5e
  3641 00ad 05       		.uleb128 0x5
  3642 00ae A2000000 		.4byte	0xa2
  3643 00b2 03       		.uleb128 0x3
- 3644 00b3 0B050000 		.4byte	.LASF15
+ 3644 00b3 E1040000 		.4byte	.LASF15
  3645 00b7 04       		.byte	0x4
  3646 00b8 48       		.byte	0x48
  3647 00b9 85000000 		.4byte	0x85
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3654 00cc 85000000 		.4byte	0x85
  3655 00d0 17       		.byte	0x17
  3656 00d1 07       		.uleb128 0x7
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 114
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 114
 
 
  3657 00d2 85000000 		.4byte	0x85
@@ -6787,7 +6787,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3660 00d8 05       		.uleb128 0x5
  3661 00d9 C2000000 		.4byte	0xc2
  3662 00dd 08       		.uleb128 0x8
- 3663 00de 9A030000 		.4byte	.LASF16
+ 3663 00de 70030000 		.4byte	.LASF16
  3664 00e2 01       		.byte	0x1
  3665 00e3 3F       		.byte	0x3f
  3666 00e4 D8000000 		.4byte	0xd8
@@ -6795,7 +6795,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3668 00e9 03       		.byte	0x3
  3669 00ea 00000000 		.4byte	g_ppui32GPIOIntMapBlizzard
  3670 00ee 09       		.uleb128 0x9
- 3671 00ef DE030000 		.4byte	.LASF17
+ 3671 00ef B4030000 		.4byte	.LASF17
  3672 00f3 01       		.byte	0x1
  3673 00f4 5A       		.byte	0x5a
  3674 00f5 BD000000 		.4byte	0xbd
@@ -6809,7 +6809,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3682 0106 03       		.byte	0x3
  3683 0107 C0000000 		.4byte	g_ppui32GPIOIntMapSnowflake
  3684 010b 09       		.uleb128 0x9
- 3685 010c 11040000 		.4byte	.LASF19
+ 3685 010c E7030000 		.4byte	.LASF19
  3686 0110 01       		.byte	0x1
  3687 0111 78       		.byte	0x78
  3688 0112 BD000000 		.4byte	0xbd
@@ -6824,7 +6824,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3697 0127 05       		.uleb128 0x5
  3698 0128 17010000 		.4byte	0x117
  3699 012c 08       		.uleb128 0x8
- 3700 012d B0040000 		.4byte	.LASF20
+ 3700 012d 86040000 		.4byte	.LASF20
  3701 0131 01       		.byte	0x1
  3702 0132 82       		.byte	0x82
  3703 0133 27010000 		.4byte	0x127
@@ -6833,12 +6833,12 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3706 0139 80010000 		.4byte	g_pui32GPIOBaseAddrs
  3707 013d 0A       		.uleb128 0xa
  3708 013e 01       		.byte	0x1
- 3709 013f CA050000 		.4byte	.LASF23
+ 3709 013f A0050000 		.4byte	.LASF23
  3710 0143 01       		.byte	0x1
  3711 0144 5D0A     		.2byte	0xa5d
  3712 0146 01       		.byte	0x1
  3713 0147 780D0000 		.4byte	.LFB49
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 115
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 115
 
 
  3714 014b A40D0000 		.4byte	.LFE49
@@ -6846,7 +6846,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3716 0153 01       		.byte	0x1
  3717 0154 A7010000 		.4byte	0x1a7
  3718 0158 0B       		.uleb128 0xb
- 3719 0159 30060000 		.4byte	.LASF21
+ 3719 0159 06060000 		.4byte	.LASF21
  3720 015d 01       		.byte	0x1
  3721 015e 5D0A     		.2byte	0xa5d
  3722 0160 A2000000 		.4byte	0xa2
@@ -6887,7 +6887,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3757 01a6 00       		.byte	0
  3758 01a7 0A       		.uleb128 0xa
  3759 01a8 01       		.byte	0x1
- 3760 01a9 F4050000 		.4byte	.LASF24
+ 3760 01a9 CA050000 		.4byte	.LASF24
  3761 01ad 01       		.byte	0x1
  3762 01ae 410A     		.2byte	0xa41
  3763 01b0 01       		.byte	0x1
@@ -6897,8 +6897,8 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3767 01bd 01       		.byte	0x1
  3768 01be 11020000 		.4byte	0x211
  3769 01c2 0B       		.uleb128 0xb
- 3770 01c3 30060000 		.4byte	.LASF21
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 116
+ 3770 01c3 06060000 		.4byte	.LASF21
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 116
 
 
  3771 01c7 01       		.byte	0x1
@@ -6951,14 +6951,14 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3818 0227 01       		.byte	0x1
  3819 0228 7B020000 		.4byte	0x27b
  3820 022c 0B       		.uleb128 0xb
- 3821 022d 30060000 		.4byte	.LASF21
+ 3821 022d 06060000 		.4byte	.LASF21
  3822 0231 01       		.byte	0x1
  3823 0232 220A     		.2byte	0xa22
  3824 0234 A2000000 		.4byte	0xa2
  3825 0238 DE000000 		.4byte	.LLST158
  3826 023c 0B       		.uleb128 0xb
  3827 023d A2020000 		.4byte	.LASF22
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 117
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 117
 
 
  3828 0241 01       		.byte	0x1
@@ -7005,7 +7005,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3869 0291 01       		.byte	0x1
  3870 0292 E5020000 		.4byte	0x2e5
  3871 0296 0B       		.uleb128 0xb
- 3872 0297 30060000 		.4byte	.LASF21
+ 3872 0297 06060000 		.4byte	.LASF21
  3873 029b 01       		.byte	0x1
  3874 029c 060A     		.2byte	0xa06
  3875 029e A2000000 		.4byte	0xa2
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3882 02b2 5B010000 		.4byte	.LLST156
  3883 02b6 0C       		.uleb128 0xc
  3884 02b7 060D0000 		.4byte	.LVL331
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 118
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 118
 
 
  3885 02bb B91F0000 		.4byte	0x1fb9
@@ -7049,7 +7049,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3910 02e4 00       		.byte	0
  3911 02e5 0A       		.uleb128 0xa
  3912 02e6 01       		.byte	0x1
- 3913 02e7 C4030000 		.4byte	.LASF27
+ 3913 02e7 9A030000 		.4byte	.LASF27
  3914 02eb 01       		.byte	0x1
  3915 02ec CD09     		.2byte	0x9cd
  3916 02ee 01       		.byte	0x1
@@ -7065,7 +7065,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3926 0308 A2000000 		.4byte	0xa2
  3927 030c 9C010000 		.4byte	.LLST151
  3928 0310 0F       		.uleb128 0xf
- 3929 0311 D5030000 		.4byte	.LASF29
+ 3929 0311 AB030000 		.4byte	.LASF29
  3930 0315 01       		.byte	0x1
  3931 0316 CF09     		.2byte	0x9cf
  3932 0318 A2000000 		.4byte	0xa2
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3939 032c 0F020000 		.4byte	.LLST153
  3940 0330 0C       		.uleb128 0xc
  3941 0331 E20C0000 		.4byte	.LVL328
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 119
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 119
 
 
  3942 0335 E51F0000 		.4byte	0x1fe5
@@ -7128,7 +7128,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3986 0382 01       		.byte	0x1
  3987 0383 98030000 		.4byte	0x398
  3988 0387 0B       		.uleb128 0xb
- 3989 0388 30060000 		.4byte	.LASF21
+ 3989 0388 06060000 		.4byte	.LASF21
  3990 038c 01       		.byte	0x1
  3991 038d AC09     		.2byte	0x9ac
  3992 038f A2000000 		.4byte	0xa2
@@ -7136,9 +7136,9 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  3994 0397 00       		.byte	0
  3995 0398 0A       		.uleb128 0xa
  3996 0399 01       		.byte	0x1
- 3997 039a 8B030000 		.4byte	.LASF31
+ 3997 039a 61030000 		.4byte	.LASF31
  3998 039e 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 120
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 120
 
 
  3999 039f 8209     		.2byte	0x982
@@ -7149,7 +7149,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4004 03ae 01       		.byte	0x1
  4005 03af 45040000 		.4byte	0x445
  4006 03b3 0B       		.uleb128 0xb
- 4007 03b4 30060000 		.4byte	.LASF21
+ 4007 03b4 06060000 		.4byte	.LASF21
  4008 03b8 01       		.byte	0x1
  4009 03b9 8209     		.2byte	0x982
  4010 03bb A2000000 		.4byte	0xa2
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4053 040b 9E1B0000 		.4byte	0x1b9e
  4054 040f 2A040000 		.4byte	0x42a
  4055 0413 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 121
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 121
 
 
  4056 0414 01       		.byte	0x1
@@ -7252,13 +7252,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4104 045b 01       		.byte	0x1
  4105 045c F3040000 		.4byte	0x4f3
  4106 0460 0B       		.uleb128 0xb
- 4107 0461 30060000 		.4byte	.LASF21
+ 4107 0461 06060000 		.4byte	.LASF21
  4108 0465 01       		.byte	0x1
  4109 0466 4E09     		.2byte	0x94e
  4110 0468 A2000000 		.4byte	0xa2
  4111 046c C2020000 		.4byte	.LLST144
  4112 0470 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 122
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 122
 
 
  4113 0471 A2020000 		.4byte	.LASF22
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4167 04cc 0D       		.uleb128 0xd
  4168 04cd 01       		.byte	0x1
  4169 04ce 52       		.byte	0x52
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 123
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 123
 
 
  4170 04cf 02       		.byte	0x2
@@ -7359,7 +7359,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4205 0509 01       		.byte	0x1
  4206 050a A0050000 		.4byte	0x5a0
  4207 050e 0B       		.uleb128 0xb
- 4208 050f 30060000 		.4byte	.LASF21
+ 4208 050f 06060000 		.4byte	.LASF21
  4209 0513 01       		.byte	0x1
  4210 0514 1B09     		.2byte	0x91b
  4211 0516 A2000000 		.4byte	0xa2
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4224 053c 01       		.byte	0x1
  4225 053d 50       		.byte	0x50
  4226 053e 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 124
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 124
 
 
  4227 053f 74       		.byte	0x74
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4281 058a E51F0000 		.4byte	0x1fe5
  4282 058e 0D       		.uleb128 0xd
  4283 058f 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 125
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 125
 
 
  4284 0590 50       		.byte	0x50
@@ -7455,7 +7455,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4295 059f 00       		.byte	0
  4296 05a0 0A       		.uleb128 0xa
  4297 05a1 01       		.byte	0x1
- 4298 05a2 09060000 		.4byte	.LASF34
+ 4298 05a2 DF050000 		.4byte	.LASF34
  4299 05a6 01       		.byte	0x1
  4300 05a7 E808     		.2byte	0x8e8
  4301 05a9 01       		.byte	0x1
@@ -7465,7 +7465,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4305 05b6 01       		.byte	0x1
  4306 05b7 4D060000 		.4byte	0x64d
  4307 05bb 0B       		.uleb128 0xb
- 4308 05bc 30060000 		.4byte	.LASF21
+ 4308 05bc 06060000 		.4byte	.LASF21
  4309 05c0 01       		.byte	0x1
  4310 05c1 E808     		.2byte	0x8e8
  4311 05c3 A2000000 		.4byte	0xa2
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4338 0600 74       		.byte	0x74
  4339 0601 00       		.sleb128 0
  4340 0602 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 126
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 126
 
 
  4341 0603 01       		.byte	0x1
@@ -7558,10 +7558,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4395 064c 00       		.byte	0
  4396 064d 0A       		.uleb128 0xa
  4397 064e 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 127
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 127
 
 
- 4398 064f 5E060000 		.4byte	.LASF35
+ 4398 064f 34060000 		.4byte	.LASF35
  4399 0653 01       		.byte	0x1
  4400 0654 B408     		.2byte	0x8b4
  4401 0656 01       		.byte	0x1
@@ -7571,7 +7571,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4405 0663 01       		.byte	0x1
  4406 0664 FC060000 		.4byte	0x6fc
  4407 0668 0B       		.uleb128 0xb
- 4408 0669 30060000 		.4byte	.LASF21
+ 4408 0669 06060000 		.4byte	.LASF21
  4409 066d 01       		.byte	0x1
  4410 066e B408     		.2byte	0x8b4
  4411 0670 A2000000 		.4byte	0xa2
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4452 06bb 0C       		.uleb128 0xc
  4453 06bc A40B0000 		.4byte	.LVL289
  4454 06c0 9E1B0000 		.4byte	0x1b9e
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 128
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 128
 
 
  4455 06c4 E1060000 		.4byte	0x6e1
@@ -7665,7 +7665,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4496 06fb 00       		.byte	0
  4497 06fc 0A       		.uleb128 0xa
  4498 06fd 01       		.byte	0x1
- 4499 06fe E0050000 		.4byte	.LASF36
+ 4499 06fe B6050000 		.4byte	.LASF36
  4500 0702 01       		.byte	0x1
  4501 0703 8608     		.2byte	0x886
  4502 0705 01       		.byte	0x1
@@ -7675,10 +7675,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4506 0712 01       		.byte	0x1
  4507 0713 AB070000 		.4byte	0x7ab
  4508 0717 0B       		.uleb128 0xb
- 4509 0718 30060000 		.4byte	.LASF21
+ 4509 0718 06060000 		.4byte	.LASF21
  4510 071c 01       		.byte	0x1
  4511 071d 8608     		.2byte	0x886
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 129
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 129
 
 
  4512 071f A2000000 		.4byte	0xa2
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4566 0780 02       		.byte	0x2
  4567 0781 75       		.byte	0x75
  4568 0782 00       		.sleb128 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 130
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 130
 
 
  4569 0783 0D       		.uleb128 0xd
@@ -7772,7 +7772,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4597 07aa 00       		.byte	0
  4598 07ab 0A       		.uleb128 0xa
  4599 07ac 01       		.byte	0x1
- 4600 07ad 92040000 		.4byte	.LASF37
+ 4600 07ad 68040000 		.4byte	.LASF37
  4601 07b1 01       		.byte	0x1
  4602 07b2 5908     		.2byte	0x859
  4603 07b4 01       		.byte	0x1
@@ -7782,7 +7782,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4607 07c1 01       		.byte	0x1
  4608 07c2 58080000 		.4byte	0x858
  4609 07c6 0B       		.uleb128 0xb
- 4610 07c7 30060000 		.4byte	.LASF21
+ 4610 07c7 06060000 		.4byte	.LASF21
  4611 07cb 01       		.byte	0x1
  4612 07cc 5908     		.2byte	0x859
  4613 07ce A2000000 		.4byte	0xa2
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4623 07eb B91F0000 		.4byte	0x1fb9
  4624 07ef FA070000 		.4byte	0x7fa
  4625 07f3 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 131
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 131
 
 
  4626 07f4 01       		.byte	0x1
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4680 083c 00       		.byte	0
  4681 083d 0E       		.uleb128 0xe
  4682 083e 420B0000 		.4byte	.LVL279
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 132
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 132
 
 
  4683 0842 E51F0000 		.4byte	0x1fe5
@@ -7888,7 +7888,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4707 086e 01       		.byte	0x1
  4708 086f 05090000 		.4byte	0x905
  4709 0873 0B       		.uleb128 0xb
- 4710 0874 30060000 		.4byte	.LASF21
+ 4710 0874 06060000 		.4byte	.LASF21
  4711 0878 01       		.byte	0x1
  4712 0879 2108     		.2byte	0x821
  4713 087b A2000000 		.4byte	0xa2
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4737 08b5 01       		.byte	0x1
  4738 08b6 50       		.byte	0x50
  4739 08b7 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 133
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 133
 
 
  4740 08b8 74       		.byte	0x74
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4794 0900 0A       		.byte	0xa
  4795 0901 2608     		.2byte	0x826
  4796 0903 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 134
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 134
 
 
  4797 0904 00       		.byte	0
@@ -7994,7 +7994,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4807 091b 01       		.byte	0x1
  4808 091c B2090000 		.4byte	0x9b2
  4809 0920 0B       		.uleb128 0xb
- 4810 0921 30060000 		.4byte	.LASF21
+ 4810 0921 06060000 		.4byte	.LASF21
  4811 0925 01       		.byte	0x1
  4812 0926 EF07     		.2byte	0x7ef
  4813 0928 A2000000 		.4byte	0xa2
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4851 0970 01       		.byte	0x1
  4852 0971 32       		.byte	0x32
  4853 0972 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 135
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 135
 
 
  4854 0973 0C       		.uleb128 0xc
@@ -8097,8 +8097,8 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4907 09c8 01       		.byte	0x1
  4908 09c9 5F0A0000 		.4byte	0xa5f
  4909 09cd 0B       		.uleb128 0xb
- 4910 09ce 30060000 		.4byte	.LASF21
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 136
+ 4910 09ce 06060000 		.4byte	.LASF21
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 136
 
 
  4911 09d2 01       		.byte	0x1
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  4965 0a34 01       		.byte	0x1
  4966 0a35 51       		.byte	0x51
  4967 0a36 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 137
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 137
 
 
  4968 0a37 75       		.byte	0x75
@@ -8203,7 +8203,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5007 0a75 01       		.byte	0x1
  5008 0a76 0C0B0000 		.4byte	0xb0c
  5009 0a7a 0B       		.uleb128 0xb
- 5010 0a7b 30060000 		.4byte	.LASF21
+ 5010 0a7b 06060000 		.4byte	.LASF21
  5011 0a7f 01       		.byte	0x1
  5012 0a80 8907     		.2byte	0x789
  5013 0a82 A2000000 		.4byte	0xa2
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5022 0a9b 4E0A0000 		.4byte	.LVL251
  5023 0a9f B91F0000 		.4byte	0x1fb9
  5024 0aa3 AE0A0000 		.4byte	0xaae
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 138
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 138
 
 
  5025 0aa7 0D       		.uleb128 0xd
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5079 0aef 38       		.byte	0x38
  5080 0af0 00       		.byte	0
  5081 0af1 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 139
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 139
 
 
  5082 0af2 720A0000 		.4byte	.LVL255
@@ -8299,7 +8299,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5097 0b0b 00       		.byte	0
  5098 0b0c 0A       		.uleb128 0xa
  5099 0b0d 01       		.byte	0x1
- 5100 0b0e 58050000 		.4byte	.LASF42
+ 5100 0b0e 2E050000 		.4byte	.LASF42
  5101 0b12 01       		.byte	0x1
  5102 0b13 5507     		.2byte	0x755
  5103 0b15 01       		.byte	0x1
@@ -8309,7 +8309,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5107 0b22 01       		.byte	0x1
  5108 0b23 B90B0000 		.4byte	0xbb9
  5109 0b27 0B       		.uleb128 0xb
- 5110 0b28 30060000 		.4byte	.LASF21
+ 5110 0b28 06060000 		.4byte	.LASF21
  5111 0b2c 01       		.byte	0x1
  5112 0b2d 5507     		.2byte	0x755
  5113 0b2f A2000000 		.4byte	0xa2
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5136 0b68 0D       		.uleb128 0xd
  5137 0b69 01       		.byte	0x1
  5138 0b6a 50       		.byte	0x50
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 140
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 140
 
 
  5139 0b6b 02       		.byte	0x2
@@ -8398,14 +8398,14 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5193 0bb3 03       		.byte	0x3
  5194 0bb4 0A       		.byte	0xa
  5195 0bb5 5A07     		.2byte	0x75a
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 141
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 141
 
 
  5196 0bb7 00       		.byte	0
  5197 0bb8 00       		.byte	0
  5198 0bb9 0A       		.uleb128 0xa
  5199 0bba 01       		.byte	0x1
- 5200 0bbb 19050000 		.4byte	.LASF43
+ 5200 0bbb EF040000 		.4byte	.LASF43
  5201 0bbf 01       		.byte	0x1
  5202 0bc0 2207     		.2byte	0x722
  5203 0bc2 01       		.byte	0x1
@@ -8415,7 +8415,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5207 0bcf 01       		.byte	0x1
  5208 0bd0 660C0000 		.4byte	0xc66
  5209 0bd4 0B       		.uleb128 0xb
- 5210 0bd5 30060000 		.4byte	.LASF21
+ 5210 0bd5 06060000 		.4byte	.LASF21
  5211 0bd9 01       		.byte	0x1
  5212 0bda 2207     		.2byte	0x722
  5213 0bdc A2000000 		.4byte	0xa2
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5250 0c23 52       		.byte	0x52
  5251 0c24 01       		.byte	0x1
  5252 0c25 32       		.byte	0x32
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 142
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 142
 
 
  5253 0c26 00       		.byte	0
@@ -8518,10 +8518,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5307 0c7c 01       		.byte	0x1
  5308 0c7d 130D0000 		.4byte	0xd13
  5309 0c81 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 143
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 143
 
 
- 5310 0c82 30060000 		.4byte	.LASF21
+ 5310 0c82 06060000 		.4byte	.LASF21
  5311 0c86 01       		.byte	0x1
  5312 0c87 EF06     		.2byte	0x6ef
  5313 0c89 A2000000 		.4byte	0xa2
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5364 0ce7 0D       		.uleb128 0xd
  5365 0ce8 01       		.byte	0x1
  5366 0ce9 51       		.byte	0x51
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 144
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 144
 
 
  5367 0cea 02       		.byte	0x2
@@ -8614,7 +8614,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5397 0d12 00       		.byte	0
  5398 0d13 0A       		.uleb128 0xa
  5399 0d14 01       		.byte	0x1
- 5400 0d15 3F050000 		.4byte	.LASF45
+ 5400 0d15 15050000 		.4byte	.LASF45
  5401 0d19 01       		.byte	0x1
  5402 0d1a BC06     		.2byte	0x6bc
  5403 0d1c 01       		.byte	0x1
@@ -8624,7 +8624,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5407 0d29 01       		.byte	0x1
  5408 0d2a C00D0000 		.4byte	0xdc0
  5409 0d2e 0B       		.uleb128 0xb
- 5410 0d2f 30060000 		.4byte	.LASF21
+ 5410 0d2f 06060000 		.4byte	.LASF21
  5411 0d33 01       		.byte	0x1
  5412 0d34 BC06     		.2byte	0x6bc
  5413 0d36 A2000000 		.4byte	0xa2
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5421 0d4e 0C       		.uleb128 0xc
  5422 0d4f 7E090000 		.4byte	.LVL227
  5423 0d53 B91F0000 		.4byte	0x1fb9
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 145
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 145
 
 
  5424 0d57 620D0000 		.4byte	0xd62
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5478 0da2 01       		.byte	0x1
  5479 0da3 30       		.byte	0x30
  5480 0da4 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 146
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 146
 
 
  5481 0da5 0E       		.uleb128 0xe
@@ -8730,7 +8730,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5507 0dd6 01       		.byte	0x1
  5508 0dd7 6E0E0000 		.4byte	0xe6e
  5509 0ddb 0B       		.uleb128 0xb
- 5510 0ddc 30060000 		.4byte	.LASF21
+ 5510 0ddc 06060000 		.4byte	.LASF21
  5511 0de0 01       		.byte	0x1
  5512 0de1 8A06     		.2byte	0x68a
  5513 0de3 A2000000 		.4byte	0xa2
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5535 0e18 2E0E0000 		.4byte	0xe2e
  5536 0e1c 0D       		.uleb128 0xd
  5537 0e1d 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 147
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 147
 
 
  5538 0e1e 50       		.byte	0x50
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5592 0e66 01       		.byte	0x1
  5593 0e67 51       		.byte	0x51
  5594 0e68 03       		.byte	0x3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 148
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 148
 
 
  5595 0e69 0A       		.byte	0xa
@@ -8827,7 +8827,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5598 0e6d 00       		.byte	0
  5599 0e6e 0A       		.uleb128 0xa
  5600 0e6f 01       		.byte	0x1
- 5601 0e70 84050000 		.4byte	.LASF47
+ 5601 0e70 5A050000 		.4byte	.LASF47
  5602 0e74 01       		.byte	0x1
  5603 0e75 5706     		.2byte	0x657
  5604 0e77 01       		.byte	0x1
@@ -8837,7 +8837,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5608 0e84 01       		.byte	0x1
  5609 0e85 1C0F0000 		.4byte	0xf1c
  5610 0e89 0B       		.uleb128 0xb
- 5611 0e8a 30060000 		.4byte	.LASF21
+ 5611 0e8a 06060000 		.4byte	.LASF21
  5612 0e8e 01       		.byte	0x1
  5613 0e8f 5706     		.2byte	0x657
  5614 0e91 A2000000 		.4byte	0xa2
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5649 0ed6 0D       		.uleb128 0xd
  5650 0ed7 01       		.byte	0x1
  5651 0ed8 52       		.byte	0x52
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 149
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 149
 
 
  5652 0ed9 01       		.byte	0x1
@@ -8938,13 +8938,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5706 0f26 D8080000 		.4byte	.LFB26
  5707 0f2a 0C090000 		.4byte	.LFE26
  5708 0f2e 92080000 		.4byte	.LLST95
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 150
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 150
 
 
  5709 0f32 01       		.byte	0x1
  5710 0f33 C90F0000 		.4byte	0xfc9
  5711 0f37 0B       		.uleb128 0xb
- 5712 0f38 30060000 		.4byte	.LASF21
+ 5712 0f38 06060000 		.4byte	.LASF21
  5713 0f3c 01       		.byte	0x1
  5714 0f3d 2406     		.2byte	0x624
  5715 0f3f A2000000 		.4byte	0xa2
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5763 0f9a 02       		.byte	0x2
  5764 0f9b 74       		.byte	0x74
  5765 0f9c 00       		.sleb128 0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 151
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 151
 
 
  5766 0f9d 0D       		.uleb128 0xd
@@ -9037,7 +9037,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5799 0fc8 00       		.byte	0
  5800 0fc9 0A       		.uleb128 0xa
  5801 0fca 01       		.byte	0x1
- 5802 0fcb 76040000 		.4byte	.LASF49
+ 5802 0fcb 4C040000 		.4byte	.LASF49
  5803 0fcf 01       		.byte	0x1
  5804 0fd0 F205     		.2byte	0x5f2
  5805 0fd2 01       		.byte	0x1
@@ -9047,7 +9047,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5809 0fdf 01       		.byte	0x1
  5810 0fe0 76100000 		.4byte	0x1076
  5811 0fe4 0B       		.uleb128 0xb
- 5812 0fe5 30060000 		.4byte	.LASF21
+ 5812 0fe5 06060000 		.4byte	.LASF21
  5813 0fe9 01       		.byte	0x1
  5814 0fea F205     		.2byte	0x5f2
  5815 0fec A2000000 		.4byte	0xa2
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5820 0ffa F205     		.2byte	0x5f2
  5821 0ffc 8C000000 		.4byte	0x8c
  5822 1000 2F090000 		.4byte	.LLST94
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 152
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 152
 
 
  5823 1004 0C       		.uleb128 0xc
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5877 1055 0D       		.uleb128 0xd
  5878 1056 01       		.byte	0x1
  5879 1057 53       		.byte	0x53
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 153
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 153
 
 
  5880 1058 01       		.byte	0x1
@@ -9153,7 +9153,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5909 108c 01       		.byte	0x1
  5910 108d 23110000 		.4byte	0x1123
  5911 1091 0B       		.uleb128 0xb
- 5912 1092 30060000 		.4byte	.LASF21
+ 5912 1092 06060000 		.4byte	.LASF21
  5913 1096 01       		.byte	0x1
  5914 1097 C005     		.2byte	0x5c0
  5915 1099 A2000000 		.4byte	0xa2
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5934 10c5 0C       		.uleb128 0xc
  5935 10c6 88080000 		.4byte	.LVL198
  5936 10ca 9E1B0000 		.4byte	0x1b9e
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 154
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 154
 
 
  5937 10ce E9100000 		.4byte	0x10e9
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  5991 1116 00000000 		.4byte	.LC0
  5992 111a 0D       		.uleb128 0xd
  5993 111b 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 155
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 155
 
 
  5994 111c 51       		.byte	0x51
@@ -9259,7 +9259,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6009 1139 01       		.byte	0x1
  6010 113a D0110000 		.4byte	0x11d0
  6011 113e 0B       		.uleb128 0xb
- 6012 113f 30060000 		.4byte	.LASF21
+ 6012 113f 06060000 		.4byte	.LASF21
  6013 1143 01       		.byte	0x1
  6014 1144 9305     		.2byte	0x593
  6015 1146 A2000000 		.4byte	0xa2
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6048 1189 75       		.byte	0x75
  6049 118a 00       		.sleb128 0
  6050 118b 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 156
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 156
 
 
  6051 118c 01       		.byte	0x1
@@ -9352,20 +9352,20 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6099 11cf 00       		.byte	0
  6100 11d0 0A       		.uleb128 0xa
  6101 11d1 01       		.byte	0x1
- 6102 11d2 39060000 		.4byte	.LASF52
+ 6102 11d2 0F060000 		.4byte	.LASF52
  6103 11d6 01       		.byte	0x1
  6104 11d7 6605     		.2byte	0x566
  6105 11d9 01       		.byte	0x1
  6106 11da 08080000 		.4byte	.LFB22
  6107 11de 3C080000 		.4byte	.LFE22
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 157
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 157
 
 
  6108 11e2 0E0A0000 		.4byte	.LLST83
  6109 11e6 01       		.byte	0x1
  6110 11e7 7D120000 		.4byte	0x127d
  6111 11eb 0B       		.uleb128 0xb
- 6112 11ec 30060000 		.4byte	.LASF21
+ 6112 11ec 06060000 		.4byte	.LASF21
  6113 11f0 01       		.byte	0x1
  6114 11f1 6605     		.2byte	0x566
  6115 11f3 A2000000 		.4byte	0xa2
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6162 124d 50       		.byte	0x50
  6163 124e 02       		.byte	0x2
  6164 124f 74       		.byte	0x74
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 158
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 158
 
 
  6165 1250 00       		.sleb128 0
@@ -9458,7 +9458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6199 127c 00       		.byte	0
  6200 127d 0A       		.uleb128 0xa
  6201 127e 01       		.byte	0x1
- 6202 127f AD060000 		.4byte	.LASF53
+ 6202 127f 9E060000 		.4byte	.LASF53
  6203 1283 01       		.byte	0x1
  6204 1284 3905     		.2byte	0x539
  6205 1286 01       		.byte	0x1
@@ -9468,7 +9468,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6209 1293 01       		.byte	0x1
  6210 1294 2B130000 		.4byte	0x132b
  6211 1298 0B       		.uleb128 0xb
- 6212 1299 30060000 		.4byte	.LASF21
+ 6212 1299 06060000 		.4byte	.LASF21
  6213 129d 01       		.byte	0x1
  6214 129e 3905     		.2byte	0x539
  6215 12a0 A2000000 		.4byte	0xa2
@@ -9478,7 +9478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6219 12ad 01       		.byte	0x1
  6220 12ae 3905     		.2byte	0x539
  6221 12b0 8C000000 		.4byte	0x8c
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 159
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 159
 
 
  6222 12b4 AB0A0000 		.4byte	.LLST82
@@ -9538,7 +9538,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6276 1308 08       		.byte	0x8
  6277 1309 66       		.byte	0x66
  6278 130a 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 160
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 160
 
 
  6279 130b 01       		.byte	0x1
@@ -9575,7 +9575,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6310 1341 01       		.byte	0x1
  6311 1342 D9130000 		.4byte	0x13d9
  6312 1346 0B       		.uleb128 0xb
- 6313 1347 30060000 		.4byte	.LASF21
+ 6313 1347 06060000 		.4byte	.LASF21
  6314 134b 01       		.byte	0x1
  6315 134c 0705     		.2byte	0x507
  6316 134e A2000000 		.4byte	0xa2
@@ -9598,7 +9598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6333 1378 00       		.sleb128 0
  6334 1379 00       		.byte	0
  6335 137a 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 161
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 161
 
 
  6336 137b B6070000 		.4byte	.LVL174
@@ -9658,7 +9658,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6390 13c9 50       		.byte	0x50
  6391 13ca 05       		.byte	0x5
  6392 13cb 03       		.byte	0x3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 162
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 162
 
 
  6393 13cc 00000000 		.4byte	.LC0
@@ -9682,7 +9682,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6411 13ef 01       		.byte	0x1
  6412 13f0 87140000 		.4byte	0x1487
  6413 13f4 0B       		.uleb128 0xb
- 6414 13f5 30060000 		.4byte	.LASF21
+ 6414 13f5 06060000 		.4byte	.LASF21
  6415 13f9 01       		.byte	0x1
  6416 13fa D504     		.2byte	0x4d5
  6417 13fc A2000000 		.4byte	0xa2
@@ -9718,7 +9718,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6447 143c 01       		.byte	0x1
  6448 143d 51       		.byte	0x51
  6449 143e 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 163
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 163
 
 
  6450 143f 75       		.byte	0x75
@@ -9778,7 +9778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6504 1488 01       		.byte	0x1
  6505 1489 8E010000 		.4byte	.LASF56
  6506 148d 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 164
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 164
 
 
  6507 148e 9F04     		.2byte	0x49f
@@ -9789,7 +9789,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6512 149d 01       		.byte	0x1
  6513 149e 34150000 		.4byte	0x1534
  6514 14a2 0B       		.uleb128 0xb
- 6515 14a3 30060000 		.4byte	.LASF21
+ 6515 14a3 06060000 		.4byte	.LASF21
  6516 14a7 01       		.byte	0x1
  6517 14a8 9F04     		.2byte	0x49f
  6518 14aa A2000000 		.4byte	0xa2
@@ -9838,7 +9838,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6561 14fa 9E1B0000 		.4byte	0x1b9e
  6562 14fe 19150000 		.4byte	0x1519
  6563 1502 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 165
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 165
 
 
  6564 1503 01       		.byte	0x1
@@ -9892,13 +9892,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6612 154a 01       		.byte	0x1
  6613 154b E2150000 		.4byte	0x15e2
  6614 154f 0B       		.uleb128 0xb
- 6615 1550 30060000 		.4byte	.LASF21
+ 6615 1550 06060000 		.4byte	.LASF21
  6616 1554 01       		.byte	0x1
  6617 1555 6D04     		.2byte	0x46d
  6618 1557 A2000000 		.4byte	0xa2
  6619 155b 090C0000 		.4byte	.LLST69
  6620 155f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 166
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 166
 
 
  6621 1560 A2020000 		.4byte	.LASF22
@@ -9958,7 +9958,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6675 15bb 0D       		.uleb128 0xd
  6676 15bc 01       		.byte	0x1
  6677 15bd 52       		.byte	0x52
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 167
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 167
 
 
  6678 15be 02       		.byte	0x2
@@ -9999,7 +9999,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6713 15f8 01       		.byte	0x1
  6714 15f9 8F160000 		.4byte	0x168f
  6715 15fd 0B       		.uleb128 0xb
- 6716 15fe 30060000 		.4byte	.LASF21
+ 6716 15fe 06060000 		.4byte	.LASF21
  6717 1602 01       		.byte	0x1
  6718 1603 3904     		.2byte	0x439
  6719 1605 A2000000 		.4byte	0xa2
@@ -10018,7 +10018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6732 162b 01       		.byte	0x1
  6733 162c 50       		.byte	0x50
  6734 162d 02       		.byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 168
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 168
 
 
  6735 162e 74       		.byte	0x74
@@ -10078,7 +10078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6789 1679 E51F0000 		.4byte	0x1fe5
  6790 167d 0D       		.uleb128 0xd
  6791 167e 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 169
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 169
 
 
  6792 167f 50       		.byte	0x50
@@ -10105,7 +10105,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6813 16a5 01       		.byte	0x1
  6814 16a6 09170000 		.4byte	0x1709
  6815 16aa 0B       		.uleb128 0xb
- 6816 16ab 30060000 		.4byte	.LASF21
+ 6816 16ab 06060000 		.4byte	.LASF21
  6817 16af 01       		.byte	0x1
  6818 16b0 0E04     		.2byte	0x40e
  6819 16b2 A2000000 		.4byte	0xa2
@@ -10117,7 +10117,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6825 16c2 8C000000 		.4byte	0x8c
  6826 16c6 E50C0000 		.4byte	.LLST63
  6827 16ca 0B       		.uleb128 0xb
- 6828 16cb 7D050000 		.4byte	.LASF60
+ 6828 16cb 53050000 		.4byte	.LASF60
  6829 16cf 01       		.byte	0x1
  6830 16d0 0E04     		.2byte	0x40e
  6831 16d2 8C000000 		.4byte	0x8c
@@ -10138,7 +10138,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6846 16f3 E51F0000 		.4byte	0x1fe5
  6847 16f7 0D       		.uleb128 0xd
  6848 16f8 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 170
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 170
 
 
  6849 16f9 50       		.byte	0x50
@@ -10166,7 +10166,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6871 1723 01       		.byte	0x1
  6872 1724 77170000 		.4byte	0x1777
  6873 1728 0B       		.uleb128 0xb
- 6874 1729 30060000 		.4byte	.LASF21
+ 6874 1729 06060000 		.4byte	.LASF21
  6875 172d 01       		.byte	0x1
  6876 172e EE03     		.2byte	0x3ee
  6877 1730 A2000000 		.4byte	0xa2
@@ -10198,7 +10198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6903 1769 03       		.byte	0x3
  6904 176a 00000000 		.4byte	.LC0
  6905 176e 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 171
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 171
 
 
  6906 176f 01       		.byte	0x1
@@ -10210,7 +10210,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6912 1776 00       		.byte	0
  6913 1777 0A       		.uleb128 0xa
  6914 1778 01       		.byte	0x1
- 6915 1779 C5040000 		.4byte	.LASF63
+ 6915 1779 9B040000 		.4byte	.LASF63
  6916 177d 01       		.byte	0x1
  6917 177e BD03     		.2byte	0x3bd
  6918 1780 01       		.byte	0x1
@@ -10220,13 +10220,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6922 178d 01       		.byte	0x1
  6923 178e 3B180000 		.4byte	0x183b
  6924 1792 0B       		.uleb128 0xb
- 6925 1793 30060000 		.4byte	.LASF21
+ 6925 1793 06060000 		.4byte	.LASF21
  6926 1797 01       		.byte	0x1
  6927 1798 BD03     		.2byte	0x3bd
  6928 179a A2000000 		.4byte	0xa2
  6929 179e A60D0000 		.4byte	.LLST56
  6930 17a2 0F       		.uleb128 0xf
- 6931 17a3 09040000 		.4byte	.LASF64
+ 6931 17a3 DF030000 		.4byte	.LASF64
  6932 17a7 01       		.byte	0x1
  6933 17a8 BF03     		.2byte	0x3bf
  6934 17aa A2000000 		.4byte	0xa2
@@ -10258,7 +10258,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  6960 17df F21F0000 		.4byte	0x1ff2
  6961 17e3 EE170000 		.4byte	0x17ee
  6962 17e7 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 172
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 172
 
 
  6963 17e8 01       		.byte	0x1
@@ -10318,7 +10318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7017 1841 01       		.byte	0x1
  7018 1842 9003     		.2byte	0x390
  7019 1844 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 173
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 173
 
 
  7020 1845 04060000 		.4byte	.LFB12
@@ -10327,7 +10327,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7023 1851 01       		.byte	0x1
  7024 1852 15190000 		.4byte	0x1915
  7025 1856 0B       		.uleb128 0xb
- 7026 1857 30060000 		.4byte	.LASF21
+ 7026 1857 06060000 		.4byte	.LASF21
  7027 185b 01       		.byte	0x1
  7028 185c 9003     		.2byte	0x390
  7029 185e A2000000 		.4byte	0xa2
@@ -10339,7 +10339,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7035 186e 17190000 		.4byte	0x1917
  7036 1872 840E0000 		.4byte	.LLST53
  7037 1876 0F       		.uleb128 0xf
- 7038 1877 09040000 		.4byte	.LASF64
+ 7038 1877 DF030000 		.4byte	.LASF64
  7039 187b 01       		.byte	0x1
  7040 187c 9203     		.2byte	0x392
  7041 187e A2000000 		.4byte	0xa2
@@ -10378,7 +10378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7074 18c0 00       		.sleb128 0
  7075 18c1 0D       		.uleb128 0xd
  7076 18c2 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 174
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 174
 
 
  7077 18c3 51       		.byte	0x51
@@ -10438,10 +10438,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7131 1919 15190000 		.4byte	0x1915
  7132 191d 0A       		.uleb128 0xa
  7133 191e 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 175
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 175
 
 
- 7134 191f B3050000 		.4byte	.LASF67
+ 7134 191f 89050000 		.4byte	.LASF67
  7135 1923 01       		.byte	0x1
  7136 1924 6E03     		.2byte	0x36e
  7137 1926 01       		.byte	0x1
@@ -10451,7 +10451,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7141 1933 01       		.byte	0x1
  7142 1934 87190000 		.4byte	0x1987
  7143 1938 0B       		.uleb128 0xb
- 7144 1939 30060000 		.4byte	.LASF21
+ 7144 1939 06060000 		.4byte	.LASF21
  7145 193d 01       		.byte	0x1
  7146 193e 6E03     		.2byte	0x36e
  7147 1940 A2000000 		.4byte	0xa2
@@ -10492,13 +10492,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7182 1986 00       		.byte	0
  7183 1987 11       		.uleb128 0x11
  7184 1988 01       		.byte	0x1
- 7185 1989 71060000 		.4byte	.LASF69
+ 7185 1989 47060000 		.4byte	.LASF69
  7186 198d 01       		.byte	0x1
  7187 198e 4103     		.2byte	0x341
  7188 1990 01       		.byte	0x1
  7189 1991 A2000000 		.4byte	0xa2
  7190 1995 B4050000 		.4byte	.LFB10
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 176
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 176
 
 
  7191 1999 E0050000 		.4byte	.LFE10
@@ -10506,13 +10506,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7193 19a1 01       		.byte	0x1
  7194 19a2 F5190000 		.4byte	0x19f5
  7195 19a6 0B       		.uleb128 0xb
- 7196 19a7 30060000 		.4byte	.LASF21
+ 7196 19a7 06060000 		.4byte	.LASF21
  7197 19ab 01       		.byte	0x1
  7198 19ac 4103     		.2byte	0x341
  7199 19ae A2000000 		.4byte	0xa2
  7200 19b2 520F0000 		.4byte	.LLST46
  7201 19b6 0B       		.uleb128 0xb
- 7202 19b7 8D060000 		.4byte	.LASF70
+ 7202 19b7 63060000 		.4byte	.LASF70
  7203 19bb 01       		.byte	0x1
  7204 19bc 4103     		.2byte	0x341
  7205 19be F5190000 		.4byte	0x19f5
@@ -10548,23 +10548,23 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7235 19f5 02       		.uleb128 0x2
  7236 19f6 01       		.byte	0x1
  7237 19f7 02       		.byte	0x2
- 7238 19f8 05050000 		.4byte	.LASF71
+ 7238 19f8 DB040000 		.4byte	.LASF71
  7239 19fc 0A       		.uleb128 0xa
  7240 19fd 01       		.byte	0x1
- 7241 19fe B5030000 		.4byte	.LASF72
+ 7241 19fe 8B030000 		.4byte	.LASF72
  7242 1a02 01       		.byte	0x1
  7243 1a03 2303     		.2byte	0x323
  7244 1a05 01       		.byte	0x1
  7245 1a06 88050000 		.4byte	.LFB9
  7246 1a0a B4050000 		.4byte	.LFE9
  7247 1a0e 910F0000 		.4byte	.LLST42
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 177
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 177
 
 
  7248 1a12 01       		.byte	0x1
  7249 1a13 661A0000 		.4byte	0x1a66
  7250 1a17 0B       		.uleb128 0xb
- 7251 1a18 30060000 		.4byte	.LASF21
+ 7251 1a18 06060000 		.4byte	.LASF21
  7252 1a1c 01       		.byte	0x1
  7253 1a1d 2303     		.2byte	0x323
  7254 1a1f A2000000 		.4byte	0xa2
@@ -10605,7 +10605,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7289 1a65 00       		.byte	0
  7290 1a66 0A       		.uleb128 0xa
  7291 1a67 01       		.byte	0x1
- 7292 1a68 2F040000 		.4byte	.LASF73
+ 7292 1a68 05040000 		.4byte	.LASF73
  7293 1a6c 01       		.byte	0x1
  7294 1a6d FB02     		.2byte	0x2fb
  7295 1a6f 01       		.byte	0x1
@@ -10615,10 +10615,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7299 1a7c 01       		.byte	0x1
  7300 1a7d D01A0000 		.4byte	0x1ad0
  7301 1a81 0B       		.uleb128 0xb
- 7302 1a82 30060000 		.4byte	.LASF21
+ 7302 1a82 06060000 		.4byte	.LASF21
  7303 1a86 01       		.byte	0x1
  7304 1a87 FB02     		.2byte	0x2fb
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 178
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 178
 
 
  7305 1a89 A2000000 		.4byte	0xa2
@@ -10659,7 +10659,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7340 1acf 00       		.byte	0
  7341 1ad0 0A       		.uleb128 0xa
  7342 1ad1 01       		.byte	0x1
- 7343 1ad2 F4040000 		.4byte	.LASF74
+ 7343 1ad2 CA040000 		.4byte	.LASF74
  7344 1ad6 01       		.byte	0x1
  7345 1ad7 AC02     		.2byte	0x2ac
  7346 1ad9 01       		.byte	0x1
@@ -10669,28 +10669,28 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7350 1ae6 01       		.byte	0x1
  7351 1ae7 981B0000 		.4byte	0x1b98
  7352 1aeb 0B       		.uleb128 0xb
- 7353 1aec 30060000 		.4byte	.LASF21
+ 7353 1aec 06060000 		.4byte	.LASF21
  7354 1af0 01       		.byte	0x1
  7355 1af1 AC02     		.2byte	0x2ac
  7356 1af3 A2000000 		.4byte	0xa2
  7357 1af7 69100000 		.4byte	.LLST33
  7358 1afb 0B       		.uleb128 0xb
- 7359 1afc 51050000 		.4byte	.LASF75
+ 7359 1afc 27050000 		.4byte	.LASF75
  7360 1b00 01       		.byte	0x1
  7361 1b01 AC02     		.2byte	0x2ac
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 179
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 179
 
 
  7362 1b03 8C000000 		.4byte	0x8c
  7363 1b07 87100000 		.4byte	.LLST34
  7364 1b0b 0B       		.uleb128 0xb
- 7365 1b0c A5050000 		.4byte	.LASF76
+ 7365 1b0c 7B050000 		.4byte	.LASF76
  7366 1b10 01       		.byte	0x1
  7367 1b11 AD02     		.2byte	0x2ad
  7368 1b13 981B0000 		.4byte	0x1b98
  7369 1b17 C5100000 		.4byte	.LLST35
  7370 1b1b 0B       		.uleb128 0xb
- 7371 1b1c 60040000 		.4byte	.LASF77
+ 7371 1b1c 36040000 		.4byte	.LASF77
  7372 1b20 01       		.byte	0x1
  7373 1b21 AD02     		.2byte	0x2ad
  7374 1b23 981B0000 		.4byte	0x1b98
@@ -10738,7 +10738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7416 1b7d 0E       		.uleb128 0xe
  7417 1b7e 58050000 		.4byte	.LVL99
  7418 1b82 E51F0000 		.4byte	0x1fe5
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 180
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 180
 
 
  7419 1b86 0D       		.uleb128 0xd
@@ -10770,7 +10770,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7445 1bb4 01       		.byte	0x1
  7446 1bb5 741C0000 		.4byte	0x1c74
  7447 1bb9 0B       		.uleb128 0xb
- 7448 1bba 30060000 		.4byte	.LASF21
+ 7448 1bba 06060000 		.4byte	.LASF21
  7449 1bbe 01       		.byte	0x1
  7450 1bbf 2202     		.2byte	0x222
  7451 1bc1 A2000000 		.4byte	0xa2
@@ -10794,11 +10794,11 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7469 1bf1 A2000000 		.4byte	0xa2
  7470 1bf5 E1110000 		.4byte	.LLST30
  7471 1bf9 0F       		.uleb128 0xf
- 7472 1bfa 7F060000 		.4byte	.LASF81
+ 7472 1bfa 55060000 		.4byte	.LASF81
  7473 1bfe 01       		.byte	0x1
  7474 1bff 2502     		.2byte	0x225
  7475 1c01 8C000000 		.4byte	0x8c
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 181
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 181
 
 
  7476 1c05 FF110000 		.4byte	.LLST31
@@ -10858,7 +10858,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7530 1c67 00000000 		.4byte	.LC0
  7531 1c6b 0D       		.uleb128 0xd
  7532 1c6c 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 182
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 182
 
 
  7533 1c6d 51       		.byte	0x51
@@ -10869,7 +10869,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7538 1c73 00       		.byte	0
  7539 1c74 11       		.uleb128 0x11
  7540 1c75 01       		.byte	0x1
- 7541 1c76 30050000 		.4byte	.LASF82
+ 7541 1c76 06050000 		.4byte	.LASF82
  7542 1c7a 01       		.byte	0x1
  7543 1c7b C601     		.2byte	0x1c6
  7544 1c7d 01       		.byte	0x1
@@ -10880,19 +10880,19 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7549 1c8e 01       		.byte	0x1
  7550 1c8f 401D0000 		.4byte	0x1d40
  7551 1c93 0B       		.uleb128 0xb
- 7552 1c94 30060000 		.4byte	.LASF21
+ 7552 1c94 06060000 		.4byte	.LASF21
  7553 1c98 01       		.byte	0x1
  7554 1c99 C601     		.2byte	0x1c6
  7555 1c9b A2000000 		.4byte	0xa2
  7556 1c9f 4B120000 		.4byte	.LLST20
  7557 1ca3 0B       		.uleb128 0xb
- 7558 1ca4 51050000 		.4byte	.LASF75
+ 7558 1ca4 27050000 		.4byte	.LASF75
  7559 1ca8 01       		.byte	0x1
  7560 1ca9 C601     		.2byte	0x1c6
  7561 1cab 8C000000 		.4byte	0x8c
  7562 1caf 69120000 		.4byte	.LLST21
  7563 1cb3 0F       		.uleb128 0xf
- 7564 1cb4 A8040000 		.4byte	.LASF83
+ 7564 1cb4 7E040000 		.4byte	.LASF83
  7565 1cb8 01       		.byte	0x1
  7566 1cb9 C801     		.2byte	0x1c8
  7567 1cbb A2000000 		.4byte	0xa2
@@ -10904,13 +10904,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7573 1ccb A2000000 		.4byte	0xa2
  7574 1ccf BA120000 		.4byte	.LLST23
  7575 1cd3 0F       		.uleb128 0xf
- 7576 1cd4 83030000 		.4byte	.LASF85
+ 7576 1cd4 59030000 		.4byte	.LASF85
  7577 1cd8 01       		.byte	0x1
  7578 1cd9 C801     		.2byte	0x1c8
  7579 1cdb A2000000 		.4byte	0xa2
  7580 1cdf CD120000 		.4byte	.LLST24
  7581 1ce3 0F       		.uleb128 0xf
- 7582 1ce4 67050000 		.4byte	.LASF86
+ 7582 1ce4 3D050000 		.4byte	.LASF86
  7583 1ce8 01       		.byte	0x1
  7584 1ce9 C801     		.2byte	0x1c8
  7585 1ceb A2000000 		.4byte	0xa2
@@ -10918,7 +10918,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7587 1cf3 0C       		.uleb128 0xc
  7588 1cf4 56020000 		.4byte	.LVL58
  7589 1cf8 B91F0000 		.4byte	0x1fb9
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 183
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 183
 
 
  7590 1cfc 071D0000 		.4byte	0x1d07
@@ -10975,10 +10975,10 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7641 1d56 01       		.byte	0x1
  7642 1d57 D81D0000 		.4byte	0x1dd8
  7643 1d5b 0B       		.uleb128 0xb
- 7644 1d5c 30060000 		.4byte	.LASF21
+ 7644 1d5c 06060000 		.4byte	.LASF21
  7645 1d60 01       		.byte	0x1
  7646 1d61 9201     		.2byte	0x192
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 184
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 184
 
 
  7647 1d63 A2000000 		.4byte	0xa2
@@ -11038,7 +11038,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7701 1dd2 03       		.byte	0x3
  7702 1dd3 0A       		.byte	0xa
  7703 1dd4 9801     		.2byte	0x198
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 185
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 185
 
 
  7704 1dd6 00       		.byte	0
@@ -11056,25 +11056,25 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7716 1df2 01       		.byte	0x1
  7717 1df3 841E0000 		.4byte	0x1e84
  7718 1df7 0B       		.uleb128 0xb
- 7719 1df8 30060000 		.4byte	.LASF21
+ 7719 1df8 06060000 		.4byte	.LASF21
  7720 1dfc 01       		.byte	0x1
  7721 1dfd 5201     		.2byte	0x152
  7722 1dff A2000000 		.4byte	0xa2
  7723 1e03 90130000 		.4byte	.LLST11
  7724 1e07 0B       		.uleb128 0xb
- 7725 1e08 51050000 		.4byte	.LASF75
+ 7725 1e08 27050000 		.4byte	.LASF75
  7726 1e0c 01       		.byte	0x1
  7727 1e0d 5201     		.2byte	0x152
  7728 1e0f 8C000000 		.4byte	0x8c
  7729 1e13 AE130000 		.4byte	.LLST12
  7730 1e17 0F       		.uleb128 0xf
- 7731 1e18 56060000 		.4byte	.LASF90
+ 7731 1e18 2C060000 		.4byte	.LASF90
  7732 1e1c 01       		.byte	0x1
  7733 1e1d 5401     		.2byte	0x154
  7734 1e1f A2000000 		.4byte	0xa2
  7735 1e23 EC130000 		.4byte	.LLST13
  7736 1e27 0F       		.uleb128 0xf
- 7737 1e28 C0050000 		.4byte	.LASF91
+ 7737 1e28 96050000 		.4byte	.LASF91
  7738 1e2c 01       		.byte	0x1
  7739 1e2d 5401     		.2byte	0x154
  7740 1e2f A2000000 		.4byte	0xa2
@@ -11098,7 +11098,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7758 1e59 01       		.byte	0x1
  7759 1e5a 50       		.byte	0x50
  7760 1e5b 05       		.byte	0x5
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 186
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 186
 
 
  7761 1e5c 03       		.byte	0x3
@@ -11139,7 +11139,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7796 1e9a 01       		.byte	0x1
  7797 1e9b 1C1F0000 		.4byte	0x1f1c
  7798 1e9f 0B       		.uleb128 0xb
- 7799 1ea0 30060000 		.4byte	.LASF21
+ 7799 1ea0 06060000 		.4byte	.LASF21
  7800 1ea4 01       		.byte	0x1
  7801 1ea5 2A01     		.2byte	0x12a
  7802 1ea7 A2000000 		.4byte	0xa2
@@ -11158,7 +11158,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7815 1ecb 71140000 		.4byte	.LLST9
  7816 1ecf 0C       		.uleb128 0xc
  7817 1ed0 20010000 		.4byte	.LVL39
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 187
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 187
 
 
  7818 1ed4 B91F0000 		.4byte	0x1fb9
@@ -11216,16 +11216,16 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7870 1f34 01       		.byte	0x1
  7871 1f35 A31F0000 		.4byte	0x1fa3
  7872 1f39 15       		.uleb128 0x15
- 7873 1f3a 30060000 		.4byte	.LASF21
+ 7873 1f3a 06060000 		.4byte	.LASF21
  7874 1f3e 01       		.byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 188
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 188
 
 
  7875 1f3f D4       		.byte	0xd4
  7876 1f40 A2000000 		.4byte	0xa2
  7877 1f44 AF140000 		.4byte	.LLST2
  7878 1f48 16       		.uleb128 0x16
- 7879 1f49 4E060000 		.4byte	.LASF94
+ 7879 1f49 24060000 		.4byte	.LASF94
  7880 1f4d 01       		.byte	0x1
  7881 1f4e D6       		.byte	0xd6
  7882 1f4f B2000000 		.4byte	0xb2
@@ -11278,13 +11278,13 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7929 1fb1 01       		.byte	0x1
  7930 1fb2 00       		.byte	0
  7931 1fb3 13       		.uleb128 0x13
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 189
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 189
 
 
  7932 1fb4 04       		.byte	0x4
  7933 1fb5 A31F0000 		.4byte	0x1fa3
  7934 1fb9 17       		.uleb128 0x17
- 7935 1fba 6E050000 		.4byte	.LASF98
+ 7935 1fba 44050000 		.4byte	.LASF98
  7936 1fbe 01       		.byte	0x1
  7937 1fbf A7       		.byte	0xa7
  7938 1fc0 01       		.byte	0x1
@@ -11297,7 +11297,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7945 1fd0 01       		.byte	0x1
  7946 1fd1 E51F0000 		.4byte	0x1fe5
  7947 1fd5 15       		.uleb128 0x15
- 7948 1fd6 30060000 		.4byte	.LASF21
+ 7948 1fd6 06060000 		.4byte	.LASF21
  7949 1fda 01       		.byte	0x1
  7950 1fdb A7       		.byte	0xa7
  7951 1fdc A2000000 		.4byte	0xa2
@@ -11306,8 +11306,8 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7954 1fe5 18       		.uleb128 0x18
  7955 1fe6 01       		.byte	0x1
  7956 1fe7 01       		.byte	0x1
- 7957 1fe8 95060000 		.4byte	.LASF99
- 7958 1fec 95060000 		.4byte	.LASF99
+ 7957 1fe8 86060000 		.4byte	.LASF99
+ 7958 1fec 86060000 		.4byte	.LASF99
  7959 1ff0 05       		.byte	0x5
  7960 1ff1 31       		.byte	0x31
  7961 1ff2 18       		.uleb128 0x18
@@ -11320,25 +11320,25 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  7968 1fff 18       		.uleb128 0x18
  7969 2000 01       		.byte	0x1
  7970 2001 01       		.byte	0x1
- 7971 2002 9F060000 		.4byte	.LASF101
- 7972 2006 9F060000 		.4byte	.LASF101
+ 7971 2002 90060000 		.4byte	.LASF101
+ 7972 2006 90060000 		.4byte	.LASF101
  7973 200a 06       		.byte	0x6
  7974 200b 46       		.byte	0x46
  7975 200c 18       		.uleb128 0x18
  7976 200d 01       		.byte	0x1
  7977 200e 01       		.byte	0x1
- 7978 200f 24060000 		.4byte	.LASF102
- 7979 2013 24060000 		.4byte	.LASF102
+ 7978 200f FA050000 		.4byte	.LASF102
+ 7979 2013 FA050000 		.4byte	.LASF102
  7980 2017 06       		.byte	0x6
  7981 2018 45       		.byte	0x45
  7982 2019 18       		.uleb128 0x18
  7983 201a 01       		.byte	0x1
  7984 201b 01       		.byte	0x1
- 7985 201c EA040000 		.4byte	.LASF103
- 7986 2020 EA040000 		.4byte	.LASF103
+ 7985 201c C0040000 		.4byte	.LASF103
+ 7986 2020 C0040000 		.4byte	.LASF103
  7987 2024 06       		.byte	0x6
  7988 2025 4C       		.byte	0x4c
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 190
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 190
 
 
  7989 2026 00       		.byte	0
@@ -11398,7 +11398,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8043 0033 08       		.uleb128 0x8
  8044 0034 00       		.byte	0
  8045 0035 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 191
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 191
 
 
  8046 0036 05       		.uleb128 0x5
@@ -11458,7 +11458,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8100 006c 00       		.byte	0
  8101 006d 0A       		.uleb128 0xa
  8102 006e 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 192
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 192
 
 
  8103 006f 01       		.byte	0x1
@@ -11518,7 +11518,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8157 00aa 9142     		.uleb128 0x2111
  8158 00ac 0A       		.uleb128 0xa
  8159 00ad 00       		.byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 193
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 193
 
 
  8160 00ae 00       		.byte	0
@@ -11578,7 +11578,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8214 00e7 01       		.byte	0x1
  8215 00e8 3F       		.uleb128 0x3f
  8216 00e9 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 194
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 194
 
 
  8217 00ea 03       		.uleb128 0x3
@@ -11638,7 +11638,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8271 0121 01       		.uleb128 0x1
  8272 0122 40       		.uleb128 0x40
  8273 0123 06       		.uleb128 0x6
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 195
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 195
 
 
  8274 0124 9742     		.uleb128 0x2117
@@ -11698,7 +11698,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8328 015b 0A       		.uleb128 0xa
  8329 015c 9742     		.uleb128 0x2117
  8330 015e 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 196
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 196
 
 
  8331 015f 01       		.uleb128 0x1
@@ -11758,7 +11758,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8385 004d A40D0000 		.4byte	.LFE49-.Ltext0
  8386 0051 0400     		.2byte	0x4
  8387 0053 F3       		.byte	0xf3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 197
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 197
 
 
  8388 0054 01       		.uleb128 0x1
@@ -11818,7 +11818,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8442 00d6 00000000 		.4byte	0
  8443 00da 00000000 		.4byte	0
  8444              	.LLST158:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 198
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 198
 
 
  8445 00de 240D0000 		.4byte	.LVL334-.Ltext0
@@ -11878,7 +11878,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8499 016a 240D0000 		.4byte	.LFE46-.Ltext0
  8500 016e 0400     		.2byte	0x4
  8501 0170 F3       		.byte	0xf3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 199
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 199
 
 
  8502 0171 01       		.uleb128 0x1
@@ -11938,7 +11938,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8556 01f5 09       		.byte	0x9
  8557 01f6 EC       		.byte	0xec
  8558 01f7 24       		.byte	0x24
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 200
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 200
 
 
  8559 01f8 09       		.byte	0x9
@@ -11998,7 +11998,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8613              	.LLST148:
  8614 0281 540C0000 		.4byte	.LVL310-.Ltext0
  8615 0285 5D0C0000 		.4byte	.LVL311-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 201
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 201
 
 
  8616 0289 0100     		.2byte	0x1
@@ -12058,7 +12058,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8670 030c 00       		.sleb128 0
  8671 030d EE0B0000 		.4byte	.LCFI40-.Ltext0
  8672 0311 200C0000 		.4byte	.LFE41-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 202
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 202
 
 
  8673 0315 0200     		.2byte	0x2
@@ -12118,7 +12118,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8727              	.LLST139:
  8728 039e B80B0000 		.4byte	.LVL292-.Ltext0
  8729 03a2 C10B0000 		.4byte	.LVL293-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 203
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 203
 
 
  8730 03a6 0100     		.2byte	0x1
@@ -12178,7 +12178,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8784 0429 00       		.sleb128 0
  8785 042a 4A0B0000 		.4byte	.LCFI37-.Ltext0
  8786 042e 800B0000 		.4byte	.LFE38-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 204
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 204
 
 
  8787 0432 0200     		.2byte	0x2
@@ -12238,7 +12238,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8841              	.LLST130:
  8842 04bb 140B0000 		.4byte	.LVL274-.Ltext0
  8843 04bf 1D0B0000 		.4byte	.LVL275-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 205
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 205
 
 
  8844 04c3 0100     		.2byte	0x1
@@ -12298,7 +12298,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8898 0546 00       		.sleb128 0
  8899 0547 AE0A0000 		.4byte	.LCFI34-.Ltext0
  8900 054b E00A0000 		.4byte	.LFE35-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 206
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 206
 
 
  8901 054f 0200     		.2byte	0x2
@@ -12358,7 +12358,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  8955              	.LLST121:
  8956 05d8 780A0000 		.4byte	.LVL256-.Ltext0
  8957 05dc 810A0000 		.4byte	.LVL257-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 207
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 207
 
 
  8958 05e0 0100     		.2byte	0x1
@@ -12418,7 +12418,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9012 0663 00       		.sleb128 0
  9013 0664 120A0000 		.4byte	.LCFI31-.Ltext0
  9014 0668 440A0000 		.4byte	.LFE32-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 208
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 208
 
 
  9015 066c 0200     		.2byte	0x2
@@ -12478,7 +12478,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9069              	.LLST112:
  9070 06f5 DC090000 		.4byte	.LVL238-.Ltext0
  9071 06f9 E5090000 		.4byte	.LVL239-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 209
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 209
 
 
  9072 06fd 0100     		.2byte	0x1
@@ -12538,7 +12538,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9126 0780 00       		.sleb128 0
  9127 0781 76090000 		.4byte	.LCFI28-.Ltext0
  9128 0785 A8090000 		.4byte	.LFE29-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 210
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 210
 
 
  9129 0789 0200     		.2byte	0x2
@@ -12598,7 +12598,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9183              	.LLST103:
  9184 0812 40090000 		.4byte	.LVL220-.Ltext0
  9185 0816 49090000 		.4byte	.LVL221-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 211
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 211
 
 
  9186 081a 0100     		.2byte	0x1
@@ -12658,7 +12658,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9240 089d 00       		.sleb128 0
  9241 089e DA080000 		.4byte	.LCFI25-.Ltext0
  9242 08a2 0C090000 		.4byte	.LFE26-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 212
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 212
 
 
  9243 08a6 0200     		.2byte	0x2
@@ -12718,7 +12718,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9297              	.LLST94:
  9298 092f A4080000 		.4byte	.LVL202-.Ltext0
  9299 0933 AD080000 		.4byte	.LVL203-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 213
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 213
 
 
  9300 0937 0100     		.2byte	0x1
@@ -12778,7 +12778,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9354 09ba 00       		.sleb128 0
  9355 09bb 3E080000 		.4byte	.LCFI22-.Ltext0
  9356 09bf 70080000 		.4byte	.LFE23-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 214
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 214
 
 
  9357 09c3 0200     		.2byte	0x2
@@ -12838,7 +12838,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9411              	.LLST85:
  9412 0a4c 08080000 		.4byte	.LVL184-.Ltext0
  9413 0a50 11080000 		.4byte	.LVL185-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 215
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 215
 
 
  9414 0a54 0100     		.2byte	0x1
@@ -12898,7 +12898,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9468 0ad7 00       		.sleb128 0
  9469 0ad8 A2070000 		.4byte	.LCFI19-.Ltext0
  9470 0adc D4070000 		.4byte	.LFE20-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 216
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 216
 
 
  9471 0ae0 0200     		.2byte	0x2
@@ -12958,7 +12958,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9525              	.LLST76:
  9526 0b69 6C070000 		.4byte	.LVL166-.Ltext0
  9527 0b6d 75070000 		.4byte	.LVL167-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 217
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 217
 
 
  9528 0b71 0100     		.2byte	0x1
@@ -13018,7 +13018,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9582 0bf4 00       		.sleb128 0
  9583 0bf5 06070000 		.4byte	.LCFI16-.Ltext0
  9584 0bf9 38070000 		.4byte	.LFE17-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 218
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 218
 
 
  9585 0bfd 0200     		.2byte	0x2
@@ -13078,7 +13078,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9639              	.LLST67:
  9640 0c86 D0060000 		.4byte	.LVL148-.Ltext0
  9641 0c8a D9060000 		.4byte	.LVL149-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 219
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 219
 
 
  9642 0c8e 0100     		.2byte	0x1
@@ -13138,7 +13138,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9696 0d11 B7060000 		.4byte	.LVL145-1-.Ltext0
  9697 0d15 D0060000 		.4byte	.LFE15-.Ltext0
  9698 0d19 0400     		.2byte	0x4
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 220
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 220
 
 
  9699 0d1b F3       		.byte	0xf3
@@ -13198,7 +13198,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9753 0d9d 08       		.sleb128 8
  9754 0d9e 00000000 		.4byte	0
  9755 0da2 00000000 		.4byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 221
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 221
 
 
  9756              	.LLST56:
@@ -13258,7 +13258,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9810 0e2b 06060000 		.4byte	.LCFI11-.Ltext0
  9811 0e2f 48060000 		.4byte	.LFE12-.Ltext0
  9812 0e33 0200     		.2byte	0x2
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 222
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 222
 
 
  9813 0e35 7D       		.byte	0x7d
@@ -13318,7 +13318,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9867 0ebc 3C060000 		.4byte	.LVL126-.Ltext0
  9868 0ec0 0100     		.2byte	0x1
  9869 0ec2 50       		.byte	0x50
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 223
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 223
 
 
  9870 0ec3 3C060000 		.4byte	.LVL126-.Ltext0
@@ -13378,7 +13378,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9924              	.LLST46:
  9925 0f52 B4050000 		.4byte	.LVL108-.Ltext0
  9926 0f56 BD050000 		.4byte	.LVL109-1-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 224
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 224
 
 
  9927 0f5a 0100     		.2byte	0x1
@@ -13438,7 +13438,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  9981 0fe4 55       		.byte	0x55
  9982 0fe5 00000000 		.4byte	0
  9983 0fe9 00000000 		.4byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 225
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 225
 
 
  9984              	.LLST39:
@@ -13498,7 +13498,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10038 1078 60050000 		.4byte	.LFE7-.Ltext0
  10039 107c 0100     		.2byte	0x1
  10040 107e 54       		.byte	0x54
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 226
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 226
 
 
  10041 107f 00000000 		.4byte	0
@@ -13558,7 +13558,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10095 1101 F0040000 		.4byte	.LVL91-.Ltext0
  10096 1105 00050000 		.4byte	.LVL92-.Ltext0
  10097 1109 0100     		.2byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 227
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 227
 
 
  10098 110b 53       		.byte	0x53
@@ -13618,7 +13618,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10152 118f CF020000 		.4byte	.LVL71-1-.Ltext0
  10153 1193 54040000 		.4byte	.LFE6-.Ltext0
  10154 1197 0100     		.2byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 228
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 228
 
 
  10155 1199 54       		.byte	0x54
@@ -13678,7 +13678,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10209 1222 53       		.byte	0x53
  10210 1223 00000000 		.4byte	0
  10211 1227 00000000 		.4byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 229
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 229
 
 
  10212              	.LLST19:
@@ -13738,7 +13738,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10266 12a7 60020000 		.4byte	.LVL60-.Ltext0
  10267 12ab 78020000 		.4byte	.LVL64-.Ltext0
  10268 12af 0100     		.2byte	0x1
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 230
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 230
 
 
  10269 12b1 53       		.byte	0x53
@@ -13798,7 +13798,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10323 1340 4C020000 		.4byte	.LFE4-.Ltext0
  10324 1344 0400     		.2byte	0x4
  10325 1346 F3       		.byte	0xf3
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 231
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 231
 
 
  10326 1347 01       		.uleb128 0x1
@@ -13858,7 +13858,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10380 13cf 0500     		.2byte	0x5
  10381 13d1 31       		.byte	0x31
  10382 13d2 74       		.byte	0x74
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 232
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 232
 
 
  10383 13d3 00       		.sleb128 0
@@ -13918,7 +13918,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10437 145a 51       		.byte	0x51
  10438 145b 1F010000 		.4byte	.LVL39-1-.Ltext0
  10439 145f 6C010000 		.4byte	.LFE2-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 233
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 233
 
 
  10440 1463 0400     		.2byte	0x4
@@ -13978,7 +13978,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10494 14e6 9F       		.byte	0x9f
  10495 14e7 00000000 		.4byte	0
  10496 14eb 00000000 		.4byte	0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 234
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 234
 
 
  10497              	.LLST4:
@@ -14038,7 +14038,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10551 1571 9F       		.byte	0x9f
  10552 1572 78000000 		.4byte	.LVL4-.Ltext0
  10553 1576 7A000000 		.4byte	.LVL5-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 235
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 235
 
 
  10554 157a 0100     		.2byte	0x1
@@ -14098,7 +14098,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10608 15f3 8E000000 		.4byte	.LVL15-.Ltext0
  10609 15f7 0100     		.2byte	0x1
  10610 15f9 50       		.byte	0x50
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 236
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 236
 
 
  10611 15fa 8E000000 		.4byte	.LVL15-.Ltext0
@@ -14158,7 +14158,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10665 1676 50       		.byte	0x50
  10666 1677 A2000000 		.4byte	.LVL25-.Ltext0
  10667 167b A4000000 		.4byte	.LVL26-.Ltext0
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 237
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 237
 
 
  10668 167f 0400     		.2byte	0x4
@@ -14218,7 +14218,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10708 0033 70707569 		.ascii	"ppui32GPIOIntMap\000"
  10708      33324750 
  10708      494F496E 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 238
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 238
 
 
  10708      744D6170 
@@ -14278,7 +14278,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10727              	.LASF87:
  10728 014b 4750494F 		.ascii	"GPIOIntTypeSet\000"
  10728      496E7454 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 239
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 239
 
 
  10728      79706553 
@@ -14338,7 +14338,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10752      50696E54 
  10752      79706549 
  10752      32435343 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 240
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 240
 
 
  10752      4C00
@@ -14398,7 +14398,7 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10774 02a2 75693850 		.ascii	"ui8Pins\000"
  10774      696E7300 
  10775              	.LASF9:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 241
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 241
 
 
  10776 02aa 6C6F6E67 		.ascii	"long long int\000"
@@ -14458,469 +14458,469 @@ ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 1
  10796      6E677468 
  10796      00
  10797              	.LASF100:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 242
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 242
 
 
  10798 034e 496E7444 		.ascii	"IntDisable\000"
  10798      69736162 
  10798      6C6500
- 10799              	.LASF106:
- 10800 0359 443A5C55 		.ascii	"D:\\UTFPR\\SISTEMAS OPERACIONAIS\\SO-threads\000"
- 10800      54465052 
- 10800      5C534953 
- 10800      54454D41 
- 10800      53204F50 
- 10801              	.LASF85:
- 10802 0383 75693332 		.ascii	"ui32IEV\000"
- 10802      49455600 
- 10803              	.LASF31:
- 10804 038b 4750494F 		.ascii	"GPIOPinTypeCIR\000"
- 10804      50696E54 
- 10804      79706543 
- 10804      495200
- 10805              	.LASF16:
- 10806 039a 675F7070 		.ascii	"g_ppui32GPIOIntMapBlizzard\000"
- 10806      75693332 
- 10806      4750494F 
- 10806      496E744D 
- 10806      6170426C 
- 10807              	.LASF72:
- 10808 03b5 4750494F 		.ascii	"GPIOIntDisable\000"
- 10808      496E7444 
- 10808      69736162 
- 10808      6C6500
- 10809              	.LASF27:
- 10810 03c4 4750494F 		.ascii	"GPIOPinConfigure\000"
- 10810      50696E43 
- 10810      6F6E6669 
- 10810      67757265 
+ 10799              	.LASF85:
+ 10800 0359 75693332 		.ascii	"ui32IEV\000"
+ 10800      49455600 
+ 10801              	.LASF31:
+ 10802 0361 4750494F 		.ascii	"GPIOPinTypeCIR\000"
+ 10802      50696E54 
+ 10802      79706543 
+ 10802      495200
+ 10803              	.LASF16:
+ 10804 0370 675F7070 		.ascii	"g_ppui32GPIOIntMapBlizzard\000"
+ 10804      75693332 
+ 10804      4750494F 
+ 10804      496E744D 
+ 10804      6170426C 
+ 10805              	.LASF72:
+ 10806 038b 4750494F 		.ascii	"GPIOIntDisable\000"
+ 10806      496E7444 
+ 10806      69736162 
+ 10806      6C6500
+ 10807              	.LASF27:
+ 10808 039a 4750494F 		.ascii	"GPIOPinConfigure\000"
+ 10808      50696E43 
+ 10808      6F6E6669 
+ 10808      67757265 
+ 10808      00
+ 10809              	.LASF29:
+ 10810 03ab 75693332 		.ascii	"ui32Base\000"
+ 10810      42617365 
  10810      00
- 10811              	.LASF29:
- 10812 03d5 75693332 		.ascii	"ui32Base\000"
- 10812      42617365 
- 10812      00
- 10813              	.LASF17:
- 10814 03de 675F7569 		.ascii	"g_ui32GPIOIntMapBlizzardRows\000"
- 10814      33324750 
- 10814      494F496E 
- 10814      744D6170 
- 10814      426C697A 
- 10815              	.LASF1:
- 10816 03fb 756E7369 		.ascii	"unsigned char\000"
- 10816      676E6564 
- 10816      20636861 
- 10816      7200
- 10817              	.LASF64:
- 10818 0409 75693332 		.ascii	"ui32Int\000"
- 10818      496E7400 
- 10819              	.LASF19:
- 10820 0411 675F7569 		.ascii	"g_ui32GPIOIntMapSnowflakeRows\000"
- 10820      33324750 
- 10820      494F496E 
- 10820      744D6170 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 243
+ 10811              	.LASF17:
+ 10812 03b4 675F7569 		.ascii	"g_ui32GPIOIntMapBlizzardRows\000"
+ 10812      33324750 
+ 10812      494F496E 
+ 10812      744D6170 
+ 10812      426C697A 
+ 10813              	.LASF1:
+ 10814 03d1 756E7369 		.ascii	"unsigned char\000"
+ 10814      676E6564 
+ 10814      20636861 
+ 10814      7200
+ 10815              	.LASF64:
+ 10816 03df 75693332 		.ascii	"ui32Int\000"
+ 10816      496E7400 
+ 10817              	.LASF19:
+ 10818 03e7 675F7569 		.ascii	"g_ui32GPIOIntMapSnowflakeRows\000"
+ 10818      33324750 
+ 10818      494F496E 
+ 10818      744D6170 
+ 10818      536E6F77 
+ 10819              	.LASF73:
+ 10820 0405 4750494F 		.ascii	"GPIOIntEnable\000"
+ 10820      496E7445 
+ 10820      6E61626C 
+ 10820      6500
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 243
 
 
- 10820      536E6F77 
- 10821              	.LASF73:
- 10822 042f 4750494F 		.ascii	"GPIOIntEnable\000"
- 10822      496E7445 
- 10822      6E61626C 
- 10822      6500
- 10823              	.LASF0:
- 10824 043d 7369676E 		.ascii	"signed char\000"
- 10824      65642063 
- 10824      68617200 
- 10825              	.LASF10:
- 10826 0449 6C6F6E67 		.ascii	"long long unsigned int\000"
- 10826      206C6F6E 
- 10826      6720756E 
- 10826      7369676E 
- 10826      65642069 
- 10827              	.LASF77:
- 10828 0460 70756933 		.ascii	"pui32PinType\000"
- 10828      3250696E 
- 10828      54797065 
+ 10821              	.LASF0:
+ 10822 0413 7369676E 		.ascii	"signed char\000"
+ 10822      65642063 
+ 10822      68617200 
+ 10823              	.LASF10:
+ 10824 041f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 10824      206C6F6E 
+ 10824      6720756E 
+ 10824      7369676E 
+ 10824      65642069 
+ 10825              	.LASF77:
+ 10826 0436 70756933 		.ascii	"pui32PinType\000"
+ 10826      3250696E 
+ 10826      54797065 
+ 10826      00
+ 10827              	.LASF14:
+ 10828 0443 75696E74 		.ascii	"uint32_t\000"
+ 10828      33325F74 
  10828      00
- 10829              	.LASF14:
- 10830 046d 75696E74 		.ascii	"uint32_t\000"
- 10830      33325F74 
- 10830      00
- 10831              	.LASF49:
- 10832 0476 4750494F 		.ascii	"GPIOPinTypeI2C\000"
- 10832      50696E54 
- 10832      79706549 
- 10832      324300
- 10833              	.LASF11:
- 10834 0485 756E7369 		.ascii	"unsigned int\000"
- 10834      676E6564 
- 10834      20696E74 
- 10834      00
- 10835              	.LASF37:
- 10836 0492 4750494F 		.ascii	"GPIOPinTypeUSBDigital\000"
- 10836      50696E54 
- 10836      79706555 
- 10836      53424469 
- 10836      67697461 
- 10837              	.LASF83:
- 10838 04a8 75693332 		.ascii	"ui32IBE\000"
- 10838      49424500 
- 10839              	.LASF20:
- 10840 04b0 675F7075 		.ascii	"g_pui32GPIOBaseAddrs\000"
- 10840      69333247 
- 10840      50494F42 
- 10840      61736541 
- 10840      64647273 
- 10841              	.LASF63:
- 10842 04c5 4750494F 		.ascii	"GPIOIntUnregister\000"
- 10842      496E7455 
- 10842      6E726567 
- 10842      69737465 
- 10842      7200
- 10843              	.LASF3:
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 244
+ 10829              	.LASF49:
+ 10830 044c 4750494F 		.ascii	"GPIOPinTypeI2C\000"
+ 10830      50696E54 
+ 10830      79706549 
+ 10830      324300
+ 10831              	.LASF11:
+ 10832 045b 756E7369 		.ascii	"unsigned int\000"
+ 10832      676E6564 
+ 10832      20696E74 
+ 10832      00
+ 10833              	.LASF37:
+ 10834 0468 4750494F 		.ascii	"GPIOPinTypeUSBDigital\000"
+ 10834      50696E54 
+ 10834      79706555 
+ 10834      53424469 
+ 10834      67697461 
+ 10835              	.LASF83:
+ 10836 047e 75693332 		.ascii	"ui32IBE\000"
+ 10836      49424500 
+ 10837              	.LASF20:
+ 10838 0486 675F7075 		.ascii	"g_pui32GPIOBaseAddrs\000"
+ 10838      69333247 
+ 10838      50494F42 
+ 10838      61736541 
+ 10838      64647273 
+ 10839              	.LASF63:
+ 10840 049b 4750494F 		.ascii	"GPIOIntUnregister\000"
+ 10840      496E7455 
+ 10840      6E726567 
+ 10840      69737465 
+ 10840      7200
+ 10841              	.LASF3:
+ 10842 04ad 73686F72 		.ascii	"short unsigned int\000"
+ 10842      7420756E 
+ 10842      7369676E 
+ 10842      65642069 
+ 10842      6E7400
+ 10843              	.LASF103:
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 244
 
 
- 10844 04d7 73686F72 		.ascii	"short unsigned int\000"
- 10844      7420756E 
- 10844      7369676E 
- 10844      65642069 
- 10844      6E7400
- 10845              	.LASF103:
- 10846 04ea 496E7445 		.ascii	"IntEnable\000"
- 10846      6E61626C 
- 10846      6500
- 10847              	.LASF74:
- 10848 04f4 4750494F 		.ascii	"GPIOPadConfigGet\000"
- 10848      50616443 
- 10848      6F6E6669 
- 10848      67476574 
- 10848      00
- 10849              	.LASF71:
- 10850 0505 5F426F6F 		.ascii	"_Bool\000"
- 10850      6C00
- 10851              	.LASF15:
- 10852 050b 75696E74 		.ascii	"uint_fast32_t\000"
- 10852      5F666173 
- 10852      7433325F 
- 10852      7400
- 10853              	.LASF43:
- 10854 0519 4750494F 		.ascii	"GPIOPinTypePWM\000"
- 10854      50696E54 
- 10854      79706550 
- 10854      574D00
- 10855              	.LASF13:
- 10856 0528 696E7433 		.ascii	"int32_t\000"
- 10856      325F7400 
- 10857              	.LASF82:
- 10858 0530 4750494F 		.ascii	"GPIOIntTypeGet\000"
- 10858      496E7454 
- 10858      79706547 
- 10858      657400
- 10859              	.LASF45:
- 10860 053f 4750494F 		.ascii	"GPIOPinTypePECIRx\000"
- 10860      50696E54 
- 10860      79706550 
- 10860      45434952 
- 10860      7800
- 10861              	.LASF75:
- 10862 0551 75693850 		.ascii	"ui8Pin\000"
- 10862      696E00
- 10863              	.LASF42:
- 10864 0558 4750494F 		.ascii	"GPIOPinTypeQEI\000"
- 10864      50696E54 
- 10864      79706551 
- 10864      454900
- 10865              	.LASF86:
- 10866 0567 75693332 		.ascii	"ui32SI\000"
- 10866      534900
- 10867              	.LASF98:
- 10868 056e 5F475049 		.ascii	"_GPIOBaseValid\000"
- 10868      4F426173 
- 10868      6556616C 
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 245
+ 10844 04c0 496E7445 		.ascii	"IntEnable\000"
+ 10844      6E61626C 
+ 10844      6500
+ 10845              	.LASF74:
+ 10846 04ca 4750494F 		.ascii	"GPIOPadConfigGet\000"
+ 10846      50616443 
+ 10846      6F6E6669 
+ 10846      67476574 
+ 10846      00
+ 10847              	.LASF71:
+ 10848 04db 5F426F6F 		.ascii	"_Bool\000"
+ 10848      6C00
+ 10849              	.LASF15:
+ 10850 04e1 75696E74 		.ascii	"uint_fast32_t\000"
+ 10850      5F666173 
+ 10850      7433325F 
+ 10850      7400
+ 10851              	.LASF43:
+ 10852 04ef 4750494F 		.ascii	"GPIOPinTypePWM\000"
+ 10852      50696E54 
+ 10852      79706550 
+ 10852      574D00
+ 10853              	.LASF13:
+ 10854 04fe 696E7433 		.ascii	"int32_t\000"
+ 10854      325F7400 
+ 10855              	.LASF82:
+ 10856 0506 4750494F 		.ascii	"GPIOIntTypeGet\000"
+ 10856      496E7454 
+ 10856      79706547 
+ 10856      657400
+ 10857              	.LASF45:
+ 10858 0515 4750494F 		.ascii	"GPIOPinTypePECIRx\000"
+ 10858      50696E54 
+ 10858      79706550 
+ 10858      45434952 
+ 10858      7800
+ 10859              	.LASF75:
+ 10860 0527 75693850 		.ascii	"ui8Pin\000"
+ 10860      696E00
+ 10861              	.LASF42:
+ 10862 052e 4750494F 		.ascii	"GPIOPinTypeQEI\000"
+ 10862      50696E54 
+ 10862      79706551 
+ 10862      454900
+ 10863              	.LASF86:
+ 10864 053d 75693332 		.ascii	"ui32SI\000"
+ 10864      534900
+ 10865              	.LASF98:
+ 10866 0544 5F475049 		.ascii	"_GPIOBaseValid\000"
+ 10866      4F426173 
+ 10866      6556616C 
+ 10866      696400
+ 10867              	.LASF60:
+ 10868 0553 75693856 		.ascii	"ui8Val\000"
+ 10868      616C00
+ 10869              	.LASF47:
+ 10870 055a 4750494F 		.ascii	"GPIOPinTypeLCD\000"
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 245
 
 
- 10868      696400
- 10869              	.LASF60:
- 10870 057d 75693856 		.ascii	"ui8Val\000"
- 10870      616C00
- 10871              	.LASF47:
- 10872 0584 4750494F 		.ascii	"GPIOPinTypeLCD\000"
- 10872      50696E54 
- 10872      7970654C 
- 10872      434400
- 10873              	.LASF8:
- 10874 0593 6C6F6E67 		.ascii	"long unsigned int\000"
- 10874      20756E73 
- 10874      69676E65 
- 10874      6420696E 
- 10874      7400
- 10875              	.LASF76:
- 10876 05a5 70756933 		.ascii	"pui32Strength\000"
- 10876      32537472 
- 10876      656E6774 
- 10876      6800
- 10877              	.LASF67:
- 10878 05b3 4750494F 		.ascii	"GPIOIntClear\000"
- 10878      496E7443 
- 10878      6C656172 
- 10878      00
- 10879              	.LASF91:
- 10880 05c0 75693332 		.ascii	"ui32AFSEL\000"
- 10880      41465345 
- 10880      4C00
- 10881              	.LASF23:
- 10882 05ca 4750494F 		.ascii	"GPIOADCTriggerDisable\000"
- 10882      41444354 
- 10882      72696767 
- 10882      65724469 
- 10882      7361626C 
- 10883              	.LASF36:
- 10884 05e0 4750494F 		.ascii	"GPIOPinTypeWakeHigh\000"
- 10884      50696E54 
- 10884      79706557 
- 10884      616B6548 
- 10884      69676800 
- 10885              	.LASF24:
- 10886 05f4 4750494F 		.ascii	"GPIOADCTriggerEnable\000"
- 10886      41444354 
- 10886      72696767 
- 10886      6572456E 
- 10886      61626C65 
- 10887              	.LASF34:
- 10888 0609 4750494F 		.ascii	"GPIOPinTypeKBRow\000"
- 10888      50696E54 
- 10888      7970654B 
- 10888      42526F77 
- 10888      00
- 10889              	.LASF5:
- 10890 061a 5F5F696E 		.ascii	"__int32_t\000"
- 10890      7433325F 
- 10890      7400
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 246
+ 10870      50696E54 
+ 10870      7970654C 
+ 10870      434400
+ 10871              	.LASF8:
+ 10872 0569 6C6F6E67 		.ascii	"long unsigned int\000"
+ 10872      20756E73 
+ 10872      69676E65 
+ 10872      6420696E 
+ 10872      7400
+ 10873              	.LASF76:
+ 10874 057b 70756933 		.ascii	"pui32Strength\000"
+ 10874      32537472 
+ 10874      656E6774 
+ 10874      6800
+ 10875              	.LASF67:
+ 10876 0589 4750494F 		.ascii	"GPIOIntClear\000"
+ 10876      496E7443 
+ 10876      6C656172 
+ 10876      00
+ 10877              	.LASF91:
+ 10878 0596 75693332 		.ascii	"ui32AFSEL\000"
+ 10878      41465345 
+ 10878      4C00
+ 10879              	.LASF23:
+ 10880 05a0 4750494F 		.ascii	"GPIOADCTriggerDisable\000"
+ 10880      41444354 
+ 10880      72696767 
+ 10880      65724469 
+ 10880      7361626C 
+ 10881              	.LASF36:
+ 10882 05b6 4750494F 		.ascii	"GPIOPinTypeWakeHigh\000"
+ 10882      50696E54 
+ 10882      79706557 
+ 10882      616B6548 
+ 10882      69676800 
+ 10883              	.LASF24:
+ 10884 05ca 4750494F 		.ascii	"GPIOADCTriggerEnable\000"
+ 10884      41444354 
+ 10884      72696767 
+ 10884      6572456E 
+ 10884      61626C65 
+ 10885              	.LASF34:
+ 10886 05df 4750494F 		.ascii	"GPIOPinTypeKBRow\000"
+ 10886      50696E54 
+ 10886      7970654B 
+ 10886      42526F77 
+ 10886      00
+ 10887              	.LASF5:
+ 10888 05f0 5F5F696E 		.ascii	"__int32_t\000"
+ 10888      7433325F 
+ 10888      7400
+ 10889              	.LASF102:
+ 10890 05fa 496E7452 		.ascii	"IntRegister\000"
+ 10890      65676973 
+ 10890      74657200 
+ 10891              	.LASF21:
+ 10892 0606 75693332 		.ascii	"ui32Port\000"
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 246
 
 
- 10891              	.LASF102:
- 10892 0624 496E7452 		.ascii	"IntRegister\000"
- 10892      65676973 
- 10892      74657200 
- 10893              	.LASF21:
- 10894 0630 75693332 		.ascii	"ui32Port\000"
- 10894      506F7274 
- 10894      00
- 10895              	.LASF52:
- 10896 0639 4750494F 		.ascii	"GPIOPinTypeGPIOInput\000"
- 10896      50696E54 
- 10896      79706547 
- 10896      50494F49 
- 10896      6E707574 
- 10897              	.LASF94:
- 10898 064e 75693332 		.ascii	"ui32Idx\000"
- 10898      49647800 
- 10899              	.LASF90:
- 10900 0656 75693332 		.ascii	"ui32Dir\000"
- 10900      44697200 
- 10901              	.LASF35:
- 10902 065e 4750494F 		.ascii	"GPIOPinTypeWakeLow\000"
- 10902      50696E54 
- 10902      79706557 
- 10902      616B654C 
- 10902      6F7700
- 10903              	.LASF69:
- 10904 0671 4750494F 		.ascii	"GPIOIntStatus\000"
- 10904      496E7453 
- 10904      74617475 
- 10904      7300
- 10905              	.LASF81:
- 10906 067f 75693842 		.ascii	"ui8Bit\000"
- 10906      697400
- 10907              	.LASF105:
- 10908 0686 6770696F 		.ascii	"gpio.c\000"
- 10908      2E6300
- 10909              	.LASF70:
- 10910 068d 624D6173 		.ascii	"bMasked\000"
- 10910      6B656400 
+ 10892      506F7274 
+ 10892      00
+ 10893              	.LASF52:
+ 10894 060f 4750494F 		.ascii	"GPIOPinTypeGPIOInput\000"
+ 10894      50696E54 
+ 10894      79706547 
+ 10894      50494F49 
+ 10894      6E707574 
+ 10895              	.LASF94:
+ 10896 0624 75693332 		.ascii	"ui32Idx\000"
+ 10896      49647800 
+ 10897              	.LASF90:
+ 10898 062c 75693332 		.ascii	"ui32Dir\000"
+ 10898      44697200 
+ 10899              	.LASF35:
+ 10900 0634 4750494F 		.ascii	"GPIOPinTypeWakeLow\000"
+ 10900      50696E54 
+ 10900      79706557 
+ 10900      616B654C 
+ 10900      6F7700
+ 10901              	.LASF69:
+ 10902 0647 4750494F 		.ascii	"GPIOIntStatus\000"
+ 10902      496E7453 
+ 10902      74617475 
+ 10902      7300
+ 10903              	.LASF81:
+ 10904 0655 75693842 		.ascii	"ui8Bit\000"
+ 10904      697400
+ 10905              	.LASF105:
+ 10906 065c 6770696F 		.ascii	"gpio.c\000"
+ 10906      2E6300
+ 10907              	.LASF70:
+ 10908 0663 624D6173 		.ascii	"bMasked\000"
+ 10908      6B656400 
+ 10909              	.LASF106:
+ 10910 066b 433A5C72 		.ascii	"C:\\repositories\\SO-threads\000"
+ 10910      65706F73 
+ 10910      69746F72 
+ 10910      6965735C 
+ 10910      534F2D74 
  10911              	.LASF99:
- 10912 0695 5F5F6572 		.ascii	"__error__\000"
+ 10912 0686 5F5F6572 		.ascii	"__error__\000"
  10912      726F725F 
  10912      5F00
  10913              	.LASF101:
- 10914 069f 496E7455 		.ascii	"IntUnregister\000"
+ 10914 0690 496E7455 		.ascii	"IntUnregister\000"
  10914      6E726567 
  10914      69737465 
  10914      7200
  10915              	.LASF53:
- 10916 06ad 4750494F 		.ascii	"GPIOPinTypeEthernetMII\000"
+ 10916 069e 4750494F 		.ascii	"GPIOPinTypeEthernetMII\000"
  10916      50696E54 
  10916      79706545 
  10916      74686572 
  10916      6E65744D 
  10917              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 7-2018-q2-update) 7.3.1 20180622 (release) [AR
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 247
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 247
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:15     .text:00000000 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:21     .text:00000000 _GPIOBaseValid
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:160    .text:000000a8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:165    .text:000000b0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:171    .text:000000b0 _GPIOIntNumberGet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:242    .text:00000100 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:250    .text:00000114 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:257    .text:00000114 GPIODirModeSet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:321    .text:00000168 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:325    .text:0000016c $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:332    .text:0000016c GPIODirModeGet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:400    .text:000001b8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:404    .text:000001bc $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:411    .text:000001bc GPIOIntTypeSet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:500    .text:00000248 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:504    .text:0000024c $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:511    .text:0000024c GPIOIntTypeGet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:602    .text:000002bc $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:606    .text:000002c0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:613    .text:000002c0 GPIOPadConfigSet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:847    .text:0000044c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:852    .text:00000454 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:859    .text:00000454 GPIOPadConfigGet
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1025   .text:0000055c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1029   .text:00000560 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1036   .text:00000560 GPIOIntEnable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1074   .text:00000584 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1078   .text:00000588 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1085   .text:00000588 GPIOIntDisable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1123   .text:000005b0 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1127   .text:000005b4 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1134   .text:000005b4 GPIOIntStatus
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1177   .text:000005dc $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1181   .text:000005e0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1188   .text:000005e0 GPIOIntClear
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1224   .text:00000600 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1228   .text:00000604 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1235   .text:00000604 GPIOIntRegister
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1297   .text:00000644 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1301   .text:00000648 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1308   .text:00000648 GPIOIntUnregister
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1366   .text:00000684 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1370   .text:00000688 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1377   .text:00000688 GPIOPinRead
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1413   .text:000006a8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1417   .text:000006ac $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1424   .text:000006ac GPIOPinWrite
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1461   .text:000006cc $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1465   .text:000006d0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1472   .text:000006d0 GPIOPinTypeADC
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1519   .text:00000700 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1523   .text:00000704 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1530   .text:00000704 GPIOPinTypeCAN
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1577   .text:00000734 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1581   .text:00000738 $t
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 248
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:15     .text:00000000 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:21     .text:00000000 _GPIOBaseValid
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:160    .text:000000a8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:165    .text:000000b0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:171    .text:000000b0 _GPIOIntNumberGet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:242    .text:00000100 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:250    .text:00000114 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:257    .text:00000114 GPIODirModeSet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:321    .text:00000168 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:325    .text:0000016c $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:332    .text:0000016c GPIODirModeGet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:400    .text:000001b8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:404    .text:000001bc $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:411    .text:000001bc GPIOIntTypeSet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:500    .text:00000248 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:504    .text:0000024c $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:511    .text:0000024c GPIOIntTypeGet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:602    .text:000002bc $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:606    .text:000002c0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:613    .text:000002c0 GPIOPadConfigSet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:847    .text:0000044c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:852    .text:00000454 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:859    .text:00000454 GPIOPadConfigGet
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1025   .text:0000055c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1029   .text:00000560 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1036   .text:00000560 GPIOIntEnable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1074   .text:00000584 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1078   .text:00000588 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1085   .text:00000588 GPIOIntDisable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1123   .text:000005b0 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1127   .text:000005b4 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1134   .text:000005b4 GPIOIntStatus
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1177   .text:000005dc $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1181   .text:000005e0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1188   .text:000005e0 GPIOIntClear
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1224   .text:00000600 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1228   .text:00000604 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1235   .text:00000604 GPIOIntRegister
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1297   .text:00000644 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1301   .text:00000648 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1308   .text:00000648 GPIOIntUnregister
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1366   .text:00000684 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1370   .text:00000688 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1377   .text:00000688 GPIOPinRead
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1413   .text:000006a8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1417   .text:000006ac $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1424   .text:000006ac GPIOPinWrite
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1461   .text:000006cc $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1465   .text:000006d0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1472   .text:000006d0 GPIOPinTypeADC
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1519   .text:00000700 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1523   .text:00000704 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1530   .text:00000704 GPIOPinTypeCAN
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1577   .text:00000734 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1581   .text:00000738 $t
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 248
 
 
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1588   .text:00000738 GPIOPinTypeComparator
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1635   .text:00000768 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1639   .text:0000076c $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1646   .text:0000076c GPIOPinTypeEPI
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1693   .text:0000079c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1697   .text:000007a0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1704   .text:000007a0 GPIOPinTypeEthernetLED
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1751   .text:000007d0 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1755   .text:000007d4 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1762   .text:000007d4 GPIOPinTypeEthernetMII
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1809   .text:00000804 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1813   .text:00000808 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1820   .text:00000808 GPIOPinTypeGPIOInput
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1867   .text:00000838 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1871   .text:0000083c $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1878   .text:0000083c GPIOPinTypeGPIOOutput
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1925   .text:0000086c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1929   .text:00000870 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1936   .text:00000870 GPIOPinTypeGPIOOutputOD
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1983   .text:000008a0 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1987   .text:000008a4 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:1994   .text:000008a4 GPIOPinTypeI2C
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2041   .text:000008d4 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2045   .text:000008d8 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2052   .text:000008d8 GPIOPinTypeI2CSCL
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2099   .text:00000908 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2103   .text:0000090c $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2110   .text:0000090c GPIOPinTypeLCD
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2157   .text:0000093c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2161   .text:00000940 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2168   .text:00000940 GPIOPinTypeLPC
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2215   .text:00000970 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2219   .text:00000974 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2226   .text:00000974 GPIOPinTypePECIRx
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2273   .text:000009a4 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2277   .text:000009a8 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2284   .text:000009a8 GPIOPinTypePECITx
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2331   .text:000009d8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2335   .text:000009dc $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2342   .text:000009dc GPIOPinTypePWM
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2389   .text:00000a0c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2393   .text:00000a10 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2400   .text:00000a10 GPIOPinTypeQEI
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2447   .text:00000a40 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2451   .text:00000a44 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2458   .text:00000a44 GPIOPinTypeSSI
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2505   .text:00000a74 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2509   .text:00000a78 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2516   .text:00000a78 GPIOPinTypeTimer
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2563   .text:00000aa8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2567   .text:00000aac $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2574   .text:00000aac GPIOPinTypeUART
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2621   .text:00000adc $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2625   .text:00000ae0 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2632   .text:00000ae0 GPIOPinTypeUSBAnalog
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2679   .text:00000b10 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2683   .text:00000b14 $t
-ARM GAS  C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s 			page 249
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1588   .text:00000738 GPIOPinTypeComparator
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1635   .text:00000768 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1639   .text:0000076c $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1646   .text:0000076c GPIOPinTypeEPI
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1693   .text:0000079c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1697   .text:000007a0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1704   .text:000007a0 GPIOPinTypeEthernetLED
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1751   .text:000007d0 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1755   .text:000007d4 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1762   .text:000007d4 GPIOPinTypeEthernetMII
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1809   .text:00000804 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1813   .text:00000808 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1820   .text:00000808 GPIOPinTypeGPIOInput
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1867   .text:00000838 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1871   .text:0000083c $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1878   .text:0000083c GPIOPinTypeGPIOOutput
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1925   .text:0000086c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1929   .text:00000870 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1936   .text:00000870 GPIOPinTypeGPIOOutputOD
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1983   .text:000008a0 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1987   .text:000008a4 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:1994   .text:000008a4 GPIOPinTypeI2C
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2041   .text:000008d4 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2045   .text:000008d8 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2052   .text:000008d8 GPIOPinTypeI2CSCL
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2099   .text:00000908 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2103   .text:0000090c $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2110   .text:0000090c GPIOPinTypeLCD
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2157   .text:0000093c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2161   .text:00000940 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2168   .text:00000940 GPIOPinTypeLPC
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2215   .text:00000970 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2219   .text:00000974 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2226   .text:00000974 GPIOPinTypePECIRx
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2273   .text:000009a4 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2277   .text:000009a8 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2284   .text:000009a8 GPIOPinTypePECITx
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2331   .text:000009d8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2335   .text:000009dc $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2342   .text:000009dc GPIOPinTypePWM
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2389   .text:00000a0c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2393   .text:00000a10 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2400   .text:00000a10 GPIOPinTypeQEI
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2447   .text:00000a40 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2451   .text:00000a44 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2458   .text:00000a44 GPIOPinTypeSSI
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2505   .text:00000a74 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2509   .text:00000a78 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2516   .text:00000a78 GPIOPinTypeTimer
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2563   .text:00000aa8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2567   .text:00000aac $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2574   .text:00000aac GPIOPinTypeUART
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2621   .text:00000adc $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2625   .text:00000ae0 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2632   .text:00000ae0 GPIOPinTypeUSBAnalog
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2679   .text:00000b10 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2683   .text:00000b14 $t
+ARM GAS  C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s 			page 249
 
 
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2690   .text:00000b14 GPIOPinTypeUSBDigital
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2737   .text:00000b44 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2741   .text:00000b48 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2748   .text:00000b48 GPIOPinTypeWakeHigh
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2795   .text:00000b7c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2799   .text:00000b80 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2806   .text:00000b80 GPIOPinTypeWakeLow
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2853   .text:00000bb4 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2857   .text:00000bb8 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2864   .text:00000bb8 GPIOPinTypeKBRow
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2911   .text:00000be8 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2915   .text:00000bec $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2922   .text:00000bec GPIOPinTypeKBColumn
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2969   .text:00000c1c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2973   .text:00000c20 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:2980   .text:00000c20 GPIOPinTypeLEDSeq
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3027   .text:00000c50 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3031   .text:00000c54 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3038   .text:00000c54 GPIOPinTypeCIR
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3085   .text:00000c84 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3089   .text:00000c88 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3096   .text:00000c88 GPIOPinWakeStatus
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3118   .text:00000c8e GPIOPinConfigure
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3200   .text:00000cf0 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3206   .text:00000cfc $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3213   .text:00000cfc GPIODMATriggerEnable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3251   .text:00000d20 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3255   .text:00000d24 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3262   .text:00000d24 GPIODMATriggerDisable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3300   .text:00000d4c $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3304   .text:00000d50 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3311   .text:00000d50 GPIOADCTriggerEnable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3349   .text:00000d74 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3353   .text:00000d78 $t
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3360   .text:00000d78 GPIOADCTriggerDisable
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3398   .text:00000da0 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3403   .rodata:00000000 $d
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3407   .rodata:00000000 g_ppui32GPIOIntMapBlizzard
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3458   .rodata:000000c0 g_ppui32GPIOIntMapSnowflake
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3509   .rodata:00000180 g_pui32GPIOBaseAddrs
-C:\Users\Diogo\AppData\Local\Temp\ccOdrvYe.s:3547   .rodata.str1.4:00000000 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2690   .text:00000b14 GPIOPinTypeUSBDigital
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2737   .text:00000b44 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2741   .text:00000b48 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2748   .text:00000b48 GPIOPinTypeWakeHigh
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2795   .text:00000b7c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2799   .text:00000b80 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2806   .text:00000b80 GPIOPinTypeWakeLow
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2853   .text:00000bb4 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2857   .text:00000bb8 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2864   .text:00000bb8 GPIOPinTypeKBRow
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2911   .text:00000be8 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2915   .text:00000bec $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2922   .text:00000bec GPIOPinTypeKBColumn
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2969   .text:00000c1c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2973   .text:00000c20 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:2980   .text:00000c20 GPIOPinTypeLEDSeq
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3027   .text:00000c50 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3031   .text:00000c54 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3038   .text:00000c54 GPIOPinTypeCIR
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3085   .text:00000c84 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3089   .text:00000c88 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3096   .text:00000c88 GPIOPinWakeStatus
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3118   .text:00000c8e GPIOPinConfigure
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3200   .text:00000cf0 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3206   .text:00000cfc $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3213   .text:00000cfc GPIODMATriggerEnable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3251   .text:00000d20 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3255   .text:00000d24 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3262   .text:00000d24 GPIODMATriggerDisable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3300   .text:00000d4c $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3304   .text:00000d50 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3311   .text:00000d50 GPIOADCTriggerEnable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3349   .text:00000d74 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3353   .text:00000d78 $t
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3360   .text:00000d78 GPIOADCTriggerDisable
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3398   .text:00000da0 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3403   .rodata:00000000 $d
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3407   .rodata:00000000 g_ppui32GPIOIntMapBlizzard
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3458   .rodata:000000c0 g_ppui32GPIOIntMapSnowflake
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3509   .rodata:00000180 g_pui32GPIOBaseAddrs
+C:\Users\Marcelo\AppData\Local\Temp\cccRBScg.s:3547   .rodata.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 __error__

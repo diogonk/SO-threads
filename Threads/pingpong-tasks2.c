@@ -22,15 +22,16 @@ void BodyTask(void *arg)
   {
     if (activeThread == getCurrentThread() && status == 0)
     {
-      UARTprintf("Iniciei  tarefa %i\n", getCurrentThread());
+        UARTprintf("Iniciei  tarefa (current: %i, active: %i, status: %i)\n", getCurrentThread(), activeThread, status);
       activeThread++;
       status = 1;
     }
     if (activeThread == getCurrentThread() && status == 1)
     {
-      UARTprintf("Ence&& status == 0 \n(", getCurrentThread());
-      activeThread--;
+        UARTprintf("Encerrei  tarefa (current: %i, active: %i, status: %i)\n", getCurrentThread(), activeThread, status);
+      activeThread++;
       status = 2;
     }
+    if (activeThread>=MAXTASK){activeThread = 0;}
   }
 }
